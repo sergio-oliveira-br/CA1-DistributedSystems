@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.CA.gRPC";
+option java_outer_classname = "SmartHomeProto";
+
+
+service SmartHome
+{
+  rpc ControlLights(LightRequest) returns (LightResponse);  //Unary
+}
+
+message LightRequest
+{
+  bool lightOn = 1;
+}
+
+message LightResponse
+{
+  string message = 1;
+}
