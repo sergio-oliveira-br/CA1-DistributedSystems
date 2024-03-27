@@ -13,7 +13,9 @@ option java_package = "com.NCI";
 
 //This option defines the name of the outer Java class that will be generated,
 //containing the inner Java classes generated from the .proto file.
-option java_outer_classname = "SmartHomeServer";
+option java_outer_classname = "SmartHomeProto";
+
+
 
 
 
