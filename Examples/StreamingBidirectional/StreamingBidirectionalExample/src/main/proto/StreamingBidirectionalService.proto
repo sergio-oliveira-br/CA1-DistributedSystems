@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package com.ncirl.streaming;
+
+option java_multiple_files = true;
+option java_package = "com.ncirl.streaming.bidirectional";
+option java_outer_classname = "BidirectionalStreamingProto";
+
+service BidirectionalStreamingService {
+  // Bidirectional streaming RPC
+  rpc bidirectionalStream(stream BidirectionalRequest) returns (stream BidirectionalResponse);
+}
+
+message BidirectionalRequest {
+  string message = 1;
+}
+
+message BidirectionalResponse {
+  string message = 1;
+}
