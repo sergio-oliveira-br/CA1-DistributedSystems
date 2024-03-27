@@ -1,0 +1,2 @@
+protoc --java_out=../java --proto_path=. mySmartHome.proto
+
