@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.ncirl.streaming;
+
+option java_multiple_files = true;
+option java_package = "com.ncirl.streaming.streamingserverservice";
+option java_outer_classname = "StreamingServerServiceProto";
+
+service StreamingServerService {
+  // Unary RPC
+  rpc sendUnaryRequest(UnaryRequest) returns (UnaryResponse);
+
+  // Server-side streaming RPC
+  rpc streamServerRequest(StreamServerRequest) returns (stream StreamServerResponse);
+
+}
+
+message UnaryRequest {
+  string name = 1;
+}
+
+message UnaryResponse {
+  string message = 1;
+}
+
+message StreamServerRequest {
+  string serverName = 1;
+}
+
+message StreamServerResponse {
+  string message = 1;
+}
