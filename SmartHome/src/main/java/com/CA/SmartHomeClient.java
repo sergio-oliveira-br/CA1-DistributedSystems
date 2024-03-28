@@ -43,7 +43,7 @@ public class SmartHomeClient
     }
 
 
-    //Method: Responsible to control the lights
+    //Method: Responsible to control the locks
     public void controlLocks(boolean lockOpen)
     {
         LockRequest request = LockRequest.newBuilder().setLockOpen(lockOpen).build();
@@ -51,8 +51,10 @@ public class SmartHomeClient
         System.out.println("Response: " + response.getMessage());
     }
 
+    public void checkStatusLock()
+    {
 
-
+    }
 
     public static void menuHome()
     {
@@ -81,18 +83,17 @@ public class SmartHomeClient
         System.out.println("\nCA1 - Smart Home");
         System.out.println("Menu - Lighting");
         System.out.println("    *** ");
-        System.out.println("1. The Living Room");
+        System.out.println("1. Living Room");
         System.out.println("2. Kitchen");
         System.out.println("3. Laundry Facilities");
         System.out.println("4. Exit");
         System.out.print("Choose an option: ");
     }
 
-
     public static void menuLights()
     {
-        System.out.println("\nCA1 - Smart Home");
-        System.out.println("    *** ");
+        //System.out.println("CA1 - Smart Home");
+        System.out.println("    --- ");
         System.out.println("1. Turn on lights");
         System.out.println("2. Turn off lights");
         System.out.println("3. Check status");
@@ -114,9 +115,7 @@ public class SmartHomeClient
 
     public static void menuLockers()
     {
-        System.out.println("\nCA1 - Smart Home");
-        System.out.println("Menu - Lockers");
-        System.out.println("    *** ");
+        System.out.println("    --- ");
         System.out.println("1. Locked");
         System.out.println("2. Unlocked");
         System.out.println("3. Check status");
@@ -149,8 +148,10 @@ public class SmartHomeClient
                                 int userOptionMenuLocationLights = scanner.nextInt();
                                 switch (userOptionMenuLocationLights)
                                 {
-                                    //The Living Room
+                                    //Living Room
                                     case 1:
+                                        System.out.println("\n    ***");
+                                        System.out.println("Living Room");
                                         menuLights();
                                         int userOptionOnOffLivingRoom = scanner.nextInt();
                                         switch (userOptionOnOffLivingRoom)
@@ -174,6 +175,8 @@ public class SmartHomeClient
 
                                     //Kitchen
                                     case 2:
+                                        System.out.println("\n    ***");
+                                        System.out.println("Kitchen");
                                         menuLights();
                                         int userOptionOnOffKitchen = scanner.nextInt();
                                         switch (userOptionOnOffKitchen)
@@ -181,22 +184,24 @@ public class SmartHomeClient
                                             //Turned on lights
                                             case 1:
                                                 client.controlLights(true);
-                                                break;
+                                            break;
 
                                             //Turned off lights
                                             case 2:
                                                 client.controlLights(false);
-                                                break;
+                                            break;
 
                                             //Check the status
                                             case 3:
                                                 System.out.println("NEED TO DO!!!!!"); //NEED TO DO
-                                                break;
+                                            break;
                                         }
                                     break;
 
                                     //Laundry
                                     case 3:
+                                        System.out.println("\n    ***");
+                                        System.out.println("Laundry Facilities");
                                         menuLights();
                                         int userOptionOnOffLaundry = scanner.nextInt();
                                         switch (userOptionOnOffLaundry)
@@ -228,7 +233,8 @@ public class SmartHomeClient
                                 {
                                     //Main Door
                                     case 1:
-                                        System.out.println("Main Door");
+                                        System.out.println("\n    ***");
+                                        System.out.println(" Main Door");
                                         menuLockers(); //NEED TO CHANGE THE NAME
                                         int userOptionOpenedClosedMainDoor = scanner.nextInt();
                                         switch (userOptionOpenedClosedMainDoor)
@@ -247,25 +253,61 @@ public class SmartHomeClient
                                             case 3:
                                                 System.out.println("NEED TO DO!!!!!"); //NEED TO DO
                                             break;
-
-
                                         }
                                     break;
 
                                     //Back Door
                                     case 2:
-                                        System.out.println("Back Door");
+                                        System.out.println("\n    ***");
+                                        System.out.println(" Back Door");
+                                        menuLockers(); //NEED TO CHANGE THE NAME
+                                        int userOptionOpenedClosedBackDoor = scanner.nextInt();
+                                        switch (userOptionOpenedClosedBackDoor)
+                                        {
+                                            //Open
+                                            case 1:
+                                                client.controlLocks(true);
+                                            break;
 
+                                            //Close
+                                            case 2:
+                                                client.controlLocks(false);
+                                            break;
 
+                                            //Check the status
+                                            case 3:
+                                                System.out.println("NEED TO DO!!!!!"); //NEED TO DO
+                                            break;
+                                        }
                                     break;
 
 
                                     //Gate
                                     case 3:
-                                        System.out.println("Gate");
+                                        System.out.println("\n    ***");
+                                        System.out.println("   Gate");
+                                        menuLockers(); //NEED TO CHANGE THE NAME
+                                        int userOptionOpenedClosedGate = scanner.nextInt();
+                                        switch (userOptionOpenedClosedGate)
+                                        {
+                                            //Open
+                                            case 1:
+                                                client.controlLocks(true);
+                                            break;
+
+                                            //Close
+                                            case 2:
+                                                client.controlLocks(false);
+                                            break;
+
+                                            //Check the status
+                                            case 3:
+                                                System.out.println("NEED TO DO!!!!!"); //NEED TO DO
+                                            break;
+                                        }
                                     break;
                                 }
-                                break;
+                            break;
                         }
                     break;
 

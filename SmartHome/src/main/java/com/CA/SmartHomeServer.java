@@ -77,10 +77,10 @@ public class SmartHomeServer
             String message;
             if (lightOn)
             {
-                message = "Lights turned on";
+                message = "Lights turned on" + "\n------";
             } else
             {
-                message = "Lights turned off";
+                message = "Lights turned off" + "\n------";
             }
             LightResponse response = LightResponse.newBuilder().setMessage(message).build();
             responseObserver.onNext(response);
@@ -99,10 +99,10 @@ public class SmartHomeServer
             String message;
             if (lockOpen)
             {
-                message = "Locks opened";
+                message = "Lock closed" + "\n------";
             } else
             {
-                message = "Locks!!! closed";
+                message = "Lock opened" + "\n------";
             }
             LockResponse response = LockResponse.newBuilder().setMessage(message).build();
             responseObserver.onNext(response);

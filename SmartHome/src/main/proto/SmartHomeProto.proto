@@ -24,8 +24,3 @@ message LightResponse
   string message = 1;
 }
 
-
-
-/*
-
- */
