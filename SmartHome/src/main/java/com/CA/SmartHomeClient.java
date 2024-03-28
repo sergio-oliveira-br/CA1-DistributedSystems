@@ -3,8 +3,12 @@ package com.CA;
 import com.CA.gRPC.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.StreamObserver;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
 
 public class SmartHomeClient
 {
@@ -12,26 +16,27 @@ public class SmartHomeClient
     private final ManagedChannel channel;
     private final LightServicesGrpc.LightServicesBlockingStub lightBlockingStub;
     private final LockServicesGrpc.LockServicesBlockingStub lockBlockingStub;
+    private final StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
     //Constructor:Responsible to get 2 parameters, host and port
-    public SmartHomeClient(String host, int port)
+    public SmartHomeClient(String host, int port, String stub)
     {
-        this(ManagedChannelBuilder.forAddress(host, port).usePlaintext());
-
+        this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
     }
 
     //Constructor: Make possible to create a SmartHomeClient instance by passing a ManagedChannelBuilder object as an argument
-    public SmartHomeClient(ManagedChannelBuilder<?> channelBuilder)
+    public SmartHomeClient(ManagedChannelBuilder<?> channelBuilder, String stub)
     {
         channel = channelBuilder.build();                       //It is called to build a communication channel
         lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);  //Used to make RPC calls to the server
         lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
+        this.stub = StreamingClientServiceGrpc.newStub(channel);
     }
 
     //Method: Close the connection before
     public void shutdown() throws InterruptedException
     {
-        channel.shutdown().awaitTermination(5, java.util.concurrent.TimeUnit.SECONDS);
+        channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
     //Method: Responsible to control the lights
@@ -123,9 +128,94 @@ public class SmartHomeClient
         System.out.print("Choose an option: ");
     }
 
+
+
+
+
+
+
+
+
+    /*
+        Here is where all information about the PING method
+        The idea is get response from the user
+    */
+
+
+
+
+
+    public void sendUnaryRequest(String name) {
+        UnaryRequest request = UnaryRequest.newBuilder()
+                .setName(name)
+                .build();
+        stub.sendUnaryRequest(request, new StreamObserver<UnaryResponse>() {
+            @Override
+            public void onNext(UnaryResponse response) {
+                System.out.println("Unary response from server: " + response.getMessage());
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                System.err.println("Error in unary request: " + t.getMessage());
+            }
+
+            @Override
+            public void onCompleted() {
+                System.out.println("Unary request completed");
+            }
+        });
+    }
+
+    public void streamClientInformation(String clientName) {
+        StreamObserver<ClientInformation> requestObserver = stub.streamClientInformation(new StreamObserver<ServerResponse>() {
+            @Override
+            public void onNext(ServerResponse response) {
+                System.out.println("Server response: " + response.getMessage());
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                System.err.println("Error in streaming client information: " + t.getMessage());
+            }
+
+            @Override
+            public void onCompleted() {
+                System.out.println("Streaming client information completed");
+            }
+        });
+
+        try {
+            while (true) {
+                String dateTime = LocalDateTime.now().toString();
+                ClientInformation clientInfo = ClientInformation.newBuilder()
+                        .setClientName(clientName)
+                        .setDateTime(dateTime)
+                        .build();
+                requestObserver.onNext(clientInfo);
+                Thread.sleep(5000); // Send information every 5 seconds
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        requestObserver.onCompleted();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args)
     {
-        SmartHomeClient client = new SmartHomeClient("localhost", 8081);
+        SmartHomeClient client = new SmartHomeClient("localhost", 8081, "sergio.nci.com");
 
         try
         {
@@ -319,6 +409,35 @@ public class SmartHomeClient
                     //Your connection (ping)
                     case 3:
                         System.out.println("Need to build... PING     !!!!!");
+
+                        String host = "localhost";
+                        int port = 8080;
+                        String stub = "Sergio Oliveira";
+
+                        SmartHomeClient clientPing = new SmartHomeClient(host, port, stub);
+
+
+                        clientPing.sendUnaryRequest(stub); // Send unary request
+
+                        // Start streaming client information
+                        Thread streamThread = new Thread(() -> clientPing.streamClientInformation(stub));
+                        streamThread.start();
+
+                        // Wait for user input to stop streaming
+                        System.out.println("Press 'Q' to stop streaming client information");
+
+                        while (true) {
+                            String input = scanner.nextLine();
+                            if (input.equalsIgnoreCase("Q")) {
+                                streamThread.interrupt();
+                                break;
+                            }
+                        }
+
+                        // Shutdown client
+                        clientPing.shutdown();
+
+
                     break;
 
                     //Exit
@@ -360,9 +479,9 @@ public class SmartHomeClient
 
              */
             }
-        }
-
-        finally
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally
         {
             try
             {
