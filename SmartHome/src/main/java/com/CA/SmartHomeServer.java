@@ -1,3 +1,22 @@
+/*
+Continuous Assessment (CA)
+Type: Project
+
+Distributed Systems - NCI
+HDip in Computing - HDCSDEV_INT
+
+Due Date: 19th April 2024
+Lecturer: Mark Cudden
+
+Student:
+    Sergio Vinicio da Sila Oliveira
+    x23170981@student.ncirl.ie
+
+GitHub:
+https://github.com/sergio-oliveira-br/CA1-DistributedSystems
+*/
+
+
 package com.CA;
 
 import com.CA.gRPC.*;
@@ -52,7 +71,9 @@ public class SmartHomeServer
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
             {
-                System.out.println("Shutting down gRPC server");
+                System.out.println("Shutting down gRPC server." +
+                        "\nThis was CA1 - Distributed System" +
+                        "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
                 SmartHomeServer.this.stop();
             }
         }));
@@ -144,7 +165,9 @@ public class SmartHomeServer
         public StreamObserver<ClientInformation> streamClientInformation(StreamObserver<ServerResponse> responseObserver) {
             return new StreamObserver<ClientInformation>() {
                 @Override
-                public void onNext(ClientInformation clientInfo) {
+                public void onNext(ClientInformation clientInfo)
+                {
+                    System.out.println("-------");
                     System.out.println("Received client information:");
                     System.out.println("Client Name: " + clientInfo.getClientName());
                     System.out.println("Date and Time: " + clientInfo.getDateTime());

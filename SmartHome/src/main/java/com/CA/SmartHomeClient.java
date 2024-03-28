@@ -1,3 +1,21 @@
+/*
+Continuous Assessment (CA)
+Type: Project
+
+Distributed Systems - NCI
+HDip in Computing - HDCSDEV_INT
+
+Due Date: 19th April 2024
+Lecturer: Mark Cudden
+
+Student:
+    Sergio Vinicio da Sila Oliveira
+    x23170981@student.ncirl.ie
+
+GitHub:
+https://github.com/sergio-oliveira-br/CA1-DistributedSystems
+*/
+
 package com.CA;
 
 import com.CA.gRPC.*;
@@ -68,7 +86,7 @@ public class SmartHomeClient
     public static void menuHome()
     {
         System.out.println("\nCA1 - Smart Home");
-        System.out.println("    *** ");
+        System.out.println("      *** ");
         System.out.println("1. Smart Devices");
         System.out.println("2. Smart Thermostats");
         System.out.println("3. Your Connection");
@@ -395,14 +413,13 @@ public class SmartHomeClient
 
                     //Your connection (ping)
                     case 3:
-                        System.out.println("Need to build... PING     !!!!!");
+                        System.out.println("You are streaming information to sever");
 
                         String host = "localhost";
                         int port = 8081;
                         String stub = "Sergio Oliveira";
 
                         SmartHomeClient clientPing = new SmartHomeClient(host, port, stub);
-
 
                         clientPing.sendUnaryRequest(stub); // Send unary request
 
@@ -413,7 +430,8 @@ public class SmartHomeClient
                         // Wait for user input to stop streaming
                         System.out.println("Press 'Q' to stop streaming client information");
 
-                        while (streaming) {
+                        while (streaming)
+                        {
                             String input = scanner.nextLine();
                             if (input.equalsIgnoreCase("Q")) {
                                 streaming = false; // Set streaming to false to stop the loop
@@ -422,8 +440,6 @@ public class SmartHomeClient
 
                         // Shutdown client
                         clientPing.shutdown();
-
-
                     break;
 
                     //Exit
@@ -432,13 +448,18 @@ public class SmartHomeClient
                     break;
 
                     default:
-                        System.out.println("Sorry, invalid option  =[ " +
+                        System.out.println("Oops! Invalid option." +
                                             "\nPlease choose again.");
                 }
             }
-        } catch (InterruptedException e) {
+        }
+
+        catch (InterruptedException e)
+        {
             throw new RuntimeException(e);
-        } finally
+        }
+
+        finally
         {
             try
             {

@@ -19,11 +19,13 @@ service StreamingClientService
   rpc streamClientInformation(stream ClientInformation) returns (ServerResponse);
 }
 
+//Message for a Unary request
 message UnaryRequest
 {
   string name = 1;
 }
 
+//Message for a Unary response
 message UnaryResponse
 {
   string message = 1;
