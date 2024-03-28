@@ -26,7 +26,7 @@ public class SmartHomeServer
         server = serverBuilder
                 .addService(new SmartHomeImpl())
                 .addService(new SmartHomeLockImpl())
-                .addService(new StreamingClientServiceImpl()) //ping
+                //.addService(new StreamingClientServiceImpl()) //ping
                 .build();
     }
 
@@ -41,9 +41,10 @@ public class SmartHomeServer
         System.out.println("Server started on PORT: " + port + " waiting for connection...");
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
-            System.err.println("*** shutting down gRPC server since JVM is shutting down");
-            SmartHomeServer.this.stop();
-            System.err.println("*** server shut down");
+            {
+                System.out.println("Shutting down gRPC server");
+                SmartHomeServer.this.stop();
+            }
         }));
     }
 
@@ -184,8 +185,9 @@ public class SmartHomeServer
 
     private static class StreamingClientServiceImpl extends StreamingClientServiceGrpc.StreamingClientServiceImplBase {
         @Override
-        public void sendUnaryRequest(UnaryRequest request, StreamObserver<UnaryResponse> responseObserver) {
-            String message = "Received unary request from client: " + request.getName();
+        public void sendUnaryRequest(UnaryRequest request, StreamObserver<UnaryResponse> responseObserver)
+        {
+            String message = "\nReceived unary request from client: " + request.getName();
             UnaryResponse response = UnaryResponse.newBuilder()
                     .setMessage(message)
                     .build();
@@ -225,13 +227,10 @@ public class SmartHomeServer
 
 
 
-
-
     public static void main(String[] args) throws IOException, InterruptedException
     {
         SmartHomeServer server = new SmartHomeServer(8081);
         server.start();
         server.blockUntilShutdown();
-
     }
 }

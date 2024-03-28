@@ -203,7 +203,7 @@ public class SmartHomeClient
     }
 
 
-
+    private static boolean streaming = true;
 
 
 
@@ -411,7 +411,7 @@ public class SmartHomeClient
                         System.out.println("Need to build... PING     !!!!!");
 
                         String host = "localhost";
-                        int port = 8080;
+                        int port = 8081;
                         String stub = "Sergio Oliveira";
 
                         SmartHomeClient clientPing = new SmartHomeClient(host, port, stub);
@@ -426,11 +426,10 @@ public class SmartHomeClient
                         // Wait for user input to stop streaming
                         System.out.println("Press 'Q' to stop streaming client information");
 
-                        while (true) {
+                        while (streaming) {
                             String input = scanner.nextLine();
                             if (input.equalsIgnoreCase("Q")) {
-                                streamThread.interrupt();
-                                break;
+                                streaming = false; // Set streaming to false to stop the loop
                             }
                         }
 
