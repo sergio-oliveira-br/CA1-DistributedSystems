@@ -1,8 +1,14 @@
 /Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LightResponseOrBuilder.java
 /Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/SmartHomeClient.java
-/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/SmartHomeGrpc.java
+/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LockProto.java
 /Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LightResponse.java
+/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LockResponse.java
 /Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/SmartHomeServer.java
-/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/SmartHomeProto.java
 /Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LightRequestOrBuilder.java
+/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LockServicesGrpc.java
 /Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LightRequest.java
+/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LockRequestOrBuilder.java
+/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LockResponseOrBuilder.java
+/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LightServicesGrpc.java
+/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LightProto.java
+/Users/sergiovinicio/NCI/Distributed System/CA1 - Distributed System/SmartHome/src/main/java/com/CA/gRPC/LockRequest.java

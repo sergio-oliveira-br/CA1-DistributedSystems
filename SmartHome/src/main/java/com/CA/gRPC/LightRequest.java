@@ -76,13 +76,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.CA.gRPC.SmartHomeProto.internal_static_LightRequest_descriptor;
+    return com.CA.gRPC.LightProto.internal_static_LightRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.CA.gRPC.SmartHomeProto.internal_static_LightRequest_fieldAccessorTable
+    return com.CA.gRPC.LightProto.internal_static_LightRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.CA.gRPC.LightRequest.class, com.CA.gRPC.LightRequest.Builder.class);
   }
@@ -263,13 +263,13 @@ private static final long serialVersionUID = 0L;
       com.CA.gRPC.LightRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.CA.gRPC.SmartHomeProto.internal_static_LightRequest_descriptor;
+      return com.CA.gRPC.LightProto.internal_static_LightRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.CA.gRPC.SmartHomeProto.internal_static_LightRequest_fieldAccessorTable
+      return com.CA.gRPC.LightProto.internal_static_LightRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.CA.gRPC.LightRequest.class, com.CA.gRPC.LightRequest.Builder.class);
     }
@@ -300,7 +300,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.CA.gRPC.SmartHomeProto.internal_static_LightRequest_descriptor;
+      return com.CA.gRPC.LightProto.internal_static_LightRequest_descriptor;
     }
 
     @java.lang.Override

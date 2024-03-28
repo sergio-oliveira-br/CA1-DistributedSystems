@@ -2,30 +2,25 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "com.CA.gRPC";
-option java_outer_classname = "LightProto";
+option java_outer_classname = "LockProto";
 
 /*
   Unary is request/response. The client wants a service,
   it sends a request and receives a response.
   If there is a connection failure, the client has to send the same request again.
  */
-service LightServices
+
+service LockServices
 {
-  rpc ControlLights(LightRequest) returns (LightResponse);
+  rpc ControlLocks(LockRequest) returns (LockResponse);
 }
 
-message LightRequest
+message LockRequest
 {
-  bool lightOn = 1;
+  bool lockOpen = 1;
 }
 
-message LightResponse
+message LockResponse
 {
   string message = 1;
 }
-
-
-
-/*
-
- */
