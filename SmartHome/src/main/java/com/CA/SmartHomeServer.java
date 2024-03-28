@@ -13,6 +13,17 @@ public class SmartHomeServer
     private final int port;
     private Server server;
 
+    /*
+        ___________________________________
+        !!! Lights and Locks Control !!!
+
+        Here are where all method's to control are
+        The idea is the user send requests to
+        turn on/turn off or open/close to the server
+        ___________________________________
+    */
+
+
     //Constructor: Get the port
     public SmartHomeServer(int port)
     {
@@ -29,7 +40,6 @@ public class SmartHomeServer
                 //.addService(new StreamingClientServiceImpl()) //ping
                 .build();
     }
-
 
     //Method: Initialize the gRPC
     public void start() throws IOException
@@ -48,55 +58,6 @@ public class SmartHomeServer
         }));
     }
 
-
-    /*
-
-    //THIS IS OK - BACKUP
-
-    //Method: Initialize the gRPC
-    public void start() throws IOException
-    {
-        server.start();
-        System.out.println("Server started on PORT: " + port + " waiting for connection...");
-        Runtime.getRuntime().addShutdownHook(new Thread(() ->
-        {
-            System.err.println("*** shutting down gRPC server since JVM is shutting down");
-            SmartHomeServer.this.stop();
-            System.err.println("*** server shut down");
-        }));
-    }
-
-
-    //THIS IS FAKE FROM THE EXAMPLES
-
-    public void start(int port) throws IOException {
-        server = ServerBuilder.forPort(port)
-                .addService(new StreamingClientServiceImpl())
-                .build()
-                .start();
-        System.out.println("Server started, listening on port " + port);
-
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("Shutting down gRPC server");
-            try {
-                StreamingClientServer.this.stop();
-            } catch (InterruptedException e) {
-                e.printStackTrace(System.err);
-            }
-        }));
-    }
-
-
-
-     */
-
-
-
-
-
-
-
-
     //Method: Ends and clean the gRPC
     public void stop()
     {
@@ -114,17 +75,6 @@ public class SmartHomeServer
             server.awaitTermination();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
     //Method: To control lights based on the request
     static class SmartHomeImpl extends LightServicesGrpc.LightServicesImplBase
@@ -169,18 +119,13 @@ public class SmartHomeServer
         }
     }
 
-
-
-
-
-
-
-
-
-
     /*
-        Here is where all information about the PING method
+        ___________________________________
+        !!! Streaming client information !!!
+
+        Here are where all method's PING
         The idea is get response from the user
+        ___________________________________
     */
 
     private static class StreamingClientServiceImpl extends StreamingClientServiceGrpc.StreamingClientServiceImplBase {
@@ -222,6 +167,9 @@ public class SmartHomeServer
             };
         }
     }
+
+
+
 
 
 

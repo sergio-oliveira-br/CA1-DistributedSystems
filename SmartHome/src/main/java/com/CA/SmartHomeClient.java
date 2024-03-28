@@ -18,7 +18,17 @@ public class SmartHomeClient
     private final LockServicesGrpc.LockServicesBlockingStub lockBlockingStub;
     private final StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
-    //Constructor:Responsible to get 2 parameters, host and port
+     /*
+        ___________________________________
+        !!! Lights and Locks Control !!!
+
+        Here are where all method's to control are
+        The idea is the user send requests to
+        turn on/turn off or open/close to the server
+        ___________________________________
+    */
+
+    //Constructor:Responsible to get 3 parameters
     public SmartHomeClient(String host, int port, String stub)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
@@ -47,18 +57,12 @@ public class SmartHomeClient
         System.out.println("Response: " + response.getMessage());
     }
 
-
     //Method: Responsible to control the locks
     public void controlLocks(boolean lockOpen)
     {
         LockRequest request = LockRequest.newBuilder().setLockOpen(lockOpen).build();
         LockResponse response = lockBlockingStub.controlLocks(request);
         System.out.println("Response: " + response.getMessage());
-    }
-
-    public void checkStatusLock()
-    {
-
     }
 
     public static void menuHome()
@@ -128,22 +132,14 @@ public class SmartHomeClient
         System.out.print("Choose an option: ");
     }
 
-
-
-
-
-
-
-
-
     /*
-        Here is where all information about the PING method
+        ___________________________________
+        !!! Streaming client information !!!
+
+        Here are where all method's PING
         The idea is get response from the user
+        ___________________________________
     */
-
-
-
-
 
     public void sendUnaryRequest(String name) {
         UnaryRequest request = UnaryRequest.newBuilder()
@@ -202,16 +198,7 @@ public class SmartHomeClient
         requestObserver.onCompleted();
     }
 
-
     private static boolean streaming = true;
-
-
-
-
-
-
-
-
 
     public static void main(String[] args)
     {
@@ -448,35 +435,6 @@ public class SmartHomeClient
                         System.out.println("Sorry, invalid option  =[ " +
                                             "\nPlease choose again.");
                 }
-
-
-
-
-
-
-
-
-            /*
-
-                switch (option) {
-                    case 1:
-                        client.controlLights(true);
-                        break;
-                    case 2:
-                        client.controlLights(false);
-                        break;
-                    case 3:
-                        // Add logic to check status
-                        System.out.println("Checking status...");
-                        break;
-                    case 4:
-                        running = false;
-                        break;
-                    default:
-                        System.out.println("Invalid option! Please choose again.");
-                }
-
-             */
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
