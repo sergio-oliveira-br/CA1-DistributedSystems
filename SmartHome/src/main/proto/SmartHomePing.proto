@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.CA.gRPC";
+option java_outer_classname = "PingProto";
+
+service StreamingClientService
+{
+  //Unary RPC
+  rpc sendUnaryRequest(UnaryRequest) returns (UnaryResponse);
+
+  //Server-side streaming RPC
+  rpc streamClientInformation(stream ClientInformation) returns (ServerResponse);
+}
+
+message UnaryRequest
+{
+  string name = 1;
+}
+
+message UnaryResponse
+{
+  string message = 1;
+}
+
+message ClientInformation
+{
+  string clientName = 1;
+  string dateTime = 2;
+}
+
+message ServerResponse
+{
+  string message = 1;
+}
