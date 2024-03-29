@@ -4,6 +4,10 @@
 package com.CA.gRPC;
 
 /**
+ * <pre>
+ *Message for a Unary response
+ * </pre>
+ *
  * Protobuf type {@code UnaryResponse}
  */
 public final class UnaryResponse extends
@@ -282,6 +286,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   *Message for a Unary response
+   * </pre>
+   *
    * Protobuf type {@code UnaryResponse}
    */
   public static final class Builder extends
