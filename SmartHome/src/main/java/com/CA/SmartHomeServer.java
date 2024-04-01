@@ -26,15 +26,11 @@ import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
 
-import java.util.logging.Logger;
-
 public class SmartHomeServer
 {
     //Instance Variables
     private final int port;
     private Server server;
-
-    private static final Logger logger = Logger.getLogger(SmartHomeServer.class.getName());
 
     /*
         ___________________________________
@@ -74,8 +70,6 @@ public class SmartHomeServer
                 .build()
                 .start();
 
-        logger.info("Server started on PORT: " + port + " waiting for connection...");
-
         System.out.println("Server started on PORT: " + port + " waiting for connection...");
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
@@ -112,8 +106,6 @@ public class SmartHomeServer
         @Override
         public void controlLights(LightRequest request, StreamObserver<LightResponse> responseObserver)
         {
-
-            logger.info("Received controlLights request: " + request);
 
             boolean lightOn = request.getLightOn();
             String message;
