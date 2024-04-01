@@ -9,7 +9,7 @@ Due Date: 19th April 2024
 Lecturer: Mark Cudden
 
 Student:
-    Sergio Vinicio da Sila Oliveira
+    Sergio Vinicio da Silva Oliveira
     x23170981@student.ncirl.ie
 
 GitHub:
@@ -254,19 +254,19 @@ public class SmartHomeClient
                                             //Turned on lights
                                             case 1:
                                                 client.controlLights(true);
-                                            break;
+                                                break;
 
                                             //Turned off lights
                                             case 2:
                                                 client.controlLights(false);
-                                            break;
+                                                break;
 
                                             //Check the status
                                             case 3:
                                                 System.out.println("NEED TO DO!!!!!"); //NEED TO DO
-                                            break;
+                                                break;
                                         }
-                                    break;
+                                        break;
 
                                     //Kitchen
                                     case 2:
@@ -279,19 +279,19 @@ public class SmartHomeClient
                                             //Turned on lights
                                             case 1:
                                                 client.controlLights(true);
-                                            break;
+                                                break;
 
                                             //Turned off lights
                                             case 2:
                                                 client.controlLights(false);
-                                            break;
+                                                break;
 
                                             //Check the status
                                             case 3:
                                                 System.out.println("NEED TO DO!!!!!"); //NEED TO DO
-                                            break;
+                                                break;
                                         }
-                                    break;
+                                        break;
 
                                     //Laundry
                                     case 3:
@@ -337,19 +337,19 @@ public class SmartHomeClient
                                             //Open
                                             case 1:
                                                 client.controlLocks(true);
-                                            break;
+                                                break;
 
                                             //Close
                                             case 2:
                                                 client.controlLocks(false);
-                                            break;
+                                                break;
 
                                             //Check the status
                                             case 3:
                                                 System.out.println("NEED TO DO!!!!!"); //NEED TO DO
-                                            break;
+                                                break;
                                         }
-                                    break;
+                                        break;
 
                                     //Back Door
                                     case 2:
@@ -362,19 +362,19 @@ public class SmartHomeClient
                                             //Open
                                             case 1:
                                                 client.controlLocks(true);
-                                            break;
+                                                break;
 
                                             //Close
                                             case 2:
                                                 client.controlLocks(false);
-                                            break;
+                                                break;
 
                                             //Check the status
                                             case 3:
                                                 System.out.println("NEED TO DO!!!!!"); //NEED TO DO
-                                            break;
+                                                break;
                                         }
-                                    break;
+                                        break;
 
 
                                     //Gate
@@ -388,28 +388,28 @@ public class SmartHomeClient
                                             //Open
                                             case 1:
                                                 client.controlLocks(true);
-                                            break;
+                                                break;
 
                                             //Close
                                             case 2:
                                                 client.controlLocks(false);
-                                            break;
+                                                break;
 
                                             //Check the status
                                             case 3:
                                                 System.out.println("NEED TO DO!!!!!"); //NEED TO DO
-                                            break;
+                                                break;
                                         }
-                                    break;
+                                        break;
                                 }
-                            break;
+                                break;
                         }
-                    break;
+                        break;
 
                     //Smart Thermostats
                     case 2:
                         System.out.println("Need to build... Therm!!!!!");
-                    break;
+                        break;
 
                     //Your connection (ping)
                     case 3:
@@ -440,16 +440,16 @@ public class SmartHomeClient
 
                         // Shutdown client
                         clientPing.shutdown();
-                    break;
+                        break;
 
                     //Exit
                     case 4:
                         running = false;
-                    break;
+                        break;
 
                     default:
                         System.out.println("Oops! Invalid option." +
-                                            "\nPlease choose again.");
+                                "\nPlease choose again.");
                 }
             }
         }

@@ -1,3 +1,4 @@
+com/CA/SmartHomeServer$TemperatureServicesImpl$1.class
 com/CA/gRPC/LockServicesGrpc$LockServicesFileDescriptorSupplier.class
 com/CA/gRPC/TempResponse.class
 com/CA/gRPC/LockResponse.class
@@ -99,6 +100,7 @@ com/CA/gRPC/SmartHomeGrpc$2.class
 com/CA/gRPC/TemperatureServicesGrpc$TemperatureServicesBaseDescriptorSupplier.class
 com/CA/gRPC/StreamingClientServiceGrpc$StreamingClientServiceBlockingStub.class
 com/CA/gRPC/LightResponse$1.class
+com/CA/SmartHomeServer$TemperatureServicesImpl.class
 com/CA/gRPC/LightServicesGrpc$2.class
 com/CA/gRPC/TemperatureServicesGrpc$AsyncService.class
 com/CA/gRPC/TemperatureServicesGrpc.class

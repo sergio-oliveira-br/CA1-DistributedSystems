@@ -9,7 +9,7 @@ Due Date: 19th April 2024
 Lecturer: Mark Cudden
 
 Student:
-    Sergio Vinicio da Sila Oliveira
+    Sergio Vinicio da Silva Oliveira
     x23170981@student.ncirl.ie
 
 GitHub:
