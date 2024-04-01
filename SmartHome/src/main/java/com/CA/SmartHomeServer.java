@@ -200,6 +200,20 @@ public class SmartHomeServer
 
 
 
+    /*
+        __________________________________________________________
+                    !!! Thermostats Services !!!
+
+        Here are where all method's related temp are
+        The idea is set and get updates between Server and Client
+        ___________________________________________________________
+    */
+
+
+
+
+
+
 
 
 

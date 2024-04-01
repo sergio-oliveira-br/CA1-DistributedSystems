@@ -222,6 +222,24 @@ public class SmartHomeClient
 
     private static boolean streaming = true;
 
+
+
+
+
+
+
+
+    /*
+        __________________________________________________________
+                    !!! Thermostats Services !!!
+
+        Here are where all method's related temp are
+        The idea is set and get updates between Server and Client
+        ___________________________________________________________
+    */
+
+
+
     public static void main(String[] args)
     {
         SmartHomeClient client = new SmartHomeClient("localhost", 8081, "Sergio Oliveira");
