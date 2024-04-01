@@ -21,6 +21,8 @@ package com.CA;
 import com.CA.gRPC.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Status;
+import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 
 import java.time.LocalDateTime;
@@ -49,6 +51,7 @@ public class SmartHomeClient
     //Constructor:Responsible to get 3 parameters
     public SmartHomeClient(String host, int port, String stub)
     {
+
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
     }
 
@@ -59,6 +62,7 @@ public class SmartHomeClient
         lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);  //Used to make RPC calls to the server
         lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
         this.stub = StreamingClientServiceGrpc.newStub(channel);
+
     }
 
     //Method: Close the connection before
@@ -220,7 +224,7 @@ public class SmartHomeClient
 
     public static void main(String[] args)
     {
-        SmartHomeClient client = new SmartHomeClient("localhost", 8081, "sergio.nci.com");
+        SmartHomeClient client = new SmartHomeClient("localhost", 8081, "Sergio Oliveira");
 
         try
         {
@@ -452,6 +456,7 @@ public class SmartHomeClient
                                 "\nPlease choose again.");
                 }
             }
+
         }
 
         catch (InterruptedException e)
