@@ -67,7 +67,7 @@ public class SmartHomeServer
                 .addService(new StreamingClientServiceImpl())
                 .addService(new SmartHomeImpl())
                 .addService(new SmartHomeLockImpl())
-                .addService(new BidirectionalThermostatsImpl()) //Thermostats Services
+                .addService(new ThermostatsServiceImpl()) //Thermostats Services
                 .build()
                 .start();
 
@@ -222,33 +222,26 @@ public class SmartHomeServer
                 @Override
                 public void onNext(ThermostatsRequest thermostatsRequest)
                 {
-
+                    System.out.println("RECEIVING SOMETHING...");
                 }
 
                 @Override
                 public void onError(Throwable throwable)
                 {
-
+                    System.err.println("ERROR !!!!!!  NEED TO DO SOMETHING");
                 }
 
                 @Override
                 public void onCompleted()
                 {
-
+                    System.out.println("CONNECTED......");
                 }
-            }
+            };
         }
 
 
 
 
-
-/*
-        public StreamObserver<BidirectionalRequest> bidirectionalStream(StreamObserver<BidirectionalResponse> responseObserver) {
-            return new StreamObserver<BidirectionalRequest>() {
-                @Override
-
-   */
 
 
 
