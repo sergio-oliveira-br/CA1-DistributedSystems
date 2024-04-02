@@ -67,6 +67,7 @@ public class SmartHomeServer
                 .addService(new StreamingClientServiceImpl())
                 .addService(new SmartHomeImpl())
                 .addService(new SmartHomeLockImpl())
+                .addService(new BidirectionalThermostatsImpl()) //Thermostats Services
                 .build()
                 .start();
 
@@ -208,6 +209,59 @@ public class SmartHomeServer
         The idea is set and get updates between Server and Client
         ___________________________________________________________
     */
+
+
+    private static class ThermostatsServiceImpl extends ThermostatsServiceGrpc.ThermostatsServiceImplBase
+    {
+        //StreamObserver: This is an interface that is used to receive responses from streaming service calls.
+        @Override
+        public StreamObserver<ThermostatsRequest> ControlThermostats(StreamObserver<ThermostatsResponse> responseStreamObserver)
+        {
+            return new StreamObserver<ThermostatsRequest>()
+            {
+                @Override
+                public void onNext(ThermostatsRequest thermostatsRequest)
+                {
+
+                }
+
+                @Override
+                public void onError(Throwable throwable)
+                {
+
+                }
+
+                @Override
+                public void onCompleted()
+                {
+
+                }
+            }
+        }
+
+
+
+
+
+/*
+        public StreamObserver<BidirectionalRequest> bidirectionalStream(StreamObserver<BidirectionalResponse> responseObserver) {
+            return new StreamObserver<BidirectionalRequest>() {
+                @Override
+
+   */
+
+
+
+
+
+
+
+
+
+
+
+    }
+
 
 
 
