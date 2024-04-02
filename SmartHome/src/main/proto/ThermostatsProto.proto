@@ -11,11 +11,11 @@ service BidirectionalStreamingService {
 }
 
 message BidirectionalRequest {
-  int32 message = 1;
+  string message = 1;
 }
 
 message BidirectionalResponse {
-  int32 message = 1;
+  string message = 1;
 }
 
 message ThermostatsResponse

@@ -88,6 +88,7 @@ com/CA/gRPC/LightResponse$1.class
 com/CA/gRPC/LightServicesGrpc$2.class
 com/CA/gRPC/BidirectionalResponseOrBuilder.class
 com/CA/SmartHomeServer$StreamingClientServiceImpl$1.class
+com/CA/SmartHomeServer$BidirectionalStreamingImpl.class
 com/CA/gRPC/LightServicesGrpc$LightServicesBlockingStub.class
 com/CA/SmartHomeClient$2.class
 com/CA/gRPC/StreamingClientServiceGrpc$StreamingClientServiceFutureStub.class
@@ -97,6 +98,7 @@ com/CA/gRPC/LockResponseOrBuilder.class
 com/CA/gRPC/LightResponseOrBuilder.class
 com/CA/gRPC/ClientInformationOrBuilder.class
 com/CA/gRPC/LockServicesGrpc$LockServicesStub.class
+com/CA/SmartHomeServer$BidirectionalStreamingImpl$1.class
 com/CA/gRPC/StreamingClientServiceGrpc$StreamingClientServiceStub.class
 com/CA/gRPC/BidirectionalStreamingServiceGrpc$1.class
 com/CA/gRPC/LightServicesGrpc$LightServicesFutureStub.class

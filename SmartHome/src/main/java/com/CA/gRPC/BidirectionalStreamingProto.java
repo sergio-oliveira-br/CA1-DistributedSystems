@@ -39,8 +39,8 @@ public final class BidirectionalStreamingProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\026ThermostatsProto.proto\"\'\n\024Bidirectiona" +
-      "lRequest\022\017\n\007message\030\001 \001(\005\"(\n\025Bidirection" +
-      "alResponse\022\017\n\007message\030\001 \001(\005\"+\n\023Thermosta" +
+      "lRequest\022\017\n\007message\030\001 \001(\t\"(\n\025Bidirection" +
+      "alResponse\022\017\n\007message\030\001 \001(\t\"+\n\023Thermosta" +
       "tsResponse\022\024\n\014responseTemp\030\001 \001(\0052i\n\035Bidi" +
       "rectionalStreamingService\022H\n\023bidirection" +
       "alStream\022\025.BidirectionalRequest\032\026.Bidire" +

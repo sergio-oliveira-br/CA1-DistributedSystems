@@ -8,8 +8,14 @@ public interface BidirectionalRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 message = 1;</code>
+   * <code>string message = 1;</code>
    * @return The message.
    */
-  int getMessage();
+  java.lang.String getMessage();
+  /**
+   * <code>string message = 1;</code>
+   * @return The bytes for message.
+   */
+  com.google.protobuf.ByteString
+      getMessageBytes();
 }
