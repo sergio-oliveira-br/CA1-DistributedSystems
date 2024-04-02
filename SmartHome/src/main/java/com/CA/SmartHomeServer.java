@@ -202,9 +202,6 @@ public class SmartHomeServer
         }
     }
 
-
-
-
     /*
         __________________________________________________________
                     !!! Thermostats Services !!!

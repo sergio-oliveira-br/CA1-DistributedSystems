@@ -38,8 +38,6 @@ public class SmartHomeClient
     private final LockServicesGrpc.LockServicesBlockingStub lockBlockingStub;
     private final StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
-
-
      /*
         ___________________________________
         !!! Lights and Locks Control !!!
@@ -65,7 +63,6 @@ public class SmartHomeClient
         this.stub = StreamingClientServiceGrpc.newStub(channel);
 
     }
-
 
     //Method: Close the connection before
     public void shutdown() throws InterruptedException
@@ -141,7 +138,7 @@ public class SmartHomeClient
         System.out.println("    *** ");
         System.out.println("1. Main Door");
         System.out.println("2. Back Door");
-        System.out.println("3. Gate");
+        System.out.println("3. Front Gate");
         System.out.println("4. Exit");
         System.out.print("Choose an option: ");
     }
@@ -225,13 +222,6 @@ public class SmartHomeClient
 
     private static boolean streaming = true;
 
-
-
-
-
-
-
-
     /*
         __________________________________________________________
                     !!! Thermostats Services !!!
@@ -240,14 +230,6 @@ public class SmartHomeClient
         The idea is set and get updates between Server and Client
         ___________________________________________________________
     */
-
-
-
-
-
-
-
-
 
     public static void main(String[] args)
     {
@@ -411,7 +393,7 @@ public class SmartHomeClient
                                     //Gate
                                     case 3:
                                         System.out.println("\n    ***");
-                                        System.out.println("   Gate");
+                                        System.out.println(" Front Gate");
                                         menuLockers(); //NEED TO CHANGE THE NAME
                                         int userOptionOpenedClosedGate = scanner.nextInt();
                                         switch (userOptionOpenedClosedGate)
@@ -492,7 +474,7 @@ public class SmartHomeClient
 
                                 if (setTemp < 15 || setTemp > 25)
                                 {
-                                    System.out.println("Sorry! Unfortunately your request is out of the range." +
+                                    System.err.println("Sorry! Unfortunately your request is out of the range." +
                                             "\nTry between (15ºC - 25ºC)");
                                     break;
                                 }
@@ -531,39 +513,33 @@ public class SmartHomeClient
                             }
                         }
 
-
-
-
                         else if (inputUserThermostats == 2)
                         {
-
                             //Create a channel to the server ->                 !Its already created
-
                             //Create a stub for the bidirectional service ->    !Its already created
-
 
 
                             //Create a response observer for the server streaming
                             StreamObserver<WeatherForecastResponse> weatherForecastResponseStreamObserver = new StreamObserver<WeatherForecastResponse>()
                             {
                                 @Override
-                                public void onNext(WeatherForecastResponse weatherForecastResponse) {
+                                public void onNext(WeatherForecastResponse weatherForecastResponse)
+                                {
                                     System.out.println("Msg from the server -> " + weatherForecastResponse.getMessage() );
                                 }
 
                                 @Override
-                                public void onError(Throwable throwable) {
+                                public void onError(Throwable throwable)
+                                {
                                     System.err.println("ERROR !!!!!!!");
                                 }
 
                                 @Override
-                                public void onCompleted() {
+                                public void onCompleted()
+                                {
                                     System.out.println("onCompleted");
                                 }
                             };
-
-
-
 
                             //Create a request observer for the client streaming
                             StreamObserver<WeatherForecastRequest> weatherForecastRequestStreamObserver = stubBI.weatherForecast(weatherForecastResponseStreamObserver);
@@ -624,8 +600,9 @@ public class SmartHomeClient
                         while (streaming)
                         {
                             String input = scanner.nextLine();
-                            if (input.equalsIgnoreCase("Q")) {
-                                streaming = false; // Set streaming to false to stop the loop
+                            if (input.equalsIgnoreCase("Q"))
+                            {
+                                streaming = false; //Stop the loop by setting the streaming to false
                             }
                         }
 
