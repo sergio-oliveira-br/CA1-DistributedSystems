@@ -29,6 +29,16 @@ public final class BidirectionalStreamingProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ThermostatsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_WeatherForecastRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_WeatherForecastRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_WeatherForecastResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_WeatherForecastResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -41,11 +51,15 @@ public final class BidirectionalStreamingProto {
       "\n\026ThermostatsProto.proto\"\'\n\024Bidirectiona" +
       "lRequest\022\017\n\007message\030\001 \001(\t\"(\n\025Bidirection" +
       "alResponse\022\017\n\007message\030\001 \001(\t\"+\n\023Thermosta" +
-      "tsResponse\022\024\n\014responseTemp\030\001 \001(\0052i\n\035Bidi" +
-      "rectionalStreamingService\022H\n\023bidirection" +
-      "alStream\022\025.BidirectionalRequest\032\026.Bidire" +
-      "ctionalResponse(\0010\001B,\n\013com.CA.gRPCB\033Bidi" +
-      "rectionalStreamingProtoP\001b\006proto3"
+      "tsResponse\022\024\n\014responseTemp\030\001 \001(\005\")\n\026Weat" +
+      "herForecastRequest\022\017\n\007message\030\001 \001(\t\"*\n\027W" +
+      "eatherForecastResponse\022\017\n\007message\030\001 \001(\t2" +
+      "\263\001\n\035BidirectionalStreamingService\022H\n\023bid" +
+      "irectionalStream\022\025.BidirectionalRequest\032" +
+      "\026.BidirectionalResponse(\0010\001\022H\n\017weatherFo" +
+      "recast\022\027.WeatherForecastRequest\032\030.Weathe" +
+      "rForecastResponse(\0010\001B,\n\013com.CA.gRPCB\033Bi" +
+      "directionalStreamingProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -69,6 +83,18 @@ public final class BidirectionalStreamingProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ThermostatsResponse_descriptor,
         new java.lang.String[] { "ResponseTemp", });
+    internal_static_WeatherForecastRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_WeatherForecastRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_WeatherForecastRequest_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_WeatherForecastResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_WeatherForecastResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_WeatherForecastResponse_descriptor,
+        new java.lang.String[] { "Message", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -4,16 +4,21 @@ option java_multiple_files = true;
 option java_package = "com.CA.gRPC";
 option java_outer_classname = "BidirectionalStreamingProto";
 
-service BidirectionalStreamingService {
+service BidirectionalStreamingService
+{
   // Bidirectional streaming RPC
   rpc bidirectionalStream(stream BidirectionalRequest) returns (stream BidirectionalResponse);
+  rpc weatherForecast(stream WeatherForecastRequest) returns (stream WeatherForecastResponse);
 }
 
-message BidirectionalRequest {
+//Refers bidirectionalStream
+message BidirectionalRequest
+{
   string message = 1;
 }
 
-message BidirectionalResponse {
+message BidirectionalResponse
+{
   string message = 1;
 }
 
@@ -21,3 +26,16 @@ message ThermostatsResponse
 {
   int32 responseTemp = 1;
 }
+
+//Refers WeatherForecast Service
+message WeatherForecastRequest
+{
+  string message = 1;
+}
+
+message WeatherForecastResponse
+{
+  string message = 1;
+}
+
+

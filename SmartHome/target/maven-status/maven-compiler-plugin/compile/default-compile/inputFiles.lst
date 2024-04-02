@@ -7,7 +7,11 @@
 /Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/UnaryRequestOrBuilder.java
 /Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/PingProto.java
 /Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/UnaryRequest.java
+/Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/WeatherForecastRequestOrBuilder.java
+/Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/WeatherForecastResponse.java
 /Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/BidirectionalResponseOrBuilder.java
+/Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/WeatherForecastResponseOrBuilder.java
+/Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/WeatherForecastRequest.java
 /Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/StreamingClientServiceGrpc.java
 /Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/BidirectionalStreamingServiceGrpc.java
 /Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmartHome/src/main/java/com/CA/gRPC/ThermostatsResponseOrBuilder.java

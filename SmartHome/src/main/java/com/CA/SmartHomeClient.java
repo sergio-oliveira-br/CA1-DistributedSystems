@@ -478,7 +478,7 @@ public class SmartHomeClient
 
                         System.out.println("      ***");
                         System.out.println("1. Set a Room Temperature");
-                        System.out.println("2. Get a Feedback from the server");
+                        System.out.println("2. Get Weather Forecast");
 
                         int inputUserThermostats = scanner.nextInt();
 
@@ -490,9 +490,9 @@ public class SmartHomeClient
                                 System.out.print("Gotcha! \nWhat is your preferred room temperature?");
                                 int setTemp = scanner.nextInt();
 
-                                if(setTemp < 15 || setTemp > 25)
+                                if (setTemp < 15 || setTemp > 25)
                                 {
-                                    System.out.println("Sorry! But unfortunately your request is out of the range." +
+                                    System.out.println("Sorry! Unfortunately your request is out of the range." +
                                             "\nTry between (15ºC - 25ºC)");
                                     break;
                                 }
@@ -533,11 +533,38 @@ public class SmartHomeClient
 
                         else if (inputUserThermostats == 2)
                         {
-                         System.out.println("BUILDING!!!!!");
+                            try
+                            {
+                                //Send some messages to the server
+                                System.out.println("Could you give me your opinion on the room temperature?");
+
+                            }
+
+                            catch (Exception e)
+                            {
+                                System.err.println("Error while sending messages: " + e.getMessage());
+                            }
+
+                            // Mark the end of requests to the server
+                            requestObserver.onCompleted();
+
+                            //Shutdown the channel gracefully
+                            try
+                            {
+                                channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+                                break;
+                            }
+
+                            catch (InterruptedException e)
+                            {
+                                System.err.println("Interrupted while shutting down the channel: " + e.getMessage());
+                                Thread.currentThread().interrupt();
+                            }
+
                         }
 
 
-                    //Your connection (ping)
+                        //Your connection (ping)
                     case 3:
                         System.out.println("\nYou are streaming information to sever");
 

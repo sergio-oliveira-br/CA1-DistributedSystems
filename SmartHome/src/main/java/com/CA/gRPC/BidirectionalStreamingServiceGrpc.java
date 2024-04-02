@@ -46,6 +46,37 @@ public final class BidirectionalStreamingServiceGrpc {
     return getBidirectionalStreamMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.CA.gRPC.WeatherForecastRequest,
+      com.CA.gRPC.WeatherForecastResponse> getWeatherForecastMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "weatherForecast",
+      requestType = com.CA.gRPC.WeatherForecastRequest.class,
+      responseType = com.CA.gRPC.WeatherForecastResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.CA.gRPC.WeatherForecastRequest,
+      com.CA.gRPC.WeatherForecastResponse> getWeatherForecastMethod() {
+    io.grpc.MethodDescriptor<com.CA.gRPC.WeatherForecastRequest, com.CA.gRPC.WeatherForecastResponse> getWeatherForecastMethod;
+    if ((getWeatherForecastMethod = BidirectionalStreamingServiceGrpc.getWeatherForecastMethod) == null) {
+      synchronized (BidirectionalStreamingServiceGrpc.class) {
+        if ((getWeatherForecastMethod = BidirectionalStreamingServiceGrpc.getWeatherForecastMethod) == null) {
+          BidirectionalStreamingServiceGrpc.getWeatherForecastMethod = getWeatherForecastMethod =
+              io.grpc.MethodDescriptor.<com.CA.gRPC.WeatherForecastRequest, com.CA.gRPC.WeatherForecastResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "weatherForecast"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.CA.gRPC.WeatherForecastRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.CA.gRPC.WeatherForecastResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BidirectionalStreamingServiceMethodDescriptorSupplier("weatherForecast"))
+              .build();
+        }
+      }
+    }
+    return getWeatherForecastMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -103,6 +134,13 @@ public final class BidirectionalStreamingServiceGrpc {
         io.grpc.stub.StreamObserver<com.CA.gRPC.BidirectionalResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getBidirectionalStreamMethod(), responseObserver);
     }
+
+    /**
+     */
+    default io.grpc.stub.StreamObserver<com.CA.gRPC.WeatherForecastRequest> weatherForecast(
+        io.grpc.stub.StreamObserver<com.CA.gRPC.WeatherForecastResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getWeatherForecastMethod(), responseObserver);
+    }
   }
 
   /**
@@ -142,6 +180,14 @@ public final class BidirectionalStreamingServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getBidirectionalStreamMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.CA.gRPC.WeatherForecastRequest> weatherForecast(
+        io.grpc.stub.StreamObserver<com.CA.gRPC.WeatherForecastResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getWeatherForecastMethod(), getCallOptions()), responseObserver);
+    }
   }
 
   /**
@@ -179,6 +225,7 @@ public final class BidirectionalStreamingServiceGrpc {
   }
 
   private static final int METHODID_BIDIRECTIONAL_STREAM = 0;
+  private static final int METHODID_WEATHER_FORECAST = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -210,6 +257,9 @@ public final class BidirectionalStreamingServiceGrpc {
         case METHODID_BIDIRECTIONAL_STREAM:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.bidirectionalStream(
               (io.grpc.stub.StreamObserver<com.CA.gRPC.BidirectionalResponse>) responseObserver);
+        case METHODID_WEATHER_FORECAST:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.weatherForecast(
+              (io.grpc.stub.StreamObserver<com.CA.gRPC.WeatherForecastResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -225,6 +275,13 @@ public final class BidirectionalStreamingServiceGrpc {
               com.CA.gRPC.BidirectionalRequest,
               com.CA.gRPC.BidirectionalResponse>(
                 service, METHODID_BIDIRECTIONAL_STREAM)))
+        .addMethod(
+          getWeatherForecastMethod(),
+          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+            new MethodHandlers<
+              com.CA.gRPC.WeatherForecastRequest,
+              com.CA.gRPC.WeatherForecastResponse>(
+                service, METHODID_WEATHER_FORECAST)))
         .build();
   }
 
@@ -274,6 +331,7 @@ public final class BidirectionalStreamingServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new BidirectionalStreamingServiceFileDescriptorSupplier())
               .addMethod(getBidirectionalStreamMethod())
+              .addMethod(getWeatherForecastMethod())
               .build();
         }
       }

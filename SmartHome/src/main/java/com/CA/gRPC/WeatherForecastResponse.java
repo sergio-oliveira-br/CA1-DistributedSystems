@@ -4,22 +4,18 @@
 package com.CA.gRPC;
 
 /**
- * <pre>
- *Refers bidirectionalStream
- * </pre>
- *
- * Protobuf type {@code BidirectionalRequest}
+ * Protobuf type {@code WeatherForecastResponse}
  */
-public final class BidirectionalRequest extends
+public final class WeatherForecastResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:BidirectionalRequest)
-    BidirectionalRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:WeatherForecastResponse)
+    WeatherForecastResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use BidirectionalRequest.newBuilder() to construct.
-  private BidirectionalRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use WeatherForecastResponse.newBuilder() to construct.
+  private WeatherForecastResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private BidirectionalRequest() {
+  private WeatherForecastResponse() {
     message_ = "";
   }
 
@@ -27,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new BidirectionalRequest();
+    return new WeatherForecastResponse();
   }
 
   @java.lang.Override
@@ -35,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private BidirectionalRequest(
+  private WeatherForecastResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -82,15 +78,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_descriptor;
+    return com.CA.gRPC.BidirectionalStreamingProto.internal_static_WeatherForecastResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_fieldAccessorTable
+    return com.CA.gRPC.BidirectionalStreamingProto.internal_static_WeatherForecastResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.CA.gRPC.BidirectionalRequest.class, com.CA.gRPC.BidirectionalRequest.Builder.class);
+            com.CA.gRPC.WeatherForecastResponse.class, com.CA.gRPC.WeatherForecastResponse.Builder.class);
   }
 
   public static final int MESSAGE_FIELD_NUMBER = 1;
@@ -170,10 +166,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.CA.gRPC.BidirectionalRequest)) {
+    if (!(obj instanceof com.CA.gRPC.WeatherForecastResponse)) {
       return super.equals(obj);
     }
-    com.CA.gRPC.BidirectionalRequest other = (com.CA.gRPC.BidirectionalRequest) obj;
+    com.CA.gRPC.WeatherForecastResponse other = (com.CA.gRPC.WeatherForecastResponse) obj;
 
     if (!getMessage()
         .equals(other.getMessage())) return false;
@@ -195,69 +191,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(byte[] data)
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(java.io.InputStream input)
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.CA.gRPC.WeatherForecastResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseDelimitedFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.BidirectionalRequest parseFrom(
+  public static com.CA.gRPC.WeatherForecastResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -270,7 +266,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.CA.gRPC.BidirectionalRequest prototype) {
+  public static Builder newBuilder(com.CA.gRPC.WeatherForecastResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -286,30 +282,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *Refers bidirectionalStream
-   * </pre>
-   *
-   * Protobuf type {@code BidirectionalRequest}
+   * Protobuf type {@code WeatherForecastResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:BidirectionalRequest)
-      com.CA.gRPC.BidirectionalRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:WeatherForecastResponse)
+      com.CA.gRPC.WeatherForecastResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_descriptor;
+      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_WeatherForecastResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_fieldAccessorTable
+      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_WeatherForecastResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.CA.gRPC.BidirectionalRequest.class, com.CA.gRPC.BidirectionalRequest.Builder.class);
+              com.CA.gRPC.WeatherForecastResponse.class, com.CA.gRPC.WeatherForecastResponse.Builder.class);
     }
 
-    // Construct using com.CA.gRPC.BidirectionalRequest.newBuilder()
+    // Construct using com.CA.gRPC.WeatherForecastResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -335,17 +327,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_descriptor;
+      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_WeatherForecastResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.BidirectionalRequest getDefaultInstanceForType() {
-      return com.CA.gRPC.BidirectionalRequest.getDefaultInstance();
+    public com.CA.gRPC.WeatherForecastResponse getDefaultInstanceForType() {
+      return com.CA.gRPC.WeatherForecastResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.CA.gRPC.BidirectionalRequest build() {
-      com.CA.gRPC.BidirectionalRequest result = buildPartial();
+    public com.CA.gRPC.WeatherForecastResponse build() {
+      com.CA.gRPC.WeatherForecastResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -353,8 +345,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.BidirectionalRequest buildPartial() {
-      com.CA.gRPC.BidirectionalRequest result = new com.CA.gRPC.BidirectionalRequest(this);
+    public com.CA.gRPC.WeatherForecastResponse buildPartial() {
+      com.CA.gRPC.WeatherForecastResponse result = new com.CA.gRPC.WeatherForecastResponse(this);
       result.message_ = message_;
       onBuilt();
       return result;
@@ -394,16 +386,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.CA.gRPC.BidirectionalRequest) {
-        return mergeFrom((com.CA.gRPC.BidirectionalRequest)other);
+      if (other instanceof com.CA.gRPC.WeatherForecastResponse) {
+        return mergeFrom((com.CA.gRPC.WeatherForecastResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.CA.gRPC.BidirectionalRequest other) {
-      if (other == com.CA.gRPC.BidirectionalRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.CA.gRPC.WeatherForecastResponse other) {
+      if (other == com.CA.gRPC.WeatherForecastResponse.getDefaultInstance()) return this;
       if (!other.getMessage().isEmpty()) {
         message_ = other.message_;
         onChanged();
@@ -423,11 +415,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.CA.gRPC.BidirectionalRequest parsedMessage = null;
+      com.CA.gRPC.WeatherForecastResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.CA.gRPC.BidirectionalRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.CA.gRPC.WeatherForecastResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -525,41 +517,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:BidirectionalRequest)
+    // @@protoc_insertion_point(builder_scope:WeatherForecastResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:BidirectionalRequest)
-  private static final com.CA.gRPC.BidirectionalRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:WeatherForecastResponse)
+  private static final com.CA.gRPC.WeatherForecastResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.CA.gRPC.BidirectionalRequest();
+    DEFAULT_INSTANCE = new com.CA.gRPC.WeatherForecastResponse();
   }
 
-  public static com.CA.gRPC.BidirectionalRequest getDefaultInstance() {
+  public static com.CA.gRPC.WeatherForecastResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<BidirectionalRequest>
-      PARSER = new com.google.protobuf.AbstractParser<BidirectionalRequest>() {
+  private static final com.google.protobuf.Parser<WeatherForecastResponse>
+      PARSER = new com.google.protobuf.AbstractParser<WeatherForecastResponse>() {
     @java.lang.Override
-    public BidirectionalRequest parsePartialFrom(
+    public WeatherForecastResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new BidirectionalRequest(input, extensionRegistry);
+      return new WeatherForecastResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<BidirectionalRequest> parser() {
+  public static com.google.protobuf.Parser<WeatherForecastResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<BidirectionalRequest> getParserForType() {
+  public com.google.protobuf.Parser<WeatherForecastResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.CA.gRPC.BidirectionalRequest getDefaultInstanceForType() {
+  public com.CA.gRPC.WeatherForecastResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
