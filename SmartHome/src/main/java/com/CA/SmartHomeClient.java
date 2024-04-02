@@ -183,6 +183,7 @@ public class SmartHomeClient
             @Override
             public void onCompleted() {
                 System.out.println("Unary request completed");
+                System.out.println("-------");
             }
         });
     }
@@ -239,16 +240,6 @@ public class SmartHomeClient
         The idea is set and get updates between Server and Client
         ___________________________________________________________
     */
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -443,35 +434,41 @@ public class SmartHomeClient
                                         break;
                                 }
                                 break;
+
                         }
                         break;
 
                     //Smart Thermostats
                     case 2:
-                        System.out.println("Welcome to Smart Thermostats");
+                        System.out.println("\n-------");
+                        System.out.println("Smart Thermostats");
 
-                        // Create a channel to the server
+                        //Create a channel to the server
                         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8081)
                                 .usePlaintext()
                                 .build();
 
-                        // Create a stub for the bidirectional service
+                        //Create a stub for the bidirectional service
                         BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceStub stubBI = BidirectionalStreamingServiceGrpc.newStub(channel);
 
-                        // Create a response observer for the server streaming
-                        StreamObserver<BidirectionalResponse> responseObserver = new StreamObserver<BidirectionalResponse>() {
+                        //Create a response observer for the server streaming
+                        StreamObserver<BidirectionalResponse> responseObserver = new StreamObserver<BidirectionalResponse>()
+                        {
                             @Override
-                            public void onNext(BidirectionalResponse response) {
+                            public void onNext(BidirectionalResponse response)
+                            {
                                 System.out.println("Server message: " + response.getMessage());
                             }
 
                             @Override
-                            public void onError(Throwable t) {
+                            public void onError(Throwable t)
+                            {
                                 System.err.println("Error from server: " + t.getMessage());
                             }
 
                             @Override
-                            public void onCompleted() {
+                            public void onCompleted()
+                            {
                                 System.out.println("Server stream completed");
                             }
                         };
@@ -479,40 +476,70 @@ public class SmartHomeClient
                         // Create a request observer for the client streaming
                         StreamObserver<BidirectionalRequest> requestObserver = stubBI.bidirectionalStream(responseObserver);
 
-                        try {
-                            // Send some messages to the server
-                            for (int i = 0; i < 5; i++) {
-                                String message = "Message " + i;
-                                BidirectionalRequest request = BidirectionalRequest.newBuilder()
-                                        .setMessage(message)
-                                        .build();
-                                System.out.println("Sending message to server: " + message);
-                                requestObserver.onNext(request);
+                        System.out.println("      ***");
+                        System.out.println("1. Set a Room Temperature");
+                        System.out.println("2. Get a Feedback from the server");
+
+                        int inputUserThermostats = scanner.nextInt();
+
+                        if(inputUserThermostats == 1)
+                        {
+                            try
+                            {
+                                // Send some messages to the server
+                                System.out.print("Gotcha! \nWhat is your preferred room temperature?");
+                                int setTemp = scanner.nextInt();
+
+                                if(setTemp < 15 || setTemp > 25)
+                                {
+                                    System.out.println("Sorry! But unfortunately your request is out of the range." +
+                                            "\nTry between (15ºC - 25ºC)");
+                                    break;
+                                }
+
+                                else
+                                {
+                                    String message = "The temperature has been requested by the user as: " + setTemp + "ºC";
+                                    BidirectionalRequest request = BidirectionalRequest.newBuilder()
+                                            .setMessage(message)
+                                            .build();
+
+                                    System.out.println("Sending message to server: " + message);
+                                    requestObserver.onNext(request);
+                                }
                             }
-                        } catch (Exception e) {
-                            System.err.println("Error while sending messages: " + e.getMessage());
+
+                            catch (Exception e)
+                            {
+                                System.err.println("Error while sending messages: " + e.getMessage());
+                            }
+
+                            // Mark the end of requests to the server
+                            requestObserver.onCompleted();
+
+                            //Shutdown the channel gracefully
+                            try
+                            {
+                                channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+                                break;
+                            }
+
+                            catch (InterruptedException e)
+                            {
+                                System.err.println("Interrupted while shutting down the channel: " + e.getMessage());
+                                Thread.currentThread().interrupt();
+                            }
                         }
 
-                        // Mark the end of requests to the server
-                        requestObserver.onCompleted();
-
-                        // Shutdown the channel gracefully
-                        try {
-                            channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-                        } catch (InterruptedException e) {
-                            System.err.println("Interrupted while shutting down the channel: " + e.getMessage());
-                            Thread.currentThread().interrupt();
+                        else if (inputUserThermostats == 2)
+                        {
+                         System.out.println("BUILDING!!!!!");
                         }
-
-                        break;
-
-
-
 
 
                     //Your connection (ping)
                     case 3:
-                        System.out.println("You are streaming information to sever");
+                        System.out.println("\nYou are streaming information to sever");
 
                         String host = "localhost";
                         int port = 8081;
@@ -549,9 +576,9 @@ public class SmartHomeClient
                     default:
                         System.out.println("Oops! Invalid option." +
                                 "\nPlease choose again.");
+                        break;
                 }
             }
-
         }
 
         catch (InterruptedException e)

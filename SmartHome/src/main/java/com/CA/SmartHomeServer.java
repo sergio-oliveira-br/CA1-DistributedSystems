@@ -76,7 +76,7 @@ public class SmartHomeServer
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
             {
-                System.out.println("Shutting down gRPC server." +
+                System.out.println("\nShutting down gRPC server." +
                         "\nThis was CA1 - Distributed System" +
                         "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
                 SmartHomeServer.this.stop();
@@ -211,9 +211,6 @@ public class SmartHomeServer
         ___________________________________________________________
     */
 
-
-
-
     static class BidirectionalStreamingImpl extends BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceImplBase {
 
         @Override
@@ -222,11 +219,10 @@ public class SmartHomeServer
                 @Override
                 public void onNext(BidirectionalRequest request) {
                     System.out.println("Received message from client: " + request.getMessage());
-
                     // Respond to the client's message with a stream
-                    for (int i = 0; i < 5; i++) {
+                    {
                         BidirectionalResponse response = BidirectionalResponse.newBuilder()
-                                .setMessage("Response " + i)
+                                .setMessage("Okay. Room temperature set !!!!!! " + request.getMessage())
                                 .build();
                         responseObserver.onNext(response);
                     }
@@ -245,19 +241,6 @@ public class SmartHomeServer
             };
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public static void main(String[] args) throws IOException, InterruptedException
     {
