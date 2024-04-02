@@ -531,37 +531,57 @@ public class SmartHomeClient
                             }
                         }
 
+
+
+
                         else if (inputUserThermostats == 2)
                         {
+
+                            //Create a channel to the server ->                 !Its already created
+
+                            //Create a stub for the bidirectional service ->    !Its already created
+
+                            //Create a response observer for the server streaming
+                            StreamObserver<WeatherForecastResponse> weatherForecastResponseStreamObserver = new StreamObserver<WeatherForecastResponse>()
+                            {
+                                @Override
+                                public void onNext(WeatherForecastResponse weatherForecastResponse) {
+                                    System.out.println("Msg from the server !!!!!! ");
+                                }
+
+                                @Override
+                                public void onError(Throwable throwable) {
+                                    System.err.println("ERROR !!!!!!!");
+                                }
+
+                                @Override
+                                public void onCompleted() {
+                                    System.out.println("onCompleted");
+                                }
+                            };
+
+
+                            //Create a request observer for the client streaming
+                            StreamObserver<WeatherForecastRequest> weatherForecastRequestStreamObserver = stubBI.weatherForecast(weatherForecastResponseStreamObserver);
+
                             try
                             {
-                                //Send some messages to the server
-                                System.out.println("Could you give me your opinion on the room temperature?");
 
+                                WeatherForecastRequest requestForecast = WeatherForecastRequest.newBuilder()
+                                        .build();
+
+                                System.out.println("The forecast for the next two days.");
+                                weatherForecastRequestStreamObserver.onNext(requestForecast);
                             }
 
                             catch (Exception e)
                             {
-                                System.err.println("Error while sending messages: " + e.getMessage());
+                                System.err.println("ERROR!!!! --- Error while sending messages: " + e.getMessage());
                             }
 
-                            // Mark the end of requests to the server
-                            requestObserver.onCompleted();
-
-                            //Shutdown the channel gracefully
-                            try
-                            {
-                                channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-                                break;
-                            }
-
-                            catch (InterruptedException e)
-                            {
-                                System.err.println("Interrupted while shutting down the channel: " + e.getMessage());
-                                Thread.currentThread().interrupt();
-                            }
 
                         }
+                        break;
 
 
                         //Your connection (ping)

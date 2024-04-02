@@ -240,6 +240,34 @@ public class SmartHomeServer
                 }
             };
         }
+
+        @Override
+        public StreamObserver<WeatherForecastRequest> weatherForecast(StreamObserver<WeatherForecastResponse> streamObserver)
+        {
+            return new StreamObserver<WeatherForecastRequest>()
+            {
+                @Override
+                public void onNext(WeatherForecastRequest weatherForecastRequest)
+                {
+                    int weatherForecast = 22;
+                    WeatherForecastResponse response = WeatherForecastResponse.newBuilder()
+                            .setMessage("The Weather Forecast is: " + weatherForecast + "ºC")
+                            .build();
+                    streamObserver.onNext(response);
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    System.err.println("I NEED TO SOLVE THIS");
+
+                }
+
+                @Override
+                public void onCompleted() {
+                    System.out.println("Connection onCompleted");
+                }
+            };
+        }
     }
 
     public static void main(String[] args) throws IOException, InterruptedException
