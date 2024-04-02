@@ -241,6 +241,9 @@ public class SmartHomeServer
             };
         }
 
+
+
+
         @Override
         public StreamObserver<WeatherForecastRequest> weatherForecast(StreamObserver<WeatherForecastResponse> streamObserver)
         {
@@ -268,6 +271,8 @@ public class SmartHomeServer
                 }
             };
         }
+
+
     }
 
     public static void main(String[] args) throws IOException, InterruptedException
