@@ -25,6 +25,7 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class SmartHomeServer
 {
@@ -157,7 +158,8 @@ public class SmartHomeServer
         ___________________________________
     */
 
-    private static class StreamingClientServiceImpl extends StreamingClientServiceGrpc.StreamingClientServiceImplBase {
+    private static class StreamingClientServiceImpl extends StreamingClientServiceGrpc.StreamingClientServiceImplBase
+    {
         @Override
         public void sendUnaryRequest(UnaryRequest request, StreamObserver<UnaryResponse> responseObserver)
         {
@@ -170,7 +172,8 @@ public class SmartHomeServer
         }
 
         @Override
-        public StreamObserver<ClientInformation> streamClientInformation(StreamObserver<ServerResponse> responseObserver) {
+        public StreamObserver<ClientInformation> streamClientInformation(StreamObserver<ServerResponse> responseObserver)
+        {
             return new StreamObserver<ClientInformation>() {
                 @Override
                 public void onNext(ClientInformation clientInfo)
@@ -211,16 +214,19 @@ public class SmartHomeServer
         ___________________________________________________________
     */
 
-    static class BidirectionalStreamingImpl extends BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceImplBase {
-
+    static class BidirectionalStreamingImpl extends BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceImplBase
+    {
         @Override
-        public StreamObserver<BidirectionalRequest> bidirectionalStream(StreamObserver<BidirectionalResponse> responseObserver) {
-            return new StreamObserver<BidirectionalRequest>() {
+        public StreamObserver<BidirectionalRequest> bidirectionalStream(StreamObserver<BidirectionalResponse> responseObserver)
+        {
+            return new StreamObserver<BidirectionalRequest>()
+            {
                 @Override
-                public void onNext(BidirectionalRequest request) {
+                public void onNext(BidirectionalRequest request)
+                {
                     System.out.println("Received message from client: " + request.getMessage());
-                    // Respond to the client's message with a stream
                     {
+                        //Respond to the client's message with a stream
                         BidirectionalResponse response = BidirectionalResponse.newBuilder()
                                 .setMessage("Okay. Room temperature set !!!!!! " + request.getMessage())
                                 .build();
@@ -229,20 +235,19 @@ public class SmartHomeServer
                 }
 
                 @Override
-                public void onError(Throwable t) {
+                public void onError(Throwable t)
+                {
                     System.err.println("Error from client: " + t.getMessage());
                 }
 
                 @Override
-                public void onCompleted() {
+                public void onCompleted()
+                {
                     System.out.println("Client stream completed");
                     responseObserver.onCompleted(); // Complete the response stream
                 }
             };
         }
-
-
-
 
         @Override
         public StreamObserver<WeatherForecastRequest> weatherForecast(StreamObserver<WeatherForecastResponse> streamObserver)
@@ -252,27 +257,28 @@ public class SmartHomeServer
                 @Override
                 public void onNext(WeatherForecastRequest weatherForecastRequest)
                 {
-                    int weatherForecast = 22;
+                    Random random = new Random();
+                    int tomorrow = random.nextInt(15) + 10;
+
                     WeatherForecastResponse response = WeatherForecastResponse.newBuilder()
-                            .setMessage("The Weather Forecast is: " + weatherForecast + "ºC")
+                            .setMessage("The weather forecast for tomorrow is: " + tomorrow + "ºC")
                             .build();
                     streamObserver.onNext(response);
                 }
 
                 @Override
-                public void onError(Throwable throwable) {
+                public void onError(Throwable throwable)
+                {
                     System.err.println("I NEED TO SOLVE THIS");
-
                 }
 
                 @Override
-                public void onCompleted() {
+                public void onCompleted()
+                {
                     System.out.println("Connection onCompleted");
                 }
             };
         }
-
-
     }
 
     public static void main(String[] args) throws IOException, InterruptedException

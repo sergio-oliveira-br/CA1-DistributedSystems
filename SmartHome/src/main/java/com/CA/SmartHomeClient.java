@@ -548,7 +548,7 @@ public class SmartHomeClient
                             {
                                 @Override
                                 public void onNext(WeatherForecastResponse weatherForecastResponse) {
-                                    System.out.println("Msg from the server !!!!!! " + weatherForecastResponse.getMessage() );
+                                    System.out.println("Msg from the server -> " + weatherForecastResponse.getMessage() );
                                 }
 
                                 @Override
