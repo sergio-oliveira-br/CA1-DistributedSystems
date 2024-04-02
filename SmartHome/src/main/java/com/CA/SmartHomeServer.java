@@ -67,7 +67,7 @@ public class SmartHomeServer
                 .addService(new StreamingClientServiceImpl())
                 .addService(new SmartHomeImpl())
                 .addService(new SmartHomeLockImpl())
-                .addService(new ThermostatsServiceImpl()) //Thermostats Services
+
                 .build()
                 .start();
 
@@ -211,52 +211,8 @@ public class SmartHomeServer
     */
 
 
-    private static class ThermostatsServiceImpl extends ThermostatsServiceGrpc.ThermostatsServiceImplBase
-    {
-        //StreamObserver: This is an interface that is used to receive responses from streaming service calls.
-        @Override
-        public StreamObserver<ThermostatsRequest> controlThermostats(StreamObserver<ThermostatsResponse> responseStreamObserver)
-        {
-            return new StreamObserver<ThermostatsRequest>()
-            {
-                @Override
-                public void onNext(ThermostatsRequest request)
-                {
-                    System.out.println("RECEIVING SOMETHING...");
-
-                    int requestedTemp = request.getRequestTemp();
-                    int currentTemp = getCurrentTemperature();
-                    // Send back the current temperature as response
-                    ThermostatsResponse response = ThermostatsResponse.newBuilder().setResponseTemp(currentTemp).build();
-                    responseStreamObserver.onNext(response);
 
 
-                }
-
-                @Override
-                public void onError(Throwable throwable)
-                {
-                    System.err.println("ERROR !!!!!!  NEED TO DO SOMETHING");
-                }
-
-                @Override
-                public void onCompleted()
-                {
-                    System.out.println("CONNECTED......");
-                }
-            };
-        }
-
-
-        private int getCurrentTemperature() {
-            // Implement this method to get the current temperature from your environment
-            // This can be from sensors or any other means
-            return 25; // Example current temperature
-
-        }
-
-
-    }
 
 
 

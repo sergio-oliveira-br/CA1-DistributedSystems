@@ -3,17 +3,19 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "com.CA.gRPC";
-option java_outer_classname = "ThermoProto";
+option java_outer_classname = "BidirectionalStreamingProto";
 
-service ThermostatsService
-{
-  //Bidirectional streaming RPC
-  rpc ControlThermostats(stream ThermostatsRequest) returns (stream ThermostatsResponse);
+service BidirectionalStreamingService {
+  // Bidirectional streaming RPC
+  rpc bidirectionalStream(stream BidirectionalRequest) returns (stream BidirectionalResponse);
 }
 
-message ThermostatsRequest
-{
-  int32 requestTemp = 1;
+message BidirectionalRequest {
+  int32 message = 1;
+}
+
+message BidirectionalResponse {
+  int32 message = 1;
 }
 
 message ThermostatsResponse

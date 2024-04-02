@@ -38,7 +38,7 @@ public class SmartHomeClient
     private final LockServicesGrpc.LockServicesBlockingStub lockBlockingStub;
     private final StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
-   private final ThermostatsServiceGrpc.ThermostatsServiceBlockingStub thermostatsBlockingStub;
+
 
      /*
         ___________________________________
@@ -62,7 +62,7 @@ public class SmartHomeClient
         channel = channelBuilder.build();                       //It is called to build a communication channel
         lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);  //Used to make RPC calls to the server
         lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
-        thermostatsBlockingStub = ThermostatsServiceGrpc.newBlockingStub(channel);      //thermostats
+
         this.stub = StreamingClientServiceGrpc.newStub(channel);
 
     }
@@ -240,7 +240,7 @@ public class SmartHomeClient
         ___________________________________________________________
     */
 
-    
+
 
 
 

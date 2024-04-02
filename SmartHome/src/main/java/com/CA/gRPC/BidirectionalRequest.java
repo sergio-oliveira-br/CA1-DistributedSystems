@@ -4,25 +4,25 @@
 package com.CA.gRPC;
 
 /**
- * Protobuf type {@code ThermostatsResponse}
+ * Protobuf type {@code BidirectionalRequest}
  */
-public final class ThermostatsResponse extends
+public final class BidirectionalRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ThermostatsResponse)
-    ThermostatsResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:BidirectionalRequest)
+    BidirectionalRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ThermostatsResponse.newBuilder() to construct.
-  private ThermostatsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use BidirectionalRequest.newBuilder() to construct.
+  private BidirectionalRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ThermostatsResponse() {
+  private BidirectionalRequest() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new ThermostatsResponse();
+    return new BidirectionalRequest();
   }
 
   @java.lang.Override
@@ -30,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ThermostatsResponse(
+  private BidirectionalRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -50,7 +50,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            responseTemp_ = input.readInt32();
+            message_ = input.readInt32();
             break;
           }
           default: {
@@ -76,26 +76,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.CA.gRPC.BidirectionalStreamingProto.internal_static_ThermostatsResponse_descriptor;
+    return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.CA.gRPC.BidirectionalStreamingProto.internal_static_ThermostatsResponse_fieldAccessorTable
+    return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.CA.gRPC.ThermostatsResponse.class, com.CA.gRPC.ThermostatsResponse.Builder.class);
+            com.CA.gRPC.BidirectionalRequest.class, com.CA.gRPC.BidirectionalRequest.Builder.class);
   }
 
-  public static final int RESPONSETEMP_FIELD_NUMBER = 1;
-  private int responseTemp_;
+  public static final int MESSAGE_FIELD_NUMBER = 1;
+  private int message_;
   /**
-   * <code>int32 responseTemp = 1;</code>
-   * @return The responseTemp.
+   * <code>int32 message = 1;</code>
+   * @return The message.
    */
   @java.lang.Override
-  public int getResponseTemp() {
-    return responseTemp_;
+  public int getMessage() {
+    return message_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -112,8 +112,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (responseTemp_ != 0) {
-      output.writeInt32(1, responseTemp_);
+    if (message_ != 0) {
+      output.writeInt32(1, message_);
     }
     unknownFields.writeTo(output);
   }
@@ -124,9 +124,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (responseTemp_ != 0) {
+    if (message_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, responseTemp_);
+        .computeInt32Size(1, message_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -138,13 +138,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.CA.gRPC.ThermostatsResponse)) {
+    if (!(obj instanceof com.CA.gRPC.BidirectionalRequest)) {
       return super.equals(obj);
     }
-    com.CA.gRPC.ThermostatsResponse other = (com.CA.gRPC.ThermostatsResponse) obj;
+    com.CA.gRPC.BidirectionalRequest other = (com.CA.gRPC.BidirectionalRequest) obj;
 
-    if (getResponseTemp()
-        != other.getResponseTemp()) return false;
+    if (getMessage()
+        != other.getMessage()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -156,76 +156,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + RESPONSETEMP_FIELD_NUMBER;
-    hash = (53 * hash) + getResponseTemp();
+    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+    hash = (53 * hash) + getMessage();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(byte[] data)
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(java.io.InputStream input)
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.CA.gRPC.BidirectionalRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseDelimitedFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.ThermostatsResponse parseFrom(
+  public static com.CA.gRPC.BidirectionalRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -238,7 +238,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.CA.gRPC.ThermostatsResponse prototype) {
+  public static Builder newBuilder(com.CA.gRPC.BidirectionalRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -254,26 +254,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ThermostatsResponse}
+   * Protobuf type {@code BidirectionalRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ThermostatsResponse)
-      com.CA.gRPC.ThermostatsResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:BidirectionalRequest)
+      com.CA.gRPC.BidirectionalRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_ThermostatsResponse_descriptor;
+      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_ThermostatsResponse_fieldAccessorTable
+      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.CA.gRPC.ThermostatsResponse.class, com.CA.gRPC.ThermostatsResponse.Builder.class);
+              com.CA.gRPC.BidirectionalRequest.class, com.CA.gRPC.BidirectionalRequest.Builder.class);
     }
 
-    // Construct using com.CA.gRPC.ThermostatsResponse.newBuilder()
+    // Construct using com.CA.gRPC.BidirectionalRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -291,7 +291,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      responseTemp_ = 0;
+      message_ = 0;
 
       return this;
     }
@@ -299,17 +299,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_ThermostatsResponse_descriptor;
+      return com.CA.gRPC.BidirectionalStreamingProto.internal_static_BidirectionalRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.ThermostatsResponse getDefaultInstanceForType() {
-      return com.CA.gRPC.ThermostatsResponse.getDefaultInstance();
+    public com.CA.gRPC.BidirectionalRequest getDefaultInstanceForType() {
+      return com.CA.gRPC.BidirectionalRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.CA.gRPC.ThermostatsResponse build() {
-      com.CA.gRPC.ThermostatsResponse result = buildPartial();
+    public com.CA.gRPC.BidirectionalRequest build() {
+      com.CA.gRPC.BidirectionalRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -317,9 +317,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.ThermostatsResponse buildPartial() {
-      com.CA.gRPC.ThermostatsResponse result = new com.CA.gRPC.ThermostatsResponse(this);
-      result.responseTemp_ = responseTemp_;
+    public com.CA.gRPC.BidirectionalRequest buildPartial() {
+      com.CA.gRPC.BidirectionalRequest result = new com.CA.gRPC.BidirectionalRequest(this);
+      result.message_ = message_;
       onBuilt();
       return result;
     }
@@ -358,18 +358,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.CA.gRPC.ThermostatsResponse) {
-        return mergeFrom((com.CA.gRPC.ThermostatsResponse)other);
+      if (other instanceof com.CA.gRPC.BidirectionalRequest) {
+        return mergeFrom((com.CA.gRPC.BidirectionalRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.CA.gRPC.ThermostatsResponse other) {
-      if (other == com.CA.gRPC.ThermostatsResponse.getDefaultInstance()) return this;
-      if (other.getResponseTemp() != 0) {
-        setResponseTemp(other.getResponseTemp());
+    public Builder mergeFrom(com.CA.gRPC.BidirectionalRequest other) {
+      if (other == com.CA.gRPC.BidirectionalRequest.getDefaultInstance()) return this;
+      if (other.getMessage() != 0) {
+        setMessage(other.getMessage());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -386,11 +386,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.CA.gRPC.ThermostatsResponse parsedMessage = null;
+      com.CA.gRPC.BidirectionalRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.CA.gRPC.ThermostatsResponse) e.getUnfinishedMessage();
+        parsedMessage = (com.CA.gRPC.BidirectionalRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -400,33 +400,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int responseTemp_ ;
+    private int message_ ;
     /**
-     * <code>int32 responseTemp = 1;</code>
-     * @return The responseTemp.
+     * <code>int32 message = 1;</code>
+     * @return The message.
      */
     @java.lang.Override
-    public int getResponseTemp() {
-      return responseTemp_;
+    public int getMessage() {
+      return message_;
     }
     /**
-     * <code>int32 responseTemp = 1;</code>
-     * @param value The responseTemp to set.
+     * <code>int32 message = 1;</code>
+     * @param value The message to set.
      * @return This builder for chaining.
      */
-    public Builder setResponseTemp(int value) {
+    public Builder setMessage(int value) {
       
-      responseTemp_ = value;
+      message_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 responseTemp = 1;</code>
+     * <code>int32 message = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearResponseTemp() {
+    public Builder clearMessage() {
       
-      responseTemp_ = 0;
+      message_ = 0;
       onChanged();
       return this;
     }
@@ -443,41 +443,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ThermostatsResponse)
+    // @@protoc_insertion_point(builder_scope:BidirectionalRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:ThermostatsResponse)
-  private static final com.CA.gRPC.ThermostatsResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:BidirectionalRequest)
+  private static final com.CA.gRPC.BidirectionalRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.CA.gRPC.ThermostatsResponse();
+    DEFAULT_INSTANCE = new com.CA.gRPC.BidirectionalRequest();
   }
 
-  public static com.CA.gRPC.ThermostatsResponse getDefaultInstance() {
+  public static com.CA.gRPC.BidirectionalRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ThermostatsResponse>
-      PARSER = new com.google.protobuf.AbstractParser<ThermostatsResponse>() {
+  private static final com.google.protobuf.Parser<BidirectionalRequest>
+      PARSER = new com.google.protobuf.AbstractParser<BidirectionalRequest>() {
     @java.lang.Override
-    public ThermostatsResponse parsePartialFrom(
+    public BidirectionalRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ThermostatsResponse(input, extensionRegistry);
+      return new BidirectionalRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ThermostatsResponse> parser() {
+  public static com.google.protobuf.Parser<BidirectionalRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ThermostatsResponse> getParserForType() {
+  public com.google.protobuf.Parser<BidirectionalRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.CA.gRPC.ThermostatsResponse getDefaultInstanceForType() {
+  public com.CA.gRPC.BidirectionalRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
