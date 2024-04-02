@@ -37,6 +37,7 @@ com/CA/gRPC/ThermostatsServiceGrpc$ThermostatsServiceStub.class
 com/CA/gRPC/ClientInformation$1.class
 com/CA/gRPC/StreamingClientServiceGrpc$1.class
 com/CA/gRPC/StreamingClientServiceGrpc$AsyncService.class
+com/CA/SmartHomeServer$ThermostatsServiceImpl$1.class
 com/CA/gRPC/ThermostatsServiceGrpc$ThermostatsServiceBaseDescriptorSupplier.class
 com/CA/gRPC/ThermostatsRequest$1.class
 com/CA/gRPC/StreamingClientServiceGrpc$StreamingClientServiceBaseDescriptorSupplier.class
@@ -99,6 +100,7 @@ com/CA/gRPC/StreamingClientServiceGrpc$StreamingClientServiceStub.class
 com/CA/gRPC/LightServicesGrpc$LightServicesFutureStub.class
 com/CA/gRPC/LightServicesGrpc$1.class
 com/CA/gRPC/StreamingClientServiceGrpc$StreamingClientServiceImplBase.class
+com/CA/SmartHomeServer$ThermostatsServiceImpl.class
 com/CA/gRPC/ThermostatsResponseOrBuilder.class
 com/CA/gRPC/UnaryRequest$Builder.class
 com/CA/gRPC/ThermostatsRequest$Builder.class

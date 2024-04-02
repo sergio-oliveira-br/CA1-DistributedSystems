@@ -1,7 +1,5 @@
 package com.CA.gRPC;
 
-import io.grpc.stub.StreamObserver;
-
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
@@ -116,9 +114,6 @@ public final class ThermostatsServiceGrpc {
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return ThermostatsServiceGrpc.bindService(this);
     }
-
-    //StreamObserver: This is an interface that is used to receive responses from streaming service calls.
-    public abstract StreamObserver<ThermostatsRequest> ControlThermostats(StreamObserver<ThermostatsResponse> responseStreamObserver);
   }
 
   /**

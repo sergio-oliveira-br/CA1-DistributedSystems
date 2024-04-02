@@ -38,6 +38,8 @@ public class SmartHomeClient
     private final LockServicesGrpc.LockServicesBlockingStub lockBlockingStub;
     private final StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
+   private final ThermostatsServiceGrpc.ThermostatsServiceBlockingStub thermostatsBlockingStub;
+
      /*
         ___________________________________
         !!! Lights and Locks Control !!!
@@ -51,7 +53,6 @@ public class SmartHomeClient
     //Constructor:Responsible to get 3 parameters
     public SmartHomeClient(String host, int port, String stub)
     {
-
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
     }
 
@@ -61,6 +62,7 @@ public class SmartHomeClient
         channel = channelBuilder.build();                       //It is called to build a communication channel
         lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);  //Used to make RPC calls to the server
         lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
+        thermostatsBlockingStub = ThermostatsServiceGrpc.newBlockingStub(channel);      //thermostats
         this.stub = StreamingClientServiceGrpc.newStub(channel);
 
     }
@@ -237,6 +239,22 @@ public class SmartHomeClient
         The idea is set and get updates between Server and Client
         ___________________________________________________________
     */
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -431,7 +449,23 @@ public class SmartHomeClient
                     //Smart Thermostats
                     case 2:
                         System.out.println("Need to build... Therm!!!!!");
+
+
+
+
+                        System.out.print("Enter desired temperature: ");
+                        int desiredTemperature = scanner.nextInt();
+                        //client.controlThermostat(desiredTemperature);
+
+
+
+
+
                         break;
+
+
+
+
 
                     //Your connection (ping)
                     case 3:

@@ -215,14 +215,22 @@ public class SmartHomeServer
     {
         //StreamObserver: This is an interface that is used to receive responses from streaming service calls.
         @Override
-        public StreamObserver<ThermostatsRequest> ControlThermostats(StreamObserver<ThermostatsResponse> responseStreamObserver)
+        public StreamObserver<ThermostatsRequest> controlThermostats(StreamObserver<ThermostatsResponse> responseStreamObserver)
         {
             return new StreamObserver<ThermostatsRequest>()
             {
                 @Override
-                public void onNext(ThermostatsRequest thermostatsRequest)
+                public void onNext(ThermostatsRequest request)
                 {
                     System.out.println("RECEIVING SOMETHING...");
+
+                    int requestedTemp = request.getRequestTemp();
+                    int currentTemp = getCurrentTemperature();
+                    // Send back the current temperature as response
+                    ThermostatsResponse response = ThermostatsResponse.newBuilder().setResponseTemp(currentTemp).build();
+                    responseStreamObserver.onNext(response);
+
+
                 }
 
                 @Override
@@ -240,17 +248,12 @@ public class SmartHomeServer
         }
 
 
+        private int getCurrentTemperature() {
+            // Implement this method to get the current temperature from your environment
+            // This can be from sensors or any other means
+            return 25; // Example current temperature
 
-
-
-
-
-
-
-
-
-
-
+        }
 
 
     }
