@@ -57,6 +57,7 @@ public class SmartHomeServer
                 .addService(new SmartHomeImpl())
                 .addService(new SmartHomeLockImpl())
                 .addService(new StreamingClientServiceImpl()) //ping
+                .addService(new BidirectionalStreamingImpl())
                 .build();
     }
 
@@ -67,7 +68,7 @@ public class SmartHomeServer
                 .addService(new StreamingClientServiceImpl())
                 .addService(new SmartHomeImpl())
                 .addService(new SmartHomeLockImpl())
-
+                .addService(new BidirectionalStreamingImpl())
                 .build()
                 .start();
 
