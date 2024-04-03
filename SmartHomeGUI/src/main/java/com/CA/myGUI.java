@@ -9,6 +9,9 @@ public class myGUI extends JFrame
     private JPanel WelcomeScreen;
     private JButton connectButton;
     private JButton disconnectButton;
+    private JButton smartDevicesButton;
+    private JButton smartThermostatsButton;
+    private JButton yourConnectionButton;
 
     public myGUI()
     {
@@ -31,6 +34,7 @@ public class myGUI extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(myGUI.this,"Disconnecting...");
+
 
             }
         });
