@@ -7,6 +7,7 @@ import io.grpc.stub.StreamObserver;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.Random;
 
 public class SmartHomeGUIServer
 {
@@ -28,7 +29,7 @@ public class SmartHomeGUIServer
                 //.addService(new SmartHomeImpl())
                 //.addService(new SmartHomeLockImpl())
                 .addService(new StreamingClientServiceImpl()) //ping
-                //.addService(new BidirectionalStreamingImpl())
+                .addService(new BidirectionalStreamingImpl()) //temperature
                 .build();
     }
 
@@ -39,7 +40,7 @@ public class SmartHomeGUIServer
                 .addService(new StreamingClientServiceImpl())
                 //.addService(new SmartHomeImpl())
                 //.addService(new SmartHomeLockImpl())
-                //.addService(new BidirectionalStreamingImpl())
+                .addService(new BidirectionalStreamingImpl()) //temperature
                 .build()
                 .start();
 
@@ -130,6 +131,92 @@ public class SmartHomeGUIServer
                             .build();
                     responseObserver.onNext(response);
                     responseObserver.onCompleted();
+                }
+            };
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+        __________________________________________________________
+                    !!! Thermostats Services !!!
+
+        Here are where all method's related temp are
+        The idea is set and get updates between Server and Client
+        ___________________________________________________________
+    */
+
+    static class BidirectionalStreamingImpl extends BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceImplBase {
+        @Override
+        public StreamObserver<BidirectionalRequest> bidirectionalStream(StreamObserver<BidirectionalResponse> responseObserver) {
+            return new StreamObserver<BidirectionalRequest>() {
+                @Override
+                public void onNext(BidirectionalRequest request) {
+                    System.out.println("Received message from client: " + request.getMessage());
+                    {
+                        //Respond to the client's message with a stream
+                        BidirectionalResponse response = BidirectionalResponse.newBuilder()
+                                .setMessage("Okay. Room temperature set !!!!!! " + request.getMessage())
+                                .build();
+                        responseObserver.onNext(response);
+                    }
+                }
+
+                @Override
+                public void onError(Throwable t) {
+                    System.err.println("Error from client: " + t.getMessage());
+                }
+
+                @Override
+                public void onCompleted() {
+                    System.out.println("Client stream completed");
+                    responseObserver.onCompleted(); // Complete the response stream
+                }
+            };
+        }
+
+        @Override
+        public StreamObserver<WeatherForecastRequest> weatherForecast(StreamObserver<WeatherForecastResponse> streamObserver) {
+            return new StreamObserver<WeatherForecastRequest>() {
+                @Override
+                public void onNext(WeatherForecastRequest weatherForecastRequest) {
+                    Random random = new Random();
+                    int tomorrow = random.nextInt(15) + 10;
+
+                    WeatherForecastResponse response = WeatherForecastResponse.newBuilder()
+                            .setMessage("The weather forecast for tomorrow is: " + tomorrow + "ºC")
+                            .build();
+                    streamObserver.onNext(response);
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    System.err.println("I NEED TO SOLVE THIS");
+                }
+
+                @Override
+                public void onCompleted() {
+                    System.out.println("Connection onCompleted");
                 }
             };
         }

@@ -1,8 +1,16 @@
 package com.CA;
 
+import com.CA.gRPC.BidirectionalRequest;
+import com.CA.gRPC.BidirectionalStreamingServiceGrpc;
+import com.CA.gRPC.WeatherForecastResponse;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.StreamObserver;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 public class myGUI extends JFrame
 {
@@ -20,7 +28,6 @@ public class myGUI extends JFrame
 
     public myGUI()
     {
-
         //WELCOME SCREEN - HOME
         setContentPane(WelcomeScreen);
 
@@ -48,6 +55,8 @@ public class myGUI extends JFrame
 
 
 
+
+
         //Call SmartHomePing the method
         yourConnectionButton.addActionListener(new ActionListener()
         {
@@ -68,6 +77,26 @@ public class myGUI extends JFrame
                 //Call the second frame - YOUR CONNECTION SCREEN for shutdown the connection
                 YourConnection connectionScreen = new YourConnection(client);
                 connectionScreen.setVisible(true);
+
+            }
+        });
+
+
+
+
+
+
+
+
+        smartThermostatsButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                //Instance the object
+                //SmartHomeGUIClient mySmartThermostats = new SmartHomeGUIClient();
+
+                JOptionPane.showInputDialog(myGUI.this, "Enter the temperature", "Smart Thermostats", JOptionPane.INFORMATION_MESSAGE);
 
             }
         });

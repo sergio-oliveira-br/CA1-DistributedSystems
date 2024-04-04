@@ -7,6 +7,7 @@ import io.grpc.stub.StreamObserver;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -15,6 +16,10 @@ public class SmartHomeGUIClient extends JFrame
     //Instance Variable
     private ManagedChannel channel;
     private StreamingClientServiceGrpc.StreamingClientServiceStub stub;
+
+
+    public SmartHomeGUIClient()
+    {}
 
     //Constructor:Responsible to get 3 parameters
     public SmartHomeGUIClient(String host, int port, String stub)
@@ -128,7 +133,78 @@ public class SmartHomeGUIClient extends JFrame
         requestObserver.onCompleted();
     }
 
-    private static boolean streaming = true;
+
+
+
+
+
+
+
+
+    /*
+        __________________________________________________________
+                    !!! Thermostats CLIENT !!!
+
+        Here are where all method's related temp are
+        The idea is set and get updates between Server and Client
+        ___________________________________________________________
+    */
+
+
+
+
+
+    //Create a stub for the bidirectional service
+    BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceStub stubBI = BidirectionalStreamingServiceGrpc.newStub(channel);
+
+    //Create a response observer for the server streaming
+    StreamObserver<BidirectionalResponse> responseObserver = new StreamObserver<BidirectionalResponse>()
+    {
+        @Override
+        public void onNext(BidirectionalResponse response)
+        {
+            System.out.println("Server message: " + response.getMessage());
+        }
+
+        @Override
+        public void onError(Throwable t)
+        {
+            System.err.println("Error from server: " + t.getMessage());
+        }
+
+        @Override
+        public void onCompleted()
+        {
+            System.out.println("Server stream completed");
+        }
+    };
+
+    // Create a request observer for the client streaming
+    StreamObserver<BidirectionalRequest> requestObserver = stubBI.bidirectionalStream(responseObserver);
+
+
+    //Create a response observer for the server streaming
+    StreamObserver<WeatherForecastResponse> weatherForecastResponseStreamObserver = new StreamObserver<WeatherForecastResponse>()
+    {
+        @Override
+        public void onNext(WeatherForecastResponse weatherForecastResponse)
+        {
+            System.out.println("Msg from the server -> " + weatherForecastResponse.getMessage() );
+        }
+
+        @Override
+        public void onError(Throwable throwable)
+        {
+            System.err.println("ERROR !!!!!!!");
+        }
+
+        @Override
+        public void onCompleted()
+        {
+            System.out.println("onCompleted");
+        }
+    };
+
 
 
 
