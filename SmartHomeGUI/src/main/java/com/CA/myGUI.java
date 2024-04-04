@@ -15,6 +15,8 @@ public class myGUI extends JFrame
 
     public myGUI()
     {
+
+        //WELCOME SCREEN - HOME
         setContentPane(WelcomeScreen);
 
         //Set the window
@@ -24,7 +26,9 @@ public class myGUI extends JFrame
         setLocationRelativeTo(null);
         setVisible(true);
 
-        connectButton.addActionListener(new ActionListener() {
+
+        connectButton.addActionListener(new ActionListener()
+        {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(myGUI.this,"Connecting...");
@@ -38,20 +42,23 @@ public class myGUI extends JFrame
 
             }
         });
+
+        //Call SmartHomePing the method
         yourConnectionButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                // Call SmartHomePing the method
+                //Start Connection
                 SmartHomeGUIClient client = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
                 client.sendUnaryRequest("Sergio Oliveira");
 
-                //client.sendUnaryRequest(stub); // Send unary request
 
-                // Start streaming client information
-                //Thread streamThread = new Thread(() -> client.streamClientInformation(stub));
-                //streamThread.start();
+                //Call the second frame - YOUR CONNECTION SCREEN
+                JPanel connectionScreen = new JPanel();
+                connectionScreen.add(new YourConnection());
+                getContentPane().add(connectionScreen);
+
             }
         });
     }

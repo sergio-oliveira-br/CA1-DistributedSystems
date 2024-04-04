@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class SmartHomeGUIClient extends JFrame
 {
     //Instance Variable
-    private final ManagedChannel channel;
+    private ManagedChannel channel;
     private StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
     //Constructor:Responsible to get 3 parameters
@@ -23,6 +23,9 @@ public class SmartHomeGUIClient extends JFrame
     }
 
 
+    //Constructor: Default
+    public SmartHomeGUIClient()
+    {}
 
 
     //Constructor: Make possible to create a SmartHomeClient instance by passing a ManagedChannelBuilder object as an argument
@@ -58,7 +61,8 @@ public class SmartHomeGUIClient extends JFrame
         ___________________________________
     */
 
-    public void sendUnaryRequest(String name) {
+    public void sendUnaryRequest(String name)
+    {
         UnaryRequest request = UnaryRequest.newBuilder()
                 .setName(name)
                 .build();
@@ -67,22 +71,32 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(UnaryResponse response)
             {
-                JOptionPane.showMessageDialog(null, "Unary response from server:" +response.getMessage(), "Server", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, response.getMessage(), "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
+
             }
 
             @Override
             public void onError(Throwable t)
             {
-                JOptionPane.showMessageDialog(null, "Error in unary request: " + t.getMessage(),"Server", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, t.getMessage(),"Unary Response from Server", JOptionPane.ERROR_MESSAGE);
             }
 
             @Override
             public void onCompleted()
             {
-                JOptionPane.showMessageDialog(null,"Unary request completed", "Server", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Unary request completed", "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
+
+
+
+
+
+
+
+
+
 
     public void streamClientInformation(String clientName) {
         StreamObserver<ClientInformation> requestObserver = stub.streamClientInformation(new StreamObserver<ServerResponse>() {
