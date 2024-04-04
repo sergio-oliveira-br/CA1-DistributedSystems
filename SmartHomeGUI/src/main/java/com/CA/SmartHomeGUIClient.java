@@ -147,41 +147,5 @@ public class SmartHomeGUIClient extends JFrame
         //Constructor: myGUI
         new myGUI();
 
-        /*
-        //Scanner
-        Scanner scanner = new Scanner(System.in);
-
-        //Instance Variable
-        String host = "localhost";
-        int port = 8081;
-        String stub = "Sergio Oliveira";
-
-        SmartHomeGUIClient clientPing = new SmartHomeGUIClient(host, port, stub);
-
-        clientPing.sendUnaryRequest(stub); // Send unary request
-
-        // Start streaming client information
-        Thread streamThread = new Thread(() -> clientPing.streamClientInformation(stub));
-        streamThread.start();
-
-        // Wait for user input to stop streaming
-        System.out.println("Press 'Q' to stop streaming client information");
-
-        while (streaming)
-        {
-            String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("Q"))
-            {
-                streaming = false; //Stop the loop by setting the streaming to false
-            }
-        }
-
-        // Shutdown client
-        clientPing.shutdown();
-
-
-         */
-
-
     }
 }

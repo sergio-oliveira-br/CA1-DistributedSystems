@@ -61,16 +61,9 @@ public class myGUI extends JFrame
                 Thread streamThread = new Thread(() -> client.streamClientInformation(stub));
                 streamThread.start();
 
-
-
-                /*
-
-                //Call the second frame - YOUR CONNECTION SCREEN
-                JPanel connectionScreen = new JPanel();
-                connectionScreen.add(new YourConnection());
-                getContentPane().add(connectionScreen);
-
-                 */
+                //Call the second frame - YOUR CONNECTION SCREEN for shutdown the connection
+                YourConnection connectionScreen = new YourConnection(client);
+                connectionScreen.setVisible(true);
 
             }
         });

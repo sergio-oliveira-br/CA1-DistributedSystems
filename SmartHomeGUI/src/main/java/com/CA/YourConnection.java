@@ -1,24 +1,19 @@
 package com.CA;
 
-import com.CA.gRPC.StreamingClientServiceGrpc;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 
 public class YourConnection extends JFrame
 {
 
     private JPanel YourConnection;
-    private JButton cancelButton;
-    private JLabel streamMsg;
-    private JLabel hostInfo;
-    private JLabel portInfo;
-    private JLabel stubInfo;
+    private JButton disconnectButton;
 
-    public YourConnection()
+
+    public YourConnection(SmartHomeGUIClient smartHomeClient)
     {
+
         //WELCOME SCREEN - HOME
         setContentPane(YourConnection);
 
@@ -29,26 +24,12 @@ public class YourConnection extends JFrame
         setLocationRelativeTo(null);
         setVisible(true);
 
-
-        cancelButton.addActionListener(new ActionListener()
+        disconnectButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                //SmartHomeGUIClient client = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
-                //client.sendUnaryRequest("Sergio Oliveira");
-
-                SmartHomeGUIClient mySmartHome = new SmartHomeGUIClient();
-
-                try
-                {
-                    mySmartHome.shutdown();
-                }
-
-                catch (InterruptedException ex)
-                {
-                    throw new RuntimeException(ex);
-                }
+                //NEED TO CLOSE THE CONNECTION USING THE METHOD SHUTDOWN
             }
         });
     }

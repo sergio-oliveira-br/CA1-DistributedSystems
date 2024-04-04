@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.CA.YourConnection">
-  <grid id="27dc6" binding="YourConnection" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="YourConnection" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
@@ -8,44 +8,12 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="6388e" class="javax.swing.JButton" binding="cancelButton" default-binding="true">
+      <component id="d1c66" class="javax.swing.JButton" binding="disconnectButton" default-binding="true">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Cancel"/>
-        </properties>
-      </component>
-      <component id="c7a18" class="javax.swing.JLabel" binding="streamMsg">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="You are streaming information to Server:"/>
-        </properties>
-      </component>
-      <component id="9884a" class="javax.swing.JLabel" binding="hostInfo">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Host: localhost"/>
-        </properties>
-      </component>
-      <component id="6a745" class="javax.swing.JLabel" binding="portInfo">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Port: 8081"/>
-        </properties>
-      </component>
-      <component id="8ddfe" class="javax.swing.JLabel" binding="stubInfo">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Stub: Sergio Oliveira"/>
+          <text value="Disconnect"/>
         </properties>
       </component>
     </children>
