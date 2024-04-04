@@ -22,12 +22,6 @@ public class SmartHomeGUIClient extends JFrame
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
     }
 
-
-    //Constructor: Default
-    public SmartHomeGUIClient()
-    {}
-
-
     //Constructor: Make possible to create a SmartHomeClient instance by passing a ManagedChannelBuilder object as an argument
     public SmartHomeGUIClient(ManagedChannelBuilder<?> channelBuilder, String stub)
     {
@@ -43,6 +37,7 @@ public class SmartHomeGUIClient extends JFrame
     {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
+
 
 
 

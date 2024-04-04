@@ -13,6 +13,11 @@ public class myGUI extends JFrame
     private JButton smartThermostatsButton;
     private JButton yourConnectionButton;
 
+
+    //Create to help the condition of the button connect to the server
+     boolean userConnected = false;
+     int status = 0; //0 disconnected; 1 connected
+
     public myGUI()
     {
 
@@ -27,21 +32,21 @@ public class myGUI extends JFrame
         setVisible(true);
 
 
+
         connectButton.addActionListener(new ActionListener()
         {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(myGUI.this,"Connecting...");
-            }
-        });
-        disconnectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(myGUI.this,"Disconnecting...");
-
+            public void actionPerformed(ActionEvent e)
+            {
+                JOptionPane.showMessageDialog(myGUI.this, "Connecting to the server through gRPC....");
 
             }
         });
+
+
+
+
+
 
         //Call SmartHomePing the method
         yourConnectionButton.addActionListener(new ActionListener()
@@ -53,9 +58,8 @@ public class myGUI extends JFrame
                 SmartHomeGUIClient client = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
                 client.sendUnaryRequest("Sergio Oliveira");
 
-                String stub = "Sergio Oliveira";
-
-                client.sendUnaryRequest(stub); // Send unary request
+                //Send unary request
+                String stub = "Sergio Oliveira - Client Side";
 
                 // Start streaming client information
                 Thread streamThread = new Thread(() -> client.streamClientInformation(stub));
