@@ -16,10 +16,6 @@ public class SmartHomeGUIClient extends JFrame
     private final ManagedChannel channel;
     private StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
-
-
-
-
     //Constructor:Responsible to get 3 parameters
     public SmartHomeGUIClient(String host, int port, String stub)
     {
@@ -38,8 +34,6 @@ public class SmartHomeGUIClient extends JFrame
         this.stub = StreamingClientServiceGrpc.newStub(channel);
 
     }
-
-
 
     //Method: Close the connection before
     public void shutdown() throws InterruptedException
@@ -68,7 +62,8 @@ public class SmartHomeGUIClient extends JFrame
         UnaryRequest request = UnaryRequest.newBuilder()
                 .setName(name)
                 .build();
-        stub.sendUnaryRequest(request, new StreamObserver<UnaryResponse>() {
+        stub.sendUnaryRequest(request, new StreamObserver<UnaryResponse>()
+        {
             @Override
             public void onNext(UnaryResponse response) {
                 System.out.println("Unary response from server: " + response.getMessage());

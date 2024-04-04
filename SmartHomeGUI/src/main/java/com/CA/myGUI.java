@@ -38,5 +38,15 @@ public class myGUI extends JFrame
 
             }
         });
+        yourConnectionButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                // Call SmartHomePing the method
+                SmartHomeGUIClient client = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
+                client.sendUnaryRequest("Your Connection");
+            }
+        });
     }
 }
