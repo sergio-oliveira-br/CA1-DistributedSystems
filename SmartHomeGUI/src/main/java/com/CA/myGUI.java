@@ -53,11 +53,24 @@ public class myGUI extends JFrame
                 SmartHomeGUIClient client = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
                 client.sendUnaryRequest("Sergio Oliveira");
 
+                String stub = "Sergio Oliveira";
+
+                client.sendUnaryRequest(stub); // Send unary request
+
+                // Start streaming client information
+                Thread streamThread = new Thread(() -> client.streamClientInformation(stub));
+                streamThread.start();
+
+
+
+                /*
 
                 //Call the second frame - YOUR CONNECTION SCREEN
                 JPanel connectionScreen = new JPanel();
                 connectionScreen.add(new YourConnection());
                 getContentPane().add(connectionScreen);
+
+                 */
 
             }
         });
