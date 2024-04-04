@@ -65,19 +65,21 @@ public class SmartHomeGUIClient extends JFrame
         stub.sendUnaryRequest(request, new StreamObserver<UnaryResponse>()
         {
             @Override
-            public void onNext(UnaryResponse response) {
-                System.out.println("Unary response from server: " + response.getMessage());
+            public void onNext(UnaryResponse response)
+            {
+                JOptionPane.showMessageDialog(null, "Unary response from server:" +response.getMessage(), "Server", JOptionPane.INFORMATION_MESSAGE);
             }
 
             @Override
-            public void onError(Throwable t) {
-                System.err.println("Error in unary request: " + t.getMessage());
+            public void onError(Throwable t)
+            {
+                JOptionPane.showMessageDialog(null, "Error in unary request: " + t.getMessage(),"Server", JOptionPane.ERROR_MESSAGE);
             }
 
             @Override
-            public void onCompleted() {
-                System.out.println("Unary request completed");
-                System.out.println("-------");
+            public void onCompleted()
+            {
+                JOptionPane.showMessageDialog(null,"Unary request completed", "Server", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
@@ -131,14 +133,9 @@ public class SmartHomeGUIClient extends JFrame
         //Constructor: myGUI
         new myGUI();
 
+        /*
         //Scanner
         Scanner scanner = new Scanner(System.in);
-
-
-
-
-
-
 
         //Instance Variable
         String host = "localhost";
@@ -168,6 +165,8 @@ public class SmartHomeGUIClient extends JFrame
         // Shutdown client
         clientPing.shutdown();
 
+
+         */
 
 
     }

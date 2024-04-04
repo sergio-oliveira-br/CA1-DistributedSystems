@@ -49,7 +49,9 @@ public class SmartHomeGUIServer
             {
                 JOptionPane.showMessageDialog(null,"\nShutting down gRPC server." +
                         "\nThis was CA1 - Distributed System" +
-                        "\nby Sergio Oliveira - x23170981@student.ncirl.ie" );
+                        "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
+
+
                 //System.out.println("\nShutting down gRPC server." +
                         //"\nThis was CA1 - Distributed System" +
                         //"\nby Sergio Oliveira - x23170981@student.ncirl.ie");

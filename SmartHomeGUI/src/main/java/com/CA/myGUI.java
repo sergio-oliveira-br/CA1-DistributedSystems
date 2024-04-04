@@ -45,7 +45,13 @@ public class myGUI extends JFrame
             {
                 // Call SmartHomePing the method
                 SmartHomeGUIClient client = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
-                client.sendUnaryRequest("Your Connection");
+                client.sendUnaryRequest("Sergio Oliveira");
+
+                //client.sendUnaryRequest(stub); // Send unary request
+
+                // Start streaming client information
+                //Thread streamThread = new Thread(() -> client.streamClientInformation(stub));
+                //streamThread.start();
             }
         });
     }
