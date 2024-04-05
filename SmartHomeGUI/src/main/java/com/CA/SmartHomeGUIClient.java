@@ -11,15 +11,37 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+
+
 public class SmartHomeGUIClient extends JFrame
 {
     //Instance Variable
     private ManagedChannel channel;
     private StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
+    private myGUI myClientGUI;
+
+
+
+    public SmartHomeGUIClient(myGUI myClientGUI)
+    {
+        this.myClientGUI = myClientGUI;
+    }
+
+
+
+
+
 
     public SmartHomeGUIClient()
     {}
+
+
+
+
+
+
+
 
     //Constructor:Responsible to get 3 parameters
     public SmartHomeGUIClient(String host, int port, String stub)
@@ -104,16 +126,19 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(ServerResponse response) {
                 System.out.println("Server response: " + response.getMessage());
+                myClientGUI.appendMessage("Server response: " + response.getMessage());//send to JTextArea
             }
 
             @Override
             public void onError(Throwable t) {
                 System.err.println("Error in streaming client information: " + t.getMessage());
+                myClientGUI.appendMessage("Error in streaming client information: " + t.getMessage());//send to JTextArea
             }
 
             @Override
             public void onCompleted() {
                 System.out.println("Streaming client information completed");
+                myClientGUI.appendMessage("Streaming client information completed");//send to JTextArea
             }
         });
 
@@ -168,6 +193,7 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(BidirectionalResponse response)
             {
+                myClientGUI.appendMessage("Server message: " + response.getMessage()); //send to JTextArea
                 System.out.println("Server message: " + response.getMessage());
             }
 
@@ -179,13 +205,14 @@ public class SmartHomeGUIClient extends JFrame
                         "Error from the server " + t.getMessage() + "\nYou are disconnected from the server.",
                         "Smart Home CA - Client", JOptionPane.ERROR_MESSAGE);
                 System.err.println("Error from server: " + t.getMessage());
+                myClientGUI.appendMessage("Error from server: " + t.getMessage()); //send to JTextArea
             }
 
             @Override
             public void onCompleted()
             {
-                JOptionPane.showMessageDialog(null, "???? Completed ?????");
                 System.out.println("Server stream completed");
+                myClientGUI.appendMessage("Server stream completed");//send to JTextArea
             }
         };
 
@@ -251,7 +278,7 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onCompleted()
             {
-                JOptionPane.showMessageDialog(null, "onCompleted!");
+                myClientGUI.appendMessage("onCompleted"); //send to JTextArea
                 System.out.println("onCompleted");
             }
         };
@@ -264,13 +291,15 @@ public class SmartHomeGUIClient extends JFrame
             WeatherForecastRequest requestForecast = WeatherForecastRequest.newBuilder()
                     .build();
 
-            System.out.println("Client is requesting the forecast for the next days.");
+            myClientGUI.appendMessage("Client is requesting the forecast for tomorrow."); //send to JTextArea
+            System.out.println("Client is requesting the forecast for tomorrow.");
             weatherForecastRequestStreamObserver.onNext(requestForecast);
         }
 
         catch (Exception e)
         {
             System.err.println("ERROR!!!! --- Error while sending messages: " + e.getMessage());
+            myClientGUI.appendMessage("ERROR!!!! --- Error while sending messages: " + e.getMessage()); //send to JTextArea
         }
 
         // Mark the end of requests to the server
@@ -280,11 +309,11 @@ public class SmartHomeGUIClient extends JFrame
         try
         {
             channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-
         }
 
         catch (InterruptedException e)
         {
+            myClientGUI.appendMessage("Interrupted while shutting down the channel: " + e.getMessage()); //send to JTextArea
             System.err.println("Interrupted while shutting down the channel: " + e.getMessage());
             Thread.currentThread().interrupt();
         }

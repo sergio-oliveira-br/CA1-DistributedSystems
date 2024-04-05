@@ -16,15 +16,23 @@ public class myGUI extends JFrame
     private JButton button1;
 
 
-
-    //Method: add msg to JTextArea
+    //Method: used to display all msg on JTextArea
     public void appendMessage(String message)
     {
         systemInformation.append(message + "\n");
     }
 
+
+
     public myGUI()
     {
+
+        //This make the reference to JTextArea
+        SmartHomeGUIClient myClientGUI = new SmartHomeGUIClient(this);
+
+
+
+
         //WELCOME SCREEN - HOME
         setContentPane(WelcomeScreen);
 
@@ -55,14 +63,14 @@ public class myGUI extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 //Start Connection
-                SmartHomeGUIClient client = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
-                client.sendUnaryRequest("Sergio Oliveira");
+                SmartHomeGUIClient myClient = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
+                myClient.sendUnaryRequest("Sergio Oliveira");
 
                 //Send unary request
                 String stub = "Sergio Oliveira - Client Side";
 
                 // Start streaming client information
-                Thread streamThread = new Thread(() -> client.streamClientInformation(stub));
+                Thread streamThread = new Thread(() -> myClient.streamClientInformation(stub));
                 streamThread.start();
 
                 //I DO NOT IT SO FAR
@@ -90,9 +98,9 @@ public class myGUI extends JFrame
                 //JOptionPane.showInputDialog(myGUI.this, "Enter the temperature",
                        // "Smart Thermostats", JOptionPane.INFORMATION_MESSAGE);
 
-                SmartHomeGUIClient myClient = new SmartHomeGUIClient();
+                //SmartHomeGUIClient myClient = new SmartHomeGUIClient();
 
-                myClient.setYourTemp(JOptionPane.showInputDialog(myGUI.this, "Please enter the Temp"));
+                myClientGUI.setYourTemp(JOptionPane.showInputDialog(myGUI.this, "Please enter the Temp"));
             }
         });
         button1.addActionListener(new ActionListener()
@@ -100,8 +108,8 @@ public class myGUI extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                SmartHomeGUIClient myClient = new SmartHomeGUIClient();
-                myClient.getForecast();
+                //SmartHomeGUIClient myClient = new SmartHomeGUIClient();
+                myClientGUI.getForecast();
             }
         });
     }

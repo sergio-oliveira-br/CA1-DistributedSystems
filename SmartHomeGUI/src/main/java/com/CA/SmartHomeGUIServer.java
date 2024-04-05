@@ -45,6 +45,7 @@ public class SmartHomeGUIServer
                 .start();
 
         System.out.println("Server started on PORT: " + port + " waiting for connection...");
+
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
             {
