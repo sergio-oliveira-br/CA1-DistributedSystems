@@ -151,9 +151,7 @@ public class SmartHomeGUIClient extends JFrame
         ___________________________________________________________
     */
 
-
-
-
+    //Method: This method allows the user set the temp. Using this on the button SmartThermostats
     public void setYourTemp (String setTemp)
     {
         //Create a channel to the server
@@ -186,51 +184,31 @@ public class SmartHomeGUIClient extends JFrame
             }
         };
 
-
         //Create a request observer for the client streaming
         StreamObserver<BidirectionalRequest> requestObserver = stubBI.bidirectionalStream(responseObserver);
-
 
         String message = "The temperature has been requested by the user as: " + setTemp + "ºC";
         BidirectionalRequest request = BidirectionalRequest.newBuilder()
                 .setMessage(message)
                 .build();
 
-
-
         JOptionPane.showMessageDialog(null, message, "Client Side", JOptionPane.INFORMATION_MESSAGE);
         //System.out.println("Sending message to server: " + message);
         requestObserver.onNext(request);
+    }
 
-
-
-
-
-
-    //Create a response observer for the server streaming
-    StreamObserver<WeatherForecastResponse> weatherForecastResponseStreamObserver = new StreamObserver<WeatherForecastResponse>()
+    //Method: This will send to the users random forecast, without the user ask
+    public void getForecast()
     {
-        @Override
-        public void onNext(WeatherForecastResponse weatherForecastResponse)
-        {
-            System.out.println("Msg from the server -> " + weatherForecastResponse.getMessage() );
-        }
+        //Create a channel to the server
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8081)
+                .usePlaintext()
+                .build();
 
-        @Override
-        public void onError(Throwable throwable)
-        {
-            System.err.println("ERROR !!!!!!!");
-        }
+        //Create a stub for the bidirectional service
+        BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceStub stubBI = BidirectionalStreamingServiceGrpc.newStub(channel);
 
-        @Override
-        public void onCompleted()
-        {
-            System.out.println("onCompleted");
-        }
-    };
-
-}
-
+    }
 
 
 

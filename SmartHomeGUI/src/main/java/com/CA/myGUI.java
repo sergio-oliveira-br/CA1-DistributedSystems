@@ -64,8 +64,6 @@ public class myGUI extends JFrame
                 Thread streamThread = new Thread(() -> client.streamClientInformation(stub));
                 streamThread.start();
 
-
-
                 //I DO NOT IT SO FAR
                 //Call the second frame - YOUR CONNECTION SCREEN for shutdown the connection
                 //YourConnection connectionScreen = new YourConnection(client);
