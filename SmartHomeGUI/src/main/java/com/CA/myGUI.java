@@ -13,6 +13,7 @@ public class myGUI extends JFrame
     private JButton smartThermostatsButton;
     private JButton yourConnectionButton;
     private JTextArea systemInformation;
+    private JButton button1;
 
     public myGUI()
     {
@@ -91,6 +92,15 @@ public class myGUI extends JFrame
 
                 SmartHomeGUIClient myCliente = new SmartHomeGUIClient();
                 myCliente.setYourTemp("300");
+            }
+        });
+        button1.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                SmartHomeGUIClient myClient = new SmartHomeGUIClient();
+                myClient.getForecast();
             }
         });
     }
