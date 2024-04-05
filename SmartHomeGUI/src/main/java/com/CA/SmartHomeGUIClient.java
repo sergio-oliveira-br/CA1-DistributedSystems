@@ -171,15 +171,20 @@ public class SmartHomeGUIClient extends JFrame
                 System.out.println("Server message: " + response.getMessage());
             }
 
+            //This is call when the CLIENT is not connected with the SERVER
             @Override
             public void onError(Throwable t)
             {
+                JOptionPane.showMessageDialog(null,
+                        "Error from the server " + t.getMessage() + "\nYou are disconnected from the server.",
+                        "Smart Home CA - Client", JOptionPane.ERROR_MESSAGE);
                 System.err.println("Error from server: " + t.getMessage());
             }
 
             @Override
             public void onCompleted()
             {
+                JOptionPane.showMessageDialog(null, "???? Completed ?????");
                 System.out.println("Server stream completed");
             }
         };
@@ -187,15 +192,31 @@ public class SmartHomeGUIClient extends JFrame
         //Create a request observer for the client streaming
         StreamObserver<BidirectionalRequest> requestObserver = stubBI.bidirectionalStream(responseObserver);
 
+        //get the input from the user
+        //setTemp = JOptionPane.showInputDialog(null, "Please enter the temp");
+
         String message = "The temperature has been requested by the user as: " + setTemp + "ºC";
         BidirectionalRequest request = BidirectionalRequest.newBuilder()
-                .setMessage(message)
+                .setMessage(setTemp)
                 .build();
 
         JOptionPane.showMessageDialog(null, message, "Client Side", JOptionPane.INFORMATION_MESSAGE);
         //System.out.println("Sending message to server: " + message);
         requestObserver.onNext(request);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //Method: This will send to the users random forecast, without the user ask
     public void getForecast()
@@ -220,12 +241,17 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onError(Throwable throwable)
             {
+                JOptionPane.showMessageDialog(null,
+                        "Error from client:" + throwable.getMessage() +
+                        "\nYou have no connection to the server",
+                        "Smart Home CA - Client", JOptionPane.ERROR_MESSAGE);
                 System.err.println("ERROR !!!!!!!");
             }
 
             @Override
             public void onCompleted()
             {
+                JOptionPane.showMessageDialog(null, "onCompleted!");
                 System.out.println("onCompleted");
             }
         };
@@ -275,6 +301,5 @@ public class SmartHomeGUIClient extends JFrame
     {
         //Constructor: myGUI
         new myGUI();
-
     }
 }

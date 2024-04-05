@@ -176,13 +176,34 @@ public class SmartHomeGUIServer
                     System.out.println("Received message from client: " + request.getMessage());
                     {
                         //Respond to the client's message with a stream
-                        JOptionPane.showMessageDialog(null, "Hi Client, I got your request!"  /*+ request.getMessage()*/,
+                        if(request.getMessage().compareTo("15") < 0 || request.getMessage().compareTo("25") > 0)
+                        {
+                            JOptionPane.showMessageDialog(null,
+                                    "Sorry. Your request is out of range." +
+                                             "\nPlease, could you try again within the range (15ºC - 25ºC)",
+                                    "Smart Home CA - Server", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                        else if(request.getMessage().compareTo("15") > 0 || request.getMessage().compareTo("25") < 0)
+                        {
+                            JOptionPane.showMessageDialog(null,
+                                    "Hi Client, I got your request!" +
+                                             "\nYour temperature has been adjusted to " + request.getMessage() + "ºC",
+                                    "Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE);
+                        }
+
+                        /*
+                        //Respond to the client's message with a stream
+                        JOptionPane.showMessageDialog(null, "Hi Client, I got your request!" +
+                                        "\nYour temperature has been adjusted to " + request.getMessage() + "ºC",
                                 "Server-Side", JOptionPane.INFORMATION_MESSAGE);
 
-                        BidirectionalResponse response = BidirectionalResponse.newBuilder()
-                                .setMessage(JOptionPane.showInputDialog(null, "Okay@@@!!!") + request.getMessage())
-                                .build();
-                        responseObserver.onNext(response);
+
+                         */
+                        //BidirectionalResponse response = BidirectionalResponse.newBuilder()
+                                //.setMessage(JOptionPane.showInputDialog(null, "Okay@@@!!!") + request.getMessage())
+                                //.build();
+                       // responseObserver.onNext(response);
 
 
                        /* BidirectionalResponse response = BidirectionalResponse.newBuilder()
@@ -211,23 +232,38 @@ public class SmartHomeGUIServer
         public StreamObserver<WeatherForecastRequest> weatherForecast(StreamObserver<WeatherForecastResponse> streamObserver) {
             return new StreamObserver<WeatherForecastRequest>() {
                 @Override
-                public void onNext(WeatherForecastRequest weatherForecastRequest) {
+                public void onNext(WeatherForecastRequest weatherForecastRequest)
+                {
                     Random random = new Random();
                     int tomorrow = random.nextInt(15) + 10;
 
+                    JOptionPane.showMessageDialog(null,
+                            "The weather forecast for tomorrow is: " + tomorrow + "ºC",
+                            "Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE);
+
+                    //streamObserver.onNext(JOptionPane.showMessageDialog(null, "The weather forecast for tomorrow is: " + tomorrow,
+                           // "Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE));
+
+                    /*
                     WeatherForecastResponse response = WeatherForecastResponse.newBuilder()
                             .setMessage("The weather forecast for tomorrow is: " + tomorrow + "ºC")
                             .build();
                     streamObserver.onNext(response);
+
+                     */
                 }
 
+                //This will be used when the user is not connected with the server
                 @Override
-                public void onError(Throwable throwable) {
+                public void onError(Throwable throwable)
+                {
+
                     System.err.println("I NEED TO SOLVE THIS");
                 }
 
                 @Override
-                public void onCompleted() {
+                public void onCompleted()
+                {
                     System.out.println("Connection onCompleted");
                 }
             };

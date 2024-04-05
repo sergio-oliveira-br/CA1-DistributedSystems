@@ -15,6 +15,14 @@ public class myGUI extends JFrame
     private JTextArea systemInformation;
     private JButton button1;
 
+
+
+    //Method: add msg to JTextArea
+    public void appendMessage(String message)
+    {
+        systemInformation.append(message + "\n");
+    }
+
     public myGUI()
     {
         //WELCOME SCREEN - HOME
@@ -31,15 +39,7 @@ public class myGUI extends JFrame
         //Text Area: where the system will print few information
         systemInformation.setEditable(false); //the user is not allow to edit
 
-        connectButton.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                JOptionPane.showMessageDialog(myGUI.this, "Connecting to the server through gRPC....");
 
-            }
-        });
 
 
 
@@ -90,8 +90,9 @@ public class myGUI extends JFrame
                 //JOptionPane.showInputDialog(myGUI.this, "Enter the temperature",
                        // "Smart Thermostats", JOptionPane.INFORMATION_MESSAGE);
 
-                SmartHomeGUIClient myCliente = new SmartHomeGUIClient();
-                myCliente.setYourTemp("300");
+                SmartHomeGUIClient myClient = new SmartHomeGUIClient();
+
+                myClient.setYourTemp(JOptionPane.showInputDialog(myGUI.this, "Please enter the Temp"));
             }
         });
         button1.addActionListener(new ActionListener()
