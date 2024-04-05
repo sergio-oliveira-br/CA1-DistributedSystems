@@ -549,7 +549,7 @@ public class SmartHomeClient
                                 WeatherForecastRequest requestForecast = WeatherForecastRequest.newBuilder()
                                         .build();
 
-                                System.out.println("Client is requesting the forecast for the next two days.");
+                                System.out.println("Client is requesting the forecast for the next days.");
                                 weatherForecastRequestStreamObserver.onNext(requestForecast);
                             }
 

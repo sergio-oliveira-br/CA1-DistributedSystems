@@ -208,6 +208,60 @@ public class SmartHomeGUIClient extends JFrame
         //Create a stub for the bidirectional service
         BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceStub stubBI = BidirectionalStreamingServiceGrpc.newStub(channel);
 
+        //Create a response observer for the server streaming
+        StreamObserver<WeatherForecastResponse> weatherForecastResponseStreamObserver = new StreamObserver<WeatherForecastResponse>()
+        {
+            @Override
+            public void onNext(WeatherForecastResponse weatherForecastResponse)
+            {
+                System.out.println("Msg from the server -> " + weatherForecastResponse.getMessage() );
+            }
+
+            @Override
+            public void onError(Throwable throwable)
+            {
+                System.err.println("ERROR !!!!!!!");
+            }
+
+            @Override
+            public void onCompleted()
+            {
+                System.out.println("onCompleted");
+            }
+        };
+
+        //Create a request observer for the client streaming
+        StreamObserver<WeatherForecastRequest> weatherForecastRequestStreamObserver = stubBI.weatherForecast(weatherForecastResponseStreamObserver);
+        try
+        {
+
+            WeatherForecastRequest requestForecast = WeatherForecastRequest.newBuilder()
+                    .build();
+
+            System.out.println("Client is requesting the forecast for the next days.");
+            weatherForecastRequestStreamObserver.onNext(requestForecast);
+        }
+
+        catch (Exception e)
+        {
+            System.err.println("ERROR!!!! --- Error while sending messages: " + e.getMessage());
+        }
+
+        // Mark the end of requests to the server
+        weatherForecastRequestStreamObserver.onCompleted();
+
+        //Shutdown the channel gracefully
+        try
+        {
+            channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+
+        }
+
+        catch (InterruptedException e)
+        {
+            System.err.println("Interrupted while shutting down the channel: " + e.getMessage());
+            Thread.currentThread().interrupt();
+        }
     }
 
 
