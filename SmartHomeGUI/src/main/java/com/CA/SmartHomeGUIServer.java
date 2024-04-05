@@ -12,8 +12,15 @@ import java.util.Random;
 public class SmartHomeGUIServer
 {
     //Instance Variables
-    private final int port;
-    private Server server;
+    private int port;
+    private static Server server;
+
+
+
+    public SmartHomeGUIServer()
+    {}
+
+
 
     //Constructor: Get the port
     public SmartHomeGUIServer(int port)
@@ -46,6 +53,7 @@ public class SmartHomeGUIServer
 
         System.out.println("Server started on PORT: " + port + " waiting for connection...");
 
+        /*
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
             {
@@ -54,16 +62,21 @@ public class SmartHomeGUIServer
                         "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
 
 
+
+
+
                 //System.out.println("\nShutting down gRPC server." +
                         //"\nThis was CA1 - Distributed System" +
                         //"\nby Sergio Oliveira - x23170981@student.ncirl.ie");
                 //SmartHomeGUIServer.this.stop();
             }
-        }));
+        }));*/
+
+        //myServerGUI.appendMessage("Server started on PORT: " + port + " waiting for connection..."); //send to JTextArea
     }
 
     //Method: Ends and clean the gRPC
-    public void stop()
+    static void stop()
     {
         if (server != null)
         {
@@ -72,7 +85,7 @@ public class SmartHomeGUIServer
     }
 
     //Method: To ensure that the main program does not go offline until the gRPC has been completely shut down
-    public void blockUntilShutdown() throws InterruptedException
+    static void blockUntilShutdown() throws InterruptedException
     {
         if (server != null)
         {
@@ -243,15 +256,15 @@ public class SmartHomeGUIServer
                             "Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE);
 
                     //streamObserver.onNext(JOptionPane.showMessageDialog(null, "The weather forecast for tomorrow is: " + tomorrow,
-                           // "Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE));
+                           //"Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE));
 
-                    /*
+
                     WeatherForecastResponse response = WeatherForecastResponse.newBuilder()
                             .setMessage("The weather forecast for tomorrow is: " + tomorrow + "ºC")
                             .build();
                     streamObserver.onNext(response);
 
-                     */
+
                 }
 
                 //This will be used when the user is not connected with the server
@@ -262,6 +275,7 @@ public class SmartHomeGUIServer
                     System.err.println("I NEED TO SOLVE THIS");
                 }
 
+                //This start after the onNext
                 @Override
                 public void onCompleted()
                 {

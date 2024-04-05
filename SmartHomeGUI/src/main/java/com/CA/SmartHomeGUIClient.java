@@ -262,7 +262,8 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(WeatherForecastResponse weatherForecastResponse)
             {
-                System.out.println("Msg from the server -> " + weatherForecastResponse.getMessage() );
+                myClientGUI.appendMessage("The client requested the forecast for tomorrow."); //send to JTextArea
+                System.out.println("The client requested the forecast for tomorrow.");
             }
 
             @Override
@@ -287,13 +288,10 @@ public class SmartHomeGUIClient extends JFrame
         StreamObserver<WeatherForecastRequest> weatherForecastRequestStreamObserver = stubBI.weatherForecast(weatherForecastResponseStreamObserver);
         try
         {
-
-            WeatherForecastRequest requestForecast = WeatherForecastRequest.newBuilder()
-                    .build();
-
-            myClientGUI.appendMessage("Client is requesting the forecast for tomorrow."); //send to JTextArea
-            System.out.println("Client is requesting the forecast for tomorrow.");
+            //Build and send a request
+            WeatherForecastRequest requestForecast = WeatherForecastRequest.newBuilder().build();
             weatherForecastRequestStreamObserver.onNext(requestForecast);
+
         }
 
         catch (Exception e)

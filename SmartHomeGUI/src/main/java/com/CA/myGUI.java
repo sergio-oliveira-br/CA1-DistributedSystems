@@ -33,13 +33,14 @@ public class myGUI extends JFrame
 
 
 
+
         //WELCOME SCREEN - HOME
         setContentPane(WelcomeScreen);
 
         //Set the Main Window
         setTitle("CA1 - SmartHome");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 350);
+        setSize(800, 400);
         setLocationRelativeTo(null);
         setVisible(true);
 
@@ -103,6 +104,13 @@ public class myGUI extends JFrame
                 myClientGUI.setYourTemp(JOptionPane.showInputDialog(myGUI.this, "Please enter the Temp"));
             }
         });
+
+
+
+
+
+
+        //Just a test to ask the server the weather forecast
         button1.addActionListener(new ActionListener()
         {
             @Override
@@ -112,5 +120,22 @@ public class myGUI extends JFrame
                 myClientGUI.getForecast();
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
