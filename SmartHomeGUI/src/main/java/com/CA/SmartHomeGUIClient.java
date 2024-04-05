@@ -98,7 +98,8 @@ public class SmartHomeGUIClient extends JFrame
 
 
 
-    public void streamClientInformation(String clientName) {
+    public void streamClientInformation(String clientName)
+    {
         StreamObserver<ClientInformation> requestObserver = stub.streamClientInformation(new StreamObserver<ServerResponse>() {
             @Override
             public void onNext(ServerResponse response) {
@@ -153,34 +154,57 @@ public class SmartHomeGUIClient extends JFrame
 
 
 
-
-    //Create a stub for the bidirectional service
-    BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceStub stubBI = BidirectionalStreamingServiceGrpc.newStub(channel);
-
-    //Create a response observer for the server streaming
-    StreamObserver<BidirectionalResponse> responseObserver = new StreamObserver<BidirectionalResponse>()
+    public void setYourTemp (String setTemp)
     {
-        @Override
-        public void onNext(BidirectionalResponse response)
-        {
-            System.out.println("Server message: " + response.getMessage());
-        }
+        //Create a channel to the server
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8081)
+                .usePlaintext()
+                .build();
 
-        @Override
-        public void onError(Throwable t)
-        {
-            System.err.println("Error from server: " + t.getMessage());
-        }
+        //Create a stub for the bidirectional service
+        BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceStub stubBI = BidirectionalStreamingServiceGrpc.newStub(channel);
 
-        @Override
-        public void onCompleted()
+        //Create a response observer for the server streaming
+        StreamObserver<BidirectionalResponse> responseObserver = new StreamObserver<BidirectionalResponse>()
         {
-            System.out.println("Server stream completed");
-        }
-    };
+            @Override
+            public void onNext(BidirectionalResponse response)
+            {
+                System.out.println("Server message: " + response.getMessage());
+            }
 
-    // Create a request observer for the client streaming
-    StreamObserver<BidirectionalRequest> requestObserver = stubBI.bidirectionalStream(responseObserver);
+            @Override
+            public void onError(Throwable t)
+            {
+                System.err.println("Error from server: " + t.getMessage());
+            }
+
+            @Override
+            public void onCompleted()
+            {
+                System.out.println("Server stream completed");
+            }
+        };
+
+
+        //Create a request observer for the client streaming
+        StreamObserver<BidirectionalRequest> requestObserver = stubBI.bidirectionalStream(responseObserver);
+
+
+        String message = "The temperature has been requested by the user as: " + setTemp + "ºC";
+        BidirectionalRequest request = BidirectionalRequest.newBuilder()
+                .setMessage(message)
+                .build();
+
+
+
+        JOptionPane.showMessageDialog(null, message, "Client Side", JOptionPane.INFORMATION_MESSAGE);
+        //System.out.println("Sending message to server: " + message);
+        requestObserver.onNext(request);
+
+
+
+
 
 
     //Create a response observer for the server streaming
@@ -204,6 +228,8 @@ public class SmartHomeGUIClient extends JFrame
             System.out.println("onCompleted");
         }
     };
+
+}
 
 
 

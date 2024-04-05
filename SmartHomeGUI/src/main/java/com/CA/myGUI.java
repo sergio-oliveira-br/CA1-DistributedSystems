@@ -1,16 +1,8 @@
 package com.CA;
 
-import com.CA.gRPC.BidirectionalRequest;
-import com.CA.gRPC.BidirectionalStreamingServiceGrpc;
-import com.CA.gRPC.WeatherForecastResponse;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
-import io.grpc.stub.StreamObserver;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 
 public class myGUI extends JFrame
 {
@@ -20,18 +12,14 @@ public class myGUI extends JFrame
     private JButton smartDevicesButton;
     private JButton smartThermostatsButton;
     private JButton yourConnectionButton;
-
-
-    //Create to help the condition of the button connect to the server
-     boolean userConnected = false;
-     int status = 0; //0 disconnected; 1 connected
+    private JTextArea systemInformation;
 
     public myGUI()
     {
         //WELCOME SCREEN - HOME
         setContentPane(WelcomeScreen);
 
-        //Set the window
+        //Set the Main Window
         setTitle("CA1 - SmartHome");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 350);
@@ -39,6 +27,8 @@ public class myGUI extends JFrame
         setVisible(true);
 
 
+        //Text Area: where the system will print few information
+        systemInformation.setEditable(false); //the user is not allow to edit
 
         connectButton.addActionListener(new ActionListener()
         {
@@ -74,9 +64,12 @@ public class myGUI extends JFrame
                 Thread streamThread = new Thread(() -> client.streamClientInformation(stub));
                 streamThread.start();
 
+
+
+                //I DO NOT IT SO FAR
                 //Call the second frame - YOUR CONNECTION SCREEN for shutdown the connection
-                YourConnection connectionScreen = new YourConnection(client);
-                connectionScreen.setVisible(true);
+                //YourConnection connectionScreen = new YourConnection(client);
+                //connectionScreen.setVisible(true);
 
             }
         });
@@ -95,9 +88,11 @@ public class myGUI extends JFrame
             {
                 //Instance the object
                 //SmartHomeGUIClient mySmartThermostats = new SmartHomeGUIClient();
+                //JOptionPane.showInputDialog(myGUI.this, "Enter the temperature",
+                       // "Smart Thermostats", JOptionPane.INFORMATION_MESSAGE);
 
-                JOptionPane.showInputDialog(myGUI.this, "Enter the temperature", "Smart Thermostats", JOptionPane.INFORMATION_MESSAGE);
-
+                SmartHomeGUIClient myCliente = new SmartHomeGUIClient();
+                myCliente.setYourTemp("300");
             }
         });
     }

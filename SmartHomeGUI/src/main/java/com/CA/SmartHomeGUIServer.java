@@ -37,7 +37,7 @@ public class SmartHomeGUIServer
     public void start() throws IOException
     {
         server = ServerBuilder.forPort(port)
-                .addService(new StreamingClientServiceImpl())
+                .addService(new StreamingClientServiceImpl())   //ping
                 //.addService(new SmartHomeImpl())
                 //.addService(new SmartHomeLockImpl())
                 .addService(new BidirectionalStreamingImpl()) //temperature
@@ -97,7 +97,7 @@ public class SmartHomeGUIServer
         @Override
         public void sendUnaryRequest(UnaryRequest request, StreamObserver<UnaryResponse> responseObserver)
         {
-            String message = "\nReceived unary request from client: " + request.getName();
+            String message = "Received unary request from client: " + request.getName();
             UnaryResponse response = UnaryResponse.newBuilder()
                     .setMessage(message)
                     .build();
@@ -171,14 +171,26 @@ public class SmartHomeGUIServer
         public StreamObserver<BidirectionalRequest> bidirectionalStream(StreamObserver<BidirectionalResponse> responseObserver) {
             return new StreamObserver<BidirectionalRequest>() {
                 @Override
-                public void onNext(BidirectionalRequest request) {
+                public void onNext(BidirectionalRequest request)
+                {
                     System.out.println("Received message from client: " + request.getMessage());
                     {
                         //Respond to the client's message with a stream
+                        JOptionPane.showMessageDialog(null, "Hi Client, I got your request!"  /*+ request.getMessage()*/,
+                                "Server-Side", JOptionPane.INFORMATION_MESSAGE);
+
                         BidirectionalResponse response = BidirectionalResponse.newBuilder()
+                                .setMessage(JOptionPane.showInputDialog(null, "Okay@@@!!!") + request.getMessage())
+                                .build();
+                        responseObserver.onNext(response);
+
+
+                       /* BidirectionalResponse response = BidirectionalResponse.newBuilder()
                                 .setMessage("Okay. Room temperature set !!!!!! " + request.getMessage())
                                 .build();
                         responseObserver.onNext(response);
+
+                        */
                     }
                 }
 
