@@ -30,10 +30,6 @@ public class myGUI extends JFrame
         //This make the reference to JTextArea
         SmartHomeGUIClient myClientGUI = new SmartHomeGUIClient(this);
 
-
-
-
-
         //WELCOME SCREEN - HOME
         setContentPane(WelcomeScreen);
 
@@ -47,14 +43,6 @@ public class myGUI extends JFrame
 
         //Text Area: where the system will print few information
         systemInformation.setEditable(false); //the user is not allow to edit
-
-
-
-
-
-
-
-
 
 
         //Call SmartHomePing the method

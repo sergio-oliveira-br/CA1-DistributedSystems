@@ -88,6 +88,7 @@ public class SmartHomeGUIClient extends JFrame
         UnaryRequest request = UnaryRequest.newBuilder()
                 .setName(name)
                 .build();
+
         stub.sendUnaryRequest(request, new StreamObserver<UnaryResponse>()
         {
             @Override
@@ -96,6 +97,7 @@ public class SmartHomeGUIClient extends JFrame
                 JOptionPane.showMessageDialog(null,
                         response.getMessage(),
                         "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
+
             }
 
             @Override
@@ -200,6 +202,7 @@ public class SmartHomeGUIClient extends JFrame
             {
                 myClientGUI.appendMessage("Server message: " + response.getMessage()); //send to JTextArea
                 System.out.println("Server message: " + response.getMessage());
+                onCompleted();
             }
 
             //This is call when the CLIENT is not connected with the SERVER
@@ -216,8 +219,8 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onCompleted()
             {
-                System.out.println("Server stream completed");
-                myClientGUI.appendMessage("Server stream completed");//send to JTextArea
+                System.out.println("Client stream completed. The temperature has been changed to " + setTemp + "ºC");
+                myClientGUI.appendMessage("Client stream completed. The temperature has been changed to " + setTemp + "ºC");//send to JTextArea
             }
         };
 
@@ -269,11 +272,16 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(WeatherForecastResponse weatherForecastResponse)
             {
-                myClientGUI.appendMessage("Client Request: " + "What is the forecast for tomorrow."); //send to JTextArea
-                myClientGUI.appendMessage("Server Response: " + weatherForecastResponse.getMessage()); //send to JTextArea
 
-                System.out.println("The client requested the forecast for tomorrow.");
-                System.out.println("Server Response: " + weatherForecastResponse.getMessage());
+                String msgRequest = "Client Request: What is the forecast for tomorrow." ;
+                String msgResponse = "Server Response: " + weatherForecastResponse.getMessage();
+
+                myClientGUI.appendMessage(msgRequest); //send to JTextArea
+                myClientGUI.appendMessage(msgResponse); //send to JTextArea
+
+                //System.out.println("The client requested the forecast for tomorrow.");
+                //System.out.println("Server Response: " + weatherForecastResponse.getMessage());
+
             }
 
             @Override

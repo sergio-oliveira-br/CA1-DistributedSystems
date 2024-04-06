@@ -192,11 +192,6 @@ public class SmartHomeGUIServer
                         //Respond to the client's message with a stream
                         if(request.getMessage().compareTo("15") < 0 || request.getMessage().compareTo("25") > 0)
                         {
-                            BidirectionalResponse response = BidirectionalResponse.newBuilder()
-                                    .setMessage("response from the serverrrrrr")
-                                    .build();
-                            responseObserver.onNext(response);
-
                             JOptionPane.showMessageDialog(null,
                                     "Sorry. Your request is out of range." +
                                              "\nPlease, could you try again within the range (15ºC - 25ºC)",
@@ -218,14 +213,17 @@ public class SmartHomeGUIServer
                     }
                 }
 
+                //This appears when the user the request is not finished
                 @Override
-                public void onError(Throwable t) {
+                public void onError(Throwable t)
+                {
                     System.err.println("Error from client: " + t.getMessage());
+
                 }
 
                 @Override
                 public void onCompleted() {
-                    System.out.println("Client stream completed");
+                    System.out.println("Requested stream completed");
                     responseObserver.onCompleted(); // Complete the response stream
                 }
             };
@@ -244,16 +242,10 @@ public class SmartHomeGUIServer
                             "The weather forecast for tomorrow is: " + tomorrow + "ºC",
                             "Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE);
 
-                    //streamObserver.onNext(JOptionPane.showMessageDialog(null, "The weather forecast for tomorrow is: " + tomorrow,
-                           //"Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE));
-
-
                     WeatherForecastResponse response = WeatherForecastResponse.newBuilder()
                             .setMessage("The weather forecast for tomorrow is: " + tomorrow + "ºC")
                             .build();
                     streamObserver.onNext(response);
-
-
                 }
 
                 //This will be used when the user is not connected with the server
