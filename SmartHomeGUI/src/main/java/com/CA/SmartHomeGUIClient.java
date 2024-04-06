@@ -93,20 +93,25 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(UnaryResponse response)
             {
-                JOptionPane.showMessageDialog(null, response.getMessage(), "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
-
+                JOptionPane.showMessageDialog(null,
+                        response.getMessage(),
+                        "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
             }
 
             @Override
             public void onError(Throwable t)
             {
-                JOptionPane.showMessageDialog(null, t.getMessage(),"Unary Response from Server", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        t.getMessage(),
+                        "Unary Response from Server", JOptionPane.ERROR_MESSAGE);
             }
 
             @Override
             public void onCompleted()
             {
-                JOptionPane.showMessageDialog(null,"Unary request completed", "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        "Unary request completed",
+                        "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
@@ -227,7 +232,9 @@ public class SmartHomeGUIClient extends JFrame
                 .setMessage(setTemp)
                 .build();
 
-        JOptionPane.showMessageDialog(null, message, "Client Side", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,
+                message,
+                "Client Side", JOptionPane.INFORMATION_MESSAGE);
         //System.out.println("Sending message to server: " + message);
         requestObserver.onNext(request);
     }
@@ -262,8 +269,11 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(WeatherForecastResponse weatherForecastResponse)
             {
-                myClientGUI.appendMessage("The client requested the forecast for tomorrow."); //send to JTextArea
+                myClientGUI.appendMessage("Client Request: " + "What is the forecast for tomorrow."); //send to JTextArea
+                myClientGUI.appendMessage("Server Response: " + weatherForecastResponse.getMessage()); //send to JTextArea
+
                 System.out.println("The client requested the forecast for tomorrow.");
+                System.out.println("Server Response: " + weatherForecastResponse.getMessage());
             }
 
             @Override
@@ -279,8 +289,7 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onCompleted()
             {
-                myClientGUI.appendMessage("onCompleted"); //send to JTextArea
-                System.out.println("onCompleted");
+                myClientGUI.appendMessage("OnCompleted"); //send to JTextArea
             }
         };
 

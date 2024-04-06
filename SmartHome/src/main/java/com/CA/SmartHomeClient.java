@@ -439,7 +439,7 @@ public class SmartHomeClient
                             @Override
                             public void onNext(BidirectionalResponse response)
                             {
-                                System.out.println("Server message: " + response.getMessage());
+                                System.out.println("Server WORKING HERE message: " + response.getMessage());
                             }
 
                             @Override

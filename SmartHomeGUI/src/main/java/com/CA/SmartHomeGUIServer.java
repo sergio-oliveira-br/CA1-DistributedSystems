@@ -12,13 +12,17 @@ import java.util.Random;
 public class SmartHomeGUIServer
 {
     //Instance Variables
-    private int port;
+    private final int port;
     private static Server server;
 
 
 
-    public SmartHomeGUIServer()
-    {}
+
+
+
+
+
+
 
 
 
@@ -53,26 +57,21 @@ public class SmartHomeGUIServer
 
         System.out.println("Server started on PORT: " + port + " waiting for connection...");
 
-        /*
+
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
             {
                 JOptionPane.showMessageDialog(null,"\nShutting down gRPC server." +
                         "\nThis was CA1 - Distributed System" +
                         "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
-
-
-
-
+                stop();
 
                 //System.out.println("\nShutting down gRPC server." +
                         //"\nThis was CA1 - Distributed System" +
                         //"\nby Sergio Oliveira - x23170981@student.ncirl.ie");
                 //SmartHomeGUIServer.this.stop();
             }
-        }));*/
-
-        //myServerGUI.appendMessage("Server started on PORT: " + port + " waiting for connection..."); //send to JTextArea
+        }));
     }
 
     //Method: Ends and clean the gRPC
@@ -183,7 +182,8 @@ public class SmartHomeGUIServer
     static class BidirectionalStreamingImpl extends BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceImplBase {
         @Override
         public StreamObserver<BidirectionalRequest> bidirectionalStream(StreamObserver<BidirectionalResponse> responseObserver) {
-            return new StreamObserver<BidirectionalRequest>() {
+            return new StreamObserver<BidirectionalRequest>()
+            {
                 @Override
                 public void onNext(BidirectionalRequest request)
                 {
@@ -192,6 +192,11 @@ public class SmartHomeGUIServer
                         //Respond to the client's message with a stream
                         if(request.getMessage().compareTo("15") < 0 || request.getMessage().compareTo("25") > 0)
                         {
+                            BidirectionalResponse response = BidirectionalResponse.newBuilder()
+                                    .setMessage("response from the serverrrrrr")
+                                    .build();
+                            responseObserver.onNext(response);
+
                             JOptionPane.showMessageDialog(null,
                                     "Sorry. Your request is out of range." +
                                              "\nPlease, could you try again within the range (15ºC - 25ºC)",
@@ -206,26 +211,10 @@ public class SmartHomeGUIServer
                                     "Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE);
                         }
 
-                        /*
-                        //Respond to the client's message with a stream
-                        JOptionPane.showMessageDialog(null, "Hi Client, I got your request!" +
-                                        "\nYour temperature has been adjusted to " + request.getMessage() + "ºC",
-                                "Server-Side", JOptionPane.INFORMATION_MESSAGE);
-
-
-                         */
-                        //BidirectionalResponse response = BidirectionalResponse.newBuilder()
-                                //.setMessage(JOptionPane.showInputDialog(null, "Okay@@@!!!") + request.getMessage())
-                                //.build();
-                       // responseObserver.onNext(response);
-
-
-                       /* BidirectionalResponse response = BidirectionalResponse.newBuilder()
-                                .setMessage("Okay. Room temperature set !!!!!! " + request.getMessage())
+                        BidirectionalResponse response = BidirectionalResponse.newBuilder()
+                                .setMessage("Received and processing request from the client.")
                                 .build();
                         responseObserver.onNext(response);
-
-                        */
                     }
                 }
 
@@ -305,6 +294,6 @@ public class SmartHomeGUIServer
     {
         SmartHomeGUIServer server = new SmartHomeGUIServer(8081);
         server.start();
-        server.blockUntilShutdown();
+        blockUntilShutdown();
     }
 }
