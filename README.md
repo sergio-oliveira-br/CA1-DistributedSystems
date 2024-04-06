@@ -47,6 +47,6 @@ Smart Devices
   Respond to the user that the component has switched on/off.
 
 Version 1.0 
-=========================
+---
 by Sergio Oliveira 
 
