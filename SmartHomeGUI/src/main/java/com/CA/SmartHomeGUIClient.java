@@ -33,6 +33,9 @@ public class SmartHomeGUIClient extends JFrame
 
 
 
+
+
+
     public SmartHomeGUIClient()
     {}
 
@@ -89,6 +92,8 @@ public class SmartHomeGUIClient extends JFrame
                 .setName(name)
                 .build();
 
+        System.out.println("You are streaming your information to the server");
+
         stub.sendUnaryRequest(request, new StreamObserver<UnaryResponse>()
         {
             @Override
@@ -97,6 +102,8 @@ public class SmartHomeGUIClient extends JFrame
                 JOptionPane.showMessageDialog(null,
                         response.getMessage(),
                         "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
+
+                System.out.println("Unary response from server: " + response.getMessage());
 
             }
 
@@ -114,6 +121,8 @@ public class SmartHomeGUIClient extends JFrame
                 JOptionPane.showMessageDialog(null,
                         "Unary request completed",
                         "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
+
+                System.out.println("Unary request completed");
             }
         });
     }
@@ -133,24 +142,27 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(ServerResponse response) {
                 System.out.println("Server response: " + response.getMessage());
-                myClientGUI.appendMessage("Server response: " + response.getMessage());//send to JTextArea
+                //myClientGUI.appendMessage("Server response: " + response.getMessage());//send to JTextArea
             }
 
             @Override
             public void onError(Throwable t) {
                 System.err.println("Error in streaming client information: " + t.getMessage());
-                myClientGUI.appendMessage("Error in streaming client information: " + t.getMessage());//send to JTextArea
+                //myClientGUI.appendMessage("Error in streaming client information: " + t.getMessage());//send to JTextArea
             }
 
             @Override
             public void onCompleted() {
                 System.out.println("Streaming client information completed");
-                myClientGUI.appendMessage("Streaming client information completed");//send to JTextArea
+                //myClientGUI.appendMessage("Streaming client information completed");//send to JTextArea
             }
+
         });
 
-        try {
-            while (true) {
+        try
+        {
+            while (true)
+            {
                 String dateTime = LocalDateTime.now().toString();
                 ClientInformation clientInfo = ClientInformation.newBuilder()
                         .setClientName(clientName)
@@ -159,6 +171,7 @@ public class SmartHomeGUIClient extends JFrame
                 requestObserver.onNext(clientInfo);
                 Thread.sleep(5000); // Send information every 5 seconds
             }
+
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -186,7 +199,7 @@ public class SmartHomeGUIClient extends JFrame
     //Method: This method allows the user set the temp. Using this on the button SmartThermostats
     public void setYourTemp (String setTemp)
     {
-        //Create a channel to the server
+        //Create a channel
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8081)
                 .usePlaintext()
                 .build();

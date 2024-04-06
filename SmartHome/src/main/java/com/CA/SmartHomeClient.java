@@ -166,7 +166,8 @@ public class SmartHomeClient
         UnaryRequest request = UnaryRequest.newBuilder()
                 .setName(name)
                 .build();
-        stub.sendUnaryRequest(request, new StreamObserver<UnaryResponse>() {
+        stub.sendUnaryRequest(request, new StreamObserver<UnaryResponse>()
+        {
             @Override
             public void onNext(UnaryResponse response) {
                 System.out.println("Unary response from server: " + response.getMessage());

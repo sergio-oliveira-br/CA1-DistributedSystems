@@ -12,11 +12,8 @@ import java.util.Random;
 public class SmartHomeGUIServer
 {
     //Instance Variables
-    private final int port;
+    private int port;
     private static Server server;
-
-
-
 
 
 
@@ -75,7 +72,7 @@ public class SmartHomeGUIServer
     }
 
     //Method: Ends and clean the gRPC
-    static void stop()
+    public void stop()
     {
         if (server != null)
         {
@@ -129,6 +126,11 @@ public class SmartHomeGUIServer
                     System.out.println("Received client information:");
                     System.out.println("Client Name: " + clientInfo.getClientName());
                     System.out.println("Date and Time: " + clientInfo.getDateTime());
+
+                    ServerResponse response = ServerResponse.newBuilder()
+                            .setMessage("HI FROM SERVER")
+                            .build();
+                   // responseObserver.onNext(response);
                 }
 
                 @Override
@@ -146,6 +148,7 @@ public class SmartHomeGUIServer
                     responseObserver.onCompleted();
                 }
             };
+
         }
     }
 
@@ -273,7 +276,11 @@ public class SmartHomeGUIServer
 
 
 
+    //constructor
+    public SmartHomeGUIServer()
+    {
 
+    }
 
 
 

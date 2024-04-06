@@ -1,8 +1,17 @@
 package com.CA;
 
+import com.CA.gRPC.BidirectionalStreamingServiceGrpc;
+import com.CA.gRPC.StreamingClientServiceGrpc;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import io.grpc.Server;
+
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.channels.Channel;
 
 public class myGUI extends JFrame
 {
@@ -56,16 +65,14 @@ public class myGUI extends JFrame
                 myClient.sendUnaryRequest("Sergio Oliveira");
 
                 //Send unary request
-                String stub = "Sergio Oliveira - Client Side";
+                String stub = "Sergio Oliveira";
 
                 // Start streaming client information
                 Thread streamThread = new Thread(() -> myClient.streamClientInformation(stub));
                 streamThread.start();
 
-                //I DO NOT IT SO FAR
-                //Call the second frame - YOUR CONNECTION SCREEN for shutdown the connection
-                //YourConnection connectionScreen = new YourConnection(client);
-                //connectionScreen.setVisible(true);
+                // Disable the start connection button once clicked
+                yourConnectionButton.setEnabled(false);
 
             }
         });
@@ -114,16 +121,60 @@ public class myGUI extends JFrame
 
 
 
+        disconnectButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+                SmartHomeGUIServer myServer = new SmartHomeGUIServer();
+                myServer.stop();
+                appendMessage("This was CA Distributed System by Sergio Oliveira");
+
+                SmartHomeGUIClient myClient = new SmartHomeGUIClient(
+                        "localhost",
+                        8081,
+                        "Sergio Oliveira");
+                    try
+                    {
+                        myClient.shutdown();
+                    }
+
+                    catch (InterruptedException ex)
+                    {
+                        throw new RuntimeException(ex);
+                    }
+                appendMessage("You was disconnected");
+                disconnectButton.setEnabled(false);
+                connectButton.setEnabled(true);
+            }
+        });
 
 
 
 
 
 
+        connectButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                SmartHomeGUIServer myServer = new SmartHomeGUIServer(8081);
+                try
+                {
+                    appendMessage("Connecting client to server...");
+                    myServer.start();
+                    appendMessage("Successful Connection");
+                }
 
+                catch (IOException ex)
+                {
+                    throw new RuntimeException(ex);
+                }
 
-
-
-
+                connectButton.setEnabled(false); //once connected the button will be unavailable.
+            }
+        });
     }
 }
