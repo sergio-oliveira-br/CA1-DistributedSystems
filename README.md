@@ -16,8 +16,10 @@ By walking through we will see:
   Server and client code using the protocol buffer compiler.
   Java gRPC API - Simple client and server 
 
-Reference: 
+References: 
 https://grpc.io/docs/languages/java/basics/
+https://moodle2023.ncirl.ie/course/view.php?id=1201
+
 
 Project - Smart Home 
 =========================
@@ -44,6 +46,7 @@ Your Connection
 Smart Devices
   Respond to the user that the component has switched on/off.
 
-=========================
-by Sergio Oliveira 
 Version 1.0 
+---
+by Sergio Oliveira 
+
