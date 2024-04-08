@@ -23,6 +23,7 @@ public class SmartHomeGUIServer
 
 
 
+
     //Constructor: Get the port
     public SmartHomeGUIServer(int port)
     {
@@ -61,7 +62,9 @@ public class SmartHomeGUIServer
                 JOptionPane.showMessageDialog(null,"\nShutting down gRPC server." +
                         "\nThis was CA1 - Distributed System" +
                         "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
+
                 stop();
+
 
                 //System.out.println("\nShutting down gRPC server." +
                         //"\nThis was CA1 - Distributed System" +

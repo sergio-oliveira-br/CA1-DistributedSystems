@@ -1,17 +1,14 @@
 package com.CA;
 
-import com.CA.gRPC.BidirectionalStreamingServiceGrpc;
-import com.CA.gRPC.StreamingClientServiceGrpc;
+
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.Server;
-
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.nio.channels.Channel;
+
 
 public class myGUI extends JFrame
 {
@@ -83,7 +80,7 @@ public class myGUI extends JFrame
 
 
 
-
+        //This set the room temp
         smartThermostatsButton.addActionListener(new ActionListener()
         {
             @Override
@@ -120,7 +117,7 @@ public class myGUI extends JFrame
 
 
 
-
+        //Disconnect and clean the connection
         disconnectButton.addActionListener(new ActionListener()
         {
             @Override
@@ -128,25 +125,46 @@ public class myGUI extends JFrame
             {
 
                 SmartHomeGUIServer myServer = new SmartHomeGUIServer();
-                myServer.stop();
+
+
                 appendMessage("This was CA Distributed System by Sergio Oliveira");
 
                 SmartHomeGUIClient myClient = new SmartHomeGUIClient(
                         "localhost",
                         8081,
                         "Sergio Oliveira");
+
+
+                SmartHomeGUIServer myS = new SmartHomeGUIServer(8081);
+
+
+                myS.stop();
                     try
                     {
                         myClient.shutdown();
+                        myServer.stop();
                     }
 
                     catch (InterruptedException ex)
                     {
                         throw new RuntimeException(ex);
                     }
+
                 appendMessage("You was disconnected");
                 disconnectButton.setEnabled(false);
                 connectButton.setEnabled(true);
+
+                appendMessage("here before");
+
+                appendMessage("here after");
+
+
+
+
+
+
+
+
             }
         });
 
@@ -165,6 +183,8 @@ public class myGUI extends JFrame
                 {
                     appendMessage("Connecting client to server...");
                     myServer.start();
+
+
                     appendMessage("Successful Connection");
                 }
 

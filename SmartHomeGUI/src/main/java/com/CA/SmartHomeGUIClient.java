@@ -253,6 +253,9 @@ public class SmartHomeGUIClient extends JFrame
                 "Client Side", JOptionPane.INFORMATION_MESSAGE);
         //System.out.println("Sending message to server: " + message);
         requestObserver.onNext(request);
+
+
+
     }
 
 
