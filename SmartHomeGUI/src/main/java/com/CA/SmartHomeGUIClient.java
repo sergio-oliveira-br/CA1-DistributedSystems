@@ -7,10 +7,11 @@ import io.grpc.stub.StreamObserver;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
-import java.util.Random;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+
+//Logging and Diagnostics
+import java.util.logging.*;  //Logging and Diagnostics
 
 
 public class SmartHomeGUIClient extends JFrame
@@ -20,6 +21,10 @@ public class SmartHomeGUIClient extends JFrame
     private StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
     private myGUI myClientGUI;
+
+
+    //Logging and Diagnostics
+    private static final Logger logger = Logger.getLogger(SmartHomeGUIClient.class.getName());
 
 
 
@@ -50,6 +55,7 @@ public class SmartHomeGUIClient extends JFrame
     public SmartHomeGUIClient(String host, int port, String stub)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
+        logger.info("LOG client - Constructor host, port, stub");
     }
 
     //Constructor: Make possible to create a SmartHomeClient instance by passing a ManagedChannelBuilder object as an argument
@@ -65,7 +71,10 @@ public class SmartHomeGUIClient extends JFrame
     //Method: Close the connection before
     public void shutdown() throws InterruptedException
     {
-        channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+        channel.shutdown().awaitTermination(1, TimeUnit.SECONDS);
+        logger.info("awaitTermination 1 sec");
+        //channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+
     }
 
 
@@ -204,58 +213,62 @@ public class SmartHomeGUIClient extends JFrame
                 .usePlaintext()
                 .build();
 
-        //Create a stub for the bidirectional service
-        BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceStub stubBI = BidirectionalStreamingServiceGrpc.newStub(channel);
 
-        //Create a response observer for the server streaming
-        StreamObserver<BidirectionalResponse> responseObserver = new StreamObserver<BidirectionalResponse>()
+        try {
+
+
+            //Create a stub for the bidirectional service
+            BidirectionalStreamingServiceGrpc.BidirectionalStreamingServiceStub stubBI = BidirectionalStreamingServiceGrpc.newStub(channel);
+
+            //Create a response observer for the server streaming
+            StreamObserver<BidirectionalResponse> responseObserver = new StreamObserver<BidirectionalResponse>() {
+                @Override
+                public void onNext(BidirectionalResponse response) {
+                    myClientGUI.appendMessage("Server message: " + response.getMessage()); //send to JTextArea
+                    System.out.println("Server message: " + response.getMessage());
+                    onCompleted();
+                }
+
+                //This is call when the CLIENT is not connected with the SERVER
+                @Override
+                public void onError(Throwable t) {
+                    JOptionPane.showMessageDialog(null,
+                            "Error from the server " + t.getMessage() + "\nYou are disconnected from the server.",
+                            "Smart Home CA - Client", JOptionPane.ERROR_MESSAGE);
+                    System.err.println("Error from server: " + t.getMessage());
+                    myClientGUI.appendMessage("Error from server: " + t.getMessage()); //send to JTextArea
+                }
+
+                @Override
+                public void onCompleted() {
+                    System.out.println("Client stream completed. The temperature has been changed to " + setTemp + "ºC");
+                    myClientGUI.appendMessage("Client stream completed. The temperature has been changed to " + setTemp + "ºC");//send to JTextArea
+                }
+            };
+
+            //Create a request observer for the client streaming
+            StreamObserver<BidirectionalRequest> requestObserver = stubBI.bidirectionalStream(responseObserver);
+
+            //get the input from the user
+            //setTemp = JOptionPane.showInputDialog(null, "Please enter the temp");
+
+            String message = "The temperature has been requested by the user as: " + setTemp + "ºC";
+            BidirectionalRequest request = BidirectionalRequest.newBuilder()
+                    .setMessage(setTemp)
+                    .build();
+
+            JOptionPane.showMessageDialog(null,
+                    message,
+                    "Client Side", JOptionPane.INFORMATION_MESSAGE);
+            //System.out.println("Sending message to server: " + message);
+            requestObserver.onNext(request);
+
+        }
+        finally
         {
-            @Override
-            public void onNext(BidirectionalResponse response)
-            {
-                myClientGUI.appendMessage("Server message: " + response.getMessage()); //send to JTextArea
-                System.out.println("Server message: " + response.getMessage());
-                onCompleted();
-            }
-
-            //This is call when the CLIENT is not connected with the SERVER
-            @Override
-            public void onError(Throwable t)
-            {
-                JOptionPane.showMessageDialog(null,
-                        "Error from the server " + t.getMessage() + "\nYou are disconnected from the server.",
-                        "Smart Home CA - Client", JOptionPane.ERROR_MESSAGE);
-                System.err.println("Error from server: " + t.getMessage());
-                myClientGUI.appendMessage("Error from server: " + t.getMessage()); //send to JTextArea
-            }
-
-            @Override
-            public void onCompleted()
-            {
-                System.out.println("Client stream completed. The temperature has been changed to " + setTemp + "ºC");
-                myClientGUI.appendMessage("Client stream completed. The temperature has been changed to " + setTemp + "ºC");//send to JTextArea
-            }
-        };
-
-        //Create a request observer for the client streaming
-        StreamObserver<BidirectionalRequest> requestObserver = stubBI.bidirectionalStream(responseObserver);
-
-        //get the input from the user
-        //setTemp = JOptionPane.showInputDialog(null, "Please enter the temp");
-
-        String message = "The temperature has been requested by the user as: " + setTemp + "ºC";
-        BidirectionalRequest request = BidirectionalRequest.newBuilder()
-                .setMessage(setTemp)
-                .build();
-
-        JOptionPane.showMessageDialog(null,
-                message,
-                "Client Side", JOptionPane.INFORMATION_MESSAGE);
-        //System.out.println("Sending message to server: " + message);
-        requestObserver.onNext(request);
-
-
-
+            channel.shutdown();
+            logger.info("LOG client - setYourTemp() close the channel");
+        }
     }
 
 
@@ -340,6 +353,8 @@ public class SmartHomeGUIClient extends JFrame
         try
         {
             channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+            channel.shutdown();
+            logger.info("LOG client - forecast() close the channel");
         }
 
         catch (InterruptedException e)
@@ -347,6 +362,9 @@ public class SmartHomeGUIClient extends JFrame
             myClientGUI.appendMessage("Interrupted while shutting down the channel: " + e.getMessage()); //send to JTextArea
             System.err.println("Interrupted while shutting down the channel: " + e.getMessage());
             Thread.currentThread().interrupt();
+
+            //channel.shutdown();
+            logger.info("LOG client - setYourTemp() catch InterruptedE");
         }
     }
 

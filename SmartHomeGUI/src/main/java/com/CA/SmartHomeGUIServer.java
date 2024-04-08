@@ -4,16 +4,26 @@ import com.CA.gRPC.*;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.util.Random;
+
+
+//Logging and Diagnostics
+import java.util.logging.*;  //Logging and Diagnostics
+
+
 
 public class SmartHomeGUIServer
 {
     //Instance Variables
     private int port;
     private static Server server;
+
+
+    //Logging and Diagnostics
+    private static final Logger logger = Logger.getLogger(SmartHomeGUIServer.class.getName());
+
 
 
 
@@ -40,6 +50,9 @@ public class SmartHomeGUIServer
                 .addService(new StreamingClientServiceImpl()) //ping
                 .addService(new BidirectionalStreamingImpl()) //temperature
                 .build();
+
+
+        logger.info("LOG - THIS IS SmartHomeGUIServer Constructor (ServerBuilder, Port) ");
     }
 
     //Method: Initialize the gRPC
@@ -55,6 +68,8 @@ public class SmartHomeGUIServer
 
         System.out.println("Server started on PORT: " + port + " waiting for connection...");
 
+        logger.info("LOG - START() BEFORE addShutdownHook");
+
 
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
@@ -63,13 +78,10 @@ public class SmartHomeGUIServer
                         "\nThis was CA1 - Distributed System" +
                         "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
 
-                stop();
-
-
-                //System.out.println("\nShutting down gRPC server." +
-                        //"\nThis was CA1 - Distributed System" +
-                        //"\nby Sergio Oliveira - x23170981@student.ncirl.ie");
-                //SmartHomeGUIServer.this.stop();
+                //stop();
+                logger.info("LOG - before  STOP()");
+                SmartHomeGUIServer.this.stop();
+                logger.info("LOG - after  STOP()");
             }
         }));
     }
@@ -80,6 +92,7 @@ public class SmartHomeGUIServer
         if (server != null)
         {
             server.shutdown();
+            logger.info("LOG - inside stop()");
         }
     }
 
@@ -89,6 +102,7 @@ public class SmartHomeGUIServer
         if (server != null)
         {
             server.awaitTermination();
+            logger.info("LOG - inside blockUtilShutdown");
         }
     }
 

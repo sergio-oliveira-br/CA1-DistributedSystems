@@ -22,6 +22,10 @@ public class myGUI extends JFrame
     private JButton button1;
 
 
+
+
+
+
     //Method: used to display all msg on JTextArea
     public void appendMessage(String message)
     {
@@ -91,9 +95,14 @@ public class myGUI extends JFrame
                 //JOptionPane.showInputDialog(myGUI.this, "Enter the temperature",
                        // "Smart Thermostats", JOptionPane.INFORMATION_MESSAGE);
 
-                //SmartHomeGUIClient myClient = new SmartHomeGUIClient();
+
 
                 myClientGUI.setYourTemp(JOptionPane.showInputDialog(myGUI.this, "Please enter the Temp"));
+
+
+
+
+
             }
         });
 
@@ -124,25 +133,19 @@ public class myGUI extends JFrame
             public void actionPerformed(ActionEvent e)
             {
 
-                SmartHomeGUIServer myServer = new SmartHomeGUIServer();
+                //SmartHomeGUIServer myServer = new SmartHomeGUIServer();
 
 
-                appendMessage("This was CA Distributed System by Sergio Oliveira");
+                appendMessage("\nThis was CA Distributed System by Sergio Oliveira");
 
                 SmartHomeGUIClient myClient = new SmartHomeGUIClient(
                         "localhost",
                         8081,
                         "Sergio Oliveira");
 
-
-                SmartHomeGUIServer myS = new SmartHomeGUIServer(8081);
-
-
-                myS.stop();
                     try
                     {
                         myClient.shutdown();
-                        myServer.stop();
                     }
 
                     catch (InterruptedException ex)
@@ -150,13 +153,14 @@ public class myGUI extends JFrame
                         throw new RuntimeException(ex);
                     }
 
+
+
                 appendMessage("You was disconnected");
+
+
                 disconnectButton.setEnabled(false);
                 connectButton.setEnabled(true);
 
-                appendMessage("here before");
-
-                appendMessage("here after");
 
 
 
