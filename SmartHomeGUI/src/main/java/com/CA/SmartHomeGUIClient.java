@@ -7,6 +7,8 @@ import io.grpc.stub.StreamObserver;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
@@ -55,7 +57,7 @@ public class SmartHomeGUIClient extends JFrame
     public SmartHomeGUIClient(String host, int port, String stub)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
-        logger.info("LOG client - Constructor host, port, stub");
+        //logger.info("LOG client - Constructor host, port, stub");
     }
 
     //Constructor: Make possible to create a SmartHomeClient instance by passing a ManagedChannelBuilder object as an argument
@@ -66,14 +68,16 @@ public class SmartHomeGUIClient extends JFrame
         //lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
         this.stub = StreamingClientServiceGrpc.newStub(channel);
 
+
+
     }
 
     //Method: Close the connection before
     public void shutdown() throws InterruptedException
     {
-        channel.shutdown().awaitTermination(1, TimeUnit.SECONDS);
-        logger.info("awaitTermination 1 sec");
-        //channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+        //channel.shutdown().awaitTermination(1, TimeUnit.SECONDS);
+        logger.info(" this is the SHUTDOWN: awaitTermination 5 secs");
+        channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 
     }
 
@@ -94,6 +98,12 @@ public class SmartHomeGUIClient extends JFrame
         The idea is get response from the user
         ___________________________________
     */
+
+
+
+
+
+
 
     public void sendUnaryRequest(String name)
     {
@@ -132,10 +142,10 @@ public class SmartHomeGUIClient extends JFrame
                         "Unary Response from Server", JOptionPane.INFORMATION_MESSAGE);
 
                 System.out.println("Unary request completed");
+
             }
         });
     }
-
 
 
 
@@ -151,18 +161,21 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(ServerResponse response) {
                 System.out.println("Server response: " + response.getMessage());
-                //myClientGUI.appendMessage("Server response: " + response.getMessage());//send to JTextArea
+                //"I CANNOT SEND"
+                //myClientGUI.appendMessage("Stop Streaming...");//send to JTextArea
             }
 
             @Override
             public void onError(Throwable t) {
                 System.err.println("Error in streaming client information: " + t.getMessage());
+                //"I CANNOT SEND"
                 //myClientGUI.appendMessage("Error in streaming client information: " + t.getMessage());//send to JTextArea
             }
 
             @Override
             public void onCompleted() {
                 System.out.println("Streaming client information completed");
+                //"I CANNOT SEND"
                 //myClientGUI.appendMessage("Streaming client information completed");//send to JTextArea
             }
 
@@ -170,7 +183,7 @@ public class SmartHomeGUIClient extends JFrame
 
         try
         {
-            while (true)
+           while (streaming())
             {
                 String dateTime = LocalDateTime.now().toString();
                 ClientInformation clientInfo = ClientInformation.newBuilder()
@@ -183,12 +196,25 @@ public class SmartHomeGUIClient extends JFrame
 
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }
 
+        }
         requestObserver.onCompleted();
     }
 
 
+    private static boolean streaming = true;
+
+    public static boolean streaming()
+    {
+        return streaming;
+    }
+
+
+    //Method: change the status of streaming boolean
+    public static void setStreaming(boolean value)
+    {
+        streaming = value;
+    }
 
 
 

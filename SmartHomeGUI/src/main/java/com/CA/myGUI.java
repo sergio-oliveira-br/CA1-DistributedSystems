@@ -1,8 +1,6 @@
 package com.CA;
 
 
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,10 +18,7 @@ public class myGUI extends JFrame
     private JButton yourConnectionButton;
     private JTextArea systemInformation;
     private JButton button1;
-
-
-
-
+    private JButton stopStreamingButton;
 
 
     //Method: used to display all msg on JTextArea
@@ -55,6 +50,10 @@ public class myGUI extends JFrame
         systemInformation.setEditable(false); //the user is not allow to edit
 
 
+        //This makes the button unable until the user start streaming by the button your connection
+        stopStreamingButton.setEnabled(false);
+
+
         //Call SmartHomePing the method
         yourConnectionButton.addActionListener(new ActionListener()
         {
@@ -72,11 +71,75 @@ public class myGUI extends JFrame
                 Thread streamThread = new Thread(() -> myClient.streamClientInformation(stub));
                 streamThread.start();
 
-                // Disable the start connection button once clicked
+
+                //Disable the start connection button once clicked
                 yourConnectionButton.setEnabled(false);
+
+                //Enables the button
+                stopStreamingButton.setEnabled(true);
+
+
+
+
 
             }
         });
+
+
+
+
+        stopStreamingButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                //Start Connection
+                SmartHomeGUIClient myClient = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
+                SmartHomeGUIClient.setStreaming(false);
+
+                try {
+                    myClient.shutdown();
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                stopStreamingButton.setEnabled(false);
+                yourConnectionButton.setEnabled(true);
+
+            }
+
+
+
+
+
+                /*
+                myClient.sendUnaryRequest("Sergio Oliveira");
+
+                //Send unary request
+                String stub = "Sergio Oliveira";
+
+                Thread streamThread = new Thread(() -> myClient.streamClientInformation(stub));
+
+                streamThread.start();
+
+
+
+                try {
+                    myClient.shutdown();
+
+
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                    //Thread.currentThread().interrupt();
+                }
+
+                 */
+
+            //}
+       });
+
+
+
 
 
 
@@ -132,8 +195,11 @@ public class myGUI extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                SmartHomeGUIServer myServer = new SmartHomeGUIServer();
+                //SmartHomeGUIServer myServer1 = new SmartHomeGUIServer(8081);
 
-                //SmartHomeGUIServer myServer = new SmartHomeGUIServer();
+
+                //SmartHomeGUIServer myServerChannel = new SmartHomeGUIServer(server, 8081);
 
 
                 appendMessage("\nThis was CA Distributed System by Sergio Oliveira");
@@ -143,9 +209,16 @@ public class myGUI extends JFrame
                         8081,
                         "Sergio Oliveira");
 
+
                     try
                     {
+                        JOptionPane.showMessageDialog(null, "before stop and shutdown");
+
                         myClient.shutdown();
+                        myServer.stop();
+                        //myServer1.stop();
+
+                        JOptionPane.showMessageDialog(null, "AFTER stop and shutdown");
                     }
 
                     catch (InterruptedException ex)
@@ -160,12 +233,6 @@ public class myGUI extends JFrame
 
                 disconnectButton.setEnabled(false);
                 connectButton.setEnabled(true);
-
-
-
-
-
-
 
 
 
@@ -198,7 +265,15 @@ public class myGUI extends JFrame
                 }
 
                 connectButton.setEnabled(false); //once connected the button will be unavailable.
+
             }
         });
+
+
+
+
+
+
+
     }
 }

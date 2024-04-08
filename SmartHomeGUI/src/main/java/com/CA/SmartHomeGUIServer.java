@@ -73,15 +73,30 @@ public class SmartHomeGUIServer
 
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
+            //SwingUtilities.invokeLater(() ->
             {
-                JOptionPane.showMessageDialog(null,"\nShutting down gRPC server." +
-                        "\nThis was CA1 - Distributed System" +
-                        "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
+                try
+                {
+                    JOptionPane.showMessageDialog(null, "\nShutting down gRPC server." +
+                            "\nThis was CA1 - Distributed System" +
+                            "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
+                    System.out.println("working here inside");
+                }
 
-                //stop();
-                logger.info("LOG - before  STOP()");
-                SmartHomeGUIServer.this.stop();
-                logger.info("LOG - after  STOP()");
+
+
+                catch (Exception e)
+                {
+                    System.out.println("working here after");
+                    logger.info("LOG - before  STOP()");
+                    stop();
+                    //SmartHomeGUIServer.this.stop();
+                    logger.info("LOG - after  STOP()");
+                    System.out.println("this is the Exception: " + e);
+                }
+
+
+
             }
         }));
     }
