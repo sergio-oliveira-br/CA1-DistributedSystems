@@ -1,5 +1,6 @@
 package com.CA;
 
+import com.CA.gRPC.LightRequest;
 import com.CA.gRPC.LightServicesGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -77,6 +78,7 @@ public class SmartDevicesGUI extends JFrame
 
 
 
+
         livingRoomBox.addActionListener(new ActionListener()
         {
             @Override
@@ -92,7 +94,13 @@ public class SmartDevicesGUI extends JFrame
                     if(userResponse == JOptionPane.YES_OPTION)
                     {
                         //here I call my Method
-                        myClientGUI.controlLights(true);
+                        //myClientGUI.controlLights(true);
+                        lightBlockingStub.controlLights(LightRequest.newBuilder()
+                                .setLightOn(true)
+                                .build());
+                        System.out.println("This is a test");
+
+                        //I need to get response from the server
 
                     }
                     else
