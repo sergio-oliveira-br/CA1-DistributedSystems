@@ -54,6 +54,8 @@ public class myGUI extends JFrame
         //This make the reference to JTextArea
         SmartHomeGUIClient myClientGUI = new SmartHomeGUIClient(this);
 
+
+
         //WELCOME SCREEN - HOME
         setContentPane(WelcomeScreen);
 
@@ -289,10 +291,16 @@ public class myGUI extends JFrame
         });
 
 
+        smartDevicesButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                //This make the reference to new JFrame
+                SmartDevicesGUI myDevicesGUI = new SmartDevicesGUI();
+                myDevicesGUI.setVisible(true);
 
-
-
-
-
+            }
+        });
     }
 }
