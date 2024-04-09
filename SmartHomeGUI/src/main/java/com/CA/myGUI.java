@@ -1,3 +1,22 @@
+/*
+Continuous Assessment (CA)
+Type: Project
+
+Distributed Systems - NCI
+HDip in Computing - HDCSDEV_INT
+
+Due Date: 19th April 2024
+Lecturer: Mark Cudden
+
+Student:
+    Sergio Vinicio da Silva Oliveira
+    x23170981@student.ncirl.ie
+
+GitHub:
+https://github.com/sergio-oliveira-br/CA1-DistributedSystems
+*/
+
+
 package com.CA;
 
 

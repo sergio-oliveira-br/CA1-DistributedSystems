@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.CA.gRPC";
+option java_outer_classname = "LockProto";
+
+/*
+  Unary is request/response. The client wants a service,
+  it sends a request and receives a response.
+  If there is a connection failure, the client has to send the same request again.
+*/
+
+service LockServices
+{
+  rpc ControlLocks(LockRequest) returns (LockResponse);
+}
+
+message LockRequest
+{
+  bool lockOpen = 1;
+}
+
+message LockResponse
+{
+  string message = 1;
+}

@@ -1,3 +1,22 @@
+/*
+Continuous Assessment (CA)
+Type: Project
+
+Distributed Systems - NCI
+HDip in Computing - HDCSDEV_INT
+
+Due Date: 19th April 2024
+Lecturer: Mark Cudden
+
+Student:
+    Sergio Vinicio da Silva Oliveira
+    x23170981@student.ncirl.ie
+
+GitHub:
+https://github.com/sergio-oliveira-br/CA1-DistributedSystems
+*/
+
+
 package com.CA;
 
 import com.CA.gRPC.*;
@@ -22,7 +41,14 @@ public class SmartHomeGUIClient extends JFrame
     private ManagedChannel channel;
     private StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
+    private static boolean streaming = true; //Responsible to stop my streaming client information
+
     private myGUI myClientGUI;
+
+
+
+
+
 
 
     //Logging and Diagnostics
@@ -30,6 +56,11 @@ public class SmartHomeGUIClient extends JFrame
 
 
 
+
+
+
+
+    //Constructor:
     public SmartHomeGUIClient(myGUI myClientGUI)
     {
         this.myClientGUI = myClientGUI;
@@ -53,7 +84,7 @@ public class SmartHomeGUIClient extends JFrame
 
 
 
-    //Constructor:Responsible to get 3 parameters
+    //Constructor:
     public SmartHomeGUIClient(String host, int port, String stub)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
@@ -202,7 +233,7 @@ public class SmartHomeGUIClient extends JFrame
     }
 
 
-    private static boolean streaming = true;
+
 
     public static boolean streaming()
     {
@@ -215,6 +246,14 @@ public class SmartHomeGUIClient extends JFrame
     {
         streaming = value;
     }
+
+
+
+
+
+
+
+
 
 
 

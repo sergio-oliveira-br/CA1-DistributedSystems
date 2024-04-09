@@ -1,3 +1,22 @@
+/*
+Continuous Assessment (CA)
+Type: Project
+
+Distributed Systems - NCI
+HDip in Computing - HDCSDEV_INT
+
+Due Date: 19th April 2024
+Lecturer: Mark Cudden
+
+Student:
+    Sergio Vinicio da Silva Oliveira
+    x23170981@student.ncirl.ie
+
+GitHub:
+https://github.com/sergio-oliveira-br/CA1-DistributedSystems
+*/
+
+
 package com.CA;
 
 import com.CA.gRPC.*;
@@ -28,11 +47,9 @@ public class SmartHomeGUIServer
 
 
 
-
-
-
-
-
+    //Constructor: Default
+    public SmartHomeGUIServer()
+    {}
 
     //Constructor: Get the port
     public SmartHomeGUIServer(int port)
@@ -54,6 +71,9 @@ public class SmartHomeGUIServer
 
         logger.info("LOG - THIS IS SmartHomeGUIServer Constructor (ServerBuilder, Port) ");
     }
+
+
+
 
     //Method: Initialize the gRPC
     public void start() throws IOException
@@ -120,6 +140,26 @@ public class SmartHomeGUIServer
             logger.info("LOG - inside blockUtilShutdown");
         }
     }
+
+
+    /*
+        ___________________________________
+        !!! Smart Devices - Lights and Locks  !!!
+
+        Here are where all method's to switch off/on
+        The idea is to send request to the server
+        and get response from the server
+        ___________________________________
+    */
+
+
+
+
+
+
+
+
+
 
 
 
@@ -308,11 +348,7 @@ public class SmartHomeGUIServer
 
 
 
-    //constructor
-    public SmartHomeGUIServer()
-    {
 
-    }
 
 
 
