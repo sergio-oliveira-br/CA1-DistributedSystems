@@ -62,12 +62,11 @@ public class SmartHomeGUIServer
     {
         this.port = port;
         server = serverBuilder
-                //.addService(new SmartHomeImpl())
-                //.addService(new SmartHomeLockImpl())
-                .addService(new StreamingClientServiceImpl()) //ping
-                .addService(new BidirectionalStreamingImpl()) //temperature
+                .addService(new SmartHomeImpl())                //Lights
+                .addService(new SmartHomeLockImpl())            //Locks
+                .addService(new StreamingClientServiceImpl())   //Ping
+                .addService(new BidirectionalStreamingImpl())   //Temperature
                 .build();
-
 
         logger.info("LOG - THIS IS SmartHomeGUIServer Constructor (ServerBuilder, Port) ");
     }
@@ -154,7 +153,53 @@ public class SmartHomeGUIServer
 
 
 
+    //Method: To control locks based on the request
+    static class SmartHomeLockImpl extends LockServicesGrpc.LockServicesImplBase
+    {
+        @Override
+        public void controlLocks(LockRequest request, StreamObserver<LockResponse> responseObserver)
+        {
 
+
+            boolean lockOpen = request.getLockOpen();
+            String message;
+            if (lockOpen)
+            {
+                message = "Lock closed" + "\n------";
+            } else
+            {
+                message = "Lock opened" + "\n------";
+            }
+            LockResponse response = LockResponse.newBuilder().setMessage(message).build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+    }
+
+
+
+
+    //Method: To control lights based on the request
+    static class SmartHomeImpl extends LightServicesGrpc.LightServicesImplBase
+    {
+        @Override
+        public void controlLights(LightRequest request, StreamObserver<LightResponse> responseObserver)
+        {
+
+            boolean lightOn = request.getLightOn();
+            String message;
+            if (lightOn)
+            {
+                message = "Lights turned on" + "\n------";
+            } else
+            {
+                message = "Lights turned off" + "\n------";
+            }
+            LightResponse response = LightResponse.newBuilder().setMessage(message).build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+    }
 
 
 

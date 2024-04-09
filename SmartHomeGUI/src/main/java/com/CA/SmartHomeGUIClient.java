@@ -26,8 +26,6 @@ import io.grpc.stub.StreamObserver;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
@@ -40,6 +38,8 @@ public class SmartHomeGUIClient extends JFrame
     //Instance Variable
     private ManagedChannel channel;
     private StreamingClientServiceGrpc.StreamingClientServiceStub stub;
+    private LightServicesGrpc.LightServicesBlockingStub lightBlockingStub;
+    private LockServicesGrpc.LockServicesBlockingStub lockBlockingStub;
 
     private static boolean streaming = true; //Responsible to stop my streaming client information
 
@@ -95,8 +95,8 @@ public class SmartHomeGUIClient extends JFrame
     public SmartHomeGUIClient(ManagedChannelBuilder<?> channelBuilder, String stub)
     {
         channel = channelBuilder.build();                       //It is called to build a communication channel
-        //lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);  //Used to make RPC calls to the server
-        //lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
+        lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);  //Used to make RPC calls to the server
+        lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
         this.stub = StreamingClientServiceGrpc.newStub(channel);
 
 
