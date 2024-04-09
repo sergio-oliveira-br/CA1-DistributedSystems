@@ -79,8 +79,8 @@ public class SmartHomeGUIServer
     {
         server = ServerBuilder.forPort(port)
                 .addService(new StreamingClientServiceImpl())   //ping
-                //.addService(new SmartHomeImpl())
-                //.addService(new SmartHomeLockImpl())
+                .addService(new SmartHomeImpl())
+                .addService(new SmartHomeLockImpl())
                 .addService(new BidirectionalStreamingImpl()) //temperature
                 .build()
                 .start();
@@ -141,14 +141,14 @@ public class SmartHomeGUIServer
     }
 
 
-    /*
-        ___________________________________
+    /*  from lecture examples
+        _____________________________________________
         !!! Smart Devices - Lights and Locks  !!!
 
         Here are where all method's to switch off/on
         The idea is to send request to the server
         and get response from the server
-        ___________________________________
+        _____________________________________________
     */
 
 
@@ -210,7 +210,7 @@ public class SmartHomeGUIServer
 
 
 
-    /*
+    /*  from lecture examples
         ___________________________________
         !!! Streaming client information !!!
 
@@ -290,7 +290,7 @@ public class SmartHomeGUIServer
 
 
 
-    /*
+    /*  from lecture examples
         __________________________________________________________
                     !!! Thermostats Services !!!
 

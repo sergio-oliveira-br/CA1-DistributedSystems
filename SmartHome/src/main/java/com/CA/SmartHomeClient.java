@@ -38,15 +38,7 @@ public class SmartHomeClient
     private final LockServicesGrpc.LockServicesBlockingStub lockBlockingStub;
     private final StreamingClientServiceGrpc.StreamingClientServiceStub stub;
 
-     /*
-        ___________________________________
-        !!! Lights and Locks Control !!!
 
-        Here are where all method's to control are
-        The idea is the user send requests to
-        turn on/turn off or open/close to the server
-        ___________________________________
-    */
 
     //Constructor:Responsible to get 3 parameters
     public SmartHomeClient(String host, int port, String stub)
@@ -69,6 +61,19 @@ public class SmartHomeClient
     {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
+
+
+
+
+    /*
+        ___________________________________
+        !!! Lights and Locks Control !!!
+
+        Here are where all method's to control are
+        The idea is the user send requests to
+        turn on/turn off or open/close to the server
+        ___________________________________
+    */
 
     //Method: Responsible to control the lights
     public void controlLights(boolean lightOn)

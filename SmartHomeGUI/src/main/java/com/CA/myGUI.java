@@ -291,6 +291,18 @@ public class myGUI extends JFrame
         });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
         smartDevicesButton.addActionListener(new ActionListener()
         {
             @Override
@@ -298,6 +310,7 @@ public class myGUI extends JFrame
             {
                 //This make the reference to new JFrame
                 SmartDevicesGUI myDevicesGUI = new SmartDevicesGUI();
+
                 myDevicesGUI.setVisible(true);
 
             }

@@ -1,5 +1,9 @@
 package com.CA;
 
+import com.CA.gRPC.LightServicesGrpc;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +40,9 @@ public class SmartDevicesGUI extends JFrame
 
     public SmartDevicesGUI()
     {
+        SmartHomeGUIClient myClientGUI = new SmartHomeGUIClient();
+
+
         //WELCOME SCREEN - HOME
         setContentPane(SmartDevices);
 
@@ -60,6 +67,16 @@ public class SmartDevicesGUI extends JFrame
         backDoorBox.setModel(new DefaultComboBoxModel<>(locksStatus));
         frontGateBox.setModel(new DefaultComboBoxModel<>(locksStatus));
 
+
+
+        //Initialize Stub
+        String host = "localhost";
+        int port = 8081;
+        ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+        LightServicesGrpc.LightServicesBlockingStub lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);
+
+
+
         livingRoomBox.addActionListener(new ActionListener()
         {
             @Override
@@ -75,10 +92,13 @@ public class SmartDevicesGUI extends JFrame
                     if(userResponse == JOptionPane.YES_OPTION)
                     {
                         //here I call my Method
+                        myClientGUI.controlLights(true);
+
                     }
                     else
                     {
                         livingRoomBox.setSelectedItem("Off");
+                        //myClientGUI.controlLights(false);
                     }
                 }
                 else
@@ -90,12 +110,14 @@ public class SmartDevicesGUI extends JFrame
                     if(userResponse == JOptionPane.YES_OPTION)
                     {
                         //here I call my method asking the server to switch off
+                        myClientGUI.controlLights(false);
                     }
                     else
                     {
                         livingRoomBox.setSelectedItem("On");
                     }
                 }
+                channel.shutdown();
             }
         });
 

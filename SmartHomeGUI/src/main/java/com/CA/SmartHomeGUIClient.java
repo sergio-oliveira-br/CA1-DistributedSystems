@@ -88,6 +88,7 @@ public class SmartHomeGUIClient extends JFrame
     public SmartHomeGUIClient(String host, int port, String stub)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
+        lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);
         //logger.info("LOG client - Constructor host, port, stub");
     }
 
@@ -116,12 +117,50 @@ public class SmartHomeGUIClient extends JFrame
 
 
 
+    /*  from lecture examples
+        _____________________________________________
+        !!! Smart Devices - Lights and Locks  !!!
+
+        Here are where all method's to switch off/on
+        The idea is to send request to the server
+        and get response from the server
+        _____________________________________________
+    */
+
+
+    //Method: Responsible to control the lights
+    public void controlLights(boolean lightOn)
+    {
+        LightRequest request = LightRequest.newBuilder().setLightOn(lightOn).build();
+        LightResponse response = lightBlockingStub.controlLights(request);
+        System.out.println("Response: " + response.getMessage());
+        myClientGUI.appendMessage("Response: " + response.getMessage());
+    }
+
+    //Method: Responsible to control the locks
+    public void controlLocks(boolean lockOpen)
+    {
+        LockRequest request = LockRequest.newBuilder().setLockOpen(lockOpen).build();
+        LockResponse response = lockBlockingStub.controlLocks(request);
+        System.out.println("Response: " + response.getMessage());
+    }
 
 
 
 
 
-    /*
+
+
+
+
+
+
+
+
+
+
+
+    /*  from lecture examples
         ___________________________________
         !!! Streaming client information !!!
 
@@ -265,7 +304,7 @@ public class SmartHomeGUIClient extends JFrame
         __________________________________________________________
                     !!! Thermostats CLIENT !!!
 
-        Here are where all method's related temp are
+        Here are where all method's related Temperature are
         The idea is set and get updates between Server and Client
         ___________________________________________________________
     */
