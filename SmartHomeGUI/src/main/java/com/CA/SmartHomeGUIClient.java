@@ -84,24 +84,24 @@ public class SmartHomeGUIClient extends JFrame
 
 
 
-    //Constructor:
+    //Constructor: Responsible to set communication to client
     public SmartHomeGUIClient(String host, int port, String stub)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
-        lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);
+        lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);             //Synchronous approach
         //logger.info("LOG client - Constructor host, port, stub");
     }
 
     //Constructor: Make possible to create a SmartHomeClient instance by passing a ManagedChannelBuilder object as an argument
     public SmartHomeGUIClient(ManagedChannelBuilder<?> channelBuilder, String stub)
     {
-        channel = channelBuilder.build();                       //It is called to build a communication channel
-        lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);  //Used to make RPC calls to the server
+        //It is called to build a communication channel gRPC
+        channel = channelBuilder.build();
+
+        //Synchronous approach: Used to make the gRPC calls to the server waiting (blocking) until get the answer using the channel created
+        lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);
         lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
         this.stub = StreamingClientServiceGrpc.newStub(channel);
-
-
-
     }
 
     //Method: Close the connection before
