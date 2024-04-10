@@ -134,7 +134,8 @@ public class SmartHomeGUIClient extends JFrame
         LightRequest request = LightRequest.newBuilder().setLightOn(lightOn).build();
         LightResponse response = lightBlockingStub.controlLights(request);
         System.out.println("Response: " + response.getMessage());
-        myClientGUI.appendMessage("Response: " + response.getMessage());
+        //myClientGUI.appendMessage("Response: " + response.getMessage());
+        //JOptionPane.showMessageDialog(null, "Your request has been sent");
     }
 
     //Method: Responsible to control the locks

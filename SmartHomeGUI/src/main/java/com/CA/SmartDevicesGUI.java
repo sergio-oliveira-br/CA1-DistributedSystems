@@ -41,7 +41,9 @@ public class SmartDevicesGUI extends JFrame
 
     public SmartDevicesGUI()
     {
-        SmartHomeGUIClient myClientGUI = new SmartHomeGUIClient();
+        SmartHomeGUIClient myClientGUI = new SmartHomeGUIClient( "localhost",
+                8081,
+                "Sergio Oliveira");
 
 
         //WELCOME SCREEN - HOME
@@ -85,30 +87,44 @@ public class SmartDevicesGUI extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 String status = (String) livingRoomBox.getSelectedItem();
+
                 if(status.equals("On"))
                 {
                     int userResponse = JOptionPane.showConfirmDialog(null,
                             "Would you like to switch on?",
                             "Server Confirmation", JOptionPane.YES_NO_OPTION);
 
+                    //THIS IS FOR ON
                     if(userResponse == JOptionPane.YES_OPTION)
                     {
-                        //here I call my Method
+
+
+
+
+                        myClientGUI.controlLights(true);
+
+
+
+
+
+
                         //myClientGUI.controlLights(true);
-                        lightBlockingStub.controlLights(LightRequest.newBuilder()
-                                .setLightOn(true)
-                                .build());
-                        System.out.println("This is a test");
+
+                        System.out.println("This is a test - IS ON");
 
                         //I need to get response from the server
+
 
                     }
                     else
                     {
-                        livingRoomBox.setSelectedItem("Off");
+                        livingRoomBox.setSelectedItem("Off"); //this IS not working
                         //myClientGUI.controlLights(false);
+
                     }
                 }
+
+                // THIS IS FOR OFF
                 else
                 {
                     int userResponse = JOptionPane.showConfirmDialog(null,
@@ -118,14 +134,22 @@ public class SmartDevicesGUI extends JFrame
                     if(userResponse == JOptionPane.YES_OPTION)
                     {
                         //here I call my method asking the server to switch off
-                        myClientGUI.controlLights(false);
+                        //myClientGUI.controlLights(false);
+                        lightBlockingStub.controlLights(LightRequest.newBuilder()
+                                .setLightOn(false)
+                                .build());
+
+
+
+                        //myClientGUI.controlLights(false);
+
+                        System.out.println("This is a test - !!!IS OFF!!");
                     }
                     else
                     {
                         livingRoomBox.setSelectedItem("On");
                     }
                 }
-                channel.shutdown();
             }
         });
 
