@@ -32,13 +32,11 @@ import java.util.Random;
 import java.util.logging.*;  //Logging and Diagnostics
 
 
-
 public class SmartHomeGUIServer
 {
     //Instance Variables
     private int port;
     private static Server server;
-
 
     //Logging and Diagnostics
     private static final Logger logger = Logger.getLogger(SmartHomeGUIServer.class.getName());
@@ -70,9 +68,6 @@ public class SmartHomeGUIServer
 
         logger.info("LOG - THIS IS SmartHomeGUIServer Constructor (ServerBuilder, Port) ");
     }
-
-
-
 
     //Method: Initialize the gRPC
     public void start() throws IOException
@@ -151,16 +146,12 @@ public class SmartHomeGUIServer
         _____________________________________________
     */
 
-
-
     //Method: To control locks based on the request
     static class SmartHomeLockImpl extends LockServicesGrpc.LockServicesImplBase
     {
         @Override
         public void controlLocks(LockRequest request, StreamObserver<LockResponse> responseObserver)
         {
-
-
             boolean lockOpen = request.getLockOpen();
             String message;
             if (lockOpen)
@@ -177,15 +168,12 @@ public class SmartHomeGUIServer
     }
 
 
-
-
     //Method: To control lights based on the request
     static class SmartHomeImpl extends LightServicesGrpc.LightServicesImplBase
     {
         @Override
         public void controlLights(LightRequest request, StreamObserver<LightResponse> responseObserver)
         {
-
             boolean lightOn = request.getLightOn();
             String message;
             if (lightOn)
@@ -200,13 +188,6 @@ public class SmartHomeGUIServer
             responseObserver.onCompleted();
         }
     }
-
-
-
-
-
-
-
 
 
 
@@ -235,7 +216,8 @@ public class SmartHomeGUIServer
         @Override
         public StreamObserver<ClientInformation> streamClientInformation(StreamObserver<ServerResponse> responseObserver)
         {
-            return new StreamObserver<ClientInformation>() {
+            return new StreamObserver<ClientInformation>()
+            {
                 @Override
                 public void onNext(ClientInformation clientInfo)
                 {
@@ -268,26 +250,6 @@ public class SmartHomeGUIServer
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /*  from lecture examples
@@ -386,21 +348,7 @@ public class SmartHomeGUIServer
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //=====================================================
 
     public static void main(String[] args) throws IOException, InterruptedException
     {
