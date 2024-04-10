@@ -250,5 +250,62 @@ public class SmartDevicesGUI extends JFrame
                 =======================================
          */
 
+        mainDoorBox.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String status = (String) mainDoorBox.getSelectedItem();
+
+                if(status.equals("On"))
+                {
+                    int userResponse = JOptionPane.showConfirmDialog(null,
+                            "Would you like to open the Main Door?",
+                            "Server Confirmation", JOptionPane.YES_NO_OPTION);
+
+                    //When the user select "ON" on JFrame Panel - ComboBox
+                    if(userResponse == JOptionPane.YES_OPTION)
+                    {
+                        myClientGUI.controlLocks(true);
+                    }
+
+                    else    //if the user press to NO on "ON".
+                    {
+                         mainDoorBox.setSelectedItem("Off");
+                         myClientGUI.controlLocks(false);
+                    }
+                }
+
+                //When the user select "OFF" on JFrame Panel - ComboBox
+                else
+                {
+                    int userResponse = JOptionPane.showConfirmDialog(null,
+                            "Would you like to switch OFF? ",
+                            "Server Confirmation", JOptionPane.YES_NO_OPTION);
+
+                    if(userResponse == JOptionPane.YES_OPTION)
+                    {
+                        myClientGUI.controlLocks(false);
+                    }
+
+                    //if the user press to NO on "OFF"
+                    else
+                    {
+                       mainDoorBox.setSelectedItem("On");
+                    }
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
     }
 }

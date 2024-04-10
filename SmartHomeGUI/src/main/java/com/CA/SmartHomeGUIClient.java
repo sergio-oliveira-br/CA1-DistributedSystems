@@ -135,7 +135,7 @@ public class SmartHomeGUIClient extends JFrame
         LightResponse response = lightBlockingStub.controlLights(request);
         System.out.println("Response: " + response.getMessage());
         //myClientGUI.appendMessage("Response: " + response.getMessage());
-        JOptionPane.showMessageDialog(null, "Server Response: " + response.getMessage(),
+        JOptionPane.showMessageDialog(null, response.getMessage(),
                 "Server Response", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -145,6 +145,8 @@ public class SmartHomeGUIClient extends JFrame
         LockRequest request = LockRequest.newBuilder().setLockOpen(lockOpen).build();
         LockResponse response = lockBlockingStub.controlLocks(request);
         System.out.println("Response: " + response.getMessage());
+        JOptionPane.showMessageDialog(null, response.getMessage(),
+                "Server Response", JOptionPane.INFORMATION_MESSAGE);
     }
 
 
