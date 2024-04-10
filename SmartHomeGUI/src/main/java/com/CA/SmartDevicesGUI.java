@@ -75,7 +75,10 @@ public class SmartDevicesGUI extends JFrame
         //I don't need this anymore, however I need the ManagedChannel for shutdown the channel to clear and ends everything
         //LightServicesGrpc.LightServicesBlockingStub lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);
 
-        addWindowListener(new WindowAdapter() {
+
+        //This will ask th user if they wanna leave, and then call the shutdown() to close and clean all connections
+        addWindowListener(new WindowAdapter()
+        {
             @Override
             public void windowClosing(WindowEvent e)
             {

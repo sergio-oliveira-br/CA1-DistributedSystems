@@ -16,10 +16,7 @@ GitHub:
 https://github.com/sergio-oliveira-br/CA1-DistributedSystems
 */
 
-
 package com.CA;
-
-
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -46,15 +43,10 @@ public class myGUI extends JFrame
         systemInformation.append(message + "\n");
     }
 
-
-
     public myGUI()
     {
-
         //This make the reference to JTextArea
         SmartHomeGUIClient myClientGUI = new SmartHomeGUIClient(this);
-
-
 
         //WELCOME SCREEN - HOME
         setContentPane(WelcomeScreen);
@@ -66,16 +58,20 @@ public class myGUI extends JFrame
         setLocationRelativeTo(null);
         setVisible(true);
 
-
         //Text Area: where the system will print few information
         systemInformation.setEditable(false); //the user is not allow to edit
-
 
         //This makes the button unable until the user start streaming by the button your connection
         stopStreamingButton.setEnabled(false);
 
+        /*
+            =====================================================
+                Your Connection & Stop Streaming are related
+                Where one starts streaming and the other stops
+            =====================================================
+        */
 
-        //Call SmartHomePing the method
+        //Start to send information to the server
         yourConnectionButton.addActionListener(new ActionListener()
         {
             @Override
@@ -107,8 +103,7 @@ public class myGUI extends JFrame
         });
 
 
-
-
+        //Stop sending information to the server
         stopStreamingButton.addActionListener(new ActionListener()
         {
             @Override
@@ -161,12 +156,11 @@ public class myGUI extends JFrame
 
 
 
-
-
-
-
-
-
+        /*
+            ===================================================================
+                Thermostats allows the user send a requests to the server
+            ===================================================================
+        */
 
         //This set the room temp
         smartThermostatsButton.addActionListener(new ActionListener()
@@ -191,10 +185,11 @@ public class myGUI extends JFrame
         });
 
 
-
-
-
-
+        /*
+            ===========================================================================================
+                THE ORIGINAL IDEA IS FOR THE SERVER TO SEND MSG TO THE USER WITHOUT USER'S REQUEST
+            ===========================================================================================
+        */
         //Just a test to ask the server the weather forecast
         button1.addActionListener(new ActionListener()
         {
@@ -207,8 +202,16 @@ public class myGUI extends JFrame
         });
 
 
+        /*
+            =================================================
+                Connect & Disconnect are related,
+                where one create the channel allowing
+                the communication between Server and Client,
+                & close e clean all connections
+            ==================================================
+        */
 
-
+        //!IMPORTANT THERE FEW ISSUES THAT I NEED TO CLOSE SOME CONNECTIONS
 
         //Disconnect and clean the connection
         disconnectButton.addActionListener(new ActionListener()
@@ -260,11 +263,7 @@ public class myGUI extends JFrame
             }
         });
 
-
-
-
-
-
+        //Start the Server
         connectButton.addActionListener(new ActionListener()
         {
             @Override
@@ -276,7 +275,6 @@ public class myGUI extends JFrame
                     appendMessage("Connecting client to server...");
                     myServer.start();
 
-
                     appendMessage("Successful Connection");
                 }
 
@@ -286,22 +284,19 @@ public class myGUI extends JFrame
                 }
 
                 connectButton.setEnabled(false); //once connected the button will be unavailable.
-
             }
         });
 
 
 
 
-
-
-
-
-
-
-
-
-
+        /*
+            =================================================
+                Smart Devices - This will open a new JFrame,
+                where the user is able to send request to
+                turn on/off and open/close few devices
+            ==================================================
+        */
 
         smartDevicesButton.addActionListener(new ActionListener()
         {
