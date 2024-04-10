@@ -1,14 +1,12 @@
 package com.CA;
 
-import com.CA.gRPC.LightRequest;
-import com.CA.gRPC.LightServicesGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import sun.jvm.hotspot.code.Stub;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class SmartDevicesGUI extends JFrame
 {
@@ -76,6 +74,22 @@ public class SmartDevicesGUI extends JFrame
         ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
         //I don't need this anymore, however I need the ManagedChannel for shutdown the channel to clear and ends everything
         //LightServicesGrpc.LightServicesBlockingStub lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                super.windowClosing(e);
+                int closeAndShutdown = JOptionPane.showConfirmDialog(SmartDevicesGUI.this,
+                        "Are you sure you want to leave?", "Shut Down Confirmation",
+                        JOptionPane.YES_NO_OPTION);
+
+                if(closeAndShutdown == JOptionPane.YES_OPTION)
+                {
+                    channel.shutdown();
+                }
+            }
+        });
 
 
         /*
