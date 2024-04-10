@@ -40,9 +40,7 @@ public class SmartHomeGUIClient extends JFrame
     private StreamingClientServiceGrpc.StreamingClientServiceStub stub;
     private LightServicesGrpc.LightServicesBlockingStub lightBlockingStub;
     private LockServicesGrpc.LockServicesBlockingStub lockBlockingStub;
-
     private static boolean streaming = true; //Responsible to stop my streaming client information
-
     private myGUI myClientGUI;
 
 

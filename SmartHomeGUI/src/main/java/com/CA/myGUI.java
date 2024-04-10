@@ -64,6 +64,9 @@ public class myGUI extends JFrame
         //This makes the button unable until the user start streaming by the button your connection
         stopStreamingButton.setEnabled(false);
 
+        //As a contingency - the Smart Devices button starts disable, and it will enable after connection established
+        smartDevicesButton.setEnabled(false);
+
         /*
             =====================================================
                 Your Connection & Stop Streaming are related
@@ -284,6 +287,7 @@ public class myGUI extends JFrame
                 }
 
                 connectButton.setEnabled(false); //once connected the button will be unavailable.
+                smartDevicesButton.setEnabled(true);
             }
         });
 
