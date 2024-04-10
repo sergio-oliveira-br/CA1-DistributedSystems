@@ -94,37 +94,20 @@ public class SmartDevicesGUI extends JFrame
                             "Would you like to switch on?",
                             "Server Confirmation", JOptionPane.YES_NO_OPTION);
 
-                    //THIS IS FOR ON
+                    //When the user select "ON" on JFrame Panel - ComboBox
                     if(userResponse == JOptionPane.YES_OPTION)
                     {
-
-
-
-
                         myClientGUI.controlLights(true);
-
-
-
-
-
-
-                        //myClientGUI.controlLights(true);
-
-                        System.out.println("This is a test - IS ON");
-
-                        //I need to get response from the server
-
-
                     }
-                    else
-                    {
-                        livingRoomBox.setSelectedItem("Off"); //this IS not working
-                        //myClientGUI.controlLights(false);
 
+                    else    //if the user press to NO on "ON".
+                    {
+                        livingRoomBox.setSelectedItem("Off");
+                        myClientGUI.controlLights(false);
                     }
                 }
 
-                // THIS IS FOR OFF
+                //When the user select "OFF" on JFrame Panel - ComboBox
                 else
                 {
                     int userResponse = JOptionPane.showConfirmDialog(null,
@@ -133,19 +116,10 @@ public class SmartDevicesGUI extends JFrame
 
                     if(userResponse == JOptionPane.YES_OPTION)
                     {
-                        //here I call my method asking the server to switch off
-                        //myClientGUI.controlLights(false);
-                        lightBlockingStub.controlLights(LightRequest.newBuilder()
-                                .setLightOn(false)
-                                .build());
-
-
-
-                        //myClientGUI.controlLights(false);
-
-                        System.out.println("This is a test - !!!IS OFF!!");
+                        myClientGUI.controlLights(false);
                     }
-                    else
+
+                    else    //if the user press to NO on "OFF"
                     {
                         livingRoomBox.setSelectedItem("On");
                     }
