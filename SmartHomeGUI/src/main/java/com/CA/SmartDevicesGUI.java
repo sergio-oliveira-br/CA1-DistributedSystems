@@ -4,6 +4,7 @@ import com.CA.gRPC.LightRequest;
 import com.CA.gRPC.LightServicesGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import sun.jvm.hotspot.code.Stub;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -57,7 +58,7 @@ public class SmartDevicesGUI extends JFrame
 
         //Create the options:
         String [] lightStatus = {"On", "Off"};              //to myLights
-        String [] locksStatus = {"Open", "Closed"};         //to myLocks
+        String [] locksStatus = {"Opened", "Closed"};         //to myLocks
 
         //Add the option into myLights components
         livingRoomBox.setModel(new DefaultComboBoxModel<>(lightStatus));
@@ -77,17 +78,16 @@ public class SmartDevicesGUI extends JFrame
         //LightServicesGrpc.LightServicesBlockingStub lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);
 
 
-
         /*
                 myLights - JComboBox
                 =======================================
                 Here is 3 buttons that allows the
-                users switch on/off the lights
+                users switch ON/OFF the lights
                 =======================================
          */
 
 
-        //This refers to first box - Living Room
+        //This refers to first box - Light Living Room
         livingRoomBox.addActionListener(new ActionListener()
         {
             @Override
@@ -107,15 +107,14 @@ public class SmartDevicesGUI extends JFrame
                         myClientGUI.controlLights(true);
                     }
 
-                    else    //if the user press to NO on "ON".
+                    else    //if the user press to "NO" on "ON".
                     {
                         livingRoomBox.setSelectedItem("Off");
                         myClientGUI.controlLights(false);
                     }
                 }
 
-                //When the user select "OFF" on JFrame Panel - ComboBox
-                else
+                else //When the user select "OFF" on JFrame Panel - ComboBox
                 {
                     int userResponse = JOptionPane.showConfirmDialog(null,
                             "Would you like to switch OFF? ",
@@ -126,7 +125,7 @@ public class SmartDevicesGUI extends JFrame
                         myClientGUI.controlLights(false);
                     }
 
-                    else    //if the user press to NO on "OFF"
+                    else    //if the user press to "NO" on "OFF"
                     {
                         livingRoomBox.setSelectedItem("On");
                     }
@@ -134,7 +133,7 @@ public class SmartDevicesGUI extends JFrame
             }
         });
 
-        //This refers to the second box - Kitchen
+        //This refers to the second box - Light Kitchen
         kitchenBox.addActionListener(new ActionListener()
         {
             @Override
@@ -154,15 +153,14 @@ public class SmartDevicesGUI extends JFrame
                         myClientGUI.controlLights(true);
                     }
 
-                    else    //if the user press to NO on "ON".
+                    else    //if the user press to "NO" on "ON".
                     {
                         kitchenBox.setSelectedItem("Off");
                         myClientGUI.controlLights(false);
                     }
                 }
 
-                //When the user select "OFF" on JFrame Panel - ComboBox
-                else
+                else //When the user select "OFF" on JFrame Panel - ComboBox
                 {
                     int userResponse = JOptionPane.showConfirmDialog(null,
                             "Would you like to switch OFF? ",
@@ -173,7 +171,7 @@ public class SmartDevicesGUI extends JFrame
                         myClientGUI.controlLights(false);
                     }
 
-                    else    //if the user press to NO on "OFF"
+                    else    //if the user press to "NO" on "OFF"
                     {
                         kitchenBox.setSelectedItem("On");
                     }
@@ -181,7 +179,7 @@ public class SmartDevicesGUI extends JFrame
             }
         });
 
-        //This refers to the third box - Laundry
+        //This refers to the third box - Light Laundry
         laundryBox.addActionListener(new ActionListener()
         {
             @Override
@@ -201,7 +199,7 @@ public class SmartDevicesGUI extends JFrame
                         myClientGUI.controlLights(true);
                     }
 
-                    else    //if the user press to NO on "ON".
+                    else    //if the user press to "NO" on "ON".
                     {
                         laundryBox.setSelectedItem("Off");
                         myClientGUI.controlLights(false);
@@ -220,7 +218,7 @@ public class SmartDevicesGUI extends JFrame
                         myClientGUI.controlLights(false);
                     }
 
-                    else    //if the user press to NO on "OFF"
+                    else    //if the user press to "NO" on "OFF"
                     {
                         laundryBox.setSelectedItem("On");
                     }
@@ -228,28 +226,15 @@ public class SmartDevicesGUI extends JFrame
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         /*
                 myLock - JComboBox
                 =======================================
                 Here is 3 buttons that allows the
-                users open/close the lock
+                users OPENED/CLOSED the lock
                 =======================================
          */
 
+        //This refers to the first box - Lock Main Door
         mainDoorBox.addActionListener(new ActionListener()
         {
             @Override
@@ -257,10 +242,10 @@ public class SmartDevicesGUI extends JFrame
             {
                 String status = (String) mainDoorBox.getSelectedItem();
 
-                if(status.equals("On"))
+                if(status.equals("Opened"))
                 {
                     int userResponse = JOptionPane.showConfirmDialog(null,
-                            "Would you like to open the Main Door?",
+                            "Would you like to unlock the lock on the Main Door?",
                             "Server Confirmation", JOptionPane.YES_NO_OPTION);
 
                     //When the user select "ON" on JFrame Panel - ComboBox
@@ -271,16 +256,16 @@ public class SmartDevicesGUI extends JFrame
 
                     else    //if the user press to NO on "ON".
                     {
-                         mainDoorBox.setSelectedItem("Off");
+                         mainDoorBox.setSelectedItem("Closed");
                          myClientGUI.controlLocks(false);
                     }
                 }
 
-                //When the user select "OFF" on JFrame Panel - ComboBox
+                //When the user select "Closed" on JFrame Panel - ComboBox
                 else
                 {
                     int userResponse = JOptionPane.showConfirmDialog(null,
-                            "Would you like to switch OFF? ",
+                            "Would you like to close the lock on the Main Door?? ",
                             "Server Confirmation", JOptionPane.YES_NO_OPTION);
 
                     if(userResponse == JOptionPane.YES_OPTION)
@@ -291,21 +276,102 @@ public class SmartDevicesGUI extends JFrame
                     //if the user press to NO on "OFF"
                     else
                     {
-                       mainDoorBox.setSelectedItem("On");
+                       mainDoorBox.setSelectedItem("Opened");
                     }
                 }
             }
         });
 
+        //This refers to the second box - Lock Back Door
+        backDoorBox.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String status = (String) backDoorBox.getSelectedItem();
 
+                if(status.equals("Opened"))
+                {
+                    int userResponse = JOptionPane.showConfirmDialog(null,
+                            "Would you like to unlock the lock on the Back Door?",
+                            "Server Confirmation", JOptionPane.YES_NO_OPTION);
 
+                    //When the user select "ON" on JFrame Panel - ComboBox
+                    if(userResponse == JOptionPane.YES_OPTION)
+                    {
+                        myClientGUI.controlLocks(true);
+                    }
 
+                    else    //if the user press to NO on "Opened".
+                    {
+                        backDoorBox.setSelectedItem("Closed");
+                        myClientGUI.controlLocks(false);
+                    }
+                }
 
+                else    //When the user select "Closed" on JFrame Panel - ComboBox
+                {
+                    int userResponse = JOptionPane.showConfirmDialog(null,
+                            "Would you like to close the lock on the Back Door? ",
+                            "Server Confirmation", JOptionPane.YES_NO_OPTION);
 
+                    if(userResponse == JOptionPane.YES_OPTION)
+                    {
+                        myClientGUI.controlLocks(false);
+                    }
 
+                    else    //if the user press to NO on "Closed"
+                    {
+                        backDoorBox.setSelectedItem("Opened");
+                    }
+                }
+            }
+        });
 
+        //This refers to the third box - Lock Front Gate
+        frontGateBox.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String status = (String) frontGateBox.getSelectedItem();
 
+                if(status.equals("Opened"))
+                {
+                    int userResponse = JOptionPane.showConfirmDialog(null,
+                            "Would you like to unlock the lock on the Front Gate?",
+                            "Server Confirmation", JOptionPane.YES_NO_OPTION);
 
+                    //When the user select "ON" on JFrame Panel - ComboBox
+                    if(userResponse == JOptionPane.YES_OPTION)
+                    {
+                        myClientGUI.controlLocks(true);
+                    }
 
+                    else    //if the user press to NO on "Opened".
+                    {
+                        frontGateBox.setSelectedItem("Closed");
+                        myClientGUI.controlLocks(false);
+                    }
+                }
+
+                else    //When the user select "Closed" on JFrame Panel - ComboBox
+                {
+                    int userResponse = JOptionPane.showConfirmDialog(null,
+                            "Would you like to close the lock on the Front Gate? ",
+                            "Server Confirmation", JOptionPane.YES_NO_OPTION);
+
+                    if(userResponse == JOptionPane.YES_OPTION)
+                    {
+                        myClientGUI.controlLocks(false);
+                    }
+
+                    else //if the user press to NO on "Closed"
+                    {
+                        frontGateBox.setSelectedItem("Opened");
+                    }
+                }
+            }
+        });
     }
 }
