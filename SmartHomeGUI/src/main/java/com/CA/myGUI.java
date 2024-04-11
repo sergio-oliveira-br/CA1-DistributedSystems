@@ -19,8 +19,7 @@ https://github.com/sergio-oliveira-br/CA1-DistributedSystems
 package com.CA;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.IOException;
 
 
@@ -41,6 +40,22 @@ public class myGUI extends JFrame
     public void appendMessage(String message)
     {
         systemInformation.append(message + "\n");
+    }
+
+
+
+    //Welcome Screen
+    @Override
+    public synchronized void addWindowListener(WindowListener l)
+    {
+        super.addWindowListener(l);
+        JOptionPane.showMessageDialog(null,
+                "This is CA - Distributed System" +
+                         "\nLecture: Mark Cudden" + "\nStudent: Sergio Oliveira",
+                "Welcome to Smart Home ", JOptionPane.INFORMATION_MESSAGE );
+
+
+
     }
 
     public myGUI()
@@ -66,6 +81,11 @@ public class myGUI extends JFrame
 
         //As a contingency - the Smart Devices button starts disable, and it will enable after connection established
         smartDevicesButton.setEnabled(false);
+
+        //Starts the user screen with simple msg
+        appendMessage("Waiting for connection...");
+
+
 
         /*
             =====================================================
@@ -97,6 +117,11 @@ public class myGUI extends JFrame
 
                 //Enables the button
                 stopStreamingButton.setEnabled(true);
+
+
+
+                //ATTEMPT TO SEND A FORECAST
+               myClient.getForecast();
 
 
 

@@ -424,6 +424,7 @@ public class SmartHomeClient
                                 break;
 
                         }
+
                         break;
 
                     //Smart Thermostats
