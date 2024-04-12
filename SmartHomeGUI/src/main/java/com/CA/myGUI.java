@@ -86,7 +86,7 @@ public class myGUI extends JFrame
         smartDevicesButton.setEnabled(false);
 
         //Starts the user screen with simple msg
-        appendMessage("Waiting for connection...");
+        appendMessage("Waiting for connection...\n---");
 
         //Initialize Stub
         String host = "localhost";
@@ -279,11 +279,6 @@ public class myGUI extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 SmartHomeGUIServer myServer = new SmartHomeGUIServer();
-                //SmartHomeGUIServer myServer1 = new SmartHomeGUIServer(8081);
-
-
-                //SmartHomeGUIServer myServerChannel = new SmartHomeGUIServer(server, 8081);
-
 
                 appendMessage("\nThis was CA Distributed System by Sergio Oliveira");
 
@@ -291,7 +286,6 @@ public class myGUI extends JFrame
                         "localhost",
                         8081,
                         "Sergio Oliveira");
-
 
                     try
                     {
@@ -308,6 +302,7 @@ public class myGUI extends JFrame
 
                 disconnectButton.setEnabled(false);
                 connectButton.setEnabled(true);
+                smartDevicesButton.setEnabled(false);
 
             }
         });
