@@ -18,6 +18,9 @@ https://github.com/sergio-oliveira-br/CA1-DistributedSystems
 
 package com.CA;
 
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -84,6 +87,37 @@ public class myGUI extends JFrame
 
         //Starts the user screen with simple msg
         appendMessage("Waiting for connection...");
+
+        //Initialize Stub
+        String host = "localhost";
+        int port = 8081;
+        ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+
+        //Start Connection
+        //SmartHomeGUIClient myClient = new SmartHomeGUIClient("localhost", 8081, "Sergio Oliveira");
+        SmartHomeGUIServer myServer = new SmartHomeGUIServer(8081);
+
+
+
+        //This will ask th user if they wanna leave, and then call the shutdown() to close and clean all connections
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                super.windowClosing(e);
+                int closeAndShutdown = JOptionPane.showConfirmDialog(myGUI.this,
+                        "Are you sure you want to leave?", "Shut Down Confirmation",
+                        JOptionPane.YES_NO_OPTION);
+
+                if(closeAndShutdown == JOptionPane.YES_OPTION)
+                {
+                    channel.shutdown();
+                    myServer.stop();
+                    
+                }
+            }
+        });
 
 
 
@@ -195,7 +229,8 @@ public class myGUI extends JFrame
 
 
 
-                myClientGUI.setYourTemp(JOptionPane.showInputDialog(myGUI.this, "Please enter the Temp"));
+                myClientGUI.setYourTemp(JOptionPane.showInputDialog(myGUI.this,
+                        "Enter the temperature you would like"));
 
 
 
