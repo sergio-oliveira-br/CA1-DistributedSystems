@@ -29,15 +29,6 @@ public class SmartDevicesGUI extends JFrame
     private JComboBox<String> livingRoomBox;
 
 
-
-
-    private JButton button1;
-
-
-
-
-
-
     public SmartDevicesGUI()
     {
         //Create the communication
