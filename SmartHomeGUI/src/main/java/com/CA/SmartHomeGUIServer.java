@@ -82,7 +82,7 @@ public class SmartHomeGUIServer
 
         System.out.println("Server started on PORT: " + port + " waiting for connection...");
 
-        /*
+        /* MOVED TO MYGUI, WHEN THE USER CLOSE THE WINDOW
         logger.info("LOG - START() BEFORE addShutdownHook");
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
