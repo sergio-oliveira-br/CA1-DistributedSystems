@@ -43,6 +43,7 @@ public class myGUI extends JFrame
     }
 
 
+    /*
 
     //Welcome Screen
     @Override
@@ -53,10 +54,9 @@ public class myGUI extends JFrame
                 "This is CA - Distributed System" +
                          "\nLecture: Mark Cudden" + "\nStudent: Sergio Oliveira",
                 "Welcome to Smart Home ", JOptionPane.INFORMATION_MESSAGE );
-
-
-
     }
+
+     */
 
     public myGUI()
     {
@@ -117,14 +117,6 @@ public class myGUI extends JFrame
 
                 //Enables the button
                 stopStreamingButton.setEnabled(true);
-
-
-
-                //ATTEMPT TO SEND A FORECAST
-               myClient.getForecast();
-
-
-
 
 
             }
@@ -313,6 +305,8 @@ public class myGUI extends JFrame
 
                 connectButton.setEnabled(false); //once connected the button will be unavailable.
                 smartDevicesButton.setEnabled(true);
+
+                yourConnectionButton.setEnabled(true);
             }
         });
 

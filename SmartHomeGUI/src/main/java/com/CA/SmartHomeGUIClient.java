@@ -98,6 +98,8 @@ public class SmartHomeGUIClient extends JFrame
         channel = channelBuilder.build();
 
         //Synchronous approach: Used to make the gRPC calls to the server waiting (blocking) until get the answer using the channel created
+        //Each stub wraps a Channel, supplied by the user of the generated code.
+        //The stub uses this channel to send RPCs to the service.
         lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);
         lockBlockingStub = LockServicesGrpc.newBlockingStub(channel);
         this.stub = StreamingClientServiceGrpc.newStub(channel);
@@ -234,8 +236,13 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(ServerResponse response) {
                 System.out.println("Server response: " + response.getMessage());
+
+                System.out.println("WORKINGGGGGGG...." + ServerResponse.newBuilder().getMessage());
+
+
+
                 //"I CANNOT SEND"
-                //myClientGUI.appendMessage("Stop Streaming...");//send to JTextArea
+                //myClientGUI.appendMessage("Stop Streaming... " + response.getMessage());//send to JTextArea
             }
 
             @Override

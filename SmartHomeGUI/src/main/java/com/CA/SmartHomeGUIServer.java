@@ -209,6 +209,7 @@ public class SmartHomeGUIServer
             UnaryResponse response = UnaryResponse.newBuilder()
                     .setMessage(message)
                     .build();
+
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
@@ -226,10 +227,18 @@ public class SmartHomeGUIServer
                     System.out.println("Client Name: " + clientInfo.getClientName());
                     System.out.println("Date and Time: " + clientInfo.getDateTime());
 
-                    ServerResponse response = ServerResponse.newBuilder()
-                            .setMessage("HI FROM SERVER")
+
+                    ServerResponse myTest = ServerResponse.newBuilder().setMessage(responseObserver.toString()).build();
+
+
+
+/*
+                    ServerResponse myTestResponse = ServerResponse.newBuilder()
+                            .setMessage("HI FROM SERVER - WORKING NOW")
                             .build();
-                   // responseObserver.onNext(response);
+                    responseObserver.onNext(myTestResponse);
+
+ */
                 }
 
                 @Override
@@ -240,6 +249,7 @@ public class SmartHomeGUIServer
                 @Override
                 public void onCompleted() {
                     System.out.println("Client information streaming completed");
+
                     ServerResponse response = ServerResponse.newBuilder()
                             .setMessage("Client information streaming completed")
                             .build();
