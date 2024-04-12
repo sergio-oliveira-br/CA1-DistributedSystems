@@ -88,7 +88,6 @@ public class SmartHomeGUIClient extends JFrame
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(), stub);
         lightBlockingStub = LightServicesGrpc.newBlockingStub(channel);             //Synchronous approach
-        //logger.info("LOG client - Constructor host, port, stub");
     }
 
     //Constructor: Make possible to create a SmartHomeClient instance by passing a ManagedChannelBuilder object as an argument
@@ -108,10 +107,7 @@ public class SmartHomeGUIClient extends JFrame
     //Method: Close the connection before
     public void shutdown() throws InterruptedException
     {
-        //channel.shutdown().awaitTermination(1, TimeUnit.SECONDS);
-        logger.info(" this is the SHUTDOWN: awaitTermination 5 secs");
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-
     }
 
 
@@ -236,11 +232,6 @@ public class SmartHomeGUIClient extends JFrame
             @Override
             public void onNext(ServerResponse response) {
                 System.out.println("Server response: " + response.getMessage());
-
-                System.out.println("WORKINGGGGGGG...." + ServerResponse.newBuilder().getMessage());
-
-
-
                 //"I CANNOT SEND"
                 //myClientGUI.appendMessage("Stop Streaming... " + response.getMessage());//send to JTextArea
             }
@@ -253,10 +244,12 @@ public class SmartHomeGUIClient extends JFrame
             }
 
             @Override
-            public void onCompleted() {
+            public void onCompleted()
+            {
                 System.out.println("Streaming client information completed");
-                //"I CANNOT SEND"
+                //"I CANNOT SEND USING THIS"
                 //myClientGUI.appendMessage("Streaming client information completed");//send to JTextArea
+                //System.out.println(ServerResponse.newBuilder().getMessage());
             }
 
         });
@@ -381,7 +374,6 @@ public class SmartHomeGUIClient extends JFrame
         finally
         {
             channel.shutdown();
-            logger.info("LOG client - setYourTemp() close the channel");
         }
     }
 
@@ -467,8 +459,7 @@ public class SmartHomeGUIClient extends JFrame
         try
         {
             channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-            channel.shutdown();
-            logger.info("LOG client - forecast() close the channel");
+            //channel.shutdown();
         }
 
         catch (InterruptedException e)
@@ -476,9 +467,6 @@ public class SmartHomeGUIClient extends JFrame
             myClientGUI.appendMessage("Interrupted while shutting down the channel: " + e.getMessage()); //send to JTextArea
             System.err.println("Interrupted while shutting down the channel: " + e.getMessage());
             Thread.currentThread().interrupt();
-
-            //channel.shutdown();
-            logger.info("LOG client - setYourTemp() catch InterruptedE");
         }
     }
 

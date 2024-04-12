@@ -65,8 +65,6 @@ public class SmartHomeGUIServer
                 .addService(new StreamingClientServiceImpl())   //Ping
                 .addService(new BidirectionalStreamingImpl())   //Temperature
                 .build();
-
-        logger.info("LOG - THIS IS SmartHomeGUIServer Constructor (ServerBuilder, Port) ");
     }
 
     //Method: Initialize the gRPC
@@ -98,12 +96,7 @@ public class SmartHomeGUIServer
 
                 catch (Exception e)
                 {
-                    System.out.println("working here after");
-                    logger.info("LOG - before  STOP()");
                     stop();
-                    //SmartHomeGUIServer.this.stop();
-                    logger.info("LOG - after  STOP()");
-                    System.out.println("this is the Exception: " + e);
                 }
 
             }
@@ -117,7 +110,6 @@ public class SmartHomeGUIServer
         if (server != null)
         {
             server.shutdown();
-            logger.info("LOG - inside stop()");
         }
     }
 
@@ -127,7 +119,6 @@ public class SmartHomeGUIServer
         if (server != null)
         {
             server.awaitTermination();
-            logger.info("LOG - inside blockUtilShutdown");
         }
     }
 
@@ -224,17 +215,19 @@ public class SmartHomeGUIServer
                     System.out.println("Date and Time: " + clientInfo.getDateTime());
 
 
-                    ServerResponse myTest = ServerResponse.newBuilder().setMessage(responseObserver.toString()).build();
 
 
 
-/*
-                    ServerResponse myTestResponse = ServerResponse.newBuilder()
-                            .setMessage("HI FROM SERVER - WORKING NOW")
-                            .build();
-                    responseObserver.onNext(myTestResponse);
+                    //ServerResponse myTestResponse = ServerResponse.newBuilder()
+                         //   .setMessage("HI FROM SERVER - WORKING NOW")
+                         //   .build();
+                    //responseObserver.onNext(myTestResponse);
 
- */
+
+
+
+
+
                 }
 
                 @Override
@@ -243,11 +236,14 @@ public class SmartHomeGUIServer
                 }
 
                 @Override
-                public void onCompleted() {
-                    System.out.println("Client information streaming completed");
+                public void onCompleted()
+                {
+                    String msg = "Client information streaming completed";
+
+                    System.out.println(msg);
 
                     ServerResponse response = ServerResponse.newBuilder()
-                            .setMessage("Client information streaming completed")
+                            .setMessage(msg)
                             .build();
                     responseObserver.onNext(response);
                     responseObserver.onCompleted();
