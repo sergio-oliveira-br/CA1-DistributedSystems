@@ -248,7 +248,7 @@ public class SmartHomeGUIClient extends JFrame
             {
                 System.out.println("Streaming client information completed");
                 //"I CANNOT SEND USING THIS"
-                //myClientGUI.appendMessage("Streaming client information completed");//send to JTextArea
+                myClientGUI.appendMessage("Streaming client information completed");//send to JTextArea
                 //System.out.println(ServerResponse.newBuilder().getMessage());
             }
 

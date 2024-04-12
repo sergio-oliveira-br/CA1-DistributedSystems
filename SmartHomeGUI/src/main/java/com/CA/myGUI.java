@@ -329,6 +329,7 @@ public class myGUI extends JFrame
 
                 connectButton.setEnabled(false); //once connected the button will be unavailable.
                 smartDevicesButton.setEnabled(true);
+                disconnectButton.setEnabled(true);
 
                 yourConnectionButton.setEnabled(true);
             }
