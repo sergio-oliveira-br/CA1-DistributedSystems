@@ -295,13 +295,8 @@ public class myGUI extends JFrame
 
                     try
                     {
-                        JOptionPane.showMessageDialog(null, "before stop and shutdown");
-
                         myClient.shutdown();
                         myServer.stop();
-                        //myServer1.stop();
-
-                        JOptionPane.showMessageDialog(null, "AFTER stop and shutdown");
                     }
 
                     catch (InterruptedException ex)
@@ -309,15 +304,10 @@ public class myGUI extends JFrame
                         throw new RuntimeException(ex);
                     }
 
-
-
-                appendMessage("You was disconnected");
-
+                appendMessage("---\nYou have been disconnected from the server");
 
                 disconnectButton.setEnabled(false);
                 connectButton.setEnabled(true);
-
-
 
             }
         });
