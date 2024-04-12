@@ -310,13 +310,17 @@ public class SmartHomeGUIServer
                 public void onError(Throwable t)
                 {
                     System.err.println("Error from client: " + t.getMessage());
-
+                    JOptionPane.showMessageDialog(null, "Error from client: " + t.getMessage(),
+                            "Smart Home CA - Server", JOptionPane.ERROR_MESSAGE);
                 }
 
                 @Override
-                public void onCompleted() {
+                public void onCompleted()
+                {
                     System.out.println("Requested stream completed");
                     responseObserver.onCompleted(); // Complete the response stream
+                    JOptionPane.showMessageDialog(null, "Requested stream completed",
+                            "Smart Home CA - Server", JOptionPane.INFORMATION_MESSAGE);
                 }
             };
         }
