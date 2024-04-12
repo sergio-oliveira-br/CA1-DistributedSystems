@@ -114,7 +114,11 @@ public class myGUI extends JFrame
                 {
                     channel.shutdown();
                     myServer.stop();
-                    
+
+                    JOptionPane.showMessageDialog(null, "\nShutting down gRPC server." +
+                            "\nThis was CA1 - Distributed System" +
+                            "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
+
                 }
             }
         });

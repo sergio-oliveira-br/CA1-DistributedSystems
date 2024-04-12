@@ -82,22 +82,19 @@ public class SmartHomeGUIServer
 
         System.out.println("Server started on PORT: " + port + " waiting for connection...");
 
+        /*
         logger.info("LOG - START() BEFORE addShutdownHook");
-
-
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
         {
             //SwingUtilities.invokeLater(() ->
             {
                 try
                 {
+
                     JOptionPane.showMessageDialog(null, "\nShutting down gRPC server." +
                             "\nThis was CA1 - Distributed System" +
                             "\nby Sergio Oliveira - x23170981@student.ncirl.ie");
-                    System.out.println("working here inside");
                 }
-
-
 
                 catch (Exception e)
                 {
@@ -109,10 +106,9 @@ public class SmartHomeGUIServer
                     System.out.println("this is the Exception: " + e);
                 }
 
-
-
             }
         }));
+         */
     }
 
     //Method: Ends and clean the gRPC
