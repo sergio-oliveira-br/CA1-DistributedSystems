@@ -23,6 +23,7 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
+import java.io.IOException;
 
 
 public class SmartServer
@@ -31,10 +32,16 @@ public class SmartServer
     int port;
     Server server;
 
+    /*
+        ===========================
+            Starting the server
+        ===========================
+     */
 
     //Constructor: Start up a gRPC server so that clients can actually use our service.
     public SmartServer (int port)
     {
+        //Specify the address and port we want to use to listen for client requests using the builder’s forPort() method.
         this(ServerBuilder.forPort(port), port);
     }
 
@@ -42,22 +49,54 @@ public class SmartServer
     public SmartServer(ServerBuilder<?> serverBuilder, int port)
     {
         this.port = port;
+
+        //Create an instance of our service implementation class RouteGuideService and pass it to the builder’s addService() method.
+        server = serverBuilder.build();
     }
 
 
 
+    public void start() throws IOException
+    {
+        server.start();
+    }
 
+
+
+    /*
+        ===========================
+                Simple RPC
+        ===========================
+     */
 
     //Implementation of the gRPC service "Greater" on the server-side.
     //The class extends the generated GreeterGrpc.GreeterImplBase abstract class:
-    private static class GreeterService extends GreeterGrpc.GreeterImplBase
+    private static class GreeterImpl extends GreeterGrpc.GreeterImplBase
     {
         @Override
         public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver)
         {
             super.sayHello(request, responseObserver);
 
+            //Generate a greeting message
+            HelloReply reply = HelloReply.newBuilder()
+                    .setMessage("Welcome to Smart Oven " + request.getName())
+                    .build();
+
+            //Send the reply back to the client.
+            responseObserver.onNext(reply);
+
+            //Indicate that no further messages will be sent to the client.
+            responseObserver.onCompleted();
         }
+    }
+
+
+
+    public static void main(String[] args)
+    {
+        //Call build() and start() on the builder to create and start an RPC server for our service.
+
     }
 
 }
