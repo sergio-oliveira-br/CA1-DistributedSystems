@@ -15,15 +15,16 @@
 
 package com.CA;
 
-import com.CA.gRPC.GreeterGrpc;
-import com.CA.gRPC.HelloReply;
-import com.CA.gRPC.HelloRequest;
+import com.CA.gRPC.*;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 
 public class SmartServer
@@ -51,7 +52,11 @@ public class SmartServer
         this.port = port;
 
         //Create an instance of our service implementation class RouteGuideService and pass it to the builder’s addService() method.
-        server = serverBuilder.addService(new GreeterImpl()).build();
+        server = serverBuilder
+                .addService(new GreeterImpl())
+                .addService(new TemperatureRampImpl())
+                .build();
+
     }
 
 
@@ -68,6 +73,15 @@ public class SmartServer
         if (server != null)
         {
             server.awaitTermination();
+        }
+    }
+
+    //Stop serving requests and shutdown resources.
+    public void stop() throws InterruptedException
+    {
+        if (server != null)
+        {
+            server.shutdown().awaitTermination(30, TimeUnit.SECONDS);
         }
     }
 
@@ -90,7 +104,7 @@ public class SmartServer
 
             //Generate a greeting message
             HelloReply reply = HelloReply.newBuilder()
-                    .setMessage("Welcome to Smart Oven" + request.getName() + " FROM THE SERVER")
+                    .setMessage("Welcome to Smart Oven " + request.getName() + " FROM THE SERVER")
                     .build();
 
             //Send the reply back to the client.
@@ -104,8 +118,47 @@ public class SmartServer
     /*
         ======================================================
             Implement Method - Server-side streaming RPC
+
+            A server-side streaming RPC where the client
+            sends a request to the server and
+            gets a stream to read a sequence of messages back.
+
+            The client reads from the returned stream
+            until there are no more messages.
         ======================================================
      */
+
+    private static class TemperatureRampImpl extends TemperatureRampGrpc.TemperatureRampImplBase
+    {
+        @Override
+        public void sendTempData(SetPointTemp request, StreamObserver<TempRamp> responseObserver)
+        {
+
+
+            int setTemp = request.getSetTemp();
+            for(int i = 0; i <= setTemp; i++)
+            {
+                System.out.println(i);
+                TempRamp tempRamp = TempRamp.newBuilder().setMessage(i).build();
+                responseObserver.onNext(tempRamp);
+
+                try
+                {
+                    Thread.sleep(5000);
+                }
+
+                catch (InterruptedException e)
+                {
+                    throw new RuntimeException(e);
+                }
+
+            }
+            //This is the end.
+            responseObserver.onCompleted();
+        }
+    }
+
+
 
 
 

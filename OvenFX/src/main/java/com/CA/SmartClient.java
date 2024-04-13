@@ -15,14 +15,10 @@
 
 package com.CA;
 
-import com.CA.gRPC.GreeterGrpc;
-import com.CA.gRPC.HelloReply;
-import com.CA.gRPC.HelloRequest;
+import com.CA.gRPC.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.Server;
 import io.grpc.StatusException;
-import io.grpc.stub.StreamObserver;
 
 public class SmartClient
 {
@@ -33,7 +29,8 @@ public class SmartClient
      */
 
     private final ManagedChannel channel;
-    private final GreeterGrpc.GreeterBlockingStub blockingStub;
+    private final GreeterGrpc.GreeterBlockingStub greeterBlockingStub;
+    private final TemperatureRampGrpc.TemperatureRampBlockingStub temperatureRampBlockingStub;
 
 
     /*
@@ -46,6 +43,7 @@ public class SmartClient
     public SmartClient(String host, int port)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext());
+
     }
 
     //Constructor: Accessing SmartServer server using the existing channel.
@@ -53,9 +51,10 @@ public class SmartClient
     {
         channel = channelBuilder.build();
 
-        //blocking/synchronous stub:
-        //this means that the RPC call waits for the server to respond, and will either return a response or raise an exception
-        blockingStub = GreeterGrpc.newBlockingStub(channel);
+        //blocking/synchronous stub: this means that the RPC call waits for the server to respond,
+        //and will either return a response or raise an exception
+        greeterBlockingStub = GreeterGrpc.newBlockingStub(channel);
+        temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
     }
 
     /*
@@ -73,7 +72,7 @@ public class SmartClient
         try
         {
             //Create a local variable and call the method
-            HelloReply response = blockingStub.sayHello(request);
+            HelloReply response = greeterBlockingStub.sayHello(request);
             System.out.println("Hello " + response.getMessage());
         }
         catch (Exception e)
@@ -86,8 +85,27 @@ public class SmartClient
      /*
         ======================================================
             Implement Method - Client-side streaming RPC
+
+            A server-side streaming RPC where the client
+            sends a request to the server and
+            gets a stream to read a sequence of messages back.
+
+            The client reads from the returned stream
+            until there are no more messages.
         ======================================================
      */
+
+    // Client-side logic for interacting with the gRPC service.
+    public void setPointUser(int temp) throws StatusException
+    {
+        // Creating a request with the set point temperature
+        SetPointTemp request = SetPointTemp.newBuilder().setSetTemp(temp).build();
+
+        //Starts the Streaming
+        temperatureRampBlockingStub.sendTempData(request);
+    }
+
+
 
 
 
@@ -104,6 +122,7 @@ public class SmartClient
         try
         {
             myClient.greet("Sergio");
+            myClient.setPointUser(200);
         }
 
         catch (StatusException e)
