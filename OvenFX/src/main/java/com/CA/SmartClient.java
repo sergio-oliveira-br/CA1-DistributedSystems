@@ -59,9 +59,9 @@ public class SmartClient
     }
 
     /*
-        ===========================
-            Implement Method
-        ===========================
+        ====================================
+            Implement Method - Unary RPC
+        ====================================
      */
 
     // Client-side logic for interacting with the gRPC service.
@@ -74,13 +74,20 @@ public class SmartClient
         {
             //Create a local variable and call the method
             HelloReply response = blockingStub.sayHello(request);
-            System.out.println("Hi " + response.getMessage());
+            System.out.println("Hello " + response.getMessage());
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
     }
+
+
+     /*
+        ======================================================
+            Implement Method - Client-side streaming RPC
+        ======================================================
+     */
 
 
 

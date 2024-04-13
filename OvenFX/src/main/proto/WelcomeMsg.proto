@@ -26,6 +26,7 @@ service Greeter
 {
   //Sends a greeting
   rpc SayHello (HelloRequest) returns (HelloReply) {}
+  //!IMPORTANT - I WILL INCLUDE NEW MSG
 }
 
 //The request message containing the user's name.

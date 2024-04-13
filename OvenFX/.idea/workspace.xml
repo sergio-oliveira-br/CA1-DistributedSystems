@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/WelcomeMsg.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/WelcomeMsg.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712999536588</updated>
       <workItem from="1712999537800" duration="6496000" />
-      <workItem from="1713006498180" duration="5933000" />
+      <workItem from="1713006498180" duration="6924000" />
     </task>
     <servers />
   </component>

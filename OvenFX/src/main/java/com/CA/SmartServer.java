@@ -86,11 +86,11 @@ public class SmartServer
         @Override
         public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver)
         {
-            //super.sayHello(request, responseObserver); this was the error
+            //super.sayHello(request, responseObserver); !IMPORTANT: I DO NOT NEED THIS
 
             //Generate a greeting message
             HelloReply reply = HelloReply.newBuilder()
-                    .setMessage("Welcome to Smart Oven " + request.getName())
+                    .setMessage("Welcome to Smart Oven" + request.getName() + " FROM THE SERVER")
                     .build();
 
             //Send the reply back to the client.
@@ -100,6 +100,14 @@ public class SmartServer
             responseObserver.onCompleted();
         }
     }
+
+    /*
+        ======================================================
+            Implement Method - Server-side streaming RPC
+        ======================================================
+     */
+
+    
 
 
 
