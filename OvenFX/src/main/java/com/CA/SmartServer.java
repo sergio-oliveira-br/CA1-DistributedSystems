@@ -93,9 +93,11 @@ public class SmartServer
 
 
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
         //Call build() and start() on the builder to create and start an RPC server for our service.
+        SmartServer myServer = new SmartServer(8081);
+        myServer.start();
 
     }
 

@@ -79,10 +79,8 @@ public class SmartClient
     public static void main(String[] args)
     {
 
-
-
-
-
+        SmartClient myClient = new SmartClient("localhost", 8081);
+        myClient.greet("Sergio");
 
     }
 }

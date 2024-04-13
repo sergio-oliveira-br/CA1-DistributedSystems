@@ -432,7 +432,7 @@ public class SmartHomeClient
                         System.out.println("\n-------");
                         System.out.println("Smart Thermostats");
 
-                        //Create a channel to the server
+                        //Create a channel to connect the server
                         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8081)
                                 .usePlaintext()
                                 .build();
