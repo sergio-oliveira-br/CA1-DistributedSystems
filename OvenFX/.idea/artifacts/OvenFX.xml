@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="OvenFX">
+    <output-path>$PROJECT_DIR$/out/artifacts/OvenFX</output-path>
+    <root id="root">
+      <element id="archive" name="OvenFX.jar">
+        <element id="module-output" name="OvenFX" />
+      </element>
+    </root>
+  </artifact>
+</component>
