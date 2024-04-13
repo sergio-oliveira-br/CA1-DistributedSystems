@@ -39,7 +39,7 @@ public class SmartServer
      */
 
     //Constructor: Start up a gRPC server so that clients can actually use our service.
-    public SmartServer (int port)
+    public SmartServer(int port)
     {
         //Specify the address and port we want to use to listen for client requests using the builder’s forPort() method.
         this(ServerBuilder.forPort(port), port);
@@ -51,7 +51,7 @@ public class SmartServer
         this.port = port;
 
         //Create an instance of our service implementation class RouteGuideService and pass it to the builder’s addService() method.
-        server = serverBuilder.build();
+        server = serverBuilder.addService(new GreeterImpl()).build();
     }
 
 
@@ -59,6 +59,16 @@ public class SmartServer
     public void start() throws IOException
     {
         server.start();
+        System.out.println("Server is running on port 8081...");
+    }
+
+    //Method: makes my Server running until the user stop.
+    private void blockUntilShutdown() throws InterruptedException
+    {
+        if (server != null)
+        {
+            server.awaitTermination();
+        }
     }
 
 
@@ -76,7 +86,7 @@ public class SmartServer
         @Override
         public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver)
         {
-            super.sayHello(request, responseObserver);
+            //super.sayHello(request, responseObserver); this was the error
 
             //Generate a greeting message
             HelloReply reply = HelloReply.newBuilder()
@@ -93,11 +103,12 @@ public class SmartServer
 
 
 
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws IOException, InterruptedException
     {
         //Call build() and start() on the builder to create and start an RPC server for our service.
         SmartServer myServer = new SmartServer(8081);
         myServer.start();
+        myServer.blockUntilShutdown();
 
     }
 

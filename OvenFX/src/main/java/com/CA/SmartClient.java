@@ -20,6 +20,9 @@ import com.CA.gRPC.HelloReply;
 import com.CA.gRPC.HelloRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Server;
+import io.grpc.StatusException;
+import io.grpc.stub.StreamObserver;
 
 public class SmartClient
 {
@@ -62,25 +65,44 @@ public class SmartClient
      */
 
     // Client-side logic for interacting with the gRPC service.
-    public void greet(String name)
+    public void greet(String name) throws StatusException
     {
         // Creating a request with the user's name.
         HelloRequest request = HelloRequest.newBuilder().setName(name).build();
 
-        //Create a local variable and call the method
-        HelloReply response;
-        response = blockingStub.sayHello(request);
-
-        System.out.println("Hi " + response.getMessage());
+        try
+        {
+            //Create a local variable and call the method
+            HelloReply response = blockingStub.sayHello(request);
+            System.out.println("Hi " + response.getMessage());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws StatusException
     {
 
-        SmartClient myClient = new SmartClient("localhost", 8081);
-        myClient.greet("Sergio");
+        //Instance Variables
+        String host = "localhost";
+        int port = 8081;
+
+        //SmartServer myServer = new SmartServer(port);
+
+        SmartClient myClient = new SmartClient(host, port);
+        try
+        {
+            myClient.greet("Sergio");
+        }
+
+        catch (StatusException e)
+        {
+            e.printStackTrace();
+        }
 
     }
 }
