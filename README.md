@@ -46,7 +46,18 @@ Your Connection
 Smart Devices
   Respond to the user that the component has switched on/off.
 
-Version 1.0 
+Version 1.0 - Command-Line
+Version 1.1 - GUI by Java Swing
 ---
+
+=======
+
+Version 2.0 - GUI by JavaFX
+--
+Once I finished my project. To improve my learning, I will develop a new version that reinforces gRPC concepts
+and learn about a new topic JavaFX.
+
+This version refers to a temperature ramp created by the stream server from the user input. The final product is a real-time graph.
+
 by Sergio Oliveira 
 
