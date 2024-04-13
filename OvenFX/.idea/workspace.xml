@@ -8,18 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/GreeterGrpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/HelloReply.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/HelloReplyOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/HelloRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/HelloRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/OvenTempRampProto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SetPointTemp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SetPointTempOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TempRamp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TempRampOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TemperatureRampGrpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/WelcomeMsgProto.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712999536588</updated>
       <workItem from="1712999537800" duration="6496000" />
-      <workItem from="1713006498180" duration="14012000" />
+      <workItem from="1713006498180" duration="14229000" />
     </task>
     <servers />
   </component>

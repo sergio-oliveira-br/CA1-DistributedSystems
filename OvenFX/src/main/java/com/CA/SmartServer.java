@@ -16,16 +16,11 @@
 package com.CA;
 
 import com.CA.gRPC.*;
-
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
-
 
 public class SmartServer
 {
@@ -157,12 +152,6 @@ public class SmartServer
             responseObserver.onCompleted();
         }
     }
-
-
-
-
-
-
 
     public static void main(String[] args) throws IOException, InterruptedException
     {
