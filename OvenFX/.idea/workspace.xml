@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +51,15 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.SmartClient">
     <configuration name="SmartClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.CA.SmartClient" />
       <module name="OvenFX" />
@@ -105,7 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712999536588</updated>
       <workItem from="1712999537800" duration="6496000" />
-      <workItem from="1713006498180" duration="15249000" />
+      <workItem from="1713006498180" duration="16684000" />
     </task>
     <servers />
   </component>
