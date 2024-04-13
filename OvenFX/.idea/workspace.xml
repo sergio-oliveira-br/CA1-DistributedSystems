@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712999536588</updated>
       <workItem from="1712999537800" duration="6496000" />
-      <workItem from="1713006498180" duration="964000" />
+      <workItem from="1713006498180" duration="2469000" />
     </task>
     <servers />
   </component>
