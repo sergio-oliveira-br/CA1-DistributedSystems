@@ -19,8 +19,6 @@ import com.CA.gRPC.GreeterGrpc;
 import com.CA.gRPC.HelloReply;
 import com.CA.gRPC.HelloRequest;
 
-
-import com.CA.gRPC.*;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
