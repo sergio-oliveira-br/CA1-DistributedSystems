@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/WelcomeMsg.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/WelcomeMsg.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +24,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 1
@@ -43,6 +48,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -54,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712999536588</updated>
-      <workItem from="1712999537800" duration="2259000" />
+      <workItem from="1712999537800" duration="4684000" />
     </task>
     <servers />
   </component>
