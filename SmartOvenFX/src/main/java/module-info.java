@@ -1,4 +1,4 @@
-module com.ca.smartscreen {
+module com.ca.smartovenfx {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,6 +11,6 @@ module com.ca.smartscreen {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.ca.smartscreen to javafx.fxml;
-    exports com.ca.smartscreen;
+    opens com.ca.smartovenfx to javafx.fxml;
+    exports com.ca.smartovenfx;
 }

@@ -1,0 +1,46 @@
+/*
+  CA - Distributed System
+  Author: Sergio Oliveira - x23170981@student.ncirl.ie
+  Date: 13 Apr 2024
+
+  Lecturer: Mark Cudden
+
+  !IMPORTANT
+    -> This will get a set point from the server.
+    -> Streaming numbers to the user from the Server.
+    -> This will be an attempt to simulate a temperature ramp.
+
+    Server-side streaming RPC
+
+
+  References:
+    https://protobuf.dev/reference/java/java-generated/#invocation
+    https://grpc.io/docs/languages/java/quickstart/
+    https://grpc.io/docs/languages/java/basics/
+ */
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.CA.gRPC";
+option java_outer_classname = "OvenTempRampProto";
+
+//Service definition - Server-side streaming RPC
+service TemperatureRamp
+{
+  //Sends a greeting
+  rpc SendTempData (SetPointTemp) returns (stream TempRamp) {}
+}
+
+//The request message containing the set point temperature from the user
+message SetPointTemp
+{
+  int32 setTemp = 1; //The temp to set the goal
+}
+
+//The response message containing numbers as temperature ramp.
+message TempRamp
+{
+  int32 message = 1; //The temp ramp.
+}
+

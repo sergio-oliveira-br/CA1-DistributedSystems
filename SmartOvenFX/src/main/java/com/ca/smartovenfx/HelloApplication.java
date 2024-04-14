@@ -1,4 +1,4 @@
-package com.ca.smartscreen;
+package com.ca.smartovenfx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
