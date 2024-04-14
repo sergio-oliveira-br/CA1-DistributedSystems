@@ -4,43 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ScreenGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/SmartScreen.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/GreeterGrpc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/HelloReply.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/HelloReplyOrBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/HelloRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/HelloRequestOrBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/OvenTempRampProto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/SetPointTemp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/SetPointTempOrBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/TempRamp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/TempRampOrBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/TemperatureRampGrpc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/gRPC/WelcomeMsgProto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/smartovenfx/SmartClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/java/com/ca/smartovenfx/SmartServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/proto/OvenTemperature.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartOvenFX/src/main/proto/WelcomeMsg.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartOvenFX/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartOvenFX/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/src/main/java/com/ca/smartscreen/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/src/main/java/com/ca/smartscreen/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartScreen/src/main/resources/com/ca/smartscreen/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,7 +158,7 @@
       <updated>1712999536588</updated>
       <workItem from="1712999537800" duration="6496000" />
       <workItem from="1713006498180" duration="17623000" />
-      <workItem from="1713045294076" duration="7400000" />
+      <workItem from="1713045294076" duration="7688000" />
     </task>
     <servers />
   </component>
