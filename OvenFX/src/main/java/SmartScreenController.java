@@ -1,9 +1,12 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
+import javafx.util.Duration;
 
 import java.util.Optional;
 
@@ -56,24 +59,40 @@ public class SmartScreenController
 
     @FXML
     private LineChart<Number, Number> myTempChart;
+    @FXML
+    private XYChart.Series<Number, Number> series;
+    @FXML
+    private XYChart.Series<Number, Number> temp;
 
+    //https://docs.oracle.com/javafx/2/charts/line-chart.htm
     @FXML
     private void initialize()
     {
-
-        XYChart.Series<Number,Number> series = new XYChart.Series<Number, Number>();
+        series = new XYChart.Series<>();
         series.setName("Example");
-
-        series.getData().add(new XYChart.Data<Number, Number>(10, 10));
-        series.getData().add(new XYChart.Data(2, 3));
-        series.getData().add(new XYChart.Data(3, 5));
-        series.getData().add(new XYChart.Data(4, 8));
-        series.getData().add(new XYChart.Data(5, 13));
-
-
         myTempChart.getData().add(series);
+
+        Timeline myTime = new Timeline(new KeyFrame(Duration.millis(2000), event -> toChart()));
+        myTime.setCycleCount(Timeline.INDEFINITE);
+        myTime.play();
 
     }
 
+    @FXML
+    private void toChart()
+    {
+        tempRamp();
+    }
+
+
+    int x = 0;
+    int y = 0;
+    private void tempRamp()
+    {
+        for(int i = 0; i < 1; i++)
+        {
+            series.getData().add(new XYChart.Data<>(x++, y++));
+        }
+    }
 
 }
