@@ -99,8 +99,8 @@ public class SmartServer
 
             //Generate a greeting message
             HelloReply reply = HelloReply.newBuilder()
-                    .setMessage("Welcome to Smart Oven " + request.getName() + " FROM THE SERVER")
-                    .build();
+                    .setMessage("From the Server:\n" +
+                                "Welcome to Smart Oven " + request.getName()).build();
 
             //Send the reply back to the client.
             responseObserver.onNext(reply);

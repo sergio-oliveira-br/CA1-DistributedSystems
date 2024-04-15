@@ -21,7 +21,29 @@ public class SmartScreenController
     @FXML
     private void sayHelloAction(ActionEvent event)
     {
-        System.out.println("Hello Sergio");
+
+
+        TextInputDialog myName = new TextInputDialog();
+        myName.setTitle("CA - Distributed System");
+        myName.setHeaderText("Welcome to Smart Oven");
+        myName.setContentText("Please enter your name");
+
+        //Display the dialog box and wait for user input
+        Optional<String> result = myName.showAndWait();
+
+        //Process
+        result.ifPresent(name ->
+        {
+            SmartClient myClient = new SmartClient("localhost", 8081);
+
+            try {
+                StringBuilder greetingMessage = myClient.greet(name);
+                Text messageText = new Text(greetingMessage + "\n");
+                myText.getChildren().add(messageText);
+            } catch (StatusException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 

@@ -20,14 +20,8 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.chart.XYChart;
-import javafx.stage.Stage;
-
-import static javafx.scene.input.KeyCode.X;
 
 public class SmartClient
 {
@@ -73,21 +67,29 @@ public class SmartClient
      */
 
     // Client-side logic for interacting with the gRPC service.
-    public void greet(String name) throws StatusException
+    public StringBuilder greet(String name) throws StatusException
     {
         // Creating a request with the user's name.
         HelloRequest request = HelloRequest.newBuilder().setName(name).build();
+
+        //To allow to display a msg
+        StringBuilder serverResponse = new StringBuilder();
 
         try
         {
             //Create a local variable and call the method
             HelloReply response = greeterBlockingStub.sayHello(request);
-            System.out.println("Hello " + response.getMessage());
+
+            //This will send the msg to TextFlow
+            serverResponse.append(response.getMessage());
+
+            System.out.println("Hello " + response.getMessage()); //just a test
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+        return serverResponse;
     }
 
 
