@@ -1,5 +1,7 @@
 import com.CA.SmartClient;
 import com.CA.SmartServer;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +19,50 @@ import java.util.Optional;
 
 public class SmartScreenController
 {
-    /** Step 1: This button makes you connection to the Server */
+    @FXML
+    private LineChart<Number, Number> myTempChart;
+    @FXML
+    private XYChart.Series<Number, Number> series;
+    @FXML
+    private XYChart.Series<Number, Number> temp;
+    @FXML
+    private TextFlow myText;
+
+    /** Used to configure the initial state of the user interface
+     *  and controller-related elements after initialization by JavaFX */
+    @FXML
+    private void initialize()
+    {
+        //This is the temperature Ramp showing dot by dot
+        series = new XYChart.Series<>();
+        series.setName("Temperature Ramp");
+        myTempChart.getData().add(series);
+
+        //This is the line that should display "dot by dot" the set point from the user
+        temp = new XYChart.Series<Number, Number>();
+        temp.setName("Set Point");
+        myTempChart.getData().add(temp);
+
+        //Guide
+        Text guideStep1 = new Text("Welcome to CA Distributed System.");
+        myText.getChildren().add(guideStep1);
+
+        Text guideStep2 = new Text("\nConnect to Server by clicking the 'Connect' button.");
+        myText.getChildren().add(guideStep2);
+
+        //Disabling the buttons
+        sayHelloButton.setDisable(true);
+        setTempButton.setDisable(true);
+        disconnectButton.setDisable(true);
+
+
+    }
+
+
+    @FXML
+    private Button connectionButton;
+    /** Step 1: This button makes you connection to the Server
+     * Approach: Does not apply to RPC */
     @FXML
     private void connectionAction(ActionEvent event)
     {
@@ -31,9 +76,19 @@ public class SmartScreenController
 
         Text guideStep3 = new Text("\nYour connection to the server is active");
         myText.getChildren().add(guideStep3);
+
+        //Disabling the buttons
+        connectionButton.setDisable(true);
+
     }
 
 
+
+
+
+
+    @FXML
+    private Button sayHelloButton;
     /** Step 2: This button "SayHello" makes you connection to the Server
      *  Approach: RPC Unary Request */
     @FXML
@@ -63,13 +118,21 @@ public class SmartScreenController
         });
     }
 
-    @FXML
-    private TextFlow myText;
 
+
+
+
+
+
+
+    @FXML
+    private Button setTempButton;
+    /** Step 3: This button "setTemp" send numbers from the server to client
+     *  Approach: RPC Stream Server
+     *  Reference: <a href="https://docs.oracle.com/javafx/2/charts/line-chart.htm">...</a> */
     @FXML
     private void submitTempAction(ActionEvent event)
     {
-
         //Create a dialog box to request user input
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Dialog");
@@ -101,37 +164,64 @@ public class SmartScreenController
                 System.out.println("Invalid input. Please enter a valid number.");
             }
         });
+
+        //Enabling the buttons
+        //stopStreamButton.setDisable(false);
+        disconnectButton.setDisable(false);
     }
 
 
-    @FXML
-    private LineChart<Number, Number> myTempChart;
-    @FXML
-    private XYChart.Series<Number, Number> series;
-    @FXML
-    private XYChart.Series<Number, Number> temp;
 
-    //https://docs.oracle.com/javafx/2/charts/line-chart.htm
+
+
+
+    //@FXML Button stopStreamButton;
+    /** Step 4: This button "stop" ends the stream request started on button setTemp
+     *  Approach: RPC Stream Server */
+    //@FXML
+    //public void setStopStreamAction(ActionEvent event)
+    //{
+        //need to be developed
+    //}
+
+
+
+
+
+
     @FXML
-    private void initialize()
+    private Button disconnectButton;
+    /** Step 5: This button ends (stop running) the connection to the Server
+     * Approach: Does not apply to RPC */
+    @FXML
+    private void disconnectAction(ActionEvent event) throws InterruptedException
     {
-        //This is the temperature Ramp showing dot by dot
-        series = new XYChart.Series<>();
-        series.setName("Temperature Ramp");
-        myTempChart.getData().add(series);
+        //Initialize Stub
+        String host = "localhost";
+        int port = 8081;
 
-        //This is the line that should display "dot by dot" the set point from the user
-        temp = new XYChart.Series<Number, Number>();
-        temp.setName("Set Point");
-        myTempChart.getData().add(temp);
+        ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+        SmartServer myServer = new SmartServer(8081);
 
-        //Guide
-        Text guideStep1 = new Text("Welcome to CA Distributed System.");
-        Text guideStep2 = new Text("\nConnect to Server by clicking the 'Connect' button.");
+        channel.shutdown();
+        myServer.stop();
 
+        Text guideStep5 = new Text("\nYou have been disconnected from the server");
+        myText.getChildren().add(guideStep5);
 
-        myText.getChildren().add(guideStep1);
-        myText.getChildren().add(guideStep2);
+        //Disabling the buttons
+        sayHelloButton.setDisable(true);
+        setTempButton.setDisable(true);
+        disconnectButton.setDisable(true);
+
+        //Enabling the buttons
+        connectionButton.setDisable(false);
 
     }
+
+
+
+
+
+
 }

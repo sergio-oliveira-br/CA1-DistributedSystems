@@ -23,6 +23,8 @@ import io.grpc.stub.StreamObserver;
 import javafx.application.Platform;
 import javafx.scene.chart.XYChart;
 
+import java.util.concurrent.TimeUnit;
+
 public class SmartClient
 {
     /*
@@ -58,6 +60,12 @@ public class SmartClient
         //and will either return a response or raise an exception
         greeterBlockingStub = GreeterGrpc.newBlockingStub(channel);
         temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
+    }
+
+    //Method: Close the connection before
+    public void shutdown() throws InterruptedException
+    {
+        channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
     /*
