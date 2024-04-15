@@ -181,7 +181,6 @@ public class SmartServer
         SmartServer myServer = new SmartServer(8081);
         myServer.start();
         myServer.blockUntilShutdown();
-
     }
 
 }

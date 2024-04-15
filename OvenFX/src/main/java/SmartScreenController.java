@@ -1,4 +1,5 @@
 import com.CA.SmartClient;
+import com.CA.SmartServer;
 import io.grpc.StatusException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,19 +11,34 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 
+import javax.swing.*;
+import java.io.IOException;
 import java.util.Optional;
 
 public class SmartScreenController
 {
-
+    /** Step 1: This button makes you connection to the Server */
     @FXML
-    private Button sayHelloButton;
+    private void connectionAction(ActionEvent event)
+    {
+        SmartServer myServer = new SmartServer(8081);
+        try {
+            myServer.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //myServer.blockUntilShutdown();
 
+        Text guideStep3 = new Text("\nYour connection to the server is active");
+        myText.getChildren().add(guideStep3);
+    }
+
+
+    /** Step 2: This button "SayHello" makes you connection to the Server
+     *  Approach: RPC Unary Request */
     @FXML
     private void sayHelloAction(ActionEvent event)
     {
-
-
         TextInputDialog myName = new TextInputDialog();
         myName.setTitle("CA - Distributed System");
         myName.setHeaderText("Welcome to Smart Oven");
@@ -36,19 +52,16 @@ public class SmartScreenController
         {
             SmartClient myClient = new SmartClient("localhost", 8081);
 
-            try {
+            try
+            {
                 StringBuilder greetingMessage = myClient.greet(name);
-                Text messageText = new Text(greetingMessage + "\n");
+                Text messageText = new Text("\n" + greetingMessage + "\n");
                 myText.getChildren().add(messageText);
             } catch (StatusException e) {
                 throw new RuntimeException(e);
             }
         });
     }
-
-
-    @FXML
-    private Button setTempButton;
 
     @FXML
     private TextFlow myText;
@@ -102,18 +115,23 @@ public class SmartScreenController
     @FXML
     private void initialize()
     {
+        //This is the temperature Ramp showing dot by dot
         series = new XYChart.Series<>();
         series.setName("Temperature Ramp");
         myTempChart.getData().add(series);
 
-
+        //This is the line that should display "dot by dot" the set point from the user
         temp = new XYChart.Series<Number, Number>();
         temp.setName("Set Point");
         myTempChart.getData().add(temp);
 
+        //Guide
+        Text guideStep1 = new Text("Welcome to CA Distributed System.");
+        Text guideStep2 = new Text("\nConnect to Server by clicking the 'Connect' button.");
 
 
-
+        myText.getChildren().add(guideStep1);
+        myText.getChildren().add(guideStep2);
 
     }
 }
