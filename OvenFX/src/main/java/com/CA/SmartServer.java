@@ -131,19 +131,18 @@ public class SmartServer
             int setTemp = request.getSetTemp();
             for(int i = 0; i <= setTemp; i++)
             {
-                TempRamp tempRamp = TempRamp.newBuilder().setMessage(i).build();
+                TempRamp tempRamp = TempRamp.newBuilder().setMessage((i)).build();
                 responseObserver.onNext(tempRamp);
 
                 try
                 {
-                    Thread.sleep(5000);
+                    Thread.sleep(500);
                 }
 
                 catch (InterruptedException e)
                 {
                     throw new RuntimeException(e);
                 }
-
             }
             //This is the end.
             responseObserver.onCompleted();

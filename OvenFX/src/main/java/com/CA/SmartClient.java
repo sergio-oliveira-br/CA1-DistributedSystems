@@ -131,11 +131,8 @@ public class SmartClient
 
             }
         };
-
-        // Em vez de usar TemperatureRampGrpc.TemperatureRampBlockingStub, use TemperatureRampGrpc.TemperatureRampStub
         TemperatureRampGrpc.TemperatureRampStub stub = TemperatureRampGrpc.newStub(channel);
 
-        // Em seguida, você pode chamar o método sendTempData usando a interface TemperatureRampStub
         stub.sendTempData(request, observer);
     }
 

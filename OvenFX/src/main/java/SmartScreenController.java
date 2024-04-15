@@ -1,14 +1,14 @@
 import com.CA.SmartClient;
 import io.grpc.StatusException;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
-import javafx.util.Duration;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
 
 import java.util.Optional;
 
@@ -25,10 +25,11 @@ public class SmartScreenController
     }
 
 
-
-
     @FXML
     private Button setTempButton;
+
+    @FXML
+    private TextFlow myText;
 
     @FXML
     private void submitTempAction(ActionEvent event)
@@ -43,8 +44,6 @@ public class SmartScreenController
         //Display the dialog box and wait for user input
          Optional<String> result = dialog.showAndWait();
 
-
-
         // Process user input
         result.ifPresent(number ->
         {
@@ -53,15 +52,16 @@ public class SmartScreenController
                 int setPoint = Integer.parseInt(number);
                 SmartClient myClient = new SmartClient("localhost", 8081);
                 myClient.setPointUser(setPoint, series);
+
+
+                Text messageText = new Text("Set point set to: " + setPoint +"\n");
+                myText.getChildren().add(messageText);
             }
             catch (NumberFormatException | StatusException e)
             {
                 System.out.println("Invalid input. Please enter a valid number.");
             }
-
         });
-
-
     }
 
 
@@ -79,20 +79,5 @@ public class SmartScreenController
         series = new XYChart.Series<>();
         series.setName("Temperature Ramp");
         myTempChart.getData().add(series);
-
-        Timeline myTime = new Timeline(new KeyFrame(Duration.millis(2000), event -> dataMyGraph()));
-        myTime.setCycleCount(Timeline.INDEFINITE);
-        myTime.play();
-
     }
-
-    //Method: This it's responsible to sent to Chart item by item
-    @FXML
-    private void dataMyGraph()
-    {
-        //submitTempAction();
-    }
-
-
-
 }
