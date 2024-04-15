@@ -19,10 +19,15 @@ import com.CA.gRPC.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusException;
+import io.grpc.stub.StreamObserver;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
+
+import static javafx.scene.input.KeyCode.X;
 
 public class SmartClient
 {
@@ -100,13 +105,38 @@ public class SmartClient
      */
 
     // Client-side logic for interacting with the gRPC service.
-    public void setPointUser(int temp) throws StatusException
+    public void setPointUser(int temp, XYChart.Series<Number, Number> series) throws StatusException
     {
-        // Creating a request with the set point temperature
+        //Creating a request with the set point temperature
         SetPointTemp request = SetPointTemp.newBuilder().setSetTemp(temp).build();
 
         //Starts the Streaming
-        temperatureRampBlockingStub.sendTempData(request);
+        StreamObserver<TempRamp> observer = new StreamObserver<TempRamp>()
+        {
+            @Override
+            public void onNext(TempRamp tempRamp) {
+                Platform.runLater(() ->
+                {
+                    series.getData().add(new XYChart.Data<>(tempRamp.getMessage(), tempRamp.getMessage()));
+                });
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        };
+
+        // Em vez de usar TemperatureRampGrpc.TemperatureRampBlockingStub, use TemperatureRampGrpc.TemperatureRampStub
+        TemperatureRampGrpc.TemperatureRampStub stub = TemperatureRampGrpc.newStub(channel);
+
+        // Em seguida, você pode chamar o método sendTempData usando a interface TemperatureRampStub
+        stub.sendTempData(request, observer);
     }
 
 
@@ -126,7 +156,9 @@ public class SmartClient
         try
         {
             myClient.greet("Sergio");
-            myClient.setPointUser(200);
+
+            XYChart.Series<Number, Number> series = new XYChart.Series<>();
+            myClient.setPointUser(1, series);
         }
 
         catch (StatusException e)

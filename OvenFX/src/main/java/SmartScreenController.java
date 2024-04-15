@@ -1,3 +1,5 @@
+import com.CA.SmartClient;
+import io.grpc.StatusException;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -39,21 +41,27 @@ public class SmartScreenController
         dialog.setContentText("Number:");
 
         //Display the dialog box and wait for user input
-        Optional<String> result = dialog.showAndWait();
+         Optional<String> result = dialog.showAndWait();
 
-        //Process user input
+
+
+        // Process user input
         result.ifPresent(number ->
         {
             try
             {
-                int intValue = Integer.parseInt(number);
-                System.out.println("You entered: " + intValue);
-
+                int setPoint = Integer.parseInt(number);
+                SmartClient myClient = new SmartClient("localhost", 8081);
+                myClient.setPointUser(setPoint, series);
             }
-            catch (NumberFormatException e) {
+            catch (NumberFormatException | StatusException e)
+            {
                 System.out.println("Invalid input. Please enter a valid number.");
             }
+
         });
+
+
     }
 
 
@@ -72,27 +80,19 @@ public class SmartScreenController
         series.setName("Example");
         myTempChart.getData().add(series);
 
-        Timeline myTime = new Timeline(new KeyFrame(Duration.millis(2000), event -> toChart()));
+        Timeline myTime = new Timeline(new KeyFrame(Duration.millis(2000), event -> dataMyGraph()));
         myTime.setCycleCount(Timeline.INDEFINITE);
         myTime.play();
 
     }
 
+    //Method: This it's responsible to sent to Chart item by item
     @FXML
-    private void toChart()
+    private void dataMyGraph()
     {
-        tempRamp();
+        //submitTempAction();
     }
 
 
-    int x = 0;
-    int y = 0;
-    private void tempRamp()
-    {
-        for(int i = 0; i < 1; i++)
-        {
-            series.getData().add(new XYChart.Data<>(x++, y++));
-        }
-    }
 
 }

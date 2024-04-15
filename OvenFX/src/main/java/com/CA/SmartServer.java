@@ -128,12 +128,9 @@ public class SmartServer
         @Override
         public void sendTempData(SetPointTemp request, StreamObserver<TempRamp> responseObserver)
         {
-
-
             int setTemp = request.getSetTemp();
             for(int i = 0; i <= setTemp; i++)
             {
-                System.out.println(i);
                 TempRamp tempRamp = TempRamp.newBuilder().setMessage(i).build();
                 responseObserver.onNext(tempRamp);
 

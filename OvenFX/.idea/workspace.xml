@@ -7,6 +7,9 @@
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SmartScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SmartScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/SmartScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SmartScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +97,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SmartScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.CA.SmartScreen" />
+    <configuration name="SmartServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.CA.SmartServer" />
       <module name="OvenFX" />
       <extension name="coverage">
         <pattern>
@@ -128,19 +131,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.SmartServer" />
       <item itemvalue="Application.ScreenGUI" />
       <item itemvalue="Application.SmartClient" />
-      <item itemvalue="Application.SmartScreen" />
       <item itemvalue="Application.Test" />
       <item itemvalue="Application.Testttt" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ScreenGUI" />
+        <item itemvalue="Application.SmartClient" />
+        <item itemvalue="Application.SmartServer" />
         <item itemvalue="Application.Testttt" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Application.SmartScreen" />
-        <item itemvalue="Application.SmartClient" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +165,7 @@
       <workItem from="1712999537800" duration="6496000" />
       <workItem from="1713006498180" duration="17623000" />
       <workItem from="1713045294076" duration="7688000" />
-      <workItem from="1713085755941" duration="13330000" />
+      <workItem from="1713085755941" duration="17390000" />
     </task>
     <servers />
   </component>
