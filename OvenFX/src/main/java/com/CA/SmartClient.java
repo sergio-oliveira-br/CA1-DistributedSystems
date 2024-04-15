@@ -154,10 +154,10 @@ public class SmartClient
         SmartClient myClient = new SmartClient(host, port);
         try
         {
-            myClient.greet("Sergio");
+            //myClient.greet("Sergio");
 
             XYChart.Series<Number, Number> series = new XYChart.Series<>();
-            myClient.setPointUser(1, series);
+            myClient.setPointUser(1 , series);
         }
 
         catch (StatusException e)

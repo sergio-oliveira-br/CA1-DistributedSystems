@@ -123,27 +123,54 @@ public class SmartServer
         ======================================================
      */
 
+    static boolean streaming = true;
+
     private static class TemperatureRampImpl extends TemperatureRampGrpc.TemperatureRampImplBase
     {
         @Override
         public void sendTempData(SetPointTemp request, StreamObserver<TempRamp> responseObserver)
         {
             int setTemp = request.getSetTemp();
-            for(int i = 0; i <= setTemp; i++)
+            int currentTemp = 0;
+
+            for (int i = 0; i <= setTemp; i++)
             {
-                TempRamp tempRamp = TempRamp.newBuilder().setMessage((i)).build();
+                //double tempValue = Math.exp(i / 10.0);
+                TempRamp tempRamp = TempRamp.newBuilder().setMessage((int)i).build();
                 responseObserver.onNext(tempRamp);
 
-                try
-                {
+                try {
                     Thread.sleep(500);
-                }
-
-                catch (InterruptedException e)
-                {
+                } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
+
+
+/*
+            if(currentTemp >= setTemp)
+            {
+                for(int i = currentTemp; currentTemp > setTemp; i++)
+                {
+                    TempRamp tempRamp = TempRamp.newBuilder().setMessage((currentTemp+3)).build();
+                    responseObserver.onNext(tempRamp);
+                    currentTemp++;
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+ */
+
+
+
+
+
+
+
             //This is the end.
             responseObserver.onCompleted();
         }
