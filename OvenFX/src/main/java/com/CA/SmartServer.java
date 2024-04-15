@@ -99,8 +99,7 @@ public class SmartServer
 
             //Generate a greeting message
             HelloReply reply = HelloReply.newBuilder()
-                    .setMessage("From the Server:\n" +
-                                "Welcome to Smart Oven " + request.getName()).build();
+                    .setMessage("From the Server: Welcome to Smart Oven " + request.getName()).build();
 
             //Send the reply back to the client.
             responseObserver.onNext(reply);
@@ -172,7 +171,7 @@ public class SmartServer
 
 
             //This is the end.
-            responseObserver.onCompleted();
+           responseObserver.onCompleted();
         }
     }
 

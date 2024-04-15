@@ -75,6 +75,10 @@ public class SmartScreenController
                 SmartClient myClient = new SmartClient("localhost", 8081);
                 myClient.setPointUser(setPoint, series);
 
+                for(int i = 0; i < 50; i++)
+                {
+                    temp.getData().add(new XYChart.Data<Number, Number>(i, setPoint));
+                }
 
                 Text messageText = new Text("Set point set to: " + setPoint +"\n");
                 myText.getChildren().add(messageText);
@@ -101,5 +105,15 @@ public class SmartScreenController
         series = new XYChart.Series<>();
         series.setName("Temperature Ramp");
         myTempChart.getData().add(series);
+
+
+        temp = new XYChart.Series<Number, Number>();
+        temp.setName("Set Point");
+        myTempChart.getData().add(temp);
+
+
+
+
+
     }
 }
