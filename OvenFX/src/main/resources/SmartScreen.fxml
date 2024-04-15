@@ -19,14 +19,17 @@
           <NumberAxis label="Temperature (ºC)" side="LEFT" />
         </yAxis>
       </LineChart>
-      <Button fx:id="sayHelloButton" layoutX="63.0" layoutY="96.0" mnemonicParsing="false" onAction="#sayHelloAction" text="SayHello" />
-      <Button fx:id="setTempButton" layoutX="41.0" layoutY="161.0" mnemonicParsing="false" onAction="#submitTempAction" text="Set Temperature" />
+      <Button fx:id="sayHelloButton" layoutX="67.0" layoutY="158.0" mnemonicParsing="false" onAction="#sayHelloAction" text="SayHello" />
+      <Button fx:id="setTempButton" layoutX="65.0" layoutY="223.0" mnemonicParsing="false" onAction="#submitTempAction" text="Set Temp" />
       <Label layoutX="34.0" layoutY="30.0" text="SmartOven">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="197.0" layoutY="494.0" text="CA - Distributed System - gRPC Developed by Sergio Oliveira" />
+      <Label layoutX="197.0" layoutY="500.0" text="CA - Distributed System - gRPC Developed by Sergio Oliveira" />
       <TextFlow fx:id="myText" layoutX="17.0" layoutY="402.0" prefHeight="92.0" prefWidth="630.0" style="-fx-border-color: black;" />
+      <Button layoutX="76.0" layoutY="289.0" mnemonicParsing="false" text="Stop " />
+      <Button layoutX="68.0" layoutY="91.0" mnemonicParsing="false" text="Connect" />
+      <Button layoutX="59.0" layoutY="348.0" mnemonicParsing="false" text="Disconnect" />
    </children>
 </Pane>
