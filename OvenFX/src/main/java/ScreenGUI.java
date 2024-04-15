@@ -15,7 +15,7 @@ public class ScreenGUI extends Application
    public void start(Stage primaryStage) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(ScreenGUI.class.getResource("SmartScreen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 500);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 450);
         primaryStage.setTitle("Hello!");
         primaryStage.setScene(scene);
         primaryStage.show();

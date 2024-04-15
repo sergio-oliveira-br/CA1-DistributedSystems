@@ -77,7 +77,7 @@ public class SmartScreenController
     private void initialize()
     {
         series = new XYChart.Series<>();
-        series.setName("Example");
+        series.setName("Temperature Ramp");
         myTempChart.getData().add(series);
 
         Timeline myTime = new Timeline(new KeyFrame(Duration.millis(2000), event -> dataMyGraph()));

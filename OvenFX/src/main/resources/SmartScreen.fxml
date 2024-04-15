@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SmartScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SmartScreenController">
 
    <children>
       <LineChart fx:id="myTempChart" layoutX="128.0" prefHeight="369.0" prefWidth="465.0">
         <xAxis>
-          <NumberAxis side="BOTTOM" />
+          <NumberAxis label="Time (seconds)" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis label="Temperature (ºC)" side="LEFT" />
         </yAxis>
       </LineChart>
       <Button fx:id="sayHelloButton" layoutX="37.0" layoutY="172.0" mnemonicParsing="false" onAction="#sayHelloAction" text="SayHello" />
@@ -25,5 +25,6 @@
             <Font size="26.0" />
          </font>
       </Label>
+      <Label layoutX="14.0" layoutY="412.0" text="CA - Distributed System - gRPC Developed by Sergio Oliveira" />
    </children>
 </Pane>
