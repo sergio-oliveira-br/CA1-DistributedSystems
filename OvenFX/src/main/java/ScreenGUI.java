@@ -21,6 +21,5 @@ public class ScreenGUI extends Application
         primaryStage.setTitle("Smart Screen");
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 }
