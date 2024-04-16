@@ -132,6 +132,7 @@ public class SmartServer
             int setTemp = request.getSetTemp();
             int currentTemp = 0;
 
+            //here is where my dots rise
             for (int i = 0; i <= setTemp; i++)
             {
                 //double tempValue = Math.exp(i / 10.0);
@@ -144,7 +145,14 @@ public class SmartServer
                     throw new RuntimeException(e);
                 }
             }
-            
+
+            //here is where my graph goes down
+
+
+            //here I need to implement the same number
+
+
+
             //This is the end.
            responseObserver.onCompleted();
         }

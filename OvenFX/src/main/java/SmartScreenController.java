@@ -54,6 +54,10 @@ public class SmartScreenController
         sayHelloButton.setDisable(true);
         setTempButton.setDisable(true);
         disconnectButton.setDisable(true);
+        stopStreamButton.setDisable(true);
+
+
+
 
 
     }
@@ -79,6 +83,9 @@ public class SmartScreenController
 
         //Disabling the buttons
         connectionButton.setDisable(true);
+
+        //Enabling the buttons
+        sayHelloButton.setDisable(false);
 
     }
 
@@ -116,6 +123,14 @@ public class SmartScreenController
                 throw new RuntimeException(e);
             }
         });
+
+        //Disabling the buttons
+        sayHelloButton.setDisable(true);
+
+
+        //Enabling the buttons
+        setTempButton.setDisable(false);
+
     }
 
 
@@ -165,9 +180,12 @@ public class SmartScreenController
             }
         });
 
+        //Disabling the buttons
+        sayHelloButton.setDisable(true);
+
         //Enabling the buttons
-        //stopStreamButton.setDisable(false);
-        disconnectButton.setDisable(false);
+        stopStreamButton.setDisable(false);
+        //disconnectButton.setDisable(false);
     }
 
 
@@ -175,14 +193,24 @@ public class SmartScreenController
 
 
 
-    //@FXML Button stopStreamButton;
+    @FXML
+    private Button stopStreamButton;
     /** Step 4: This button "stop" ends the stream request started on button setTemp
      *  Approach: RPC Stream Server */
-    //@FXML
-    //public void setStopStreamAction(ActionEvent event)
-    //{
+    @FXML
+    public void stopStreamAction(ActionEvent event)
+    {
         //need to be developed
-    //}
+
+
+
+        //Disabling the buttons
+
+        //Enabling the buttons
+        disconnectButton.setDisable(false);
+        //setTempButton.setDisable(false);
+
+    }
 
 
 
