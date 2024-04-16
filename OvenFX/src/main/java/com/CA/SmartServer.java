@@ -144,32 +144,7 @@ public class SmartServer
                     throw new RuntimeException(e);
                 }
             }
-
-
-/*
-            if(currentTemp >= setTemp)
-            {
-                for(int i = currentTemp; currentTemp > setTemp; i++)
-                {
-                    TempRamp tempRamp = TempRamp.newBuilder().setMessage((currentTemp+3)).build();
-                    responseObserver.onNext(tempRamp);
-                    currentTemp++;
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-
- */
-
-
-
-
-
-
-
+            
             //This is the end.
            responseObserver.onCompleted();
         }
