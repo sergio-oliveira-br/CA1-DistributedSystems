@@ -12,7 +12,11 @@ option java_outer_classname = "LockProto";
 
 service LockServices
 {
+/*  A simple RPC where the client sends a request to the server
+    using the stub and waits for a response to come back, just like a normal function call.
+*/
   rpc ControlLocks(LockRequest) returns (LockResponse);
+
 }
 
 message LockRequest
@@ -24,3 +28,4 @@ message LockResponse
 {
   string message = 1;
 }
+

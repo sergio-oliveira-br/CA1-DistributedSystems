@@ -1,3 +1,18 @@
+/*
+  CA - Distributed System
+  Author: Sergio Oliveira - x23170981@student.ncirl.ie
+  Date: 13 Apr 2024
+
+  Lecturer: Mark Cudden
+
+  Bidirectional Streaming RPC
+
+  References:
+    https://protobuf.dev/reference/java/java-generated/#invocation
+    https://grpc.io/docs/languages/java/quickstart/
+    https://grpc.io/docs/languages/java/basics/
+ */
+
 syntax = "proto3";
 
 option java_multiple_files = true;
@@ -6,7 +21,7 @@ option java_outer_classname = "BidirectionalStreamingProto";
 
 service BidirectionalStreamingService
 {
-  // Bidirectional streaming RPC
+  //Bidirectional streaming RPC
   rpc bidirectionalStream(stream BidirectionalRequest) returns (stream BidirectionalResponse);
   rpc weatherForecast(stream WeatherForecastRequest) returns (stream WeatherForecastResponse);
 }

@@ -28,7 +28,7 @@ option java_outer_classname = "OvenTempRampProto";
 //Service definition - Server-side streaming RPC
 service TemperatureRamp
 {
-  //Sends a greeting
+  //Streaming the Temp Ramp
   rpc SendTempData (SetPointTemp) returns (stream TempRamp) {}
 }
 
