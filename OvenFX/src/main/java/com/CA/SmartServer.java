@@ -124,8 +124,6 @@ public class SmartServer
         ======================================================
      */
 
-    static boolean streaming = true;
-
     private static class TemperatureRampImpl extends TemperatureRampGrpc.TemperatureRampImplBase
     {
         @Override
@@ -193,6 +191,7 @@ public class SmartServer
         }
     }
 
+    /** Home Security Proto (Alarm): Implementation of Server Side Streaming RCP */
     public static class SmartAlarmServicesImpl extends SmartAlarmServicesGrpc.SmartAlarmServicesImplBase
     {
         private static volatile boolean streaming = false;
@@ -208,7 +207,6 @@ public class SmartServer
                     int i = 0;
                     while(streaming || i == 200)
                     {
-
                         {
                             TurnOnAlarmResponse response = TurnOnAlarmResponse.newBuilder().setStatusOn("Alarm ON: Pulse ").build();
                             System.out.print("Alarm is ON...");
@@ -237,7 +235,6 @@ public class SmartServer
         @Override
         public void turnOffAlarm (TurnOffAlarmRequest request, StreamObserver<TurnOffAlarmResponse> responseObserver)
         {
-
             streaming = false;
 
             //Build the response
@@ -249,6 +246,16 @@ public class SmartServer
             responseObserver.onCompleted();
         }
     }
+
+
+
+    /** Environment Management Proto (Forecast): Implementation of Unary RCP */
+    public static class EnvironmentMgmtServicesImpl extends SmartDoorServicesGrpc.SmartDoorServicesImplBase
+    {
+        @Override
+        public void forecast ()
+    }
+
 
 
     public static void main(String[] args) throws IOException, InterruptedException

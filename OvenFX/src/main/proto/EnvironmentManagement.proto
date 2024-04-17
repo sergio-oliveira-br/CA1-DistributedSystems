@@ -25,43 +25,43 @@ option java_outer_classname = "EnvironmentProto";
 //Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
 service EnvironmentMgmtServices
 {
-  rpc switchOn (switchOnRequest) returns (stream switchOnResponse) {}
-  rpc switchOff (switchOffRequest) returns (switchOffResponse) {}
-  rpc forecast (forecastRequest) returns (forecastResponse) {}
+  rpc switchOn (SwitchOnRequest) returns (stream SwitchOnResponse) {}
+  rpc switchOff (SwitchOffRequest) returns (SwitchOffResponse) {}
+  rpc forecast (ForecastRequest) returns (ForecastResponse) {}
   //maybe include a functionality such as, ask the server what temperature in outside?? or inside?? or in other city??
 }
 
 //The request message containing to open the door
-message switchOnRequest
+message SwitchOnRequest
 {
   int32 temperature = 1;
 }
 
-message switchOnResponse
+message SwitchOnResponse
 {
   int32 statusTemperature = 1;
 }
 
 //------------------
 
-message switchOffRequest
+message SwitchOffRequest
 {
   int32 temperature = 1;
 }
 
-message switchOffResponse
+message SwitchOffResponse
 {
   int32 status = 1;
 }
 
 //------------------
 
-message forecastRequest
+message ForecastRequest
 {
   string msgRequest = 1;
 }
 
-message forecastResponse
+message ForecastResponse
 {
   int32 msgResponse = 1;
 }
