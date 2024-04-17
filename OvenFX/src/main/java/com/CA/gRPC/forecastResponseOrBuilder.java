@@ -12,4 +12,10 @@ public interface forecastResponseOrBuilder extends
    * @return The msgResponse.
    */
   int getMsgResponse();
+
+  /**
+   * <code>int32 msgResponseTomorrow = 2;</code>
+   * @return The msgResponseTomorrow.
+   */
+  int getMsgResponseTomorrow();
 }

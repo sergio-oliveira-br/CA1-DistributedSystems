@@ -57,15 +57,16 @@ public final class EnvironmentProto {
       "nRequest\022\023\n\013temperature\030\001 \001(\005\"-\n\020switchO" +
       "nResponse\022\031\n\021statusTemperature\030\001 \001(\005\"\'\n\020" +
       "switchOffRequest\022\023\n\013temperature\030\001 \001(\005\"#\n" +
-      "\021switchOffResponse\022\016\n\006status\030\001 \001(\005\"%\n\017fo" +
-      "recastRequest\022\022\n\nmsgRequest\030\001 \001(\t\"\'\n\020for" +
-      "ecastResponse\022\023\n\013msgResponse\030\001 \001(\0052\267\001\n\027E" +
-      "nvironmentMgmtServices\0223\n\010switchOn\022\020.swi" +
-      "tchOnRequest\032\021.switchOnResponse\"\0000\001\0224\n\ts" +
-      "witchOff\022\021.switchOffRequest\032\022.switchOffR" +
-      "esponse\"\000\0221\n\010forecast\022\020.forecastRequest\032" +
-      "\021.forecastResponse\"\000B!\n\013com.CA.gRPCB\020Env" +
-      "ironmentProtoP\001b\006proto3"
+      "\021switchOffResponse\022\016\n\006status\030\001 \001(\005\"A\n\017fo" +
+      "recastRequest\022\022\n\nmsgRequest\030\001 \001(\t\022\032\n\022msg" +
+      "RequestTomorrow\030\002 \001(\t\"D\n\020forecastRespons" +
+      "e\022\023\n\013msgResponse\030\001 \001(\005\022\033\n\023msgResponseTom" +
+      "orrow\030\002 \001(\0052\267\001\n\027EnvironmentMgmtServices\022" +
+      "3\n\010switchOn\022\020.switchOnRequest\032\021.switchOn" +
+      "Response\"\0000\001\0224\n\tswitchOff\022\021.switchOffReq" +
+      "uest\032\022.switchOffResponse\"\000\0221\n\010forecast\022\020" +
+      ".forecastRequest\032\021.forecastResponse\"\000B!\n" +
+      "\013com.CA.gRPCB\020EnvironmentProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -100,13 +101,13 @@ public final class EnvironmentProto {
     internal_static_forecastRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_forecastRequest_descriptor,
-        new java.lang.String[] { "MsgRequest", });
+        new java.lang.String[] { "MsgRequest", "MsgRequestTomorrow", });
     internal_static_forecastResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_forecastResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_forecastResponse_descriptor,
-        new java.lang.String[] { "MsgResponse", });
+        new java.lang.String[] { "MsgResponse", "MsgResponseTomorrow", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

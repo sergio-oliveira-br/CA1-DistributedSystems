@@ -59,11 +59,13 @@ message switchOffResponse
 message forecastRequest
 {
   string msgRequest = 1;
+  string msgRequestTomorrow = 2;
 }
 
 message forecastResponse
 {
   int32 msgResponse = 1;
+  int32 msgResponseTomorrow = 2;
 }
 
 

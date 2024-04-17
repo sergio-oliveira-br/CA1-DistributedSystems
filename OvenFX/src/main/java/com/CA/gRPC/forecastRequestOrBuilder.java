@@ -18,4 +18,16 @@ public interface forecastRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getMsgRequestBytes();
+
+  /**
+   * <code>string msgRequestTomorrow = 2;</code>
+   * @return The msgRequestTomorrow.
+   */
+  java.lang.String getMsgRequestTomorrow();
+  /**
+   * <code>string msgRequestTomorrow = 2;</code>
+   * @return The bytes for msgRequestTomorrow.
+   */
+  com.google.protobuf.ByteString
+      getMsgRequestTomorrowBytes();
 }

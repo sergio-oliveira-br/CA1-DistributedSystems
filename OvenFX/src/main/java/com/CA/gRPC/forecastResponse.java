@@ -53,6 +53,11 @@ private static final long serialVersionUID = 0L;
             msgResponse_ = input.readInt32();
             break;
           }
+          case 16: {
+
+            msgResponseTomorrow_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -98,6 +103,17 @@ private static final long serialVersionUID = 0L;
     return msgResponse_;
   }
 
+  public static final int MSGRESPONSETOMORROW_FIELD_NUMBER = 2;
+  private int msgResponseTomorrow_;
+  /**
+   * <code>int32 msgResponseTomorrow = 2;</code>
+   * @return The msgResponseTomorrow.
+   */
+  @java.lang.Override
+  public int getMsgResponseTomorrow() {
+    return msgResponseTomorrow_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -115,6 +131,9 @@ private static final long serialVersionUID = 0L;
     if (msgResponse_ != 0) {
       output.writeInt32(1, msgResponse_);
     }
+    if (msgResponseTomorrow_ != 0) {
+      output.writeInt32(2, msgResponseTomorrow_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -127,6 +146,10 @@ private static final long serialVersionUID = 0L;
     if (msgResponse_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, msgResponse_);
+    }
+    if (msgResponseTomorrow_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, msgResponseTomorrow_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -145,6 +168,8 @@ private static final long serialVersionUID = 0L;
 
     if (getMsgResponse()
         != other.getMsgResponse()) return false;
+    if (getMsgResponseTomorrow()
+        != other.getMsgResponseTomorrow()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -158,6 +183,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + MSGRESPONSE_FIELD_NUMBER;
     hash = (53 * hash) + getMsgResponse();
+    hash = (37 * hash) + MSGRESPONSETOMORROW_FIELD_NUMBER;
+    hash = (53 * hash) + getMsgResponseTomorrow();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -293,6 +320,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       msgResponse_ = 0;
 
+      msgResponseTomorrow_ = 0;
+
       return this;
     }
 
@@ -320,6 +349,7 @@ private static final long serialVersionUID = 0L;
     public com.CA.gRPC.forecastResponse buildPartial() {
       com.CA.gRPC.forecastResponse result = new com.CA.gRPC.forecastResponse(this);
       result.msgResponse_ = msgResponse_;
+      result.msgResponseTomorrow_ = msgResponseTomorrow_;
       onBuilt();
       return result;
     }
@@ -370,6 +400,9 @@ private static final long serialVersionUID = 0L;
       if (other == com.CA.gRPC.forecastResponse.getDefaultInstance()) return this;
       if (other.getMsgResponse() != 0) {
         setMsgResponse(other.getMsgResponse());
+      }
+      if (other.getMsgResponseTomorrow() != 0) {
+        setMsgResponseTomorrow(other.getMsgResponseTomorrow());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -427,6 +460,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearMsgResponse() {
       
       msgResponse_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int msgResponseTomorrow_ ;
+    /**
+     * <code>int32 msgResponseTomorrow = 2;</code>
+     * @return The msgResponseTomorrow.
+     */
+    @java.lang.Override
+    public int getMsgResponseTomorrow() {
+      return msgResponseTomorrow_;
+    }
+    /**
+     * <code>int32 msgResponseTomorrow = 2;</code>
+     * @param value The msgResponseTomorrow to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMsgResponseTomorrow(int value) {
+      
+      msgResponseTomorrow_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 msgResponseTomorrow = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMsgResponseTomorrow() {
+      
+      msgResponseTomorrow_ = 0;
       onChanged();
       return this;
     }

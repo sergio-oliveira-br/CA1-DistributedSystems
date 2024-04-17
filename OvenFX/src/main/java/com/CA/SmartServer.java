@@ -250,10 +250,22 @@ public class SmartServer
 
 
     /** Environment Management Proto (Forecast): Implementation of Unary RCP */
-    //public static class EnvironmentMgmtServicesImpl extends SmartDoorServicesGrpc.SmartDoorServicesImplBase
-    //{
+    public static class EnvironmentMgmtServicesImpl extends EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesImplBase
+    {
+        @Override
+        public void forecast (forecastRequest request, StreamObserver<forecastResponse> responseObserver)
+        {
+            //Build the response
+            //forecastResponse response = forecastResponse.newBuilder().setMsgResponse("The Forecast for ")
+            ////OpenResponse response = OpenResponse.newBuilder().setStatus("\nFrom the server: Door Opened -> ").build();
 
-    //}
+            //Send the response
+            ////responseObserver.onNext(response);
+            ////responseObserver.onCompleted(); //finish the request
+
+        }
+
+    }
 
 
 
