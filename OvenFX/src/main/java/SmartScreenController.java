@@ -249,6 +249,18 @@ public class SmartScreenController
 
 
 
+    @FXML
+    private Button openDoorButton;
+
+    @FXML
+    private void openDoorAction(ActionEvent event)
+    {
+        String doorID = "sala";
+        SmartClient myClient = new SmartClient("localhost", 8081);
+        myClient.openDoorID(doorID);
+    }
+
+
 
 
 

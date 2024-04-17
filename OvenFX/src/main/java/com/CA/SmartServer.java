@@ -50,6 +50,7 @@ public class SmartServer
         server = serverBuilder
                 .addService(new GreeterImpl())
                 .addService(new TemperatureRampImpl())
+                .addService(new SmartDoorServicesImpl())
                 .build();
 
     }
@@ -170,7 +171,7 @@ public class SmartServer
         @Override
         public void openDoor (OpenRequest request, StreamObserver<OpenResponse> responseObserver)
         {
-
+            System.out.println("This is the server");
 
             //Build the response
             OpenResponse response = OpenResponse.newBuilder().setStatus("Door Opened").build();

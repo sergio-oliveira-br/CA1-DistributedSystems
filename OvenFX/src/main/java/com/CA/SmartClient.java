@@ -23,6 +23,7 @@ import io.grpc.stub.StreamObserver;
 import javafx.application.Platform;
 import javafx.scene.chart.XYChart;
 
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class SmartClient
@@ -155,16 +156,21 @@ public class SmartClient
 
 
 
-
     /** Home Security Proto: Implementation of Unary RCP */
     // Client-side logic for interacting with the gRPC service.
     public void openDoorID (String doorID)
     {
+
+
         OpenRequest openDoorIDRequest = OpenRequest.newBuilder().setDoorID(doorID).build();
         OpenResponse openDoorIDResponse = smartDoorServicesBlockingStub.openDoor(openDoorIDRequest);
-        //OpenDoorRequest openDoorRequest = OpenDoorRequest.newBuilder().setDoorID(doorID).build();
-        //OpenDoorResponse openDoorResponse = stub.openDoor(openDoorRequest);
+
+        System.out.println("this is a client: " + openDoorIDResponse.getStatus());
+
+
     }
+
+
 
 
 
@@ -189,8 +195,6 @@ public class SmartClient
         SmartClient myClient = new SmartClient(host, port);
         try
         {
-            //myClient.greet("Sergio");
-
             XYChart.Series<Number, Number> series = new XYChart.Series<>();
             myClient.setPointUser(1 , series);
         }
@@ -199,5 +203,10 @@ public class SmartClient
         {
             e.printStackTrace();
         }
+
+
+
+
+
     }
 }
