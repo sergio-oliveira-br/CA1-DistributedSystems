@@ -171,7 +171,8 @@ public class SmartServer
         @Override
         public void openDoor (OpenRequest request, StreamObserver<OpenResponse> responseObserver)
         {
-            System.out.println("This is the server");
+            //just to keep track
+            System.out.println("This is the server from the open Door");
 
             //Build the response
             OpenResponse response = OpenResponse.newBuilder().setStatus("Door Opened").build();
@@ -181,7 +182,25 @@ public class SmartServer
             responseObserver.onCompleted(); //finish the request
 
         }
+
+        @Override
+        public void closeDoor (CloseRequest request, StreamObserver<CloseResponse> responseObserver)
+        {
+            //just to keep track
+            System.out.println("This is the server from the method close Door");
+
+            //Build the response
+            CloseResponse response = CloseResponse.newBuilder().setStatus("Door Closed").build();
+
+            //Send the response
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+
+        }
+
+
     }
+
 
 
 

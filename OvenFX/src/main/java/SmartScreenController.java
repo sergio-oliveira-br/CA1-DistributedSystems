@@ -251,13 +251,22 @@ public class SmartScreenController
 
     @FXML
     private Button openDoorButton;
-
     @FXML
     private void openDoorAction(ActionEvent event)
     {
         String doorID = "sala";
         SmartClient myClient = new SmartClient("localhost", 8081);
         myClient.openDoorID(doorID);
+    }
+
+    @FXML
+    private Button closeDoorButton;
+    @FXML
+    private void closeDoorAction(ActionEvent event)
+    {
+        String doorID = "quarto";
+        SmartClient myClient = new SmartClient("localhost", 8081);
+        myClient.closeDoorID(doorID);
     }
 
 

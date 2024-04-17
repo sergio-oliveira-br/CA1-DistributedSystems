@@ -34,7 +34,7 @@
       <Button fx:id="disconnectButton" cancelButton="true" layoutX="16.0" layoutY="583.0" mnemonicParsing="false" onAction="#disconnectAction" text="Disconnect" />
       <ChoiceBox layoutX="27.0" layoutY="87.0" prefWidth="150.0" />
       <Button fx:id="openDoorButton" layoutX="114.0" layoutY="130.0" mnemonicParsing="false" onAction="#openDoorAction" text="Open" />
-      <Button layoutX="42.0" layoutY="130.0" mnemonicParsing="false" text="Close" />
+      <Button fx:id="closeDoorButton" layoutX="42.0" layoutY="130.0" mnemonicParsing="false" onAction="#closeDoorAction" text="Close" />
       <Button layoutX="14.0" layoutY="171.0" mnemonicParsing="false" text="Activate the Monitoring Alarm" />
    </children>
 </Pane>
