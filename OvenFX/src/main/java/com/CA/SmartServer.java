@@ -158,6 +158,42 @@ public class SmartServer
         }
     }
 
+
+
+
+
+
+
+    /** Home Security Proto: Implementation of Unary RCP */
+    public static class SmartDoorServicesImpl extends SmartDoorServicesGrpc.SmartDoorServicesImplBase
+    {
+        @Override
+        public void openDoor (OpenRequest request, StreamObserver<OpenResponse> responseObserver)
+        {
+
+
+            //Build the response
+            OpenResponse response = OpenResponse.newBuilder().setStatus("Door Opened").build();
+
+            //Send the response
+            responseObserver.onNext(response);
+            responseObserver.onCompleted(); //finish the request
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args) throws IOException, InterruptedException
     {
         //Call build() and start() on the builder to create and start an RPC server for our service.

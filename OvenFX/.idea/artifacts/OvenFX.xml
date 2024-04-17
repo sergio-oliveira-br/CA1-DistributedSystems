@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/OvenFX</output-path>
     <root id="root">
       <element id="archive" name="OvenFX.jar">
-        <element id="module-output" name="OvenFX" />
+        <element id="module-output" name="SmartHomeFX" />
       </element>
     </root>
   </artifact>

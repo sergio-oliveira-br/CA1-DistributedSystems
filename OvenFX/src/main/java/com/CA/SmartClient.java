@@ -36,6 +36,8 @@ public class SmartClient
     private final ManagedChannel channel;
     private final GreeterGrpc.GreeterBlockingStub greeterBlockingStub;
     private final TemperatureRampGrpc.TemperatureRampBlockingStub temperatureRampBlockingStub;
+    private final SmartDoorServicesGrpc.SmartDoorServicesBlockingStub smartDoorServicesBlockingStub;
+
 
 
     /*
@@ -48,7 +50,6 @@ public class SmartClient
     public SmartClient(String host, int port)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext());
-
     }
 
     //Constructor: Accessing SmartServer server using the existing channel.
@@ -60,6 +61,7 @@ public class SmartClient
         //and will either return a response or raise an exception
         greeterBlockingStub = GreeterGrpc.newBlockingStub(channel);
         temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
+        smartDoorServicesBlockingStub = SmartDoorServicesGrpc.newBlockingStub(channel);
     }
 
     //Method: Close the connection before
@@ -145,6 +147,31 @@ public class SmartClient
 
         stub.sendTempData(request, observer);
     }
+
+
+
+
+
+
+
+
+
+    /** Home Security Proto: Implementation of Unary RCP */
+    // Client-side logic for interacting with the gRPC service.
+    public void openDoorID (String doorID)
+    {
+        OpenRequest openDoorIDRequest = OpenRequest.newBuilder().setDoorID(doorID).build();
+        OpenResponse openDoorIDResponse = smartDoorServicesBlockingStub.openDoor(openDoorIDRequest);
+        //OpenDoorRequest openDoorRequest = OpenDoorRequest.newBuilder().setDoorID(doorID).build();
+        //OpenDoorResponse openDoorResponse = stub.openDoor(openDoorRequest);
+    }
+
+
+
+
+
+
+
 
 
 
