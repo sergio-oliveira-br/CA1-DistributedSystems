@@ -1,0 +1,69 @@
+/*
+  CA - Distributed System
+  Author: Sergio Oliveira - x23170981@student.ncirl.ie
+  Date: 18 Apr 2024
+
+  Lecturer: Mark Cudden
+
+  !IMPORTANT
+    -> Unary Request: Switch ON/Off the Air Cond.
+    -> Streaming Server: (If ON) -> Server-Side Streaming Display the temperature
+    -> Unary Request: Forecast temp
+
+  References:
+    https://protobuf.dev/reference/java/java-generated/#invocation
+    https://grpc.io/docs/languages/java/quickstart/
+    https://grpc.io/docs/languages/java/basics/
+ */
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.CA.gRPC";
+option java_outer_classname = "EnvironmentProto";
+
+//Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
+service EnvironmentMgmtServices
+{
+  rpc switchOn (switchOnRequest) returns (stream switchOnResponse) {}
+  rpc switchOff (switchOffRequest) returns (switchOffResponse) {}
+  rpc forecast (forecastRequest) returns (forecastResponse) {}
+  //maybe include a functionality such as, ask the server what temperature in outside?? or inside?? or in other city??
+}
+
+//The request message containing to open the door
+message switchOnRequest
+{
+  int32 temperature = 1;
+}
+
+message switchOnResponse
+{
+  int32 statusTemperature = 1;
+}
+
+//------------------
+
+message switchOffRequest
+{
+  int32 temperature = 1;
+}
+
+message switchOffResponse
+{
+  int32 status = 1;
+}
+
+//------------------
+
+message forecastRequest
+{
+  string msgRequest = 1;
+}
+
+message forecastResponse
+{
+  int32 msgResponse = 1;
+}
+
+
