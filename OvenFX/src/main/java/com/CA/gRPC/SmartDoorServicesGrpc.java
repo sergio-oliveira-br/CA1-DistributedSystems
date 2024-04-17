@@ -4,7 +4,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  * <pre>
- *Service definition
+ *Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
  * </pre>
  */
 @javax.annotation.Generated(
@@ -126,7 +126,7 @@ public final class SmartDoorServicesGrpc {
 
   /**
    * <pre>
-   *Service definition
+   *Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
    * </pre>
    */
   public interface AsyncService {
@@ -149,7 +149,7 @@ public final class SmartDoorServicesGrpc {
   /**
    * Base class for the server implementation of the service SmartDoorServices.
    * <pre>
-   *Service definition
+   *Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
    * </pre>
    */
   public static abstract class SmartDoorServicesImplBase
@@ -163,7 +163,7 @@ public final class SmartDoorServicesGrpc {
   /**
    * A stub to allow clients to do asynchronous rpc calls to service SmartDoorServices.
    * <pre>
-   *Service definition
+   *Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
    * </pre>
    */
   public static final class SmartDoorServicesStub
@@ -199,7 +199,7 @@ public final class SmartDoorServicesGrpc {
   /**
    * A stub to allow clients to do synchronous rpc calls to service SmartDoorServices.
    * <pre>
-   *Service definition
+   *Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
    * </pre>
    */
   public static final class SmartDoorServicesBlockingStub
@@ -233,7 +233,7 @@ public final class SmartDoorServicesGrpc {
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service SmartDoorServices.
    * <pre>
-   *Service definition
+   *Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
    * </pre>
    */
   public static final class SmartDoorServicesFutureStub

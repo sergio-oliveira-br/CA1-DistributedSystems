@@ -8,7 +8,7 @@
   !IMPORTANT
     -> Unary Request: Open/Close doors
     -> Unary Request: Turn on/off the alarm
-    -> Streaming Server: Server-Side Streaming alarm information
+    -> Streaming Server: (If ON) -  Server-Side Streaming alarm information
 
   References:
     https://protobuf.dev/reference/java/java-generated/#invocation
@@ -22,7 +22,7 @@ option java_multiple_files = true;
 option java_package = "com.CA.gRPC";
 option java_outer_classname = "SecurityProto";
 
-//Service definition
+//Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
 service SmartDoorServices
 {
   rpc OpenDoor (OpenRequest) returns (OpenResponse) {}
@@ -51,6 +51,32 @@ message CloseResponse
 }
 
 
+//Service definition (Server-Side Streaming RPC) - This allow the user request to turn on/off the alarm,
+//and get response from server that alarm is on by streaming information (like a pulse)
+service SmartAlarmServices
+{
+  rpc TurnOnAlarm (TurnOnAlarmRequest) returns (stream TurnOnAlarmResponse){}
+  rpc TurnOffAlarm (TurnOffAlarmRequest) returns (TurnOffAlarmResponse) {}
+}
 
+message TurnOnAlarmRequest
+{
+  string turnOn = 1;
+}
+
+message TurnOnAlarmResponse
+{
+  string statusOn = 1;
+}
+
+message TurnOffAlarmRequest
+{
+  string turnOff = 1;
+}
+
+message TurnOffAlarmResponse
+{
+  string statusOff = 1;
+}
 
 

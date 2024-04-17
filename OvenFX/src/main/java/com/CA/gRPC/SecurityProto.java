@@ -34,6 +34,26 @@ public final class SecurityProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CloseResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TurnOnAlarmRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TurnOnAlarmRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TurnOnAlarmResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TurnOnAlarmResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TurnOffAlarmRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TurnOffAlarmRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TurnOffAlarmResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TurnOffAlarmResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -46,11 +66,19 @@ public final class SecurityProto {
       "\n\021HomeSecuity.proto\"\035\n\013OpenRequest\022\016\n\006do" +
       "orID\030\001 \001(\t\"\036\n\014OpenResponse\022\016\n\006status\030\001 \001" +
       "(\t\"\036\n\014CloseRequest\022\016\n\006doorID\030\001 \001(\t\"\037\n\rCl" +
-      "oseResponse\022\016\n\006status\030\001 \001(\t2l\n\021SmartDoor" +
-      "Services\022)\n\010OpenDoor\022\014.OpenRequest\032\r.Ope" +
-      "nResponse\"\000\022,\n\tCloseDoor\022\r.CloseRequest\032" +
-      "\016.CloseResponse\"\000B\036\n\013com.CA.gRPCB\rSecuri" +
-      "tyProtoP\001b\006proto3"
+      "oseResponse\022\016\n\006status\030\001 \001(\t\"$\n\022TurnOnAla" +
+      "rmRequest\022\016\n\006turnOn\030\001 \001(\t\"\'\n\023TurnOnAlarm" +
+      "Response\022\020\n\010statusOn\030\001 \001(\t\"&\n\023TurnOffAla" +
+      "rmRequest\022\017\n\007turnOff\030\001 \001(\t\")\n\024TurnOffAla" +
+      "rmResponse\022\021\n\tstatusOff\030\001 \001(\t2l\n\021SmartDo" +
+      "orServices\022)\n\010OpenDoor\022\014.OpenRequest\032\r.O" +
+      "penResponse\"\000\022,\n\tCloseDoor\022\r.CloseReques" +
+      "t\032\016.CloseResponse\"\0002\221\001\n\022SmartAlarmServic" +
+      "es\022<\n\013TurnOnAlarm\022\023.TurnOnAlarmRequest\032\024" +
+      ".TurnOnAlarmResponse\"\0000\001\022=\n\014TurnOffAlarm" +
+      "\022\024.TurnOffAlarmRequest\032\025.TurnOffAlarmRes" +
+      "ponse\"\000B\036\n\013com.CA.gRPCB\rSecurityProtoP\001b" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -80,6 +108,30 @@ public final class SecurityProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CloseResponse_descriptor,
         new java.lang.String[] { "Status", });
+    internal_static_TurnOnAlarmRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_TurnOnAlarmRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TurnOnAlarmRequest_descriptor,
+        new java.lang.String[] { "TurnOn", });
+    internal_static_TurnOnAlarmResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_TurnOnAlarmResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TurnOnAlarmResponse_descriptor,
+        new java.lang.String[] { "StatusOn", });
+    internal_static_TurnOffAlarmRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_TurnOffAlarmRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TurnOffAlarmRequest_descriptor,
+        new java.lang.String[] { "TurnOff", });
+    internal_static_TurnOffAlarmResponse_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_TurnOffAlarmResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TurnOffAlarmResponse_descriptor,
+        new java.lang.String[] { "StatusOff", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
