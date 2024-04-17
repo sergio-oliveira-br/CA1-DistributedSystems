@@ -166,7 +166,7 @@ public class SmartServer
 
 
 
-    /** Home Security Proto: Implementation of Unary RCP */
+    /** Home Security Proto (Open/Close Door): Implementation of Unary RCP */
     public static class SmartDoorServicesImpl extends SmartDoorServicesGrpc.SmartDoorServicesImplBase
     {
         @Override
@@ -195,9 +195,51 @@ public class SmartServer
 
     public static class SmartAlarmServicesImpl extends SmartAlarmServicesGrpc.SmartAlarmServicesImplBase
     {
+        private static volatile boolean streaming = false;
+        @Override
+        public void turnOnAlarm (TurnOnAlarmRequest request, StreamObserver<TurnOnAlarmResponse> responseStreamObserver)
+        {
+            streaming = true;
+            //Start streaming Server information
+            Thread streamThread = new Thread(() ->
+            {
+                try
+                {
+                    int i = 0;
+                    while(streaming || i == 100)
+                    {
+
+                        {
+                            TurnOnAlarmResponse response = TurnOnAlarmResponse.newBuilder().setStatusOn("Alarm ON: Pulse ").build();
+                            System.out.println("Number i: " + i);
+                            responseStreamObserver.onNext(response);
+                            Thread.sleep(500);
+                            i++;
+                        }
+                    }
+                    if (streaming)
+                    {
+                        TurnOnAlarmResponse response = TurnOnAlarmResponse.newBuilder().setStatusOn("Alarm ON: Completed").build();
+                        responseStreamObserver.onNext(response);
+                        responseStreamObserver.onCompleted();
+                    }
+                }
+
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    responseStreamObserver.onCompleted();
+                }
+            });
+            streamThread.start();
+        }
+
         @Override
         public void turnOffAlarm (TurnOffAlarmRequest request, StreamObserver<TurnOffAlarmResponse> responseObserver)
         {
+
+            streaming = false;
+
             //Build the response
             TurnOffAlarmResponse response = TurnOffAlarmResponse.newBuilder().setStatusOff("\nFrom the server: " +
                     "Your Alarm was turned Off").build();
@@ -206,20 +248,7 @@ public class SmartServer
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public static void main(String[] args) throws IOException, InterruptedException

@@ -36,7 +36,7 @@
       <ChoiceBox fx:id="choiceBoxButton" layoutX="27.0" layoutY="87.0" onDragDetected="#choiceBoxAction" prefWidth="150.0" />
       <Button fx:id="openDoorButton" layoutX="128.0" layoutY="125.0" mnemonicParsing="false" onAction="#openDoorAction" text="Open" />
       <Button fx:id="closeDoorButton" layoutX="76.0" layoutY="125.0" mnemonicParsing="false" onAction="#closeDoorAction" text="Close" />
-      <Button layoutX="13.0" layoutY="158.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="180.0" text="Activate the Monitoring Alarm" />
+      <Button fx:id="turnOnAlarmButton" layoutX="13.0" layoutY="158.0" mnemonicParsing="false" onAction="#turnOnAlarmAction" prefHeight="26.0" prefWidth="180.0" text="Activate the Monitoring Alarm" />
       <Label layoutX="7.0" layoutY="60.0" text="Smart Door Services" />
       <Line endX="14.5" layoutX="109.0" layoutY="80.0" startX="-100.0" />
    </children>

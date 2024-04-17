@@ -275,6 +275,19 @@ public class SmartScreenController
         //There is an array list the shows few options to user close or open the door
     }
 
+    @FXML
+    private Button turnOnAlarmButton;
+    @FXML
+    private void turnOnAlarmAction(ActionEvent event)
+    {
+        SmartClient myClient = new SmartClient("localhost", 8081);
+        myClient.turnOnAlarm();
+
+        Text messageText = new Text("\nThe alarm had been ACTIVATED");
+        myText.getChildren().add(messageText);
+
+    }
+
 
     @FXML
     private Button stopStreamAlarmButton;
@@ -285,6 +298,11 @@ public class SmartScreenController
     {
         SmartClient myClient = new SmartClient("localhost", 8081);
         myClient.turnOffAlarm(); //this will send to my Terminal
+
+
+
+
+
 
         Text messageText = new Text("\nThe alarm had been disabled");
         myText.getChildren().add(messageText);

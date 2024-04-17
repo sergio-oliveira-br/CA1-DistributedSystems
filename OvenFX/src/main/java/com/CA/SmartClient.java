@@ -22,8 +22,6 @@ import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 import javafx.application.Platform;
 import javafx.scene.chart.XYChart;
-
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class SmartClient
@@ -158,7 +156,7 @@ public class SmartClient
 
 
 
-    /** Home Security Proto: Implementation of Unary RCP */
+    /** Home Security Proto: Implementation of Unary RCP Request*/
     // Client-side logic for interacting with the gRPC service.
     public void openDoorID (String doorID)
     {
@@ -167,7 +165,7 @@ public class SmartClient
         System.out.println("Client-Side getting the answer " + openDoorIDResponse.getStatus() + doorID);
     }
 
-    /** Home Security Proto: Implementation of Unary RCP */
+    /** Home Security Proto: Implementation of Unary RCP Request*/
     public void closeDoorID (String doorID)
     {
         CloseRequest closeDoorIDRequest = CloseRequest.newBuilder().setDoorID(doorID).build();
@@ -175,14 +173,26 @@ public class SmartClient
         System.out.println("Client-Side getting the answer: " + closeDoorIDResponse.getStatus() + doorID);
     }
 
-
-    /** Home Security Proto: Implementation of Unary RCP */
+    /** Home Security Proto: Implementation of Unary RCP Request*/
     public void turnOffAlarm ()
     {
         TurnOffAlarmRequest turnOffAlarmRequest = TurnOffAlarmRequest.newBuilder().setTurnOff("Alarm Off").build();
         TurnOffAlarmResponse turnOffAlarmResponse = smartAlarmServicesBlockingStub.turnOffAlarm(turnOffAlarmRequest);
         System.out.println("Client-Side getting the answer: " + turnOffAlarmResponse.getStatusOff());
+
     }
+
+    /** Home Security Proto: Implementation of Unary RCP Request */
+    public void turnOnAlarm()
+    {
+        TurnOnAlarmRequest turnOnAlarmRequest = TurnOnAlarmRequest.newBuilder().setTurnOn("Alarm On").build();
+        TurnOnAlarmResponse turnOnAlarmResponse = smartAlarmServicesBlockingStub.turnOnAlarm(turnOnAlarmRequest).next();
+        System.out.println("Alarm activation request sent." + turnOnAlarmResponse.getStatusOn());
+
+    }
+
+
+
 
 
 
