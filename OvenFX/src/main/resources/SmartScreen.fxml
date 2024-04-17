@@ -22,8 +22,8 @@
           <NumberAxis label="Temperature (ºC)" side="LEFT" />
         </yAxis>
       </LineChart>
-      <Button fx:id="sayHelloButton" layoutX="162.0" layoutY="301.0" mnemonicParsing="false" onAction="#sayHelloAction" text="SayHello" />
-      <Button fx:id="setTempButton" layoutX="81.0" layoutY="301.0" mnemonicParsing="false" onAction="#submitTempAction" text="Set Temp" />
+      <Button fx:id="sayHelloButton" layoutX="160.0" layoutY="375.0" mnemonicParsing="false" onAction="#sayHelloAction" text="SayHello" />
+      <Button fx:id="setTempButton" layoutX="83.0" layoutY="376.0" mnemonicParsing="false" onAction="#submitTempAction" text="Set Temp" />
       <Label layoutX="34.0" layoutY="9.0" text="Smart Home">
          <font>
             <Font size="26.0" />
@@ -44,5 +44,15 @@
       <Label layoutX="120.0" layoutY="189.0" text="Alarm On" />
       <Label layoutX="12.0" layoutY="189.0" text="Alarm Off" />
       <Circle fx:id="alarmOffRed" fill="#ff1f1f" layoutX="77.0" layoutY="198.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="12.0" layoutY="224.0" prefHeight="17.0" prefWidth="172.0" text="Environment Management" />
+      <Line endX="-58.4483528137207" layoutX="248.0" layoutY="218.0" startX="-236.2718505859375" startY="1.52587890625E-5" />
+      <Button layoutX="8.0" layoutY="265.0" mnemonicParsing="false" text="Switch On " />
+      <Button layoutX="97.0" layoutY="265.0" mnemonicParsing="false" text="Switch Off " />
+      <Label layoutX="10.0" layoutY="246.0" prefHeight="17.0" prefWidth="172.0" text="Adjusting the air temperature">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Line endX="-58.4483528137207" layoutX="112.0" layoutY="244.0" startX="-100.0" />
    </children>
 </Pane>
