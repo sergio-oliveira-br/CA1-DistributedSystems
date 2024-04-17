@@ -250,11 +250,10 @@ public class SmartServer
 
 
     /** Environment Management Proto (Forecast): Implementation of Unary RCP */
-    public static class EnvironmentMgmtServicesImpl extends SmartDoorServicesGrpc.SmartDoorServicesImplBase
-    {
-        @Override
-        public void forecast ()
-    }
+    //public static class EnvironmentMgmtServicesImpl extends SmartDoorServicesGrpc.SmartDoorServicesImplBase
+    //{
+
+    //}
 
 
 
