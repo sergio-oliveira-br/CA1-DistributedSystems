@@ -102,7 +102,7 @@ public final class TemperatureRampGrpc {
 
     /**
      * <pre>
-     *Sends a greeting
+     *Streaming the Temp Ramp
      * </pre>
      */
     default void sendTempData(com.CA.gRPC.SetPointTemp request,
@@ -146,7 +146,7 @@ public final class TemperatureRampGrpc {
 
     /**
      * <pre>
-     *Sends a greeting
+     *Streaming the Temp Ramp
      * </pre>
      */
     public void sendTempData(com.CA.gRPC.SetPointTemp request,
@@ -177,7 +177,7 @@ public final class TemperatureRampGrpc {
 
     /**
      * <pre>
-     *Sends a greeting
+     *Streaming the Temp Ramp
      * </pre>
      */
     public java.util.Iterator<com.CA.gRPC.TempRamp> sendTempData(

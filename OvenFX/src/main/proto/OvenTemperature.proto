@@ -12,7 +12,6 @@
 
     Server-side streaming RPC
 
-
   References:
     https://protobuf.dev/reference/java/java-generated/#invocation
     https://grpc.io/docs/languages/java/quickstart/

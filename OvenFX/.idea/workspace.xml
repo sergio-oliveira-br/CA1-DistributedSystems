@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/proto/HomeSecuity.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SmarHomeV3/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SmarHomeV3/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SmarHomeV3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SmarHomeV3/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SmarHomeV3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SmarHomeV3/src/main/java/com/ca/smarhomev3/SmartServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SmarHomeV3/src/main/proto/HomeSecurity.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/proto/OvenTemperature.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/OvenTemperature.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmartHome/src/main/proto/SmartHomeLockersProto.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartHome/src/main/proto/SmartHomeLockersProto.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmartHome/src/main/proto/ThermostatsProto.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartHome/src/main/proto/ThermostatsProto.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Report-DistributedSystem.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Report-DistributedSystem.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartHome/target/classes/com/CA/SmartHomeClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../~$port-DistributedSystem.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +177,7 @@
       <workItem from="1712999537800" duration="6496000" />
       <workItem from="1713006498180" duration="17623000" />
       <workItem from="1713045294076" duration="7688000" />
-      <workItem from="1713085755941" duration="46230000" />
+      <workItem from="1713085755941" duration="52626000" />
     </task>
     <servers />
   </component>

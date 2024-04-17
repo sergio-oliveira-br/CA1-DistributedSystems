@@ -1,0 +1,56 @@
+/*
+  CA - Distributed System
+  Author: Sergio Oliveira - x23170981@student.ncirl.ie
+  Date: 17 Apr 2024
+
+  Lecturer: Mark Cudden
+
+  !IMPORTANT
+    -> Unary Request: Open/Close doors
+    -> Unary Request: Turn on/off the alarm
+    -> Streaming Server: Server-Side Streaming alarm information
+
+  References:
+    https://protobuf.dev/reference/java/java-generated/#invocation
+    https://grpc.io/docs/languages/java/quickstart/
+    https://grpc.io/docs/languages/java/basics/
+ */
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.CA.gRPC";
+option java_outer_classname = "SecurityProto";
+
+//Service definition
+service SmartDoorServices
+{
+  rpc OpenDoor (OpenRequest) returns (OpenResponse) {}
+  rpc CloseDoor (CloseRequest) returns (CloseResponse) {}
+}
+
+//The request message containing to open the door
+message OpenRequest
+{
+   string doorID = 1;
+}
+
+message OpenResponse
+{
+  string status = 1;
+}
+
+message CloseRequest
+{
+  string doorID = 1;
+}
+
+message CloseResponse
+{
+  string status = 1;
+}
+
+
+
+
+
