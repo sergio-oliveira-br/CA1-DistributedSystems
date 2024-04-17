@@ -11,6 +11,8 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -275,8 +277,13 @@ public class SmartScreenController
         //There is an array list the shows few options to user close or open the door
     }
 
+
     @FXML
     private Button turnOnAlarmButton;
+    @FXML
+    private Circle alarmOnGreen;
+    @FXML
+    private Circle alarmOffRed;
     @FXML
     private void turnOnAlarmAction(ActionEvent event)
     {
@@ -286,7 +293,11 @@ public class SmartScreenController
         Text messageText = new Text("\nThe alarm had been ACTIVATED");
         myText.getChildren().add(messageText);
 
+        alarmOnGreen.setFill(Color.GREEN);
+        alarmOffRed.setFill(Color.WHITE);
+
     }
+
 
 
     @FXML
@@ -299,13 +310,12 @@ public class SmartScreenController
         SmartClient myClient = new SmartClient("localhost", 8081);
         myClient.turnOffAlarm(); //this will send to my Terminal
 
-
-
-
-
-
         Text messageText = new Text("\nThe alarm had been disabled");
         myText.getChildren().add(messageText);
+
+        //Setting Colors
+        alarmOffRed.setFill(Color.RED);
+        alarmOnGreen.setFill(Color.WHITE);
     }
 
 

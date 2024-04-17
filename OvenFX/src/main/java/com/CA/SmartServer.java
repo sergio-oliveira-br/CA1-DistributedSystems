@@ -206,14 +206,14 @@ public class SmartServer
                 try
                 {
                     int i = 0;
-                    while(streaming || i == 100)
+                    while(streaming || i == 200)
                     {
 
                         {
                             TurnOnAlarmResponse response = TurnOnAlarmResponse.newBuilder().setStatusOn("Alarm ON: Pulse ").build();
-                            System.out.println("Number i: " + i);
+                            System.out.print("Alarm is ON...");
                             responseStreamObserver.onNext(response);
-                            Thread.sleep(500);
+                            Thread.sleep(1500);
                             i++;
                         }
                     }

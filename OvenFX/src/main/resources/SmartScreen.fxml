@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
@@ -38,6 +39,10 @@
       <Button fx:id="closeDoorButton" layoutX="76.0" layoutY="125.0" mnemonicParsing="false" onAction="#closeDoorAction" text="Close" />
       <Button fx:id="turnOnAlarmButton" layoutX="13.0" layoutY="158.0" mnemonicParsing="false" onAction="#turnOnAlarmAction" prefHeight="26.0" prefWidth="180.0" text="Activate the Monitoring Alarm" />
       <Label layoutX="7.0" layoutY="60.0" text="Smart Door Services" />
-      <Line endX="14.5" layoutX="109.0" layoutY="80.0" startX="-100.0" />
+      <Line endX="-58.4483528137207" layoutX="109.0" layoutY="80.0" startX="-100.0" />
+      <Circle fx:id="alarmOnGreen" fill="WHITE" layoutX="184.0" layoutY="197.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="120.0" layoutY="189.0" text="Alarm On" />
+      <Label layoutX="12.0" layoutY="189.0" text="Alarm Off" />
+      <Circle fx:id="alarmOffRed" fill="#ff1f1f" layoutX="77.0" layoutY="198.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </Pane>
