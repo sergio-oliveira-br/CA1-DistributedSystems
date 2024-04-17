@@ -162,16 +162,14 @@ public class SmartClient
     {
         OpenRequest openDoorIDRequest = OpenRequest.newBuilder().setDoorID(doorID).build();
         OpenResponse openDoorIDResponse = smartDoorServicesBlockingStub.openDoor(openDoorIDRequest);
-
-        System.out.println("this is a client: " + openDoorIDResponse.getStatus() + doorID);
+        System.out.println("Client-Side getting the answer " + openDoorIDResponse.getStatus() + doorID);
     }
 
     public void closeDoorID (String doorID)
     {
         CloseRequest closeDoorIDRequest = CloseRequest.newBuilder().setDoorID(doorID).build();
         CloseResponse closeDoorIDResponse = smartDoorServicesBlockingStub.closeDoor(closeDoorIDRequest);
-
-        System.out.println("This is a client getting the answer" + closeDoorIDResponse.getStatus() + doorID);
+        System.out.println("Client-Side getting the answer " + closeDoorIDResponse.getStatus() + doorID);
     }
 
 

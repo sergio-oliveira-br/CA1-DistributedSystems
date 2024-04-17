@@ -263,7 +263,11 @@ public class SmartScreenController
     {
         String doorID = choiceBoxButton.getValue();
         SmartClient myClient = new SmartClient("localhost", 8081);
-        myClient.openDoorID(doorID);
+        myClient.openDoorID(doorID); //this will send to my Terminal
+
+        //this will send to my Text - I know is not the right thing, but is a contingency.
+        Text messageText = new Text("\nYour " + doorID +" was opened");
+        myText.getChildren().add(messageText);
     }
 
     @FXML
@@ -271,9 +275,13 @@ public class SmartScreenController
     @FXML
     private void closeDoorAction(ActionEvent event)
     {
-        String doorID = "quarto";
+        String doorID = choiceBoxButton.getValue();
         SmartClient myClient = new SmartClient("localhost", 8081);
-        myClient.closeDoorID(doorID);
+        myClient.closeDoorID(doorID); //this will send to my Terminal
+
+        //this will send to my Text - I know is not the right thing, but is a contingency.
+        Text messageText = new Text("\nYour " + doorID +" was closed");
+        myText.getChildren().add(messageText);
     }
 
     @FXML
