@@ -30,7 +30,7 @@
       </Label>
       <Label layoutX="216.0" layoutY="596.0" text="CA - Distributed System - gRPC Developed by Sergio Oliveira" />
       <TextFlow fx:id="myText" layoutX="16.0" layoutY="417.0" prefHeight="153.0" prefWidth="729.0" style="-fx-border-color: black;" />
-      <Button fx:id="stopStreamButton" layoutX="26.0" layoutY="125.0" mnemonicParsing="false" onAction="#stopStreamAction" text="Stop " />
+      <Button fx:id="stopStreamAlarmButton" layoutX="26.0" layoutY="125.0" mnemonicParsing="false" onAction="#stopStreamAlarmAction" text="Stop " />
       <Button fx:id="connectionButton" defaultButton="true" layoutX="681.0" layoutY="583.0" mnemonicParsing="false" onAction="#connectionAction" text="Connect" />
       <Button fx:id="disconnectButton" cancelButton="true" layoutX="16.0" layoutY="583.0" mnemonicParsing="false" onAction="#disconnectAction" text="Disconnect" />
       <ChoiceBox fx:id="choiceBoxButton" layoutX="27.0" layoutY="87.0" onDragDetected="#choiceBoxAction" prefWidth="150.0" />

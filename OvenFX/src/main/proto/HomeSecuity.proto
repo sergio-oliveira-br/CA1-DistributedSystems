@@ -50,6 +50,7 @@ message CloseResponse
   string status = 1;
 }
 
+//--------------------------------------
 
 //Service definition (Server-Side Streaming RPC) - This allow the user request to turn on/off the alarm,
 //and get response from server that alarm is on by streaming information (like a pulse)

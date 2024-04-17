@@ -38,6 +38,7 @@ public class SmartClient
     private final GreeterGrpc.GreeterBlockingStub greeterBlockingStub;
     private final TemperatureRampGrpc.TemperatureRampBlockingStub temperatureRampBlockingStub;
     private final SmartDoorServicesGrpc.SmartDoorServicesBlockingStub smartDoorServicesBlockingStub;
+    private final SmartAlarmServicesGrpc.SmartAlarmServicesBlockingStub smartAlarmServicesBlockingStub;
 
 
 
@@ -63,6 +64,7 @@ public class SmartClient
         greeterBlockingStub = GreeterGrpc.newBlockingStub(channel);
         temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
         smartDoorServicesBlockingStub = SmartDoorServicesGrpc.newBlockingStub(channel);
+        smartAlarmServicesBlockingStub = SmartAlarmServicesGrpc.newBlockingStub(channel);
     }
 
     //Method: Close the connection before
@@ -165,14 +167,22 @@ public class SmartClient
         System.out.println("Client-Side getting the answer " + openDoorIDResponse.getStatus() + doorID);
     }
 
+    /** Home Security Proto: Implementation of Unary RCP */
     public void closeDoorID (String doorID)
     {
         CloseRequest closeDoorIDRequest = CloseRequest.newBuilder().setDoorID(doorID).build();
         CloseResponse closeDoorIDResponse = smartDoorServicesBlockingStub.closeDoor(closeDoorIDRequest);
-        System.out.println("Client-Side getting the answer " + closeDoorIDResponse.getStatus() + doorID);
+        System.out.println("Client-Side getting the answer: " + closeDoorIDResponse.getStatus() + doorID);
     }
 
 
+    /** Home Security Proto: Implementation of Unary RCP */
+    public void turnOffAlarm ()
+    {
+        TurnOffAlarmRequest turnOffAlarmRequest = TurnOffAlarmRequest.newBuilder().setTurnOff("Alarm Off").build();
+        TurnOffAlarmResponse turnOffAlarmResponse = smartAlarmServicesBlockingStub.turnOffAlarm(turnOffAlarmRequest);
+        System.out.println("Client-Side getting the answer: " + turnOffAlarmResponse.getStatusOff());
+    }
 
 
 

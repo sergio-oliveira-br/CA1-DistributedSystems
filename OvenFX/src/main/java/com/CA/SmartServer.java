@@ -51,6 +51,7 @@ public class SmartServer
                 .addService(new GreeterImpl())
                 .addService(new TemperatureRampImpl())
                 .addService(new SmartDoorServicesImpl())
+                .addService(new SmartAlarmServicesImpl())
                 .build();
 
     }
@@ -190,6 +191,22 @@ public class SmartServer
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
+    }
+
+    public static class SmartAlarmServicesImpl extends SmartAlarmServicesGrpc.SmartAlarmServicesImplBase
+    {
+        @Override
+        public void turnOffAlarm (TurnOffAlarmRequest request, StreamObserver<TurnOffAlarmResponse> responseObserver)
+        {
+            //Build the response
+            TurnOffAlarmResponse response = TurnOffAlarmResponse.newBuilder().setStatusOff("\nFrom the server: " +
+                    "Your Alarm was turned Off").build();
+
+            //Send the response
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+
     }
 
 

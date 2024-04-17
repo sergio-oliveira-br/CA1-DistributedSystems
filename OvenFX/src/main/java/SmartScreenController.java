@@ -61,7 +61,7 @@ public class SmartScreenController
         sayHelloButton.setDisable(true);
         setTempButton.setDisable(true);
         disconnectButton.setDisable(true);
-        stopStreamButton.setDisable(true);
+        //stopStreamButton.setDisable(true);
 
 
 
@@ -191,7 +191,6 @@ public class SmartScreenController
         sayHelloButton.setDisable(true);
 
         //Enabling the buttons
-        stopStreamButton.setDisable(false);
         //disconnectButton.setDisable(false);
     }
 
@@ -200,24 +199,8 @@ public class SmartScreenController
 
 
 
-    @FXML
-    private Button stopStreamButton;
-    /** Step 4: This button "stop" ends the stream request started on button setTemp
-     *  Approach: RPC Stream Server */
-    @FXML
-    public void stopStreamAction(ActionEvent event)
-    {
-        //need to be developed
 
 
-
-        //Disabling the buttons
-
-        //Enabling the buttons
-        disconnectButton.setDisable(false);
-        //setTempButton.setDisable(false);
-
-    }
 
 
 
@@ -293,6 +276,19 @@ public class SmartScreenController
     }
 
 
+    @FXML
+    private Button stopStreamAlarmButton;
+    /** This button "stop" ends the stream request started on button Activate Alarm
+     *  Approach: Unary RPC  */
+    @FXML
+    private void stopStreamAlarmAction(ActionEvent event)
+    {
+        SmartClient myClient = new SmartClient("localhost", 8081);
+        myClient.turnOffAlarm(); //this will send to my Terminal
+
+        Text messageText = new Text("\nThe alarm had been disabled");
+        myText.getChildren().add(messageText);
+    }
 
 
 
