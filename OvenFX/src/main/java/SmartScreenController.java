@@ -3,11 +3,13 @@ import com.CA.SmartServer;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusException;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -42,6 +44,11 @@ public class SmartScreenController
         temp = new XYChart.Series<Number, Number>();
         temp.setName("Set Point");
         myTempChart.getData().add(temp);
+
+
+        //This is my ChoiceBox List -> https://www.youtube.com/watch?app=desktop&v=PPwVwpdYFeU&themeRefresh=1
+        choiceBoxButton.setItems(FXCollections.observableArrayList("Main Door", "Back Door",
+                                                                         "Front Gate", "Bedroom", "Office"));
 
         //Guide
         Text guideStep1 = new Text("Welcome to CA Distributed System.");
@@ -254,7 +261,7 @@ public class SmartScreenController
     @FXML
     private void openDoorAction(ActionEvent event)
     {
-        String doorID = "sala";
+        String doorID = choiceBoxButton.getValue();
         SmartClient myClient = new SmartClient("localhost", 8081);
         myClient.openDoorID(doorID);
     }
@@ -268,6 +275,15 @@ public class SmartScreenController
         SmartClient myClient = new SmartClient("localhost", 8081);
         myClient.closeDoorID(doorID);
     }
+
+    @FXML
+    private ChoiceBox<String> choiceBoxButton;
+    @FXML
+    private void choiceBoxAction(ActionEvent event)
+    {
+        //There is an array list the shows few options to user close or open the door
+    }
+
 
 
 
