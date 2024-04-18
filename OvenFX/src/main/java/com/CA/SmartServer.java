@@ -52,6 +52,7 @@ public class SmartServer
                 .addService(new TemperatureRampImpl())
                 .addService(new SmartDoorServicesImpl())
                 .addService(new SmartAlarmServicesImpl())
+                .addService(new EnvironmentMgmtServicesImpl())
                 .build();
 
     }
@@ -252,16 +253,16 @@ public class SmartServer
     /** Environment Management Proto (Forecast): Implementation of Unary RCP */
     public static class EnvironmentMgmtServicesImpl extends EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesImplBase
     {
+        //Forecast for Today
         @Override
         public void forecast (forecastRequest request, StreamObserver<forecastResponse> responseObserver)
         {
             //Build the response
-            //forecastResponse response = forecastResponse.newBuilder().setMsgResponse("The Forecast for ")
-            ////OpenResponse response = OpenResponse.newBuilder().setStatus("\nFrom the server: Door Opened -> ").build();
+            forecastResponse response = forecastResponse.newBuilder().setMsgResponse(22).build();
 
             //Send the response
-            ////responseObserver.onNext(response);
-            ////responseObserver.onCompleted(); //finish the request
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
 
         }
 

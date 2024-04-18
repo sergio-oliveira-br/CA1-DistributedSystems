@@ -319,6 +319,18 @@ public class SmartScreenController
     }
 
 
+    @FXML
+    private void forecastTodayAction(ActionEvent event)
+    {
+        SmartClient myClient = new SmartClient("localhost", 8081);
+        myClient.forecast(); //this will send to my Terminal
+
+        //this will send to my Text - I know is not the right thing, but is a contingency.
+        Text messageText = new Text("\nServer has sent the forecast for Today" + " ºC");
+        myText.getChildren().add(messageText);
+    }
+
+
 
 
 }

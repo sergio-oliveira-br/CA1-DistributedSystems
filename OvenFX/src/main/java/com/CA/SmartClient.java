@@ -37,7 +37,7 @@ public class SmartClient
     private final TemperatureRampGrpc.TemperatureRampBlockingStub temperatureRampBlockingStub;
     private final SmartDoorServicesGrpc.SmartDoorServicesBlockingStub smartDoorServicesBlockingStub;
     private final SmartAlarmServicesGrpc.SmartAlarmServicesBlockingStub smartAlarmServicesBlockingStub;
-
+    private final EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesBlockingStub environmentMgmtServicesBlockingStub;
 
 
     /*
@@ -63,6 +63,7 @@ public class SmartClient
         temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
         smartDoorServicesBlockingStub = SmartDoorServicesGrpc.newBlockingStub(channel);
         smartAlarmServicesBlockingStub = SmartAlarmServicesGrpc.newBlockingStub(channel);
+        environmentMgmtServicesBlockingStub = EnvironmentMgmtServicesGrpc.newBlockingStub(channel);
     }
 
     //Method: Close the connection before
@@ -188,6 +189,20 @@ public class SmartClient
         TurnOnAlarmRequest turnOnAlarmRequest = TurnOnAlarmRequest.newBuilder().setTurnOn("Alarm On").build();
         TurnOnAlarmResponse turnOnAlarmResponse = smartAlarmServicesBlockingStub.turnOnAlarm(turnOnAlarmRequest).next();
         System.out.println("Alarm activation request sent." + turnOnAlarmResponse.getStatusOn());
+    }
+
+    /** Environment Management Proto (Forecast): Implementation of Unary RCP */
+    public void forecast()
+    {
+        forecastRequest forecastRequestToday = forecastRequest.newBuilder()
+                .setMsgRequest("Please tell me the forecast for Today").build();
+        forecastResponse forecastResponseToday = environmentMgmtServicesBlockingStub.forecast(forecastRequestToday);
+        System.out.println("From the Server: The forecast for Today is " + forecastResponseToday.getMsgResponse() + " ºC");
+
+        forecastRequest forecastRequestTomorrow = forecastRequest.newBuilder()
+                .setMsgRequestTomorrow("Please tell me the forecast for Tomorrow").build();
+
+
 
     }
 
