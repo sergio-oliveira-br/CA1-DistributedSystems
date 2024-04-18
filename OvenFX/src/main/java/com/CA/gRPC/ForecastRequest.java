@@ -16,8 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ForecastRequest() {
-    msgRequest_ = "";
-    msgRequestTomorrow_ = "";
+    location_ = "";
+    date_ = "";
   }
 
   @java.lang.Override
@@ -53,13 +53,13 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            msgRequest_ = s;
+            location_ = s;
             break;
           }
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            msgRequestTomorrow_ = s;
+            date_ = s;
             break;
           }
           default: {
@@ -96,76 +96,76 @@ private static final long serialVersionUID = 0L;
             com.CA.gRPC.ForecastRequest.class, com.CA.gRPC.ForecastRequest.Builder.class);
   }
 
-  public static final int MSGREQUEST_FIELD_NUMBER = 1;
-  private volatile java.lang.Object msgRequest_;
+  public static final int LOCATION_FIELD_NUMBER = 1;
+  private volatile java.lang.Object location_;
   /**
-   * <code>string msgRequest = 1;</code>
-   * @return The msgRequest.
+   * <code>string location = 1;</code>
+   * @return The location.
    */
   @java.lang.Override
-  public java.lang.String getMsgRequest() {
-    java.lang.Object ref = msgRequest_;
+  public java.lang.String getLocation() {
+    java.lang.Object ref = location_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      msgRequest_ = s;
+      location_ = s;
       return s;
     }
   }
   /**
-   * <code>string msgRequest = 1;</code>
-   * @return The bytes for msgRequest.
+   * <code>string location = 1;</code>
+   * @return The bytes for location.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getMsgRequestBytes() {
-    java.lang.Object ref = msgRequest_;
+      getLocationBytes() {
+    java.lang.Object ref = location_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      msgRequest_ = b;
+      location_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int MSGREQUESTTOMORROW_FIELD_NUMBER = 2;
-  private volatile java.lang.Object msgRequestTomorrow_;
+  public static final int DATE_FIELD_NUMBER = 2;
+  private volatile java.lang.Object date_;
   /**
-   * <code>string msgRequestTomorrow = 2;</code>
-   * @return The msgRequestTomorrow.
+   * <code>string date = 2;</code>
+   * @return The date.
    */
   @java.lang.Override
-  public java.lang.String getMsgRequestTomorrow() {
-    java.lang.Object ref = msgRequestTomorrow_;
+  public java.lang.String getDate() {
+    java.lang.Object ref = date_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      msgRequestTomorrow_ = s;
+      date_ = s;
       return s;
     }
   }
   /**
-   * <code>string msgRequestTomorrow = 2;</code>
-   * @return The bytes for msgRequestTomorrow.
+   * <code>string date = 2;</code>
+   * @return The bytes for date.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getMsgRequestTomorrowBytes() {
-    java.lang.Object ref = msgRequestTomorrow_;
+      getDateBytes() {
+    java.lang.Object ref = date_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      msgRequestTomorrow_ = b;
+      date_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -186,11 +186,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msgRequest_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, msgRequest_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, location_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msgRequestTomorrow_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msgRequestTomorrow_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(date_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, date_);
     }
     unknownFields.writeTo(output);
   }
@@ -201,11 +201,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msgRequest_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, msgRequest_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, location_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msgRequestTomorrow_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, msgRequestTomorrow_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(date_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, date_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -222,10 +222,10 @@ private static final long serialVersionUID = 0L;
     }
     com.CA.gRPC.ForecastRequest other = (com.CA.gRPC.ForecastRequest) obj;
 
-    if (!getMsgRequest()
-        .equals(other.getMsgRequest())) return false;
-    if (!getMsgRequestTomorrow()
-        .equals(other.getMsgRequestTomorrow())) return false;
+    if (!getLocation()
+        .equals(other.getLocation())) return false;
+    if (!getDate()
+        .equals(other.getDate())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -237,10 +237,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MSGREQUEST_FIELD_NUMBER;
-    hash = (53 * hash) + getMsgRequest().hashCode();
-    hash = (37 * hash) + MSGREQUESTTOMORROW_FIELD_NUMBER;
-    hash = (53 * hash) + getMsgRequestTomorrow().hashCode();
+    hash = (37 * hash) + LOCATION_FIELD_NUMBER;
+    hash = (53 * hash) + getLocation().hashCode();
+    hash = (37 * hash) + DATE_FIELD_NUMBER;
+    hash = (53 * hash) + getDate().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -374,9 +374,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      msgRequest_ = "";
+      location_ = "";
 
-      msgRequestTomorrow_ = "";
+      date_ = "";
 
       return this;
     }
@@ -404,8 +404,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.CA.gRPC.ForecastRequest buildPartial() {
       com.CA.gRPC.ForecastRequest result = new com.CA.gRPC.ForecastRequest(this);
-      result.msgRequest_ = msgRequest_;
-      result.msgRequestTomorrow_ = msgRequestTomorrow_;
+      result.location_ = location_;
+      result.date_ = date_;
       onBuilt();
       return result;
     }
@@ -454,12 +454,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.CA.gRPC.ForecastRequest other) {
       if (other == com.CA.gRPC.ForecastRequest.getDefaultInstance()) return this;
-      if (!other.getMsgRequest().isEmpty()) {
-        msgRequest_ = other.msgRequest_;
+      if (!other.getLocation().isEmpty()) {
+        location_ = other.location_;
         onChanged();
       }
-      if (!other.getMsgRequestTomorrow().isEmpty()) {
-        msgRequestTomorrow_ = other.msgRequestTomorrow_;
+      if (!other.getDate().isEmpty()) {
+        date_ = other.date_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -491,154 +491,154 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object msgRequest_ = "";
+    private java.lang.Object location_ = "";
     /**
-     * <code>string msgRequest = 1;</code>
-     * @return The msgRequest.
+     * <code>string location = 1;</code>
+     * @return The location.
      */
-    public java.lang.String getMsgRequest() {
-      java.lang.Object ref = msgRequest_;
+    public java.lang.String getLocation() {
+      java.lang.Object ref = location_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        msgRequest_ = s;
+        location_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string msgRequest = 1;</code>
-     * @return The bytes for msgRequest.
+     * <code>string location = 1;</code>
+     * @return The bytes for location.
      */
     public com.google.protobuf.ByteString
-        getMsgRequestBytes() {
-      java.lang.Object ref = msgRequest_;
+        getLocationBytes() {
+      java.lang.Object ref = location_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        msgRequest_ = b;
+        location_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string msgRequest = 1;</code>
-     * @param value The msgRequest to set.
+     * <code>string location = 1;</code>
+     * @param value The location to set.
      * @return This builder for chaining.
      */
-    public Builder setMsgRequest(
+    public Builder setLocation(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      msgRequest_ = value;
+      location_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string msgRequest = 1;</code>
+     * <code>string location = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearMsgRequest() {
+    public Builder clearLocation() {
       
-      msgRequest_ = getDefaultInstance().getMsgRequest();
+      location_ = getDefaultInstance().getLocation();
       onChanged();
       return this;
     }
     /**
-     * <code>string msgRequest = 1;</code>
-     * @param value The bytes for msgRequest to set.
+     * <code>string location = 1;</code>
+     * @param value The bytes for location to set.
      * @return This builder for chaining.
      */
-    public Builder setMsgRequestBytes(
+    public Builder setLocationBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      msgRequest_ = value;
+      location_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object msgRequestTomorrow_ = "";
+    private java.lang.Object date_ = "";
     /**
-     * <code>string msgRequestTomorrow = 2;</code>
-     * @return The msgRequestTomorrow.
+     * <code>string date = 2;</code>
+     * @return The date.
      */
-    public java.lang.String getMsgRequestTomorrow() {
-      java.lang.Object ref = msgRequestTomorrow_;
+    public java.lang.String getDate() {
+      java.lang.Object ref = date_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        msgRequestTomorrow_ = s;
+        date_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string msgRequestTomorrow = 2;</code>
-     * @return The bytes for msgRequestTomorrow.
+     * <code>string date = 2;</code>
+     * @return The bytes for date.
      */
     public com.google.protobuf.ByteString
-        getMsgRequestTomorrowBytes() {
-      java.lang.Object ref = msgRequestTomorrow_;
+        getDateBytes() {
+      java.lang.Object ref = date_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        msgRequestTomorrow_ = b;
+        date_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string msgRequestTomorrow = 2;</code>
-     * @param value The msgRequestTomorrow to set.
+     * <code>string date = 2;</code>
+     * @param value The date to set.
      * @return This builder for chaining.
      */
-    public Builder setMsgRequestTomorrow(
+    public Builder setDate(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      msgRequestTomorrow_ = value;
+      date_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string msgRequestTomorrow = 2;</code>
+     * <code>string date = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearMsgRequestTomorrow() {
+    public Builder clearDate() {
       
-      msgRequestTomorrow_ = getDefaultInstance().getMsgRequestTomorrow();
+      date_ = getDefaultInstance().getDate();
       onChanged();
       return this;
     }
     /**
-     * <code>string msgRequestTomorrow = 2;</code>
-     * @param value The bytes for msgRequestTomorrow to set.
+     * <code>string date = 2;</code>
+     * @param value The bytes for date to set.
      * @return This builder for chaining.
      */
-    public Builder setMsgRequestTomorrowBytes(
+    public Builder setDateBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      msgRequestTomorrow_ = value;
+      date_ = value;
       onChanged();
       return this;
     }

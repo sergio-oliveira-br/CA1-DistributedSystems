@@ -57,16 +57,15 @@ public final class EnvironmentProto {
       "nRequest\022\023\n\013temperature\030\001 \001(\005\"-\n\020SwitchO" +
       "nResponse\022\031\n\021statusTemperature\030\001 \001(\005\"\'\n\020" +
       "SwitchOffRequest\022\023\n\013temperature\030\001 \001(\005\"#\n" +
-      "\021SwitchOffResponse\022\016\n\006status\030\001 \001(\005\"A\n\017Fo" +
-      "recastRequest\022\022\n\nmsgRequest\030\001 \001(\t\022\032\n\022msg" +
-      "RequestTomorrow\030\002 \001(\t\"D\n\020ForecastRespons" +
-      "e\022\023\n\013msgResponse\030\001 \001(\005\022\033\n\023msgResponseTom" +
-      "orrow\030\002 \001(\0052\267\001\n\027EnvironmentMgmtServices\022" +
-      "3\n\010switchOn\022\020.SwitchOnRequest\032\021.SwitchOn" +
-      "Response\"\0000\001\0224\n\tswitchOff\022\021.SwitchOffReq" +
-      "uest\032\022.SwitchOffResponse\"\000\0221\n\010forecast\022\020" +
-      ".ForecastRequest\032\021.ForecastResponse\"\000B!\n" +
-      "\013com.CA.gRPCB\020EnvironmentProtoP\001b\006proto3"
+      "\021SwitchOffResponse\022\016\n\006status\030\001 \001(\005\"1\n\017Fo" +
+      "recastRequest\022\020\n\010location\030\001 \001(\t\022\014\n\004date\030" +
+      "\002 \001(\t\"\'\n\020ForecastResponse\022\023\n\013temperature" +
+      "\030\001 \001(\0052\267\001\n\027EnvironmentMgmtServices\0223\n\010sw" +
+      "itchOn\022\020.SwitchOnRequest\032\021.SwitchOnRespo" +
+      "nse\"\0000\001\0224\n\tswitchOff\022\021.SwitchOffRequest\032" +
+      "\022.SwitchOffResponse\"\000\0221\n\010forecast\022\020.Fore" +
+      "castRequest\032\021.ForecastResponse\"\000B!\n\013com." +
+      "CA.gRPCB\020EnvironmentProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -101,13 +100,13 @@ public final class EnvironmentProto {
     internal_static_ForecastRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ForecastRequest_descriptor,
-        new java.lang.String[] { "MsgRequest", "MsgRequestTomorrow", });
+        new java.lang.String[] { "Location", "Date", });
     internal_static_ForecastResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_ForecastResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ForecastResponse_descriptor,
-        new java.lang.String[] { "MsgResponse", "MsgResponseTomorrow", });
+        new java.lang.String[] { "Temperature", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -8,14 +8,8 @@ public interface ForecastResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 msgResponse = 1;</code>
-   * @return The msgResponse.
+   * <code>int32 temperature = 1;</code>
+   * @return The temperature.
    */
-  int getMsgResponse();
-
-  /**
-   * <code>int32 msgResponseTomorrow = 2;</code>
-   * @return The msgResponseTomorrow.
-   */
-  int getMsgResponseTomorrow();
+  int getTemperature();
 }

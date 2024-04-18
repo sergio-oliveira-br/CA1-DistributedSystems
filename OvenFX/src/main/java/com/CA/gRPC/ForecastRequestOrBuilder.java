@@ -8,26 +8,26 @@ public interface ForecastRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string msgRequest = 1;</code>
-   * @return The msgRequest.
+   * <code>string location = 1;</code>
+   * @return The location.
    */
-  java.lang.String getMsgRequest();
+  java.lang.String getLocation();
   /**
-   * <code>string msgRequest = 1;</code>
-   * @return The bytes for msgRequest.
+   * <code>string location = 1;</code>
+   * @return The bytes for location.
    */
   com.google.protobuf.ByteString
-      getMsgRequestBytes();
+      getLocationBytes();
 
   /**
-   * <code>string msgRequestTomorrow = 2;</code>
-   * @return The msgRequestTomorrow.
+   * <code>string date = 2;</code>
+   * @return The date.
    */
-  java.lang.String getMsgRequestTomorrow();
+  java.lang.String getDate();
   /**
-   * <code>string msgRequestTomorrow = 2;</code>
-   * @return The bytes for msgRequestTomorrow.
+   * <code>string date = 2;</code>
+   * @return The bytes for date.
    */
   com.google.protobuf.ByteString
-      getMsgRequestTomorrowBytes();
+      getDateBytes();
 }

@@ -58,14 +58,13 @@ message SwitchOffResponse
 
 message ForecastRequest
 {
-  string msgRequest = 1;
-  string msgRequestTomorrow = 2;
+  string location = 1;
+  string date = 2;
 }
 
 message ForecastResponse
 {
-  int32 msgResponse = 1;
-  int32 msgResponseTomorrow = 2;
+  int32 temperature = 1;
 }
 
 

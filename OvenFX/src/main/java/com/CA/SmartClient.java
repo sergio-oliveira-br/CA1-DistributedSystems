@@ -197,6 +197,7 @@ public class SmartClient
     /** Environment Management Proto (Forecast): Implementation of Unary RCP */
     public void forecast()
     {
+        /*
         ForecastRequest forecastRequestToday = ForecastRequest.newBuilder()
                 .setMsgRequest("Please tell me the forecast for Today").build();
         ForecastResponse forecastResponseToday = environmentMgmtServicesBlockingStub.forecast(forecastRequestToday);
@@ -206,6 +207,8 @@ public class SmartClient
         ForecastRequest forecastRequestTomorrow = ForecastRequest.newBuilder()
                 .setMsgRequestTomorrow("Please tell me the forecast for Tomorrow").build();
 
+
+         */
     }
 
     /** Environment Management Proto (Switch ON): Implementation of Unary RCP */
