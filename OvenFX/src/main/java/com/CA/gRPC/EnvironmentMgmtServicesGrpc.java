@@ -18,29 +18,29 @@ public final class EnvironmentMgmtServicesGrpc {
   public static final java.lang.String SERVICE_NAME = "EnvironmentMgmtServices";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.CA.gRPC.switchOnRequest,
-      com.CA.gRPC.switchOnResponse> getSwitchOnMethod;
+  private static volatile io.grpc.MethodDescriptor<com.CA.gRPC.SwitchOnRequest,
+      com.CA.gRPC.SwitchOnResponse> getSwitchOnMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "switchOn",
-      requestType = com.CA.gRPC.switchOnRequest.class,
-      responseType = com.CA.gRPC.switchOnResponse.class,
+      requestType = com.CA.gRPC.SwitchOnRequest.class,
+      responseType = com.CA.gRPC.SwitchOnResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<com.CA.gRPC.switchOnRequest,
-      com.CA.gRPC.switchOnResponse> getSwitchOnMethod() {
-    io.grpc.MethodDescriptor<com.CA.gRPC.switchOnRequest, com.CA.gRPC.switchOnResponse> getSwitchOnMethod;
+  public static io.grpc.MethodDescriptor<com.CA.gRPC.SwitchOnRequest,
+      com.CA.gRPC.SwitchOnResponse> getSwitchOnMethod() {
+    io.grpc.MethodDescriptor<com.CA.gRPC.SwitchOnRequest, com.CA.gRPC.SwitchOnResponse> getSwitchOnMethod;
     if ((getSwitchOnMethod = EnvironmentMgmtServicesGrpc.getSwitchOnMethod) == null) {
       synchronized (EnvironmentMgmtServicesGrpc.class) {
         if ((getSwitchOnMethod = EnvironmentMgmtServicesGrpc.getSwitchOnMethod) == null) {
           EnvironmentMgmtServicesGrpc.getSwitchOnMethod = getSwitchOnMethod =
-              io.grpc.MethodDescriptor.<com.CA.gRPC.switchOnRequest, com.CA.gRPC.switchOnResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.CA.gRPC.SwitchOnRequest, com.CA.gRPC.SwitchOnResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "switchOn"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.CA.gRPC.switchOnRequest.getDefaultInstance()))
+                  com.CA.gRPC.SwitchOnRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.CA.gRPC.switchOnResponse.getDefaultInstance()))
+                  com.CA.gRPC.SwitchOnResponse.getDefaultInstance()))
               .setSchemaDescriptor(new EnvironmentMgmtServicesMethodDescriptorSupplier("switchOn"))
               .build();
         }
@@ -49,29 +49,29 @@ public final class EnvironmentMgmtServicesGrpc {
     return getSwitchOnMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.CA.gRPC.switchOffRequest,
-      com.CA.gRPC.switchOffResponse> getSwitchOffMethod;
+  private static volatile io.grpc.MethodDescriptor<com.CA.gRPC.SwitchOffRequest,
+      com.CA.gRPC.SwitchOffResponse> getSwitchOffMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "switchOff",
-      requestType = com.CA.gRPC.switchOffRequest.class,
-      responseType = com.CA.gRPC.switchOffResponse.class,
+      requestType = com.CA.gRPC.SwitchOffRequest.class,
+      responseType = com.CA.gRPC.SwitchOffResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.CA.gRPC.switchOffRequest,
-      com.CA.gRPC.switchOffResponse> getSwitchOffMethod() {
-    io.grpc.MethodDescriptor<com.CA.gRPC.switchOffRequest, com.CA.gRPC.switchOffResponse> getSwitchOffMethod;
+  public static io.grpc.MethodDescriptor<com.CA.gRPC.SwitchOffRequest,
+      com.CA.gRPC.SwitchOffResponse> getSwitchOffMethod() {
+    io.grpc.MethodDescriptor<com.CA.gRPC.SwitchOffRequest, com.CA.gRPC.SwitchOffResponse> getSwitchOffMethod;
     if ((getSwitchOffMethod = EnvironmentMgmtServicesGrpc.getSwitchOffMethod) == null) {
       synchronized (EnvironmentMgmtServicesGrpc.class) {
         if ((getSwitchOffMethod = EnvironmentMgmtServicesGrpc.getSwitchOffMethod) == null) {
           EnvironmentMgmtServicesGrpc.getSwitchOffMethod = getSwitchOffMethod =
-              io.grpc.MethodDescriptor.<com.CA.gRPC.switchOffRequest, com.CA.gRPC.switchOffResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.CA.gRPC.SwitchOffRequest, com.CA.gRPC.SwitchOffResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "switchOff"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.CA.gRPC.switchOffRequest.getDefaultInstance()))
+                  com.CA.gRPC.SwitchOffRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.CA.gRPC.switchOffResponse.getDefaultInstance()))
+                  com.CA.gRPC.SwitchOffResponse.getDefaultInstance()))
               .setSchemaDescriptor(new EnvironmentMgmtServicesMethodDescriptorSupplier("switchOff"))
               .build();
         }
@@ -80,29 +80,29 @@ public final class EnvironmentMgmtServicesGrpc {
     return getSwitchOffMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.CA.gRPC.forecastRequest,
-      com.CA.gRPC.forecastResponse> getForecastMethod;
+  private static volatile io.grpc.MethodDescriptor<com.CA.gRPC.ForecastRequest,
+      com.CA.gRPC.ForecastResponse> getForecastMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "forecast",
-      requestType = com.CA.gRPC.forecastRequest.class,
-      responseType = com.CA.gRPC.forecastResponse.class,
+      requestType = com.CA.gRPC.ForecastRequest.class,
+      responseType = com.CA.gRPC.ForecastResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.CA.gRPC.forecastRequest,
-      com.CA.gRPC.forecastResponse> getForecastMethod() {
-    io.grpc.MethodDescriptor<com.CA.gRPC.forecastRequest, com.CA.gRPC.forecastResponse> getForecastMethod;
+  public static io.grpc.MethodDescriptor<com.CA.gRPC.ForecastRequest,
+      com.CA.gRPC.ForecastResponse> getForecastMethod() {
+    io.grpc.MethodDescriptor<com.CA.gRPC.ForecastRequest, com.CA.gRPC.ForecastResponse> getForecastMethod;
     if ((getForecastMethod = EnvironmentMgmtServicesGrpc.getForecastMethod) == null) {
       synchronized (EnvironmentMgmtServicesGrpc.class) {
         if ((getForecastMethod = EnvironmentMgmtServicesGrpc.getForecastMethod) == null) {
           EnvironmentMgmtServicesGrpc.getForecastMethod = getForecastMethod =
-              io.grpc.MethodDescriptor.<com.CA.gRPC.forecastRequest, com.CA.gRPC.forecastResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.CA.gRPC.ForecastRequest, com.CA.gRPC.ForecastResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "forecast"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.CA.gRPC.forecastRequest.getDefaultInstance()))
+                  com.CA.gRPC.ForecastRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.CA.gRPC.forecastResponse.getDefaultInstance()))
+                  com.CA.gRPC.ForecastResponse.getDefaultInstance()))
               .setSchemaDescriptor(new EnvironmentMgmtServicesMethodDescriptorSupplier("forecast"))
               .build();
         }
@@ -164,22 +164,22 @@ public final class EnvironmentMgmtServicesGrpc {
 
     /**
      */
-    default void switchOn(com.CA.gRPC.switchOnRequest request,
-        io.grpc.stub.StreamObserver<com.CA.gRPC.switchOnResponse> responseObserver) {
+    default void switchOn(com.CA.gRPC.SwitchOnRequest request,
+        io.grpc.stub.StreamObserver<com.CA.gRPC.SwitchOnResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSwitchOnMethod(), responseObserver);
     }
 
     /**
      */
-    default void switchOff(com.CA.gRPC.switchOffRequest request,
-        io.grpc.stub.StreamObserver<com.CA.gRPC.switchOffResponse> responseObserver) {
+    default void switchOff(com.CA.gRPC.SwitchOffRequest request,
+        io.grpc.stub.StreamObserver<com.CA.gRPC.SwitchOffResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSwitchOffMethod(), responseObserver);
     }
 
     /**
      */
-    default void forecast(com.CA.gRPC.forecastRequest request,
-        io.grpc.stub.StreamObserver<com.CA.gRPC.forecastResponse> responseObserver) {
+    default void forecast(com.CA.gRPC.ForecastRequest request,
+        io.grpc.stub.StreamObserver<com.CA.gRPC.ForecastResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getForecastMethod(), responseObserver);
     }
   }
@@ -219,24 +219,24 @@ public final class EnvironmentMgmtServicesGrpc {
 
     /**
      */
-    public void switchOn(com.CA.gRPC.switchOnRequest request,
-        io.grpc.stub.StreamObserver<com.CA.gRPC.switchOnResponse> responseObserver) {
+    public void switchOn(com.CA.gRPC.SwitchOnRequest request,
+        io.grpc.stub.StreamObserver<com.CA.gRPC.SwitchOnResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getSwitchOnMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void switchOff(com.CA.gRPC.switchOffRequest request,
-        io.grpc.stub.StreamObserver<com.CA.gRPC.switchOffResponse> responseObserver) {
+    public void switchOff(com.CA.gRPC.SwitchOffRequest request,
+        io.grpc.stub.StreamObserver<com.CA.gRPC.SwitchOffResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSwitchOffMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void forecast(com.CA.gRPC.forecastRequest request,
-        io.grpc.stub.StreamObserver<com.CA.gRPC.forecastResponse> responseObserver) {
+    public void forecast(com.CA.gRPC.ForecastRequest request,
+        io.grpc.stub.StreamObserver<com.CA.gRPC.ForecastResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getForecastMethod(), getCallOptions()), request, responseObserver);
     }
@@ -263,22 +263,22 @@ public final class EnvironmentMgmtServicesGrpc {
 
     /**
      */
-    public java.util.Iterator<com.CA.gRPC.switchOnResponse> switchOn(
-        com.CA.gRPC.switchOnRequest request) {
+    public java.util.Iterator<com.CA.gRPC.SwitchOnResponse> switchOn(
+        com.CA.gRPC.SwitchOnRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSwitchOnMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.CA.gRPC.switchOffResponse switchOff(com.CA.gRPC.switchOffRequest request) {
+    public com.CA.gRPC.SwitchOffResponse switchOff(com.CA.gRPC.SwitchOffRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSwitchOffMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.CA.gRPC.forecastResponse forecast(com.CA.gRPC.forecastRequest request) {
+    public com.CA.gRPC.ForecastResponse forecast(com.CA.gRPC.ForecastRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getForecastMethod(), getCallOptions(), request);
     }
@@ -305,16 +305,16 @@ public final class EnvironmentMgmtServicesGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.CA.gRPC.switchOffResponse> switchOff(
-        com.CA.gRPC.switchOffRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.CA.gRPC.SwitchOffResponse> switchOff(
+        com.CA.gRPC.SwitchOffRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSwitchOffMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.CA.gRPC.forecastResponse> forecast(
-        com.CA.gRPC.forecastRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.CA.gRPC.ForecastResponse> forecast(
+        com.CA.gRPC.ForecastRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getForecastMethod(), getCallOptions()), request);
     }
@@ -342,16 +342,16 @@ public final class EnvironmentMgmtServicesGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SWITCH_ON:
-          serviceImpl.switchOn((com.CA.gRPC.switchOnRequest) request,
-              (io.grpc.stub.StreamObserver<com.CA.gRPC.switchOnResponse>) responseObserver);
+          serviceImpl.switchOn((com.CA.gRPC.SwitchOnRequest) request,
+              (io.grpc.stub.StreamObserver<com.CA.gRPC.SwitchOnResponse>) responseObserver);
           break;
         case METHODID_SWITCH_OFF:
-          serviceImpl.switchOff((com.CA.gRPC.switchOffRequest) request,
-              (io.grpc.stub.StreamObserver<com.CA.gRPC.switchOffResponse>) responseObserver);
+          serviceImpl.switchOff((com.CA.gRPC.SwitchOffRequest) request,
+              (io.grpc.stub.StreamObserver<com.CA.gRPC.SwitchOffResponse>) responseObserver);
           break;
         case METHODID_FORECAST:
-          serviceImpl.forecast((com.CA.gRPC.forecastRequest) request,
-              (io.grpc.stub.StreamObserver<com.CA.gRPC.forecastResponse>) responseObserver);
+          serviceImpl.forecast((com.CA.gRPC.ForecastRequest) request,
+              (io.grpc.stub.StreamObserver<com.CA.gRPC.ForecastResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -375,22 +375,22 @@ public final class EnvironmentMgmtServicesGrpc {
           getSwitchOnMethod(),
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
-              com.CA.gRPC.switchOnRequest,
-              com.CA.gRPC.switchOnResponse>(
+              com.CA.gRPC.SwitchOnRequest,
+              com.CA.gRPC.SwitchOnResponse>(
                 service, METHODID_SWITCH_ON)))
         .addMethod(
           getSwitchOffMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.CA.gRPC.switchOffRequest,
-              com.CA.gRPC.switchOffResponse>(
+              com.CA.gRPC.SwitchOffRequest,
+              com.CA.gRPC.SwitchOffResponse>(
                 service, METHODID_SWITCH_OFF)))
         .addMethod(
           getForecastMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.CA.gRPC.forecastRequest,
-              com.CA.gRPC.forecastResponse>(
+              com.CA.gRPC.ForecastRequest,
+              com.CA.gRPC.ForecastResponse>(
                 service, METHODID_FORECAST)))
         .build();
   }

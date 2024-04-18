@@ -24,7 +24,11 @@ import java.util.Optional;
 public class SmartScreenController
 {
     @FXML
-    private LineChart<Number, Number> myTempChart;
+    private LineChart<Number, Number> myTempChartLine;
+    @FXML
+    private LineChart<Number, Number> airTemperatureLine;
+    @FXML
+    private XYChart.Series<Number, Number> airTemperatureSeries;
     @FXML
     private XYChart.Series<Number, Number> series;
     @FXML
@@ -40,13 +44,17 @@ public class SmartScreenController
         //This is the temperature Ramp showing dot by dot
         series = new XYChart.Series<>();
         series.setName("Temperature Ramp");
-        myTempChart.getData().add(series);
+        myTempChartLine.getData().add(series);
 
         //This is the line that should display "dot by dot" the set point from the user
         temp = new XYChart.Series<Number, Number>();
         temp.setName("Set Point");
-        myTempChart.getData().add(temp);
+        myTempChartLine.getData().add(temp);
 
+        //This refers the Air Temperature
+        airTemperatureSeries = new XYChart.Series<Number, Number>();
+        airTemperatureSeries.setName(" Air Temperature");
+        myTempChartLine.getData().add(airTemperatureSeries);
 
         //This is my ChoiceBox List -> https://www.youtube.com/watch?app=desktop&v=PPwVwpdYFeU&themeRefresh=1
         choiceBoxButton.setItems(FXCollections.observableArrayList("Main Door", "Back Door",
@@ -60,9 +68,9 @@ public class SmartScreenController
         myText.getChildren().add(guideStep2);
 
         //Disabling the buttons
-        sayHelloButton.setDisable(true);
-        setTempButton.setDisable(true);
-        disconnectButton.setDisable(true);
+        //sayHelloButton.setDisable(true);
+        //setTempButton.setDisable(true);
+        //disconnectButton.setDisable(true);
         //stopStreamButton.setDisable(true);
 
 
@@ -329,6 +337,50 @@ public class SmartScreenController
         Text messageText = new Text("\nServer has sent the forecast for Today" + " ºC");
         myText.getChildren().add(messageText);
     }
+
+
+    @FXML
+    private void switchOnAction(ActionEvent event)
+    {
+        SmartClient myClient = new SmartClient("localhost", 8081);
+
+        //Text messageText = new Text("\nYour Temp is 40.... building....");
+        //myText.getChildren().add(messageText);
+
+        //Create a dialog box to request user input
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Air Temperature");
+        dialog.setHeaderText("Please enter the Temperature that you want to set: ");
+        dialog.setContentText("Temp ºC: ");
+
+        //Display the dialog box and wait for user input
+        Optional<String> result = dialog.showAndWait();
+
+        /*
+
+        // Process user input
+        result.ifPresent(number ->
+        {
+            try
+            {
+                int temperature = Integer.parseInt(number);
+                myClient.switchOn(temperature);
+
+                for (int i = 0; i < 50; i++)
+                {
+                    airTemperatureSeries.getData().add(new XYChart.Data<Number, Number>(i, temperature));
+                }
+            }
+            catch (NumberFormatException e)
+            {
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
+        });
+
+         */
+
+    }
+
 
 
 

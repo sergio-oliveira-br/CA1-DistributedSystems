@@ -3,8 +3,8 @@
 
 package com.CA.gRPC;
 
-public interface forecastResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:forecastResponse)
+public interface ForecastResponseOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:ForecastResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

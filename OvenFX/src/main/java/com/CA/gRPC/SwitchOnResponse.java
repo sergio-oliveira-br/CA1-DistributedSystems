@@ -4,29 +4,25 @@
 package com.CA.gRPC;
 
 /**
- * <pre>
- *The request message containing to open the door
- * </pre>
- *
- * Protobuf type {@code switchOnRequest}
+ * Protobuf type {@code SwitchOnResponse}
  */
-public final class switchOnRequest extends
+public final class SwitchOnResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:switchOnRequest)
-    switchOnRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:SwitchOnResponse)
+    SwitchOnResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use switchOnRequest.newBuilder() to construct.
-  private switchOnRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use SwitchOnResponse.newBuilder() to construct.
+  private SwitchOnResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private switchOnRequest() {
+  private SwitchOnResponse() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new switchOnRequest();
+    return new SwitchOnResponse();
   }
 
   @java.lang.Override
@@ -34,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private switchOnRequest(
+  private SwitchOnResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -54,7 +50,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            temperature_ = input.readInt32();
+            statusTemperature_ = input.readInt32();
             break;
           }
           default: {
@@ -80,26 +76,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.CA.gRPC.EnvironmentProto.internal_static_switchOnRequest_descriptor;
+    return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOnResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.CA.gRPC.EnvironmentProto.internal_static_switchOnRequest_fieldAccessorTable
+    return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOnResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.CA.gRPC.switchOnRequest.class, com.CA.gRPC.switchOnRequest.Builder.class);
+            com.CA.gRPC.SwitchOnResponse.class, com.CA.gRPC.SwitchOnResponse.Builder.class);
   }
 
-  public static final int TEMPERATURE_FIELD_NUMBER = 1;
-  private int temperature_;
+  public static final int STATUSTEMPERATURE_FIELD_NUMBER = 1;
+  private int statusTemperature_;
   /**
-   * <code>int32 temperature = 1;</code>
-   * @return The temperature.
+   * <code>int32 statusTemperature = 1;</code>
+   * @return The statusTemperature.
    */
   @java.lang.Override
-  public int getTemperature() {
-    return temperature_;
+  public int getStatusTemperature() {
+    return statusTemperature_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -116,8 +112,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (temperature_ != 0) {
-      output.writeInt32(1, temperature_);
+    if (statusTemperature_ != 0) {
+      output.writeInt32(1, statusTemperature_);
     }
     unknownFields.writeTo(output);
   }
@@ -128,9 +124,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (temperature_ != 0) {
+    if (statusTemperature_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, temperature_);
+        .computeInt32Size(1, statusTemperature_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -142,13 +138,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.CA.gRPC.switchOnRequest)) {
+    if (!(obj instanceof com.CA.gRPC.SwitchOnResponse)) {
       return super.equals(obj);
     }
-    com.CA.gRPC.switchOnRequest other = (com.CA.gRPC.switchOnRequest) obj;
+    com.CA.gRPC.SwitchOnResponse other = (com.CA.gRPC.SwitchOnResponse) obj;
 
-    if (getTemperature()
-        != other.getTemperature()) return false;
+    if (getStatusTemperature()
+        != other.getStatusTemperature()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -160,76 +156,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TEMPERATURE_FIELD_NUMBER;
-    hash = (53 * hash) + getTemperature();
+    hash = (37 * hash) + STATUSTEMPERATURE_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusTemperature();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.CA.gRPC.switchOnRequest parseFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(byte[] data)
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(java.io.InputStream input)
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.switchOnRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.CA.gRPC.SwitchOnResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.switchOnRequest parseDelimitedFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.switchOnRequest parseFrom(
+  public static com.CA.gRPC.SwitchOnResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -242,7 +238,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.CA.gRPC.switchOnRequest prototype) {
+  public static Builder newBuilder(com.CA.gRPC.SwitchOnResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -258,30 +254,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *The request message containing to open the door
-   * </pre>
-   *
-   * Protobuf type {@code switchOnRequest}
+   * Protobuf type {@code SwitchOnResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:switchOnRequest)
-      com.CA.gRPC.switchOnRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:SwitchOnResponse)
+      com.CA.gRPC.SwitchOnResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_switchOnRequest_descriptor;
+      return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOnResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_switchOnRequest_fieldAccessorTable
+      return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOnResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.CA.gRPC.switchOnRequest.class, com.CA.gRPC.switchOnRequest.Builder.class);
+              com.CA.gRPC.SwitchOnResponse.class, com.CA.gRPC.SwitchOnResponse.Builder.class);
     }
 
-    // Construct using com.CA.gRPC.switchOnRequest.newBuilder()
+    // Construct using com.CA.gRPC.SwitchOnResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -299,7 +291,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      temperature_ = 0;
+      statusTemperature_ = 0;
 
       return this;
     }
@@ -307,17 +299,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_switchOnRequest_descriptor;
+      return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOnResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.switchOnRequest getDefaultInstanceForType() {
-      return com.CA.gRPC.switchOnRequest.getDefaultInstance();
+    public com.CA.gRPC.SwitchOnResponse getDefaultInstanceForType() {
+      return com.CA.gRPC.SwitchOnResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.CA.gRPC.switchOnRequest build() {
-      com.CA.gRPC.switchOnRequest result = buildPartial();
+    public com.CA.gRPC.SwitchOnResponse build() {
+      com.CA.gRPC.SwitchOnResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -325,9 +317,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.switchOnRequest buildPartial() {
-      com.CA.gRPC.switchOnRequest result = new com.CA.gRPC.switchOnRequest(this);
-      result.temperature_ = temperature_;
+    public com.CA.gRPC.SwitchOnResponse buildPartial() {
+      com.CA.gRPC.SwitchOnResponse result = new com.CA.gRPC.SwitchOnResponse(this);
+      result.statusTemperature_ = statusTemperature_;
       onBuilt();
       return result;
     }
@@ -366,18 +358,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.CA.gRPC.switchOnRequest) {
-        return mergeFrom((com.CA.gRPC.switchOnRequest)other);
+      if (other instanceof com.CA.gRPC.SwitchOnResponse) {
+        return mergeFrom((com.CA.gRPC.SwitchOnResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.CA.gRPC.switchOnRequest other) {
-      if (other == com.CA.gRPC.switchOnRequest.getDefaultInstance()) return this;
-      if (other.getTemperature() != 0) {
-        setTemperature(other.getTemperature());
+    public Builder mergeFrom(com.CA.gRPC.SwitchOnResponse other) {
+      if (other == com.CA.gRPC.SwitchOnResponse.getDefaultInstance()) return this;
+      if (other.getStatusTemperature() != 0) {
+        setStatusTemperature(other.getStatusTemperature());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -394,11 +386,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.CA.gRPC.switchOnRequest parsedMessage = null;
+      com.CA.gRPC.SwitchOnResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.CA.gRPC.switchOnRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.CA.gRPC.SwitchOnResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -408,33 +400,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int temperature_ ;
+    private int statusTemperature_ ;
     /**
-     * <code>int32 temperature = 1;</code>
-     * @return The temperature.
+     * <code>int32 statusTemperature = 1;</code>
+     * @return The statusTemperature.
      */
     @java.lang.Override
-    public int getTemperature() {
-      return temperature_;
+    public int getStatusTemperature() {
+      return statusTemperature_;
     }
     /**
-     * <code>int32 temperature = 1;</code>
-     * @param value The temperature to set.
+     * <code>int32 statusTemperature = 1;</code>
+     * @param value The statusTemperature to set.
      * @return This builder for chaining.
      */
-    public Builder setTemperature(int value) {
+    public Builder setStatusTemperature(int value) {
       
-      temperature_ = value;
+      statusTemperature_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 temperature = 1;</code>
+     * <code>int32 statusTemperature = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearTemperature() {
+    public Builder clearStatusTemperature() {
       
-      temperature_ = 0;
+      statusTemperature_ = 0;
       onChanged();
       return this;
     }
@@ -451,41 +443,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:switchOnRequest)
+    // @@protoc_insertion_point(builder_scope:SwitchOnResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:switchOnRequest)
-  private static final com.CA.gRPC.switchOnRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:SwitchOnResponse)
+  private static final com.CA.gRPC.SwitchOnResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.CA.gRPC.switchOnRequest();
+    DEFAULT_INSTANCE = new com.CA.gRPC.SwitchOnResponse();
   }
 
-  public static com.CA.gRPC.switchOnRequest getDefaultInstance() {
+  public static com.CA.gRPC.SwitchOnResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<switchOnRequest>
-      PARSER = new com.google.protobuf.AbstractParser<switchOnRequest>() {
+  private static final com.google.protobuf.Parser<SwitchOnResponse>
+      PARSER = new com.google.protobuf.AbstractParser<SwitchOnResponse>() {
     @java.lang.Override
-    public switchOnRequest parsePartialFrom(
+    public SwitchOnResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new switchOnRequest(input, extensionRegistry);
+      return new SwitchOnResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<switchOnRequest> parser() {
+  public static com.google.protobuf.Parser<SwitchOnResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<switchOnRequest> getParserForType() {
+  public com.google.protobuf.Parser<SwitchOnResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.CA.gRPC.switchOnRequest getDefaultInstanceForType() {
+  public com.CA.gRPC.SwitchOnResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

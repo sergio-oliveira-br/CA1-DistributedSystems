@@ -3,8 +3,8 @@
 
 package com.CA.gRPC;
 
-public interface switchOnRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:switchOnRequest)
+public interface SwitchOffRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:SwitchOffRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

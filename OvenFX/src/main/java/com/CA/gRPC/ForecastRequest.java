@@ -4,18 +4,18 @@
 package com.CA.gRPC;
 
 /**
- * Protobuf type {@code forecastRequest}
+ * Protobuf type {@code ForecastRequest}
  */
-public final class forecastRequest extends
+public final class ForecastRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:forecastRequest)
-    forecastRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:ForecastRequest)
+    ForecastRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use forecastRequest.newBuilder() to construct.
-  private forecastRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ForecastRequest.newBuilder() to construct.
+  private ForecastRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private forecastRequest() {
+  private ForecastRequest() {
     msgRequest_ = "";
     msgRequestTomorrow_ = "";
   }
@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new forecastRequest();
+    return new ForecastRequest();
   }
 
   @java.lang.Override
@@ -32,7 +32,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private forecastRequest(
+  private ForecastRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -85,15 +85,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.CA.gRPC.EnvironmentProto.internal_static_forecastRequest_descriptor;
+    return com.CA.gRPC.EnvironmentProto.internal_static_ForecastRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.CA.gRPC.EnvironmentProto.internal_static_forecastRequest_fieldAccessorTable
+    return com.CA.gRPC.EnvironmentProto.internal_static_ForecastRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.CA.gRPC.forecastRequest.class, com.CA.gRPC.forecastRequest.Builder.class);
+            com.CA.gRPC.ForecastRequest.class, com.CA.gRPC.ForecastRequest.Builder.class);
   }
 
   public static final int MSGREQUEST_FIELD_NUMBER = 1;
@@ -217,10 +217,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.CA.gRPC.forecastRequest)) {
+    if (!(obj instanceof com.CA.gRPC.ForecastRequest)) {
       return super.equals(obj);
     }
-    com.CA.gRPC.forecastRequest other = (com.CA.gRPC.forecastRequest) obj;
+    com.CA.gRPC.ForecastRequest other = (com.CA.gRPC.ForecastRequest) obj;
 
     if (!getMsgRequest()
         .equals(other.getMsgRequest())) return false;
@@ -246,69 +246,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.CA.gRPC.forecastRequest parseFrom(
+  public static com.CA.gRPC.ForecastRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(
+  public static com.CA.gRPC.ForecastRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(
+  public static com.CA.gRPC.ForecastRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(
+  public static com.CA.gRPC.ForecastRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(byte[] data)
+  public static com.CA.gRPC.ForecastRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(
+  public static com.CA.gRPC.ForecastRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(java.io.InputStream input)
+  public static com.CA.gRPC.ForecastRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(
+  public static com.CA.gRPC.ForecastRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.CA.gRPC.ForecastRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.forecastRequest parseDelimitedFrom(
+  public static com.CA.gRPC.ForecastRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(
+  public static com.CA.gRPC.ForecastRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.forecastRequest parseFrom(
+  public static com.CA.gRPC.ForecastRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -321,7 +321,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.CA.gRPC.forecastRequest prototype) {
+  public static Builder newBuilder(com.CA.gRPC.ForecastRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -337,26 +337,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code forecastRequest}
+   * Protobuf type {@code ForecastRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:forecastRequest)
-      com.CA.gRPC.forecastRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:ForecastRequest)
+      com.CA.gRPC.ForecastRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_forecastRequest_descriptor;
+      return com.CA.gRPC.EnvironmentProto.internal_static_ForecastRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_forecastRequest_fieldAccessorTable
+      return com.CA.gRPC.EnvironmentProto.internal_static_ForecastRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.CA.gRPC.forecastRequest.class, com.CA.gRPC.forecastRequest.Builder.class);
+              com.CA.gRPC.ForecastRequest.class, com.CA.gRPC.ForecastRequest.Builder.class);
     }
 
-    // Construct using com.CA.gRPC.forecastRequest.newBuilder()
+    // Construct using com.CA.gRPC.ForecastRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -384,17 +384,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_forecastRequest_descriptor;
+      return com.CA.gRPC.EnvironmentProto.internal_static_ForecastRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.forecastRequest getDefaultInstanceForType() {
-      return com.CA.gRPC.forecastRequest.getDefaultInstance();
+    public com.CA.gRPC.ForecastRequest getDefaultInstanceForType() {
+      return com.CA.gRPC.ForecastRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.CA.gRPC.forecastRequest build() {
-      com.CA.gRPC.forecastRequest result = buildPartial();
+    public com.CA.gRPC.ForecastRequest build() {
+      com.CA.gRPC.ForecastRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -402,8 +402,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.forecastRequest buildPartial() {
-      com.CA.gRPC.forecastRequest result = new com.CA.gRPC.forecastRequest(this);
+    public com.CA.gRPC.ForecastRequest buildPartial() {
+      com.CA.gRPC.ForecastRequest result = new com.CA.gRPC.ForecastRequest(this);
       result.msgRequest_ = msgRequest_;
       result.msgRequestTomorrow_ = msgRequestTomorrow_;
       onBuilt();
@@ -444,16 +444,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.CA.gRPC.forecastRequest) {
-        return mergeFrom((com.CA.gRPC.forecastRequest)other);
+      if (other instanceof com.CA.gRPC.ForecastRequest) {
+        return mergeFrom((com.CA.gRPC.ForecastRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.CA.gRPC.forecastRequest other) {
-      if (other == com.CA.gRPC.forecastRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.CA.gRPC.ForecastRequest other) {
+      if (other == com.CA.gRPC.ForecastRequest.getDefaultInstance()) return this;
       if (!other.getMsgRequest().isEmpty()) {
         msgRequest_ = other.msgRequest_;
         onChanged();
@@ -477,11 +477,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.CA.gRPC.forecastRequest parsedMessage = null;
+      com.CA.gRPC.ForecastRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.CA.gRPC.forecastRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.CA.gRPC.ForecastRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -655,41 +655,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:forecastRequest)
+    // @@protoc_insertion_point(builder_scope:ForecastRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:forecastRequest)
-  private static final com.CA.gRPC.forecastRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:ForecastRequest)
+  private static final com.CA.gRPC.ForecastRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.CA.gRPC.forecastRequest();
+    DEFAULT_INSTANCE = new com.CA.gRPC.ForecastRequest();
   }
 
-  public static com.CA.gRPC.forecastRequest getDefaultInstance() {
+  public static com.CA.gRPC.ForecastRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<forecastRequest>
-      PARSER = new com.google.protobuf.AbstractParser<forecastRequest>() {
+  private static final com.google.protobuf.Parser<ForecastRequest>
+      PARSER = new com.google.protobuf.AbstractParser<ForecastRequest>() {
     @java.lang.Override
-    public forecastRequest parsePartialFrom(
+    public ForecastRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new forecastRequest(input, extensionRegistry);
+      return new ForecastRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<forecastRequest> parser() {
+  public static com.google.protobuf.Parser<ForecastRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<forecastRequest> getParserForType() {
+  public com.google.protobuf.Parser<ForecastRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.CA.gRPC.forecastRequest getDefaultInstanceForType() {
+  public com.CA.gRPC.ForecastRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

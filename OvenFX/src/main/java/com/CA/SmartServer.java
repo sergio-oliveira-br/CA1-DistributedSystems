@@ -52,7 +52,7 @@ public class SmartServer
                 .addService(new TemperatureRampImpl())
                 .addService(new SmartDoorServicesImpl())
                 .addService(new SmartAlarmServicesImpl())
-                .addService(new EnvironmentMgmtServicesImpl())
+                //.addService(new EnvironmentMgmtServicesImpl())
                 .build();
 
     }
@@ -140,7 +140,8 @@ public class SmartServer
                 TempRamp tempRamp = TempRamp.newBuilder().setMessage((int)i).build();
                 responseObserver.onNext(tempRamp);
 
-                try {
+                try
+                {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -250,23 +251,18 @@ public class SmartServer
 
 
 
-    /** Environment Management Proto (Forecast): Implementation of Unary RCP */
-    public static class EnvironmentMgmtServicesImpl extends EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesImplBase
-    {
-        //Forecast for Today
-        @Override
-        public void forecast (forecastRequest request, StreamObserver<forecastResponse> responseObserver)
-        {
-            //Build the response
-            forecastResponse response = forecastResponse.newBuilder().setMsgResponse(22).build();
 
-            //Send the response
-            responseObserver.onNext(response);
-            responseObserver.onCompleted();
 
-        }
+        /** Environment Management Proto (Forecast): Implementation of Unary RCP */
 
-    }
+
+        /**
+         * Environment Management Proto (Switch ON): Implementation of Server-Side Streaming RCP
+         */
+
+
+
+
 
 
 

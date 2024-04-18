@@ -4,25 +4,25 @@
 package com.CA.gRPC;
 
 /**
- * Protobuf type {@code forecastResponse}
+ * Protobuf type {@code SwitchOffRequest}
  */
-public final class forecastResponse extends
+public final class SwitchOffRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:forecastResponse)
-    forecastResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:SwitchOffRequest)
+    SwitchOffRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use forecastResponse.newBuilder() to construct.
-  private forecastResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use SwitchOffRequest.newBuilder() to construct.
+  private SwitchOffRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private forecastResponse() {
+  private SwitchOffRequest() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new forecastResponse();
+    return new SwitchOffRequest();
   }
 
   @java.lang.Override
@@ -30,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private forecastResponse(
+  private SwitchOffRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -50,12 +50,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            msgResponse_ = input.readInt32();
-            break;
-          }
-          case 16: {
-
-            msgResponseTomorrow_ = input.readInt32();
+            temperature_ = input.readInt32();
             break;
           }
           default: {
@@ -81,37 +76,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.CA.gRPC.EnvironmentProto.internal_static_forecastResponse_descriptor;
+    return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOffRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.CA.gRPC.EnvironmentProto.internal_static_forecastResponse_fieldAccessorTable
+    return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOffRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.CA.gRPC.forecastResponse.class, com.CA.gRPC.forecastResponse.Builder.class);
+            com.CA.gRPC.SwitchOffRequest.class, com.CA.gRPC.SwitchOffRequest.Builder.class);
   }
 
-  public static final int MSGRESPONSE_FIELD_NUMBER = 1;
-  private int msgResponse_;
+  public static final int TEMPERATURE_FIELD_NUMBER = 1;
+  private int temperature_;
   /**
-   * <code>int32 msgResponse = 1;</code>
-   * @return The msgResponse.
+   * <code>int32 temperature = 1;</code>
+   * @return The temperature.
    */
   @java.lang.Override
-  public int getMsgResponse() {
-    return msgResponse_;
-  }
-
-  public static final int MSGRESPONSETOMORROW_FIELD_NUMBER = 2;
-  private int msgResponseTomorrow_;
-  /**
-   * <code>int32 msgResponseTomorrow = 2;</code>
-   * @return The msgResponseTomorrow.
-   */
-  @java.lang.Override
-  public int getMsgResponseTomorrow() {
-    return msgResponseTomorrow_;
+  public int getTemperature() {
+    return temperature_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -128,11 +112,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (msgResponse_ != 0) {
-      output.writeInt32(1, msgResponse_);
-    }
-    if (msgResponseTomorrow_ != 0) {
-      output.writeInt32(2, msgResponseTomorrow_);
+    if (temperature_ != 0) {
+      output.writeInt32(1, temperature_);
     }
     unknownFields.writeTo(output);
   }
@@ -143,13 +124,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (msgResponse_ != 0) {
+    if (temperature_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, msgResponse_);
-    }
-    if (msgResponseTomorrow_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, msgResponseTomorrow_);
+        .computeInt32Size(1, temperature_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -161,15 +138,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.CA.gRPC.forecastResponse)) {
+    if (!(obj instanceof com.CA.gRPC.SwitchOffRequest)) {
       return super.equals(obj);
     }
-    com.CA.gRPC.forecastResponse other = (com.CA.gRPC.forecastResponse) obj;
+    com.CA.gRPC.SwitchOffRequest other = (com.CA.gRPC.SwitchOffRequest) obj;
 
-    if (getMsgResponse()
-        != other.getMsgResponse()) return false;
-    if (getMsgResponseTomorrow()
-        != other.getMsgResponseTomorrow()) return false;
+    if (getTemperature()
+        != other.getTemperature()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -181,78 +156,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MSGRESPONSE_FIELD_NUMBER;
-    hash = (53 * hash) + getMsgResponse();
-    hash = (37 * hash) + MSGRESPONSETOMORROW_FIELD_NUMBER;
-    hash = (53 * hash) + getMsgResponseTomorrow();
+    hash = (37 * hash) + TEMPERATURE_FIELD_NUMBER;
+    hash = (53 * hash) + getTemperature();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.CA.gRPC.forecastResponse parseFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(byte[] data)
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(java.io.InputStream input)
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.CA.gRPC.SwitchOffRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.forecastResponse parseDelimitedFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.CA.gRPC.forecastResponse parseFrom(
+  public static com.CA.gRPC.SwitchOffRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -265,7 +238,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.CA.gRPC.forecastResponse prototype) {
+  public static Builder newBuilder(com.CA.gRPC.SwitchOffRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -281,26 +254,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code forecastResponse}
+   * Protobuf type {@code SwitchOffRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:forecastResponse)
-      com.CA.gRPC.forecastResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:SwitchOffRequest)
+      com.CA.gRPC.SwitchOffRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_forecastResponse_descriptor;
+      return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOffRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_forecastResponse_fieldAccessorTable
+      return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOffRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.CA.gRPC.forecastResponse.class, com.CA.gRPC.forecastResponse.Builder.class);
+              com.CA.gRPC.SwitchOffRequest.class, com.CA.gRPC.SwitchOffRequest.Builder.class);
     }
 
-    // Construct using com.CA.gRPC.forecastResponse.newBuilder()
+    // Construct using com.CA.gRPC.SwitchOffRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -318,9 +291,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      msgResponse_ = 0;
-
-      msgResponseTomorrow_ = 0;
+      temperature_ = 0;
 
       return this;
     }
@@ -328,17 +299,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.CA.gRPC.EnvironmentProto.internal_static_forecastResponse_descriptor;
+      return com.CA.gRPC.EnvironmentProto.internal_static_SwitchOffRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.forecastResponse getDefaultInstanceForType() {
-      return com.CA.gRPC.forecastResponse.getDefaultInstance();
+    public com.CA.gRPC.SwitchOffRequest getDefaultInstanceForType() {
+      return com.CA.gRPC.SwitchOffRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.CA.gRPC.forecastResponse build() {
-      com.CA.gRPC.forecastResponse result = buildPartial();
+    public com.CA.gRPC.SwitchOffRequest build() {
+      com.CA.gRPC.SwitchOffRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -346,10 +317,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.CA.gRPC.forecastResponse buildPartial() {
-      com.CA.gRPC.forecastResponse result = new com.CA.gRPC.forecastResponse(this);
-      result.msgResponse_ = msgResponse_;
-      result.msgResponseTomorrow_ = msgResponseTomorrow_;
+    public com.CA.gRPC.SwitchOffRequest buildPartial() {
+      com.CA.gRPC.SwitchOffRequest result = new com.CA.gRPC.SwitchOffRequest(this);
+      result.temperature_ = temperature_;
       onBuilt();
       return result;
     }
@@ -388,21 +358,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.CA.gRPC.forecastResponse) {
-        return mergeFrom((com.CA.gRPC.forecastResponse)other);
+      if (other instanceof com.CA.gRPC.SwitchOffRequest) {
+        return mergeFrom((com.CA.gRPC.SwitchOffRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.CA.gRPC.forecastResponse other) {
-      if (other == com.CA.gRPC.forecastResponse.getDefaultInstance()) return this;
-      if (other.getMsgResponse() != 0) {
-        setMsgResponse(other.getMsgResponse());
-      }
-      if (other.getMsgResponseTomorrow() != 0) {
-        setMsgResponseTomorrow(other.getMsgResponseTomorrow());
+    public Builder mergeFrom(com.CA.gRPC.SwitchOffRequest other) {
+      if (other == com.CA.gRPC.SwitchOffRequest.getDefaultInstance()) return this;
+      if (other.getTemperature() != 0) {
+        setTemperature(other.getTemperature());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -419,11 +386,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.CA.gRPC.forecastResponse parsedMessage = null;
+      com.CA.gRPC.SwitchOffRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.CA.gRPC.forecastResponse) e.getUnfinishedMessage();
+        parsedMessage = (com.CA.gRPC.SwitchOffRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -433,64 +400,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int msgResponse_ ;
+    private int temperature_ ;
     /**
-     * <code>int32 msgResponse = 1;</code>
-     * @return The msgResponse.
+     * <code>int32 temperature = 1;</code>
+     * @return The temperature.
      */
     @java.lang.Override
-    public int getMsgResponse() {
-      return msgResponse_;
+    public int getTemperature() {
+      return temperature_;
     }
     /**
-     * <code>int32 msgResponse = 1;</code>
-     * @param value The msgResponse to set.
+     * <code>int32 temperature = 1;</code>
+     * @param value The temperature to set.
      * @return This builder for chaining.
      */
-    public Builder setMsgResponse(int value) {
+    public Builder setTemperature(int value) {
       
-      msgResponse_ = value;
+      temperature_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 msgResponse = 1;</code>
+     * <code>int32 temperature = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearMsgResponse() {
+    public Builder clearTemperature() {
       
-      msgResponse_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int msgResponseTomorrow_ ;
-    /**
-     * <code>int32 msgResponseTomorrow = 2;</code>
-     * @return The msgResponseTomorrow.
-     */
-    @java.lang.Override
-    public int getMsgResponseTomorrow() {
-      return msgResponseTomorrow_;
-    }
-    /**
-     * <code>int32 msgResponseTomorrow = 2;</code>
-     * @param value The msgResponseTomorrow to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMsgResponseTomorrow(int value) {
-      
-      msgResponseTomorrow_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 msgResponseTomorrow = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMsgResponseTomorrow() {
-      
-      msgResponseTomorrow_ = 0;
+      temperature_ = 0;
       onChanged();
       return this;
     }
@@ -507,41 +443,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:forecastResponse)
+    // @@protoc_insertion_point(builder_scope:SwitchOffRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:forecastResponse)
-  private static final com.CA.gRPC.forecastResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:SwitchOffRequest)
+  private static final com.CA.gRPC.SwitchOffRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.CA.gRPC.forecastResponse();
+    DEFAULT_INSTANCE = new com.CA.gRPC.SwitchOffRequest();
   }
 
-  public static com.CA.gRPC.forecastResponse getDefaultInstance() {
+  public static com.CA.gRPC.SwitchOffRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<forecastResponse>
-      PARSER = new com.google.protobuf.AbstractParser<forecastResponse>() {
+  private static final com.google.protobuf.Parser<SwitchOffRequest>
+      PARSER = new com.google.protobuf.AbstractParser<SwitchOffRequest>() {
     @java.lang.Override
-    public forecastResponse parsePartialFrom(
+    public SwitchOffRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new forecastResponse(input, extensionRegistry);
+      return new SwitchOffRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<forecastResponse> parser() {
+  public static com.google.protobuf.Parser<SwitchOffRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<forecastResponse> getParserForType() {
+  public com.google.protobuf.Parser<SwitchOffRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.CA.gRPC.forecastResponse getDefaultInstanceForType() {
+  public com.CA.gRPC.SwitchOffRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

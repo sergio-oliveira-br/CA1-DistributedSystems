@@ -22,6 +22,9 @@ import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 import javafx.application.Platform;
 import javafx.scene.chart.XYChart;
+
+import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 public class SmartClient
@@ -194,17 +197,38 @@ public class SmartClient
     /** Environment Management Proto (Forecast): Implementation of Unary RCP */
     public void forecast()
     {
-        forecastRequest forecastRequestToday = forecastRequest.newBuilder()
+        ForecastRequest forecastRequestToday = ForecastRequest.newBuilder()
                 .setMsgRequest("Please tell me the forecast for Today").build();
-        forecastResponse forecastResponseToday = environmentMgmtServicesBlockingStub.forecast(forecastRequestToday);
+        ForecastResponse forecastResponseToday = environmentMgmtServicesBlockingStub.forecast(forecastRequestToday);
         System.out.println("From the Server: The forecast for Today is " + forecastResponseToday.getMsgResponse() + " ºC");
 
-        forecastRequest forecastRequestTomorrow = forecastRequest.newBuilder()
+        //Building....
+        ForecastRequest forecastRequestTomorrow = ForecastRequest.newBuilder()
                 .setMsgRequestTomorrow("Please tell me the forecast for Tomorrow").build();
 
+    }
 
+    /** Environment Management Proto (Switch ON): Implementation of Unary RCP */
+
+
+
+
+
+
+    /*
+    public int switchOn (int temperature)
+    {
+        switchOnRequest switchOnRequest = com.CA.gRPC.switchOnRequest.newBuilder().setTemperature(temperature).build();
+
+        switchOnResponse switchOnResponse = environmentMgmtServicesBlockingStub.switchOn(switchOnRequest).next();
+        System.out.println("From the Server: Your temperature has been set to: " + switchOnResponse.getStatusTemperature() + "ºC");
+
+
+        return temperature;
 
     }
+
+     */
 
 
 
@@ -240,6 +264,8 @@ public class SmartClient
         {
             e.printStackTrace();
         }
+
+
 
 
 
