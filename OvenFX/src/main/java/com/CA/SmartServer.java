@@ -55,7 +55,6 @@ public class SmartServer
                 .addService(new SmartAlarmServicesImpl())
                 .addService(new EnvironmentMgmtServicesImpl())
                 .build();
-
     }
 
 
@@ -251,35 +250,34 @@ public class SmartServer
     }
 
 
-
-
-
-    /** Environment Management Proto (Forecast): Implementation of Unary RCP */
-
-
-
-
-
     /** Environment Management Proto (Switch ON): Implementation of Server-Side Streaming RCP */
-    public static class EnvironmentMgmtServicesImpl extends EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesImplBase{
+    public static class EnvironmentMgmtServicesImpl extends EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesImplBase
+    {
+        private static volatile boolean streaming = false;
+
         @Override
-        public void switchOn(SwitchOnRequest request, StreamObserver<SwitchOnResponse> responseObserver) {
-
-
+        public void switchOn(SwitchOnRequest request, StreamObserver<SwitchOnResponse> responseObserver)
+        {
+            streaming = true;
             int initialTemperature = request.getTemperature();
+            int counter = 0;
 
             try
             {
-                for(int i = 0; i <= 1000; i++)
+                while (streaming && counter <= 1000 )
                 {
 
-                    SwitchOnResponse response = SwitchOnResponse.newBuilder()
-                            .setStatusTemperature(initialTemperature)
-                            .build();
-                    responseObserver.onNext(response);
-                    Thread.sleep(1000); // Simulate delay between temperature updates
+                    {
 
+                        SwitchOnResponse response = SwitchOnResponse.newBuilder()
+                                .setStatusTemperature(initialTemperature)
+                                .build();
+                        responseObserver.onNext(response);
+                        Thread.sleep(1000); // Simulate delay between temperature updates
+                        counter++;
+                    }
                 }
+
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -289,9 +287,26 @@ public class SmartServer
         }
 
         @Override
+        public void switchOff(SwitchOffRequest request, StreamObserver<SwitchOffResponse> responseObserver)
+        {
+            streaming = false; //stop streaming
+
+            //Build the response
+            SwitchOffResponse switchOffResponse = SwitchOffResponse.newBuilder()
+                    .setStatus("The temperature control has been turned off")
+                    .build();
+
+            //Send the response
+            responseObserver.onNext(switchOffResponse);
+            responseObserver.onCompleted();
+
+        }
+
+
+        /** Environment Management Proto (Forecast): Implementation of Unary RCP */
+        @Override
         public void forecast(ForecastRequest request, StreamObserver<ForecastResponse> responseObserver)
         {
-
             //Create a random num
             Random random = new Random();
             int randomTemperature = random.nextInt(15) +10;

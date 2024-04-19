@@ -8,8 +8,14 @@ public interface SwitchOffRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 temperature = 1;</code>
+   * <code>string temperature = 1;</code>
    * @return The temperature.
    */
-  int getTemperature();
+  java.lang.String getTemperature();
+  /**
+   * <code>string temperature = 1;</code>
+   * @return The bytes for temperature.
+   */
+  com.google.protobuf.ByteString
+      getTemperatureBytes();
 }

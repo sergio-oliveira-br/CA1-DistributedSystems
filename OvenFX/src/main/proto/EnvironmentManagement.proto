@@ -25,9 +25,9 @@ option java_outer_classname = "EnvironmentProto";
 //Service definition (Unary RPC) - This services allow the user request to open/close and get answer from the server
 service EnvironmentMgmtServices
 {
-  rpc switchOn (SwitchOnRequest) returns (stream SwitchOnResponse) {}
-  rpc switchOff (SwitchOffRequest) returns (SwitchOffResponse) {}
-  rpc forecast (ForecastRequest) returns (ForecastResponse) {}
+  rpc switchOn (SwitchOnRequest) returns (stream SwitchOnResponse) {}  //done
+  rpc switchOff (SwitchOffRequest) returns (SwitchOffResponse) {}     //working on...
+  rpc forecast (ForecastRequest) returns (ForecastResponse) {}        //done
   //maybe include a functionality such as, ask the server what temperature in outside?? or inside?? or in other city??
 }
 
@@ -46,12 +46,12 @@ message SwitchOnResponse
 
 message SwitchOffRequest
 {
-  int32 temperature = 1;
+  string temperature = 1;
 }
 
 message SwitchOffResponse
 {
-  int32 status = 1;
+  string status = 1;
 }
 
 //------------------

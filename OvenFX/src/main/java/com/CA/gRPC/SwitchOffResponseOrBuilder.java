@@ -8,8 +8,14 @@ public interface SwitchOffResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 status = 1;</code>
+   * <code>string status = 1;</code>
    * @return The status.
    */
-  int getStatus();
+  java.lang.String getStatus();
+  /**
+   * <code>string status = 1;</code>
+   * @return The bytes for status.
+   */
+  com.google.protobuf.ByteString
+      getStatusBytes();
 }

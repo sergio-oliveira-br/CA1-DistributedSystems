@@ -184,7 +184,7 @@ public class SmartClient
     {
         TurnOffAlarmRequest turnOffAlarmRequest = TurnOffAlarmRequest.newBuilder().setTurnOff("Alarm Off").build();
         TurnOffAlarmResponse turnOffAlarmResponse = smartAlarmServicesBlockingStub.turnOffAlarm(turnOffAlarmRequest);
-        System.out.println("Client-Side getting the answer: " + turnOffAlarmResponse.getStatusOff());
+        System.out.println("\nClient-Side getting the answer: " + turnOffAlarmResponse.getStatusOff());
 
     }
 
@@ -207,7 +207,7 @@ public class SmartClient
                 .setDate(date)
                 .build();
 
-        //Create a Stub exclusive for this method, 'cause I got can't use the other stub asynchronous
+        //Create a Stub exclusive for this method, 'cause I can't use the other stub asynchronous
         EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesBlockingStub blockingStub = EnvironmentMgmtServicesGrpc.newBlockingStub(channel);
 
         //Requesting the Server a response
@@ -239,6 +239,21 @@ public class SmartClient
                 System.out.println("Server has completed streaming temperature data");
             }
         });
+    }
+
+
+    public void switchOff()
+    {
+        SwitchOffRequest switchOffRequest = SwitchOffRequest.newBuilder()
+                    .setTemperature("Turn Off the Air Monitoring")
+                    .build();
+
+        //Create a Stub exclusive for this method, 'cause I can't use the other stub asynchronous
+        EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesBlockingStub blockingStub = EnvironmentMgmtServicesGrpc.newBlockingStub(channel);
+
+        SwitchOffResponse switchOffResponse = blockingStub.switchOff(switchOffRequest);
+        System.out.println("\nClient-Side: " + switchOffResponse.getStatus());
+
     }
 
 

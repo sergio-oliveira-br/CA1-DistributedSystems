@@ -79,17 +79,14 @@ public class SmartScreenController
         //disconnectButton.setDisable(true);
         //stopStreamButton.setDisable(true);
 
-
-
-
-
     }
 
+                        /** Here starts the Connect and Disconnect Server functionalities */
 
     @FXML
     private Button connectionButton;
-    /** Step 1: This button makes you connection to the Server
-     * Approach: Does not apply to RPC */
+    /** This button makes you connection to the Server
+     * Approach: Does not apply to RPC Proto Methods */
     @FXML
     private void connectionAction(ActionEvent event)
     {
@@ -99,7 +96,6 @@ public class SmartScreenController
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //myServer.blockUntilShutdown();
 
         Text guideStep3 = new Text("\nYour connection to the server is active");
         myText.getChildren().add(guideStep3);
@@ -112,113 +108,10 @@ public class SmartScreenController
 
     }
 
-
-
-
-
-
-    @FXML
-    private Button sayHelloButton;
-    /** Step 2: This button "SayHello" makes you connection to the Server
-     *  Approach: RPC Unary Request */
-    @FXML
-    private void sayHelloAction(ActionEvent event)
-    {
-        TextInputDialog myName = new TextInputDialog();
-        myName.setTitle("CA - Distributed System");
-        myName.setHeaderText("Welcome to Smart Oven");
-        myName.setContentText("Please enter your name");
-
-        //Display the dialog box and wait for user input
-        Optional<String> result = myName.showAndWait();
-
-        //Process
-        result.ifPresent(name ->
-        {
-            SmartClient myClient = new SmartClient("localhost", 8081);
-
-            try
-            {
-                StringBuilder greetingMessage = myClient.greet(name);
-                Text messageText = new Text("\n" + greetingMessage + "\n");
-                myText.getChildren().add(messageText);
-            } catch (StatusException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        //Disabling the buttons
-        sayHelloButton.setDisable(true);
-
-
-        //Enabling the buttons
-        setTempButton.setDisable(false);
-
-    }
-
-
-
-
-
-
-
-
-    @FXML
-    private Button setTempButton;
-    /** Step 3: This button "setTemp" send numbers from the server to client
-     *  Approach: RPC Stream Server
-     *  Reference: <a href="https://docs.oracle.com/javafx/2/charts/line-chart.htm">...</a> */
-    @FXML
-    private void submitTempAction(ActionEvent event)
-    {
-        //Create a dialog box to request user input
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Input Dialog");
-        dialog.setHeaderText("Please enter a number:");
-        dialog.setContentText("Number:");
-
-        //Display the dialog box and wait for user input
-         Optional<String> result = dialog.showAndWait();
-
-        // Process user input
-        result.ifPresent(number ->
-        {
-            try
-            {
-                int setPoint = Integer.parseInt(number);
-                SmartClient myClient = new SmartClient("localhost", 8081);
-                myClient.setPointUser(setPoint, series);
-
-                for(int i = 0; i < 50; i++)
-                {
-                    temp.getData().add(new XYChart.Data<Number, Number>(i, setPoint));
-                }
-
-                Text messageText = new Text("Set point set to: " + setPoint +"\n");
-                myText.getChildren().add(messageText);
-            }
-            catch (NumberFormatException | StatusException e)
-            {
-                System.out.println("Invalid input. Please enter a valid number.");
-            }
-        });
-
-        //Disabling the buttons
-        sayHelloButton.setDisable(true);
-
-        //Enabling the buttons
-        //disconnectButton.setDisable(false);
-    }
-
-
-
-
-
-
     @FXML
     private Button disconnectButton;
-    /** Step 5: This button ends (stop running) the connection to the Server
-     * Approach: Does not apply to RPC */
+    /** This button ends (stop running) the connection to the Server
+     * Approach: Does not apply to RPC Proto Methods */
     @FXML
     private void disconnectAction(ActionEvent event) throws InterruptedException
     {
@@ -247,8 +140,13 @@ public class SmartScreenController
 
 
 
+                        /** Here starts new Service from Home Security Proto */
+
+
     @FXML
     private Button openDoorButton;
+    /** This button (open Door) send a request and get an answer from the Server-Side
+     * Approach: Unary Request - from Smart Door Services  - Home Security Proto */
     @FXML
     private void openDoorAction(ActionEvent event)
     {
@@ -263,6 +161,8 @@ public class SmartScreenController
 
     @FXML
     private Button closeDoorButton;
+    /** This button (close Door) send a request and get an answer from the Server-Side
+     * Approach: Unary Request - from Smart Door Services - Home Security Proto*/
     @FXML
     private void closeDoorAction(ActionEvent event)
     {
@@ -284,12 +184,18 @@ public class SmartScreenController
     }
 
 
+
+                    /** Here starts new Service from Home Security Proto */
+
+
     @FXML
     private Button turnOnAlarmButton;
     @FXML
     private Circle alarmOnGreen;
     @FXML
     private Circle alarmOffRed;
+    /** This button (Turn On Alarm) sends a request and get several answers from the Server-Side
+     * Approach: Server-Side Streaming - from  Smart Alarm Services - Home Security Proto */
     @FXML
     private void turnOnAlarmAction(ActionEvent event)
     {
@@ -325,6 +231,13 @@ public class SmartScreenController
     }
 
 
+
+
+                        /** Here starts new Service from Home Environment Mgmt Proto */
+
+
+    /** This button "Forecast " sends a request and get an answer from the server.
+     *  Approach: Unary Request - from Environment Mgmt Services - Environment Management Proto*/
     @FXML
     private void forecastTodayAction(ActionEvent event)
     {
@@ -379,6 +292,8 @@ public class SmartScreenController
     }
 
 
+    /** This button "Switch On " sends a request and get stream answer from the server.
+     *  Approach: Serve-Side Streaming - from Environment Mgmt Services - Environment Management Proto*/
     @FXML
     private void switchOnAction(ActionEvent event)
     {
@@ -407,11 +322,14 @@ public class SmartScreenController
                 int[] time = {0}; //keep track of the variable reference
 
                 // Create a timeline to add points to the chart at regular intervals
-                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+                timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
                     airTemperatureSeries.getData().add(new XYChart.Data<>(time[0]++, temperature));
                 }));
                 timeline.setCycleCount(1000); //Add points for 1000 seconds
                 timeline.play();
+
+                Text streamingMsg = new Text("\nThe Server is streaming the temperature requested" );
+                myText.getChildren().add(streamingMsg);
 
 
             } catch (NumberFormatException e) {
@@ -422,12 +340,122 @@ public class SmartScreenController
     }
 
 
+    private Timeline timeline;
+    /** This button "Switch Off " ends the streaming request (Switch On).
+     *  Approach: Unary RPC - from Environment Mgmt Services - Environment Management Proto*/
     @FXML
     public void switchOffAction(ActionEvent event)
     {
         SmartClient myClient = new SmartClient("localhost", 8081);
+
+        myClient.switchOff(); //this will send to my Terminal
+
+        Text streamingMsg = new Text("\nTemperature streaming was stopped by the Server." );
+        myText.getChildren().add(streamingMsg);
+
+        //stop the chart
+        timeline.stop();
+
+
     }
 
+
+
+
+
+
+
+
+
+
+    /** I'm not using this anymore */
+    @FXML
+    private Button sayHelloButton;
+    /** Step 2: This button "SayHello" makes you connection to the Server
+     *  Approach: RPC Unary Request */
+    @FXML
+    private void sayHelloAction(ActionEvent event)
+    {
+        TextInputDialog myName = new TextInputDialog();
+        myName.setTitle("CA - Distributed System");
+        myName.setHeaderText("Welcome to Smart Oven");
+        myName.setContentText("Please enter your name");
+
+        //Display the dialog box and wait for user input
+        Optional<String> result = myName.showAndWait();
+
+        //Process
+        result.ifPresent(name ->
+        {
+            SmartClient myClient = new SmartClient("localhost", 8081);
+
+            try
+            {
+                StringBuilder greetingMessage = myClient.greet(name);
+                Text messageText = new Text("\n" + greetingMessage + "\n");
+                myText.getChildren().add(messageText);
+            } catch (StatusException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        //Disabling the buttons
+        sayHelloButton.setDisable(true);
+
+
+        //Enabling the buttons
+        setTempButton.setDisable(false);
+
+    }
+
+
+    @FXML
+    private Button setTempButton;
+    /** Step 3: This button "setTemp" send numbers from the server to client
+     *  Approach: RPC Stream Server
+     *  Reference: <a href="https://docs.oracle.com/javafx/2/charts/line-chart.htm">...</a> */
+    @FXML
+    private void submitTempAction(ActionEvent event)
+    {
+        //Create a dialog box to request user input
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Input Dialog");
+        dialog.setHeaderText("Please enter a number:");
+        dialog.setContentText("Number:");
+
+        //Display the dialog box and wait for user input
+        Optional<String> result = dialog.showAndWait();
+
+        // Process user input
+        result.ifPresent(number ->
+        {
+            try
+            {
+                int setPoint = Integer.parseInt(number);
+                SmartClient myClient = new SmartClient("localhost", 8081);
+                myClient.setPointUser(setPoint, series);
+
+                for(int i = 0; i < 50; i++)
+                {
+                    temp.getData().add(new XYChart.Data<Number, Number>(i, setPoint));
+                }
+
+                Text messageText = new Text("Set point set to: " + setPoint +"\n");
+                myText.getChildren().add(messageText);
+            }
+            catch (NumberFormatException | StatusException e)
+            {
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
+        });
+
+        //Disabling the buttons
+        sayHelloButton.setDisable(true);
+
+        //Enabling the buttons
+        //disconnectButton.setDisable(false);
+    }
+    /** I'm not using this anymore */
 
 
 

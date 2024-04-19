@@ -56,8 +56,8 @@ public final class EnvironmentProto {
       "\n\033EnvironmentManagement.proto\"&\n\017SwitchO" +
       "nRequest\022\023\n\013temperature\030\001 \001(\005\"-\n\020SwitchO" +
       "nResponse\022\031\n\021statusTemperature\030\001 \001(\005\"\'\n\020" +
-      "SwitchOffRequest\022\023\n\013temperature\030\001 \001(\005\"#\n" +
-      "\021SwitchOffResponse\022\016\n\006status\030\001 \001(\005\"1\n\017Fo" +
+      "SwitchOffRequest\022\023\n\013temperature\030\001 \001(\t\"#\n" +
+      "\021SwitchOffResponse\022\016\n\006status\030\001 \001(\t\"1\n\017Fo" +
       "recastRequest\022\020\n\010location\030\001 \001(\t\022\014\n\004date\030" +
       "\002 \001(\t\"\'\n\020ForecastResponse\022\023\n\013temperature" +
       "\030\001 \001(\0052\267\001\n\027EnvironmentMgmtServices\0223\n\010sw" +
