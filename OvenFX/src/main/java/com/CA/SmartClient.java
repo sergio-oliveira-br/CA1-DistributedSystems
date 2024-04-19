@@ -196,13 +196,24 @@ public class SmartClient
         System.out.println("Alarm activation request sent." + turnOnAlarmResponse.getStatusOn());
     }
 
+
+
     /** Environment Management Proto (Forecast): Implementation of Unary RCP */
     public int requestForecast(String location, String date)
     {
-        int temp = 0;
-        System.out.println("Working...");
+        //Build the request;
+        ForecastRequest request = ForecastRequest.newBuilder()
+                .setLocation(location)
+                .setDate(date)
+                .build();
 
-        return temp;
+        //Create a Stub exclusive for this method, 'cause I got can't use the other stub asynchronous
+        EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesBlockingStub blockingStub = EnvironmentMgmtServicesGrpc.newBlockingStub(channel);
+
+        //Requesting the Server a response
+        ForecastResponse response = blockingStub.forecast(request);
+
+        return response.getTemperature();
     }
 
     /** Environment Management Proto (Switch ON): Implementation of Unary RCP */
@@ -264,10 +275,6 @@ public class SmartClient
 
 
          */
-
-
-
-
 
     }
 }

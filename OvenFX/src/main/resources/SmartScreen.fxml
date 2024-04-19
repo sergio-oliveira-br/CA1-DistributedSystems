@@ -54,12 +54,6 @@
          </font>
       </Label>
       <Line endX="-58.4483528137207" layoutX="112.0" layoutY="244.0" startX="-100.0" />
-      <Label layoutX="9.0" layoutY="297.0" prefHeight="17.0" prefWidth="172.0" text="Forecast">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Label>
-      <Button fx:id="forecastTodayButton" layoutX="9.0" layoutY="314.0" mnemonicParsing="false" onAction="#forecastTodayAction" text="Today" />
-      <Button fx:id="forecastTodayButton1" layoutX="92.0" layoutY="314.0" mnemonicParsing="false" onAction="#forecastTodayAction" text="Tomorrow" />
+      <Button fx:id="forecastTodayButton" layoutX="58.0" layoutY="300.0" mnemonicParsing="false" onAction="#forecastTodayAction" text="Forecast" />
    </children>
 </Pane>

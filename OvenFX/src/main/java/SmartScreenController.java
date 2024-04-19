@@ -11,9 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -330,11 +329,53 @@ public class SmartScreenController
     private void forecastTodayAction(ActionEvent event)
     {
         SmartClient myClient = new SmartClient("localhost", 8081);
-        myClient.forecast(); //this will send to my Terminal
 
-        //this will send to my Text - I know is not the right thing, but is a contingency.
-        Text messageText = new Text("\nServer has sent the forecast for Today" + " ºC");
-        myText.getChildren().add(messageText);
+
+
+        //ChoiceBox
+        ChoiceBox<String> cityChoiceBox = new ChoiceBox<>();
+        cityChoiceBox.getItems().addAll("Dublin", "Bray", "Swords", "Naas");
+        cityChoiceBox.setValue("Dublin"); //default
+
+        //ChoiceBox
+        ChoiceBox<String> dayChoiceBox = new ChoiceBox<>();
+        dayChoiceBox.getItems().addAll("Today", "Tomorrow", "Next Week");
+        dayChoiceBox.setValue("Today"); //default
+
+        //GridPane to hold the ChoiceBoxes
+        GridPane grid = new GridPane();
+        grid.addRow(0, new Label("City:"), cityChoiceBox);
+        grid.addRow(1, new Label("Day:"), dayChoiceBox);
+
+
+        // Create a dialog box to display the grid
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Request Forecast");
+        dialog.setHeaderText("Please select the City and the Day");
+        dialog.getDialogPane().setContent(grid);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+
+        // Display the dialog box and wait for user input for day
+        Optional<ButtonType> result = dialog.showAndWait();
+
+        // Process user input
+        result.ifPresent(buttonType ->
+        {
+            if (buttonType == ButtonType.OK)
+            {
+                // Get the selected city and day from the ChoiceBoxes
+                String selectedCity = cityChoiceBox.getValue();
+                String selectedDay = dayChoiceBox.getValue();
+
+                // Call the method to request forecast with city and day
+                int temperature = myClient.requestForecast(selectedCity, selectedDay);
+
+                // Display a message indicating that the request has been sent
+                Text messageText = new Text("\nServer has sent the forecast for " + selectedDay + " in " + selectedCity + ": " + temperature + " ºC");
+                myText.getChildren().add(messageText);
+            }
+        });
     }
 
 
@@ -342,9 +383,6 @@ public class SmartScreenController
     private void switchOnAction(ActionEvent event)
     {
         SmartClient myClient = new SmartClient("localhost", 8081);
-
-        //Text messageText = new Text("\nYour Temp is 40.... building....");
-        //myText.getChildren().add(messageText);
 
         //Create a dialog box to request user input
         TextInputDialog dialog = new TextInputDialog();
@@ -388,8 +426,6 @@ public class SmartScreenController
     public void switchOffAction(ActionEvent event)
     {
         SmartClient myClient = new SmartClient("localhost", 8081);
-
-
     }
 
 

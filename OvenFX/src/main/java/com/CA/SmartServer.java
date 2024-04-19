@@ -20,6 +20,7 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import java.io.IOException;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class SmartServer
@@ -253,40 +254,56 @@ public class SmartServer
 
 
 
-        /** Environment Management Proto (Forecast): Implementation of Unary RCP */
+    /** Environment Management Proto (Forecast): Implementation of Unary RCP */
 
 
 
 
 
-        /** Environment Management Proto (Switch ON): Implementation of Server-Side Streaming RCP */
-        public static class EnvironmentMgmtServicesImpl extends EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesImplBase{
-            //@Override
-            public void switchOn(SwitchOnRequest request, StreamObserver<SwitchOnResponse> responseObserver) {
+    /** Environment Management Proto (Switch ON): Implementation of Server-Side Streaming RCP */
+    public static class EnvironmentMgmtServicesImpl extends EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesImplBase{
+        @Override
+        public void switchOn(SwitchOnRequest request, StreamObserver<SwitchOnResponse> responseObserver) {
 
 
-                int initialTemperature = request.getTemperature();
+            int initialTemperature = request.getTemperature();
 
-                try
+            try
+            {
+                for(int i = 0; i <= 1000; i++)
                 {
-                    for(int i = 0; i <= 1000; i++)
-                    {
 
-                        SwitchOnResponse response = SwitchOnResponse.newBuilder()
-                                .setStatusTemperature(initialTemperature)
-                                .build();
-                        responseObserver.onNext(response);
-                        Thread.sleep(1000); // Simulate delay between temperature updates
+                    SwitchOnResponse response = SwitchOnResponse.newBuilder()
+                            .setStatusTemperature(initialTemperature)
+                            .build();
+                    responseObserver.onNext(response);
+                    Thread.sleep(1000); // Simulate delay between temperature updates
 
-                    }
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    responseObserver.onCompleted();
                 }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                responseObserver.onCompleted();
             }
         }
+
+        @Override
+        public void forecast(ForecastRequest request, StreamObserver<ForecastResponse> responseObserver)
+        {
+
+            //Create a random num
+            Random random = new Random();
+            int randomTemperature = random.nextInt(15) +10;
+
+            ForecastResponse response = ForecastResponse.newBuilder()
+                    .setTemperature(randomTemperature)
+                    .build();
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+    }
 
 
 
