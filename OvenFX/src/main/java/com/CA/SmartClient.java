@@ -40,7 +40,9 @@ public class SmartClient
     private final TemperatureRampGrpc.TemperatureRampBlockingStub temperatureRampBlockingStub;
     private final SmartDoorServicesGrpc.SmartDoorServicesBlockingStub smartDoorServicesBlockingStub;
     private final SmartAlarmServicesGrpc.SmartAlarmServicesBlockingStub smartAlarmServicesBlockingStub;
-    private final EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesBlockingStub environmentMgmtServicesBlockingStub;
+    private final EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesStub environmentMgmtServicesStub; //asynchronous
+
+
 
 
     /*
@@ -66,7 +68,7 @@ public class SmartClient
         temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
         smartDoorServicesBlockingStub = SmartDoorServicesGrpc.newBlockingStub(channel);
         smartAlarmServicesBlockingStub = SmartAlarmServicesGrpc.newBlockingStub(channel);
-        environmentMgmtServicesBlockingStub = EnvironmentMgmtServicesGrpc.newBlockingStub(channel);
+        environmentMgmtServicesStub = EnvironmentMgmtServicesGrpc.newStub(channel); //asynchronous
     }
 
     //Method: Close the connection before
@@ -195,48 +197,38 @@ public class SmartClient
     }
 
     /** Environment Management Proto (Forecast): Implementation of Unary RCP */
-    public void forecast()
+    public int requestForecast(String location, String date)
     {
-        /*
-        ForecastRequest forecastRequestToday = ForecastRequest.newBuilder()
-                .setMsgRequest("Please tell me the forecast for Today").build();
-        ForecastResponse forecastResponseToday = environmentMgmtServicesBlockingStub.forecast(forecastRequestToday);
-        System.out.println("From the Server: The forecast for Today is " + forecastResponseToday.getMsgResponse() + " ºC");
+        int temp = 0;
+        System.out.println("Working...");
 
-        //Building....
-        ForecastRequest forecastRequestTomorrow = ForecastRequest.newBuilder()
-                .setMsgRequestTomorrow("Please tell me the forecast for Tomorrow").build();
-
-
-         */
+        return temp;
     }
 
     /** Environment Management Proto (Switch ON): Implementation of Unary RCP */
+    public void switchOn(int initialTemperature) {
+        SwitchOnRequest request = SwitchOnRequest.newBuilder().setTemperature(initialTemperature).build();
 
+        environmentMgmtServicesStub.switchOn(request, new StreamObserver<SwitchOnResponse>() {
+            @Override
+            public void onNext(SwitchOnResponse response)
+            {
+                System.out.println("Your Temperature is : " + response.getStatusTemperature());
+            }
 
+            @Override
+            public void onError(Throwable throwable)
+            {
+                System.err.println("Error: " + throwable.getMessage());
+            }
 
-
-
-
-    /*
-    public int switchOn (int temperature)
-    {
-        switchOnRequest switchOnRequest = com.CA.gRPC.switchOnRequest.newBuilder().setTemperature(temperature).build();
-
-        switchOnResponse switchOnResponse = environmentMgmtServicesBlockingStub.switchOn(switchOnRequest).next();
-        System.out.println("From the Server: Your temperature has been set to: " + switchOnResponse.getStatusTemperature() + "ºC");
-
-
-        return temperature;
-
+            @Override
+            public void onCompleted()
+            {
+                System.out.println("Server has completed streaming temperature data");
+            }
+        });
     }
-
-     */
-
-
-
-
-
 
 
 
@@ -251,11 +243,12 @@ public class SmartClient
     {
 
         //Instance Variables
-        String host = "localhost";
-        int port = 8081;
+        //String host = "localhost";
+        //int port = 8081;
 
         //SmartServer myServer = new SmartServer(port);
 
+        /*
         SmartClient myClient = new SmartClient(host, port);
         try
         {
@@ -269,6 +262,8 @@ public class SmartClient
         }
 
 
+
+         */
 
 
 

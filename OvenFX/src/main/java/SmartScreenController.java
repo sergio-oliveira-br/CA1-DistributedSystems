@@ -3,6 +3,9 @@ import com.CA.SmartServer;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusException;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,11 +18,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
 
 
 import javax.swing.*;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class SmartScreenController
 {
@@ -209,14 +216,6 @@ public class SmartScreenController
 
 
 
-
-
-
-
-
-
-
-
     @FXML
     private Button disconnectButton;
     /** Step 5: This button ends (stop running) the connection to the Server
@@ -356,30 +355,43 @@ public class SmartScreenController
         //Display the dialog box and wait for user input
         Optional<String> result = dialog.showAndWait();
 
-        /*
-
         // Process user input
         result.ifPresent(number ->
         {
             try
             {
+                Text tempRequestUser = new Text("\nYour Temperature has been set to " + number + " ºC");
+                myText.getChildren().add(tempRequestUser);
+
                 int temperature = Integer.parseInt(number);
                 myClient.switchOn(temperature);
 
-                for (int i = 0; i < 50; i++)
-                {
-                    airTemperatureSeries.getData().add(new XYChart.Data<Number, Number>(i, temperature));
-                }
-            }
-            catch (NumberFormatException e)
-            {
+                int[] time = {0}; //keep track of the variable reference
+
+                // Create a timeline to add points to the chart at regular intervals
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+                    airTemperatureSeries.getData().add(new XYChart.Data<>(time[0]++, temperature));
+                }));
+                timeline.setCycleCount(1000); //Add points for 1000 seconds
+                timeline.play();
+
+
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
             }
         });
 
-         */
+    }
+
+
+    @FXML
+    public void switchOffAction(ActionEvent event)
+    {
+        SmartClient myClient = new SmartClient("localhost", 8081);
+
 
     }
+
 
 
 

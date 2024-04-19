@@ -52,7 +52,7 @@ public class SmartServer
                 .addService(new TemperatureRampImpl())
                 .addService(new SmartDoorServicesImpl())
                 .addService(new SmartAlarmServicesImpl())
-                //.addService(new EnvironmentMgmtServicesImpl())
+                .addService(new EnvironmentMgmtServicesImpl())
                 .build();
 
     }
@@ -256,9 +256,39 @@ public class SmartServer
         /** Environment Management Proto (Forecast): Implementation of Unary RCP */
 
 
-        /**
-         * Environment Management Proto (Switch ON): Implementation of Server-Side Streaming RCP
-         */
+
+
+
+        /** Environment Management Proto (Switch ON): Implementation of Server-Side Streaming RCP */
+        public static class EnvironmentMgmtServicesImpl extends EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesImplBase{
+            //@Override
+            public void switchOn(SwitchOnRequest request, StreamObserver<SwitchOnResponse> responseObserver) {
+
+
+                int initialTemperature = request.getTemperature();
+
+                try
+                {
+                    for(int i = 0; i <= 1000; i++)
+                    {
+
+                        SwitchOnResponse response = SwitchOnResponse.newBuilder()
+                                .setStatusTemperature(initialTemperature)
+                                .build();
+                        responseObserver.onNext(response);
+                        Thread.sleep(1000); // Simulate delay between temperature updates
+
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    responseObserver.onCompleted();
+                }
+            }
+        }
+
+
 
 
 

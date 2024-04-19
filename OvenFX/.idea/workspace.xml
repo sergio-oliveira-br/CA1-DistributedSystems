@@ -6,13 +6,56 @@
   <component name="ChangeListManager">
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SmartScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SmartScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/EnvironmentProto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/EnvironmentProto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastRequestOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastRequestOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastResponseOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastResponseOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/EnvironmentManagement.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/EnvironmentManagement.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/CloseRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/CloseRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/CloseResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/CloseResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/EnvironmentMgmtServicesGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/EnvironmentProto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/ForecastResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/GreeterGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/HelloReply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/HelloReplyOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/HelloRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/HelloRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/OpenRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/OpenRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/OpenResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/OpenResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/OvenTempRampProto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SecurityProto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SetPointTemp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SetPointTempOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SmartAlarmServicesGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SmartDoorServicesGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SwitchOffRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SwitchOffRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SwitchOffResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SwitchOffResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SwitchOnRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SwitchOnRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SwitchOnResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/SwitchOnResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TempRamp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TempRampOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TemperatureRampGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TurnOffAlarmRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TurnOffAlarmRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TurnOffAlarmResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TurnOffAlarmResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TurnOnAlarmRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TurnOnAlarmRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TurnOnAlarmResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/TurnOnAlarmResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/WelcomeMsgProto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/SmartScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SmartScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartHomeGUI/src/main/java/com/CA/SmartHomeGUIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartHomeGUI/src/main/java/com/CA/SmartHomeGUIServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,8 +185,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SmartServer" />
         <item itemvalue="Application.ScreenGUI" />
+        <item itemvalue="Application.SmartServer" />
         <item itemvalue="Application.SmartClient" />
         <item itemvalue="Application.Testttt" />
         <item itemvalue="Application.Test" />
@@ -169,7 +212,7 @@
       <workItem from="1713006498180" duration="17623000" />
       <workItem from="1713045294076" duration="7688000" />
       <workItem from="1713085755941" duration="61723000" />
-      <workItem from="1713377993467" duration="39494000" />
+      <workItem from="1713377993467" duration="47255000" />
     </task>
     <servers />
   </component>

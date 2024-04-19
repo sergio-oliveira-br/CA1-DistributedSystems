@@ -214,20 +214,6 @@ public class SmartHomeGUIServer
                     System.out.println("Client Name: " + clientInfo.getClientName());
                     System.out.println("Date and Time: " + clientInfo.getDateTime());
 
-
-
-
-
-                    //ServerResponse myTestResponse = ServerResponse.newBuilder()
-                         //   .setMessage("HI FROM SERVER - WORKING NOW")
-                         //   .build();
-                    //responseObserver.onNext(myTestResponse);
-
-
-
-
-
-
                 }
 
                 @Override
