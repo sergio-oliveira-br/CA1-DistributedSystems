@@ -59,18 +59,18 @@ and learn about a new topic JavaFX.
 
 This version includes the following services:
 Proto -> Utilities 
-      * Service: DomesticUtilitiesServices
+      * Service: DomesticUtilitiesServices.
             # Method: Energy Monitor ->  Approach: Service-Side Streaming RPC
             # Method: Disable Energy Monitor -> Approach: Unary RPC
       
 Proto -> Environment
-      * Service: Environment Mgmt Services
+      * Service: Environment Mgmt Services.
             # Method: Switch On -> Approach: Service-Side Streaming RPC
             # Method: SwitchOff -> Approach: Unary RPC
             # Method: Forecast -> Approach: Unary RPC
             
 Proto -> Security
-      * Service: SmartDoorServices
+      * Service: SmartDoorServices.
             # Method: OpenDoor -> Approach: Unary RPC
             # Method: Close Door -> Approach: Unary RPC
             .
