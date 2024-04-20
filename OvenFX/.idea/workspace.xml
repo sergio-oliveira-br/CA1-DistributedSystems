@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/DomesticUtility.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/DomesticUtility.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SmartScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SmartScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/DomesticUtilitiesServicesGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/DomesticUtilitiesServicesGrpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/EnergyMonitorRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/EnergyMonitorRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/UtilitiesProto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/gRPC/UtilitiesProto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +164,7 @@
       <workItem from="1713006498180" duration="17623000" />
       <workItem from="1713045294076" duration="7688000" />
       <workItem from="1713085755941" duration="61723000" />
-      <workItem from="1713377993467" duration="76288000" />
+      <workItem from="1713377993467" duration="76911000" />
     </task>
     <servers />
   </component>

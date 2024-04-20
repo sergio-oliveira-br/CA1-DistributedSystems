@@ -49,6 +49,37 @@ public final class DomesticUtilitiesServicesGrpc {
     return getEnergyMonitorMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.CA.gRPC.DisableEnergyMonitorRequest,
+      com.CA.gRPC.DisableEnergyMonitorResponse> getDisableEnergyMonitorMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "disableEnergyMonitor",
+      requestType = com.CA.gRPC.DisableEnergyMonitorRequest.class,
+      responseType = com.CA.gRPC.DisableEnergyMonitorResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.CA.gRPC.DisableEnergyMonitorRequest,
+      com.CA.gRPC.DisableEnergyMonitorResponse> getDisableEnergyMonitorMethod() {
+    io.grpc.MethodDescriptor<com.CA.gRPC.DisableEnergyMonitorRequest, com.CA.gRPC.DisableEnergyMonitorResponse> getDisableEnergyMonitorMethod;
+    if ((getDisableEnergyMonitorMethod = DomesticUtilitiesServicesGrpc.getDisableEnergyMonitorMethod) == null) {
+      synchronized (DomesticUtilitiesServicesGrpc.class) {
+        if ((getDisableEnergyMonitorMethod = DomesticUtilitiesServicesGrpc.getDisableEnergyMonitorMethod) == null) {
+          DomesticUtilitiesServicesGrpc.getDisableEnergyMonitorMethod = getDisableEnergyMonitorMethod =
+              io.grpc.MethodDescriptor.<com.CA.gRPC.DisableEnergyMonitorRequest, com.CA.gRPC.DisableEnergyMonitorResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "disableEnergyMonitor"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.CA.gRPC.DisableEnergyMonitorRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.CA.gRPC.DisableEnergyMonitorResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new DomesticUtilitiesServicesMethodDescriptorSupplier("disableEnergyMonitor"))
+              .build();
+        }
+      }
+    }
+    return getDisableEnergyMonitorMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -106,6 +137,13 @@ public final class DomesticUtilitiesServicesGrpc {
         io.grpc.stub.StreamObserver<com.CA.gRPC.EnergyMonitorResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getEnergyMonitorMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void disableEnergyMonitor(com.CA.gRPC.DisableEnergyMonitorRequest request,
+        io.grpc.stub.StreamObserver<com.CA.gRPC.DisableEnergyMonitorResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDisableEnergyMonitorMethod(), responseObserver);
+    }
   }
 
   /**
@@ -148,6 +186,14 @@ public final class DomesticUtilitiesServicesGrpc {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getEnergyMonitorMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void disableEnergyMonitor(com.CA.gRPC.DisableEnergyMonitorRequest request,
+        io.grpc.stub.StreamObserver<com.CA.gRPC.DisableEnergyMonitorResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDisableEnergyMonitorMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -176,6 +222,13 @@ public final class DomesticUtilitiesServicesGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getEnergyMonitorMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public com.CA.gRPC.DisableEnergyMonitorResponse disableEnergyMonitor(com.CA.gRPC.DisableEnergyMonitorRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDisableEnergyMonitorMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -196,9 +249,18 @@ public final class DomesticUtilitiesServicesGrpc {
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new DomesticUtilitiesServicesFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.CA.gRPC.DisableEnergyMonitorResponse> disableEnergyMonitor(
+        com.CA.gRPC.DisableEnergyMonitorRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDisableEnergyMonitorMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ENERGY_MONITOR = 0;
+  private static final int METHODID_DISABLE_ENERGY_MONITOR = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -220,6 +282,10 @@ public final class DomesticUtilitiesServicesGrpc {
         case METHODID_ENERGY_MONITOR:
           serviceImpl.energyMonitor((com.CA.gRPC.EnergyMonitorRequest) request,
               (io.grpc.stub.StreamObserver<com.CA.gRPC.EnergyMonitorResponse>) responseObserver);
+          break;
+        case METHODID_DISABLE_ENERGY_MONITOR:
+          serviceImpl.disableEnergyMonitor((com.CA.gRPC.DisableEnergyMonitorRequest) request,
+              (io.grpc.stub.StreamObserver<com.CA.gRPC.DisableEnergyMonitorResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -246,6 +312,13 @@ public final class DomesticUtilitiesServicesGrpc {
               com.CA.gRPC.EnergyMonitorRequest,
               com.CA.gRPC.EnergyMonitorResponse>(
                 service, METHODID_ENERGY_MONITOR)))
+        .addMethod(
+          getDisableEnergyMonitorMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.CA.gRPC.DisableEnergyMonitorRequest,
+              com.CA.gRPC.DisableEnergyMonitorResponse>(
+                service, METHODID_DISABLE_ENERGY_MONITOR)))
         .build();
   }
 
@@ -295,6 +368,7 @@ public final class DomesticUtilitiesServicesGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new DomesticUtilitiesServicesFileDescriptorSupplier())
               .addMethod(getEnergyMonitorMethod())
+              .addMethod(getDisableEnergyMonitorMethod())
               .build();
         }
       }
