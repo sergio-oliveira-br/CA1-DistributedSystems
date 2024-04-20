@@ -1,7 +1,7 @@
 /*
   CA - Distributed System
   Author: Sergio Oliveira - x23170981@student.ncirl.ie
-  Date: 13 Apr 2024
+  Created: 13 Apr 2024
 
   Lecturer: Mark Cudden
 
@@ -22,40 +22,30 @@ import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 import javafx.application.Platform;
 import javafx.scene.chart.XYChart;
-import javafx.scene.text.Text;
-
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+
 
 public class SmartClient
 {
-    /*
-        ===========================
-            Instance Variables
-        ===========================
-     */
-
+    /** Instance Variables */
+    //private final TemperatureRampGrpc.TemperatureRampBlockingStub temperatureRampBlockingStub;
     private final ManagedChannel channel;
     private final GreeterGrpc.GreeterBlockingStub greeterBlockingStub;
-    private final TemperatureRampGrpc.TemperatureRampBlockingStub temperatureRampBlockingStub;
     private final SmartDoorServicesGrpc.SmartDoorServicesBlockingStub smartDoorServicesBlockingStub;
     private final SmartAlarmServicesGrpc.SmartAlarmServicesBlockingStub smartAlarmServicesBlockingStub;
     private final EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesStub environmentMgmtServicesStub; //asynchronous
     private final DomesticUtilitiesServicesGrpc.DomesticUtilitiesServicesStub domesticUtilitiesServicesStub; //asynchronous
 
-    /*
-        ===========================
-            Instantiating a stub
-        ===========================
-     */
 
-    //Constructor: Create a gRPC channel for our stub, specifying the port we want to connect
+                                            /**  Instantiating a Stub */
+
+    /** Constructor: Create a gRPC channel for our stub, specifying the port we want to connect */
     public SmartClient(String host, int port)
     {
         this(ManagedChannelBuilder.forAddress(host, port).usePlaintext());
     }
 
-    //Constructor: Accessing SmartServer server using the existing channel.
+    /** Constructor: Accessing SmartServer server using the existing channel. */
     public SmartClient(ManagedChannelBuilder<?> channelBuilder)
     {
         channel = channelBuilder.build();
@@ -63,7 +53,7 @@ public class SmartClient
         //blocking/synchronous stub: this means that the RPC call waits for the server to respond,
         //and will either return a response or raise an exception
         greeterBlockingStub = GreeterGrpc.newBlockingStub(channel);
-        temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
+        //temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
         smartDoorServicesBlockingStub = SmartDoorServicesGrpc.newBlockingStub(channel);
         smartAlarmServicesBlockingStub = SmartAlarmServicesGrpc.newBlockingStub(channel);
         environmentMgmtServicesStub = EnvironmentMgmtServicesGrpc.newStub(channel);         //asynchronous
@@ -71,18 +61,11 @@ public class SmartClient
     }
 
 
-    //Method: Close the connection before
+    /** Method: Close the connection before */
     public void shutdown() throws InterruptedException
     {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
-
-
-
-
-
-
-
 
 
                         /** Here starts new Service from Home Security Proto */
@@ -238,22 +221,7 @@ public class SmartClient
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static void main(String[] args) throws StatusException, InterruptedException
+    public static void main(String[] args)
     {}
 
 
@@ -303,14 +271,6 @@ public class SmartClient
 
         stub.sendTempData(request, observer);
     }
-
-
-
-     /*
-        ====================================
-            Implement Method - Unary RPC
-        ====================================
-     */
 
     // Client-side logic for interacting with the gRPC service.
     public StringBuilder greet(String name) throws StatusException
