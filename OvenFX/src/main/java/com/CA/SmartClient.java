@@ -41,6 +41,7 @@ public class SmartClient
     private final SmartDoorServicesGrpc.SmartDoorServicesBlockingStub smartDoorServicesBlockingStub;
     private final SmartAlarmServicesGrpc.SmartAlarmServicesBlockingStub smartAlarmServicesBlockingStub;
     private final EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesStub environmentMgmtServicesStub; //asynchronous
+    private final DomesticUtilitiesServicesGrpc.DomesticUtilitiesServicesStub domesticUtilitiesServicesStub; //asynchronous
 
 
 
@@ -68,7 +69,8 @@ public class SmartClient
         temperatureRampBlockingStub = TemperatureRampGrpc.newBlockingStub(channel);
         smartDoorServicesBlockingStub = SmartDoorServicesGrpc.newBlockingStub(channel);
         smartAlarmServicesBlockingStub = SmartAlarmServicesGrpc.newBlockingStub(channel);
-        environmentMgmtServicesStub = EnvironmentMgmtServicesGrpc.newStub(channel); //asynchronous
+        environmentMgmtServicesStub = EnvironmentMgmtServicesGrpc.newStub(channel);         //asynchronous
+        domesticUtilitiesServicesStub = DomesticUtilitiesServicesGrpc.newStub(channel);     //asynchronous
     }
 
     //Method: Close the connection before
@@ -216,7 +218,7 @@ public class SmartClient
         return response.getTemperature();
     }
 
-    /** Environment Management Proto (Switch ON): Implementation of Unary RCP */
+    /** Environment Management Proto (Switch ON): Implementation of Unary RCP Request  */
     public void switchOn(int initialTemperature) {
         SwitchOnRequest request = SwitchOnRequest.newBuilder().setTemperature(initialTemperature).build();
 
@@ -242,6 +244,7 @@ public class SmartClient
     }
 
 
+    /** Environment Management Proto (Switch Off): Implementation of Unary RCP Request  */
     public void switchOff()
     {
         SwitchOffRequest switchOffRequest = SwitchOffRequest.newBuilder()
@@ -253,6 +256,35 @@ public class SmartClient
 
         SwitchOffResponse switchOffResponse = blockingStub.switchOff(switchOffRequest);
         System.out.println("\nClient-Side: " + switchOffResponse.getStatus());
+    }
+
+
+    /** Domestic Utilities Proto (Energy  Consume): Implementation of Unary RCP Request */
+    public void energyMonitor()
+    {
+        //Build Request
+        EnergyMonitorRequest request = EnergyMonitorRequest.newBuilder().setRequestMsg("Send me the Energy Consume").build();
+
+        //Asking the Response
+        domesticUtilitiesServicesStub.energyMonitor(request, new StreamObserver<EnergyMonitorResponse>() {
+            @Override
+            public void onNext(EnergyMonitorResponse energyMonitorResponse)
+            {
+                System.out.println("This is the RESPONSE from the Server: " + energyMonitorResponse.getResponseMsg());
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCompleted()
+            {
+                System.out.println("This is onCompleted from The Energy Request...");
+            }
+        });
+
 
     }
 

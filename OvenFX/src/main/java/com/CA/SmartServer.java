@@ -54,6 +54,7 @@ public class SmartServer
                 .addService(new SmartDoorServicesImpl())
                 .addService(new SmartAlarmServicesImpl())
                 .addService(new EnvironmentMgmtServicesImpl())
+                .addService(new DomesticUtilitiesServicesImpl())
                 .build();
     }
 
@@ -267,7 +268,6 @@ public class SmartServer
                 while (streaming && counter <= 1000 )
                 {
                     {
-
                         SwitchOnResponse response = SwitchOnResponse.newBuilder()
                                 .setStatusTemperature(initialTemperature)
                                 .build();
@@ -276,8 +276,6 @@ public class SmartServer
                         counter++;
                     }
                 }
-
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
@@ -318,6 +316,24 @@ public class SmartServer
             responseObserver.onCompleted();
         }
     }
+
+
+
+    /** Utilities Domestic Proto (Energy Consume): Implementation of Server-Side Streaming RCP */
+    public static class DomesticUtilitiesServicesImpl extends DomesticUtilitiesServicesGrpc.DomesticUtilitiesServicesImplBase
+    {
+        private static volatile boolean streaming = false;
+
+        @Override
+        public void energyMonitor(EnergyMonitorRequest request, StreamObserver<EnergyMonitorResponse> responseStreamObserver)
+        {
+            //Build the response
+            EnergyMonitorResponse response = EnergyMonitorResponse.newBuilder().setResponseMsg(33).build();
+            responseStreamObserver.onNext(response);
+
+        }
+    }
+
 
 
 
