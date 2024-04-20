@@ -26,7 +26,7 @@ option java_outer_classname = "EnvironmentProto";
 service EnvironmentMgmtServices
 {
   rpc switchOn (SwitchOnRequest) returns (stream SwitchOnResponse) {}  //done
-  rpc switchOff (SwitchOffRequest) returns (SwitchOffResponse) {}     //working on...
+  rpc switchOff (SwitchOffRequest) returns (SwitchOffResponse) {}     //done
   rpc forecast (ForecastRequest) returns (ForecastResponse) {}        //done
   //maybe include a functionality such as, ask the server what temperature in outside?? or inside?? or in other city??
 }
