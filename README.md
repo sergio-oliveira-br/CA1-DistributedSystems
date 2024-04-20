@@ -50,14 +50,34 @@ Version 1.0 - Command-Line
 Version 1.1 - GUI by Java Swing
 ---
 
-=======
+
 
 Version 2.0 - GUI by JavaFX
 --
 Once I finished my project. To improve my learning, I will develop a new version that reinforces gRPC concepts
 and learn about a new topic JavaFX.
 
-This version refers to a temperature ramp created by the stream server from the user input. The final product is a real-time graph.
+This version includes the following services:
+Proto -> Utilities 
+      * Service: DomesticUtilitiesServices
+            # Method: Energy Monitor ->  Approach: Service-Side Streaming RPC
+            # Method: Disable Energy Monitor -> Approach: Unary RPC
+      
+Proto -> Environment
+      * Service: Environment Mgmt Services
+            # Method: Switch On -> Approach: Service-Side Streaming RPC
+            # Method: SwitchOff -> Approach: Unary RPC
+            # Method: Forecast -> Approach: Unary RPC
+            
+Proto -> Security
+      * Service: SmartDoorServices
+            # Method: OpenDoor -> Approach: Unary RPC
+            # Method: Close Door -> Approach: Unary RPC
+            
+      * Service: SmartAlarmServices
+            # Method: TurnOnAlarm -> Approach: Service-Side Streaming RPC
+            # Method: TurnOffAlarm -> Approach: Unary RPC
+      
 
 by Sergio Oliveira 
 
