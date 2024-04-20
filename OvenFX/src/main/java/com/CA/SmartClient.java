@@ -78,6 +78,8 @@ public class SmartClient
         OpenRequest openDoorIDRequest = OpenRequest.newBuilder().setDoorID(doorID).build();
         OpenResponse openDoorIDResponse = smartDoorServicesBlockingStub.openDoor(openDoorIDRequest);
         System.out.println("Client-Side getting the answer " + openDoorIDResponse.getStatus() + doorID);
+
+        channel.shutdown();
     }
 
     /** Home Security Proto: Implementation of Unary RCP Request*/
@@ -86,6 +88,8 @@ public class SmartClient
         CloseRequest closeDoorIDRequest = CloseRequest.newBuilder().setDoorID(doorID).build();
         CloseResponse closeDoorIDResponse = smartDoorServicesBlockingStub.closeDoor(closeDoorIDRequest);
         System.out.println("Client-Side getting the answer: " + closeDoorIDResponse.getStatus() + doorID);
+
+        channel.shutdown();
     }
 
     /** Home Security Proto: Implementation of Unary RCP Request*/
@@ -95,6 +99,7 @@ public class SmartClient
         TurnOffAlarmResponse turnOffAlarmResponse = smartAlarmServicesBlockingStub.turnOffAlarm(turnOffAlarmRequest);
         System.out.println("\nClient-Side getting the answer: " + turnOffAlarmResponse.getStatusOff());
 
+        channel.shutdown();
     }
 
     /** Home Security Proto: Implementation of Unary RCP Request */
@@ -103,6 +108,8 @@ public class SmartClient
         TurnOnAlarmRequest turnOnAlarmRequest = TurnOnAlarmRequest.newBuilder().setTurnOn("Alarm On").build();
         TurnOnAlarmResponse turnOnAlarmResponse = smartAlarmServicesBlockingStub.turnOnAlarm(turnOnAlarmRequest).next();
         System.out.println("Alarm activation request sent." + turnOnAlarmResponse.getStatusOn());
+
+        channel.shutdown();
     }
 
 
@@ -164,6 +171,8 @@ public class SmartClient
 
         SwitchOffResponse switchOffResponse = blockingStub.switchOff(switchOffRequest);
         System.out.println("\nServer Response: " + switchOffResponse.getStatus());
+
+        channel.shutdown();
     }
 
 
@@ -218,6 +227,8 @@ public class SmartClient
         //Receive the Response
         DisableEnergyMonitorResponse disableEnergyMonitorResponse = blockingStub.disableEnergyMonitor(disableEnergyMonitorRequest);
         System.out.println("\nServer Response: " + disableEnergyMonitorResponse.getDisableResponse());
+
+        channel.shutdown();
     }
 
 
