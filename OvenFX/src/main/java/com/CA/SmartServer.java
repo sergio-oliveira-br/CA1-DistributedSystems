@@ -317,13 +317,14 @@ public class SmartServer
         }
     }
 
+                    /** Here starts the Utilities Domestic Proto  */
 
 
-    /** Utilities Domestic Proto (Energy Consume): Implementation of Server-Side Streaming RCP */
     public static class DomesticUtilitiesServicesImpl extends DomesticUtilitiesServicesGrpc.DomesticUtilitiesServicesImplBase
     {
         private static volatile boolean streaming = false;
 
+        /** Utilities Domestic Proto (Energy Consume): Implementation of Server-Side Streaming RCP */
         @Override
         public void energyMonitor(EnergyMonitorRequest request, StreamObserver<EnergyMonitorResponse> responseStreamObserver)
         {
@@ -352,7 +353,27 @@ public class SmartServer
                 throw new RuntimeException(e);
             }
         }
+
+
+        /** Utilities Domestic Proto (Energy Consume STOP): Implementation of Unary Response RCP */
+        @Override
+        public void disableEnergyMonitor (DisableEnergyMonitorRequest request, StreamObserver<DisableEnergyMonitorResponse> responseObserver)
+        {
+            streaming = false; //stop streaming
+
+            //Build the response
+            DisableEnergyMonitorResponse disableEnergyMonitorResponse = DisableEnergyMonitorResponse
+                    .newBuilder()
+                    .setDisableResponse("The Energy Monitoring was disabled")
+                    .build();
+
+            //Send the response
+            responseObserver.onNext(disableEnergyMonitorResponse);
+            responseObserver.onCompleted();
+        }
     }
+
+
 
 
 

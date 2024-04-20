@@ -180,7 +180,7 @@ public class SmartClient
         EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesBlockingStub blockingStub = EnvironmentMgmtServicesGrpc.newBlockingStub(channel);
 
         SwitchOffResponse switchOffResponse = blockingStub.switchOff(switchOffRequest);
-        System.out.println("\nClient-Side: " + switchOffResponse.getStatus());
+        System.out.println("\nServer Response: " + switchOffResponse.getStatus());
     }
 
 
@@ -189,7 +189,6 @@ public class SmartClient
 
 
     /** Domestic Utilities Proto (Energy  Consume): Implementation of Unary RCP Request */
-
     public void energyMonitor()
     {
         //Build Request
@@ -219,6 +218,23 @@ public class SmartClient
         });
 
 
+    }
+
+
+    /** Utilities Domestic Proto (Energy Consume STOP): Implementation of Unary Response RCP */
+    public void disableEnergyMonitor()
+    {
+        //Build the Request
+        DisableEnergyMonitorRequest disableEnergyMonitorRequest = DisableEnergyMonitorRequest.newBuilder()
+                .setDisableRequest("Client Request to Turn off the Energy Monitor")
+                .build();
+
+        //Create a Stub exclusive for this method, 'cause I can't use the other stub asynchronous
+        DomesticUtilitiesServicesGrpc.DomesticUtilitiesServicesBlockingStub blockingStub = DomesticUtilitiesServicesGrpc.newBlockingStub(channel);
+
+        //Receive the Response
+        DisableEnergyMonitorResponse disableEnergyMonitorResponse = blockingStub.disableEnergyMonitor(disableEnergyMonitorRequest);
+        System.out.println("\nServer Response: " + disableEnergyMonitorResponse.getDisableResponse());
     }
 
 

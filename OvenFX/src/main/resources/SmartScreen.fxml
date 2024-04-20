@@ -62,5 +62,6 @@
       <Button fx:id="energyMonitoringButton" layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#energyMonitoringAction" text="Energy Monitoring" />
       <Label layoutX="14.0" layoutY="289.0" prefHeight="17.0" prefWidth="172.0" text="Get the Forecast" />
       <Line endX="-58.4483528137207" layoutX="117.0" layoutY="308.0" startX="-100.0" />
+      <Button fx:id="disableEnergyMonitoringButton" layoutX="142.0" layoutY="393.0" mnemonicParsing="false" onAction="#disableEnergyMonitoringAction" text="Disable Monitoring" />
    </children>
 </Pane>

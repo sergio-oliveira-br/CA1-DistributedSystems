@@ -382,7 +382,6 @@ public class SmartScreenController
     {
         //!IMPORTANT - This will be applied on the connect button
         SmartClient myClient = new SmartClient("localhost", 8081);
-
         myClient.energyMonitor();
 
         Text energyText = new Text("\nThe Server is streaming the Energy Consume" +
@@ -391,6 +390,15 @@ public class SmartScreenController
 
     }
 
+    @FXML
+    private void disableEnergyMonitoringAction(ActionEvent event)
+    {
+        SmartClient myClient = new SmartClient("localhost", 8081);
+        myClient.disableEnergyMonitor();
+
+        Text energyText = new Text("\nThe server stopped transmitting Energy Consumption");
+        myText.getChildren().add(energyText);
+    }
 
 
 
