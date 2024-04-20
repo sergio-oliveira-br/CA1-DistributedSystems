@@ -1,0 +1,37 @@
+/*
+  CA - Distributed System
+  Author: Sergio Oliveira - x23170981@student.ncirl.ie
+  Date: 20 Apr 2024
+
+  Lecturer: Mark Cudden
+
+  !IMPORTANT
+    -> Streaming Server -  Return numbers that represent the energy consume
+
+  References:
+    https://protobuf.dev/reference/java/java-generated/#invocation
+    https://grpc.io/docs/languages/java/quickstart/
+    https://grpc.io/docs/languages/java/basics/
+ */
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.CA.gRPC";
+option java_outer_classname = "UtilitiesProto";
+
+//Service definition (Server-Side Streaming) - This service allows the user gets information about what energy consume
+service DomesticUtilitiesServices
+{
+  rpc energyMonitor (EnergyMonitorRequest) returns (stream EnergyMonitorResponse) {}
+}
+
+message EnergyMonitorRequest
+{
+  string requestMsg = 1;
+}
+
+message EnergyMonitorResponse
+{
+  int32 responseMsg = 1;    //this should return a number that represent the energy consume (as stream)
+}

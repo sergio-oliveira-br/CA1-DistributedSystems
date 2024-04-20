@@ -266,7 +266,6 @@ public class SmartServer
             {
                 while (streaming && counter <= 1000 )
                 {
-
                     {
 
                         SwitchOnResponse response = SwitchOnResponse.newBuilder()

@@ -5,7 +5,6 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusException;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,29 +17,24 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
-
-
-import javax.swing.*;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
 
 public class SmartScreenController
 {
     @FXML
-    private LineChart<Number, Number> myTempChartLine;
-    @FXML
-    private LineChart<Number, Number> airTemperatureLine;
-    @FXML
-    private XYChart.Series<Number, Number> airTemperatureSeries;
-    @FXML
     private XYChart.Series<Number, Number> series;
     @FXML
     private XYChart.Series<Number, Number> temp;
+
+
     @FXML
     private TextFlow myText;
+    @FXML
+    private LineChart<Number, Number> myTempChartLine;
+    @FXML
+    private XYChart.Series<Number, Number> airTemperatureSeries;
 
     /** Used to configure the initial state of the user interface
      *  and controller-related elements after initialization by JavaFX */
@@ -49,13 +43,13 @@ public class SmartScreenController
     {
         //This is the temperature Ramp showing dot by dot
         series = new XYChart.Series<>();
-        series.setName("Temperature Ramp");
-        myTempChartLine.getData().add(series);
+        //series.setName("Temperature Ramp");
+        //myTempChartLine.getData().add(series);
 
         //This is the line that should display "dot by dot" the set point from the user
         temp = new XYChart.Series<Number, Number>();
-        temp.setName("Set Point");
-        myTempChartLine.getData().add(temp);
+        //temp.setName("Set Point");
+        //myTempChartLine.getData().add(temp);
 
         //This refers the Air Temperature
         airTemperatureSeries = new XYChart.Series<Number, Number>();
@@ -292,7 +286,7 @@ public class SmartScreenController
     }
 
 
-    /** This button "Switch On " sends a request and get stream answer from the server.
+    /** This button "Switch On" sends a request and get stream answer from the server.
      *  Approach: Serve-Side Streaming - from Environment Mgmt Services - Environment Management Proto*/
     @FXML
     private void switchOnAction(ActionEvent event)
@@ -355,7 +349,6 @@ public class SmartScreenController
 
         //stop the chart
         timeline.stop();
-
 
     }
 
