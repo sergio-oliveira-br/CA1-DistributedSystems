@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.idea/vcs.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="JavaFXApplication" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2f2WDUwMgfXhyFiI2YkbPmdd7CK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ScreenGUI.executor": "Run",
+    "Application.SmartClient.executor": "Run",
+    "Application.SmartScreen (1).executor": "Run",
+    "Application.SmartScreen.executor": "Run",
+    "Application.SmartServer.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.Testttt.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Merging main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/OvenFX",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.42988506",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.ScreenGUI">
+    <configuration name="ScreenGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ScreenGUI" />
+      <module name="SmartHomeFX" />
+      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/javafx-sdk-22/lib --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SmartClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.CA.SmartClient" />
+      <module name="SmartHomeFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.CA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SmartServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.CA.SmartServer" />
+      <module name="SmartHomeFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.CA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="SmartHomeFX" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Testttt" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.CA.Testttt" />
+      <module name="SmartHomeFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.CA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.SmartServer" />
+      <item itemvalue="Application.ScreenGUI" />
+      <item itemvalue="Application.SmartClient" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.Testttt" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ScreenGUI" />
+        <item itemvalue="Application.SmartServer" />
+        <item itemvalue="Application.SmartClient" />
+        <item itemvalue="Application.Testttt" />
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="" />
+      <created>1712999536588</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712999536588</updated>
+      <workItem from="1712999537800" duration="6496000" />
+      <workItem from="1713006498180" duration="17623000" />
+      <workItem from="1713045294076" duration="7688000" />
+      <workItem from="1713085755941" duration="61723000" />
+      <workItem from="1713377993467" duration="87803000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
