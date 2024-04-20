@@ -1,5 +1,6 @@
 import com.CA.SmartClient;
 import com.CA.SmartServer;
+import com.CA.gRPC.EnergyMonitorResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusException;
@@ -18,6 +19,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -35,6 +37,11 @@ public class SmartScreenController
     private LineChart<Number, Number> myTempChartLine;
     @FXML
     private XYChart.Series<Number, Number> airTemperatureSeries;
+
+
+
+    @FXML
+    private XYChart.Series<Number, Number> energyMonitoringSeries;
 
     /** Used to configure the initial state of the user interface
      *  and controller-related elements after initialization by JavaFX */
@@ -55,6 +62,12 @@ public class SmartScreenController
         airTemperatureSeries = new XYChart.Series<Number, Number>();
         airTemperatureSeries.setName(" Air Temperature");
         myTempChartLine.getData().add(airTemperatureSeries);
+
+
+        //This refers to Energy Monitoring
+        energyMonitoringSeries = new XYChart.Series<Number, Number>();
+        energyMonitoringSeries.setName("Energy Monitoring");
+        myTempChartLine.getData().add(energyMonitoringSeries);
 
         //This is my ChoiceBox List -> https://www.youtube.com/watch?app=desktop&v=PPwVwpdYFeU&themeRefresh=1
         choiceBoxButton.setItems(FXCollections.observableArrayList("Main Door", "Back Door",
@@ -361,12 +374,21 @@ public class SmartScreenController
     private Button energyMonitoringButton;
     /** This button "Energy Monitoring " display the streaming data from the server
      *  Approach: Server-Side Streaming  - from Domestic Utilities Services - Domestic Utility Proto*/
+
+
+
     @FXML
     private void energyMonitoringAction(ActionEvent event)
     {
+        //!IMPORTANT - This will be applied on the connect button
         SmartClient myClient = new SmartClient("localhost", 8081);
 
         myClient.energyMonitor();
+
+        Text energyText = new Text("\nThe Server is streaming the Energy Consume" +
+                        "\nI really tried hard to include those numbers on this Chart");
+        myText.getChildren().add(energyText);
+
     }
 
 

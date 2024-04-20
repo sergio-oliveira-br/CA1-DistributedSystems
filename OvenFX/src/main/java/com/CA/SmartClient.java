@@ -22,10 +22,10 @@ import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 import javafx.application.Platform;
 import javafx.scene.chart.XYChart;
+import javafx.scene.text.Text;
 
-import java.time.LocalDateTime;
-import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public class SmartClient
 {
@@ -42,7 +42,6 @@ public class SmartClient
     private final SmartAlarmServicesGrpc.SmartAlarmServicesBlockingStub smartAlarmServicesBlockingStub;
     private final EnvironmentMgmtServicesGrpc.EnvironmentMgmtServicesStub environmentMgmtServicesStub; //asynchronous
     private final DomesticUtilitiesServicesGrpc.DomesticUtilitiesServicesStub domesticUtilitiesServicesStub; //asynchronous
-
 
     /*
         ===========================
@@ -190,6 +189,9 @@ public class SmartClient
 
 
     /** Domestic Utilities Proto (Energy  Consume): Implementation of Unary RCP Request */
+
+    private int energyValue;
+
     public void energyMonitor()
     {
         //Build Request
@@ -200,12 +202,16 @@ public class SmartClient
             @Override
             public void onNext(EnergyMonitorResponse energyMonitorResponse)
             {
-                System.out.println("This is the RESPONSE from the Server: " + energyMonitorResponse.getResponseMsg());
+                energyValue = energyMonitorResponse.getResponseMsg();
+                System.out.println("The Server is Streaming... " +
+                        "The Energy Consume is: " + energyMonitorResponse.getResponseMsg() + " kWh");
             }
 
             @Override
-            public void onError(Throwable throwable) {
-
+            public void onError(Throwable throwable)
+            {
+                System.err.println("Error from Domestic Utilities Services");
+                System.err.println("Your are not Connected to the Server");
             }
 
             @Override
@@ -234,32 +240,14 @@ public class SmartClient
 
 
 
-    public static void main(String[] args) throws StatusException
-    {
+    public static void main(String[] args) throws StatusException, InterruptedException {
+        String host = "localhost";
+        int port = 8081;
 
-        //Instance Variables
-        //String host = "localhost";
-        //int port = 8081;
-
-        //SmartServer myServer = new SmartServer(port);
-
-        /*
         SmartClient myClient = new SmartClient(host, port);
-        try
-        {
-            XYChart.Series<Number, Number> series = new XYChart.Series<>();
-            myClient.setPointUser(1 , series);
-        }
-
-        catch (StatusException e)
-        {
-            e.printStackTrace();
-        }
 
 
-
-         */
-
+        myClient.shutdown();
     }
 
 

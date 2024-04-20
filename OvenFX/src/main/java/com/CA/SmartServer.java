@@ -327,10 +327,30 @@ public class SmartServer
         @Override
         public void energyMonitor(EnergyMonitorRequest request, StreamObserver<EnergyMonitorResponse> responseStreamObserver)
         {
-            //Build the response
-            EnergyMonitorResponse response = EnergyMonitorResponse.newBuilder().setResponseMsg(33).build();
-            responseStreamObserver.onNext(response);
+            streaming = true;
 
+            int counter = 0;
+
+            try
+            {
+                while (streaming && counter < 1000)
+                {
+                    //Create Random Number to simulate the energy consume
+                    Random randomConsume = new Random();
+                    int consume = randomConsume.nextInt(4) + 10;
+
+                    //Build the response
+                    EnergyMonitorResponse response = EnergyMonitorResponse.newBuilder().setResponseMsg(consume).build();
+                    responseStreamObserver.onNext(response);
+
+                    Thread.sleep(1000); // Simulate delay between temperature updates
+
+                    counter++;
+                }
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
