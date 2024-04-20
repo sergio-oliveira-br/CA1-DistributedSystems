@@ -1,3 +1,18 @@
+/*
+  CA - Distributed System
+  Author: Sergio Oliveira - x23170981@student.ncirl.ie
+  Created: 13 Apr 2024
+
+  Lecturer: Mark Cudden
+
+  References:
+    https://grpc.io/docs/languages/java/quickstart/
+    https://grpc.io/docs/languages/java/basics/
+
+    Controller
+*/
+
+
 import com.CA.SmartClient;
 import com.CA.SmartServer;
 import io.grpc.ManagedChannel;
@@ -17,8 +32,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
-import org.checkerframework.common.subtyping.qual.Bottom;
-
 import java.io.IOException;
 import java.util.Optional;
 
@@ -111,7 +124,8 @@ public class SmartScreenController
             throw new RuntimeException(e);
         }
 
-        Text guideStep3 = new Text("\nYour connection to the server is active");
+        Text guideStep3 = new Text("\nYour connection to the server is active" +
+                "\n---------------");
         myText.getChildren().add(guideStep3);
 
         //Disabling the buttons
@@ -168,7 +182,7 @@ public class SmartScreenController
         //Enabling the buttons
         //connectionButton.setDisable(false);
 
-        Text endingMsg = new Text("\nClose and open the window again to reconnect.");
+        Text endingMsg = new Text("\n--------------- \nClose and open the window again to reconnect.");
         myText.getChildren().add(endingMsg);
     }
 
@@ -378,6 +392,9 @@ public class SmartScreenController
         //Enabling the button
         switchOffButton.setDisable(false);
 
+        //Disable the button
+        switchOnButton.setDisable(true);
+
     }
 
 
@@ -401,6 +418,8 @@ public class SmartScreenController
 
         //Disable button
         switchOffButton.setDisable(true);
+
+        switchOnButton.setDisable(false);
 
     }
 

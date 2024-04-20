@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ScreenGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SmartScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SmartScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +165,7 @@
       <workItem from="1713006498180" duration="17623000" />
       <workItem from="1713045294076" duration="7688000" />
       <workItem from="1713085755941" duration="61723000" />
-      <workItem from="1713377993467" duration="83195000" />
+      <workItem from="1713377993467" duration="83928000" />
     </task>
     <servers />
   </component>
