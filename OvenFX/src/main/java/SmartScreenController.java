@@ -355,6 +355,20 @@ public class SmartScreenController
 
 
 
+                        /** Here starts new Service from Domestic Utilities Proto */
+
+    @FXML
+    private Button energyMonitoringButton;
+    /** This button "Energy Monitoring " display the streaming data from the server
+     *  Approach: Server-Side Streaming  - from Domestic Utilities Services - Domestic Utility Proto*/
+    @FXML
+    private void energyMonitoringAction(ActionEvent event)
+    {
+        SmartClient myClient = new SmartClient("localhost", 8081);
+
+        myClient.energyMonitor();
+    }
+
 
 
 

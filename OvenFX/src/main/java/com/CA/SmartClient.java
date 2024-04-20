@@ -44,8 +44,6 @@ public class SmartClient
     private final DomesticUtilitiesServicesGrpc.DomesticUtilitiesServicesStub domesticUtilitiesServicesStub; //asynchronous
 
 
-
-
     /*
         ===========================
             Instantiating a stub
@@ -73,95 +71,22 @@ public class SmartClient
         domesticUtilitiesServicesStub = DomesticUtilitiesServicesGrpc.newStub(channel);     //asynchronous
     }
 
+
     //Method: Close the connection before
     public void shutdown() throws InterruptedException
     {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    /*
-        ====================================
-            Implement Method - Unary RPC
-        ====================================
-     */
-
-    // Client-side logic for interacting with the gRPC service.
-    public StringBuilder greet(String name) throws StatusException
-    {
-        // Creating a request with the user's name.
-        HelloRequest request = HelloRequest.newBuilder().setName(name).build();
-
-        //To allow to display a msg
-        StringBuilder serverResponse = new StringBuilder();
-
-        try
-        {
-            //Create a local variable and call the method
-            HelloReply response = greeterBlockingStub.sayHello(request);
-
-            //This will send the msg to TextFlow
-            serverResponse.append(response.getMessage());
-
-            System.out.println("Hello " + response.getMessage()); //just a test
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return serverResponse;
-    }
-
-
-     /*
-        ======================================================
-            Implement Method - Client-side streaming RPC
-
-            A server-side streaming RPC where the client
-            sends a request to the server and
-            gets a stream to read a sequence of messages back.
-
-            The client reads from the returned stream
-            until there are no more messages.
-        ======================================================
-     */
-
-    // Client-side logic for interacting with the gRPC service.
-    public void setPointUser(int temp, XYChart.Series<Number, Number> series) throws StatusException
-    {
-        //Creating a request with the set point temperature
-        SetPointTemp request = SetPointTemp.newBuilder().setSetTemp(temp).build();
-
-        //Starts the Streaming
-        StreamObserver<TempRamp> observer = new StreamObserver<TempRamp>()
-        {
-            @Override
-            public void onNext(TempRamp tempRamp) {
-                Platform.runLater(() ->
-                {
-                    series.getData().add(new XYChart.Data<>(tempRamp.getMessage(), tempRamp.getMessage()));
-                });
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-
-            }
-
-            @Override
-            public void onCompleted() {
-
-            }
-        };
-        TemperatureRampGrpc.TemperatureRampStub stub = TemperatureRampGrpc.newStub(channel);
-
-        stub.sendTempData(request, observer);
-    }
 
 
 
 
 
 
+
+
+                        /** Here starts new Service from Home Security Proto */
 
 
     /** Home Security Proto: Implementation of Unary RCP Request*/
@@ -199,6 +124,7 @@ public class SmartClient
     }
 
 
+                            /** Here starts new Service from Environment Management Proto */
 
     /** Environment Management Proto (Forecast): Implementation of Unary RCP */
     public int requestForecast(String location, String date)
@@ -259,6 +185,10 @@ public class SmartClient
     }
 
 
+
+                        /** Here starts new Service from Domestic Utilities Proto */
+
+
     /** Domestic Utilities Proto (Energy  Consume): Implementation of Unary RCP Request */
     public void energyMonitor()
     {
@@ -297,6 +227,13 @@ public class SmartClient
 
 
 
+
+
+
+
+
+
+
     public static void main(String[] args) throws StatusException
     {
 
@@ -324,4 +261,87 @@ public class SmartClient
          */
 
     }
+
+
+    /** I AM NOT USING THIS ANYMORE */
+
+     /*
+        ======================================================
+            Implement Method - Client-side streaming RPC
+
+            A server-side streaming RPC where the client
+            sends a request to the server and
+            gets a stream to read a sequence of messages back.
+
+            The client reads from the returned stream
+            until there are no more messages.
+        ======================================================
+     */
+
+    // Client-side logic for interacting with the gRPC service.
+    public void setPointUser(int temp, XYChart.Series<Number, Number> series) throws StatusException
+    {
+        //Creating a request with the set point temperature
+        SetPointTemp request = SetPointTemp.newBuilder().setSetTemp(temp).build();
+
+        //Starts the Streaming
+        StreamObserver<TempRamp> observer = new StreamObserver<TempRamp>()
+        {
+            @Override
+            public void onNext(TempRamp tempRamp) {
+                Platform.runLater(() ->
+                {
+                    series.getData().add(new XYChart.Data<>(tempRamp.getMessage(), tempRamp.getMessage()));
+                });
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        };
+        TemperatureRampGrpc.TemperatureRampStub stub = TemperatureRampGrpc.newStub(channel);
+
+        stub.sendTempData(request, observer);
+    }
+
+
+
+     /*
+        ====================================
+            Implement Method - Unary RPC
+        ====================================
+     */
+
+    // Client-side logic for interacting with the gRPC service.
+    public StringBuilder greet(String name) throws StatusException
+    {
+        // Creating a request with the user's name.
+        HelloRequest request = HelloRequest.newBuilder().setName(name).build();
+
+        //To allow to display a msg
+        StringBuilder serverResponse = new StringBuilder();
+
+        try
+        {
+            //Create a local variable and call the method
+            HelloReply response = greeterBlockingStub.sayHello(request);
+
+            //This will send the msg to TextFlow
+            serverResponse.append(response.getMessage());
+
+            System.out.println("Hello " + response.getMessage()); //just a test
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return serverResponse;
+    }
+
 }
