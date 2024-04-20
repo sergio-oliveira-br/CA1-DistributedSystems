@@ -24,8 +24,10 @@ option java_outer_classname = "UtilitiesProto";
 service DomesticUtilitiesServices
 {
   rpc energyMonitor (EnergyMonitorRequest) returns (stream EnergyMonitorResponse) {}
+  rpc disableEnergyMonitor (DisableEnergyMonitorRequest) returns (DisableEnergyMonitorResponse) {}
 }
 
+//------- TURN ON -------
 message EnergyMonitorRequest
 {
   string requestMsg = 1;
@@ -34,4 +36,13 @@ message EnergyMonitorRequest
 message EnergyMonitorResponse
 {
   int32 responseMsg = 1;    //this should return a number that represent the energy consume (as stream)
+}
+//------ TURN OFF -------
+message DisableEnergyMonitorRequest
+{
+  string disableRequest = 1;
+}
+message DisableEnergyMonitorResponse
+{
+  string disableResponse = 1;
 }

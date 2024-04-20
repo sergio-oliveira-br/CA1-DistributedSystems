@@ -190,8 +190,6 @@ public class SmartClient
 
     /** Domestic Utilities Proto (Energy  Consume): Implementation of Unary RCP Request */
 
-    private int energyValue;
-
     public void energyMonitor()
     {
         //Build Request
@@ -202,7 +200,6 @@ public class SmartClient
             @Override
             public void onNext(EnergyMonitorResponse energyMonitorResponse)
             {
-                energyValue = energyMonitorResponse.getResponseMsg();
                 System.out.println("The Server is Streaming... " +
                         "The Energy Consume is: " + energyMonitorResponse.getResponseMsg() + " kWh");
             }
