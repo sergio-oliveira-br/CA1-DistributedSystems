@@ -1,12 +1,15 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.io.IOException;
 
 public class ScreenGUI extends Application
 {
-
     public static void main(String[] args)
     {
         launch(args);
@@ -22,4 +25,5 @@ public class ScreenGUI extends Application
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 }

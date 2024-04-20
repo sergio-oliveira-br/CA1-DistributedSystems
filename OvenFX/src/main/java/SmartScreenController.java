@@ -1,6 +1,5 @@
 import com.CA.SmartClient;
 import com.CA.SmartServer;
-import com.CA.gRPC.EnergyMonitorResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusException;
@@ -18,8 +17,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
+import org.checkerframework.common.subtyping.qual.Bottom;
+
 import java.io.IOException;
-import java.util.Date;
 import java.util.Optional;
 
 
@@ -40,8 +40,8 @@ public class SmartScreenController
 
 
 
-    @FXML
-    private XYChart.Series<Number, Number> energyMonitoringSeries;
+    //@FXML
+    //private XYChart.Series<Number, Number> energyMonitoringSeries;
 
     /** Used to configure the initial state of the user interface
      *  and controller-related elements after initialization by JavaFX */
@@ -54,20 +54,20 @@ public class SmartScreenController
         //myTempChartLine.getData().add(series);
 
         //This is the line that should display "dot by dot" the set point from the user
-        temp = new XYChart.Series<Number, Number>();
+        temp = new XYChart.Series<>();
         //temp.setName("Set Point");
         //myTempChartLine.getData().add(temp);
 
         //This refers the Air Temperature
-        airTemperatureSeries = new XYChart.Series<Number, Number>();
+        airTemperatureSeries = new XYChart.Series<>();
         airTemperatureSeries.setName(" Air Temperature");
         myTempChartLine.getData().add(airTemperatureSeries);
 
 
         //This refers to Energy Monitoring
-        energyMonitoringSeries = new XYChart.Series<Number, Number>();
-        energyMonitoringSeries.setName("Energy Monitoring");
-        myTempChartLine.getData().add(energyMonitoringSeries);
+        //energyMonitoringSeries = new XYChart.Series<Number, Number>();
+        //energyMonitoringSeries.setName("Energy Monitoring");
+        //myTempChartLine.getData().add(energyMonitoringSeries);
 
         //This is my ChoiceBox List -> https://www.youtube.com/watch?app=desktop&v=PPwVwpdYFeU&themeRefresh=1
         choiceBoxButton.setItems(FXCollections.observableArrayList("Main Door", "Back Door",
@@ -80,11 +80,18 @@ public class SmartScreenController
         Text guideStep2 = new Text("\nConnect to Server by clicking the 'Connect' button.");
         myText.getChildren().add(guideStep2);
 
-        //Disabling the buttons
-        //sayHelloButton.setDisable(true);
-        //setTempButton.setDisable(true);
-        //disconnectButton.setDisable(true);
-        //stopStreamButton.setDisable(true);
+        //Disabling the buttons until the user connect to the server
+        disconnectButton.setDisable(true);
+        choiceBoxButton.setDisable(true);
+        openDoorButton.setDisable(true);
+        //stopStreamAlarmAction.setDisable(true);
+        closeDoorButton.setDisable(true);
+        turnOnAlarmButton.setDisable(true);
+        switchOnButton.setDisable(true);
+        switchOffButton.setDisable(true);
+        forecastTodayButton.setDisable(true);
+        energyMonitoringButton.setDisable(true);
+        disableEnergyMonitoringButton.setDisable(true);
 
     }
 
@@ -111,7 +118,17 @@ public class SmartScreenController
         connectionButton.setDisable(true);
 
         //Enabling the buttons
-        sayHelloButton.setDisable(false);
+        disconnectButton.setDisable(false);
+        choiceBoxButton.setDisable(false);
+        openDoorButton.setDisable(false);
+        //stopStreamAlarmAction.setDisable(true);
+        closeDoorButton.setDisable(false);
+        turnOnAlarmButton.setDisable(false);
+        switchOnButton.setDisable(false);
+        //switchOffButton.setDisable(false);
+        forecastTodayButton.setDisable(false);
+        energyMonitoringButton.setDisable(false);
+        //disableEnergyMonitoringButton.setDisable(false);
 
     }
 
@@ -135,20 +152,29 @@ public class SmartScreenController
         Text guideStep5 = new Text("\nYou have been disconnected from the server");
         myText.getChildren().add(guideStep5);
 
-        //Disabling the buttons
-        sayHelloButton.setDisable(true);
-        setTempButton.setDisable(true);
+        //Disabling the buttons until the user connect to the server
         disconnectButton.setDisable(true);
+        choiceBoxButton.setDisable(true);
+        openDoorButton.setDisable(true);
+        //stopStreamAlarmAction.setDisable(true);
+        closeDoorButton.setDisable(true);
+        turnOnAlarmButton.setDisable(true);
+        switchOnButton.setDisable(true);
+        switchOffButton.setDisable(true);
+        forecastTodayButton.setDisable(true);
+        energyMonitoringButton.setDisable(true);
+        disableEnergyMonitoringButton.setDisable(true);
 
         //Enabling the buttons
-        connectionButton.setDisable(false);
+        //connectionButton.setDisable(false);
 
+        Text endingMsg = new Text("\nClose and open the window again to reconnect.");
+        myText.getChildren().add(endingMsg);
     }
 
 
 
                         /** Here starts new Service from Home Security Proto */
-
 
     @FXML
     private Button openDoorButton;
@@ -166,8 +192,9 @@ public class SmartScreenController
         myText.getChildren().add(messageText);
     }
 
+
     @FXML
-    private Button closeDoorButton;
+    public Button closeDoorButton;
     /** This button (close Door) send a request and get an answer from the Server-Side
      * Approach: Unary Request - from Smart Door Services - Home Security Proto*/
     @FXML
@@ -196,11 +223,11 @@ public class SmartScreenController
 
 
     @FXML
-    private Button turnOnAlarmButton;
-    @FXML
     private Circle alarmOnGreen;
     @FXML
     private Circle alarmOffRed;
+    @FXML
+    public Button turnOnAlarmButton;
     /** This button (Turn On Alarm) sends a request and get several answers from the Server-Side
      * Approach: Server-Side Streaming - from  Smart Alarm Services - Home Security Proto */
     @FXML
@@ -220,7 +247,7 @@ public class SmartScreenController
 
 
     @FXML
-    private Button stopStreamAlarmButton;
+    public Button stopStreamAlarmAction;
     /** This button "stop" ends the stream request started on button Activate Alarm
      *  Approach: Unary RPC  */
     @FXML
@@ -242,7 +269,8 @@ public class SmartScreenController
 
                         /** Here starts new Service from Home Environment Mgmt Proto */
 
-
+    @FXML
+    public Button forecastTodayButton;
     /** This button "Forecast " sends a request and get an answer from the server.
      *  Approach: Unary Request - from Environment Mgmt Services - Environment Management Proto*/
     @FXML
@@ -299,6 +327,9 @@ public class SmartScreenController
     }
 
 
+
+    @FXML
+    public Button switchOnButton;
     /** This button "Switch On" sends a request and get stream answer from the server.
      *  Approach: Serve-Side Streaming - from Environment Mgmt Services - Environment Management Proto*/
     @FXML
@@ -344,10 +375,15 @@ public class SmartScreenController
             }
         });
 
+        //Enabling the button
+        switchOffButton.setDisable(false);
+
     }
 
 
     private Timeline timeline;
+    @FXML
+    public Button switchOffButton;
     /** This button "Switch Off " ends the streaming request (Switch On).
      *  Approach: Unary RPC - from Environment Mgmt Services - Environment Management Proto*/
     @FXML
@@ -363,6 +399,9 @@ public class SmartScreenController
         //stop the chart
         timeline.stop();
 
+        //Disable button
+        switchOffButton.setDisable(true);
+
     }
 
 
@@ -370,13 +409,11 @@ public class SmartScreenController
 
                         /** Here starts new Service from Domestic Utilities Proto */
 
+
     @FXML
-    private Button energyMonitoringButton;
+    public Button energyMonitoringButton;
     /** This button "Energy Monitoring " display the streaming data from the server
      *  Approach: Server-Side Streaming  - from Domestic Utilities Services - Domestic Utility Proto*/
-
-
-
     @FXML
     private void energyMonitoringAction(ActionEvent event)
     {
@@ -388,8 +425,13 @@ public class SmartScreenController
                         "\nI really tried hard to include those numbers on this Chart");
         myText.getChildren().add(energyText);
 
+        //Enabling buttons
+        disableEnergyMonitoringButton.setDisable(false);
+
     }
 
+    @FXML
+    public Button disableEnergyMonitoringButton;
     @FXML
     private void disableEnergyMonitoringAction(ActionEvent event)
     {
@@ -398,6 +440,9 @@ public class SmartScreenController
 
         Text energyText = new Text("\nThe server stopped transmitting Energy Consumption");
         myText.getChildren().add(energyText);
+
+        //Disabling Buttons
+        disableEnergyMonitoringButton.setDisable(true);
     }
 
 
@@ -474,7 +519,7 @@ public class SmartScreenController
 
                 for(int i = 0; i < 50; i++)
                 {
-                    temp.getData().add(new XYChart.Data<Number, Number>(i, setPoint));
+                    temp.getData().add(new XYChart.Data<>(i, setPoint));
                 }
 
                 Text messageText = new Text("Set point set to: " + setPoint +"\n");
