@@ -73,7 +73,7 @@ Proto -> Security
       * Service: SmartDoorServices
             # Method: OpenDoor -> Approach: Unary RPC
             # Method: Close Door -> Approach: Unary RPC
-            
+            .
       * Service: SmartAlarmServices
             # Method: TurnOnAlarm -> Approach: Service-Side Streaming RPC
             # Method: TurnOffAlarm -> Approach: Unary RPC
