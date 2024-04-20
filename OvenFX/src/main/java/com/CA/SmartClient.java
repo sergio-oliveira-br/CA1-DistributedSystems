@@ -253,15 +253,8 @@ public class SmartClient
 
 
 
-    public static void main(String[] args) throws StatusException, InterruptedException {
-        String host = "localhost";
-        int port = 8081;
-
-        SmartClient myClient = new SmartClient(host, port);
-
-
-        myClient.shutdown();
-    }
+    public static void main(String[] args) throws StatusException, InterruptedException
+    {}
 
 
     /** I AM NOT USING THIS ANYMORE */

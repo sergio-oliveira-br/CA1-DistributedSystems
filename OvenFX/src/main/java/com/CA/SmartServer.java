@@ -25,15 +25,11 @@ import java.util.concurrent.TimeUnit;
 
 public class SmartServer
 {
-    //Instance Variables
+    /** Instance Variables */
     int port;
     Server server;
 
-    /*
-        ===========================
-            Starting the server
-        ===========================
-     */
+                            /** Here is where I start the Server */
 
     //Constructor: Start up a gRPC server so that clients can actually use our service.
     public SmartServer(int port)
@@ -83,86 +79,6 @@ public class SmartServer
             server.shutdown().awaitTermination(30, TimeUnit.SECONDS);
         }
     }
-
-
-
-    /*
-        ===========================
-                Simple RPC
-        ===========================
-     */
-
-    //Implementation of the gRPC service "Greater" on the server-side.
-    //The class extends the generated GreeterGrpc.GreeterImplBase abstract class:
-    private static class GreeterImpl extends GreeterGrpc.GreeterImplBase
-    {
-        @Override
-        public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver)
-        {
-            //super.sayHello(request, responseObserver); !IMPORTANT: I DO NOT NEED THIS
-
-            //Generate a greeting message
-            HelloReply reply = HelloReply.newBuilder()
-                    .setMessage("From the Server: Welcome to Smart Oven " + request.getName()).build();
-
-            //Send the reply back to the client.
-            responseObserver.onNext(reply);
-
-            //Indicate that no further messages will be sent to the client.
-            responseObserver.onCompleted();
-        }
-    }
-
-    /*
-        ======================================================
-            Implement Method - Server-side streaming RPC
-
-            A server-side streaming RPC where the client
-            sends a request to the server and
-            gets a stream to read a sequence of messages back.
-
-            The client reads from the returned stream
-            until there are no more messages.
-        ======================================================
-     */
-
-    private static class TemperatureRampImpl extends TemperatureRampGrpc.TemperatureRampImplBase
-    {
-        @Override
-        public void sendTempData(SetPointTemp request, StreamObserver<TempRamp> responseObserver)
-        {
-            int setTemp = request.getSetTemp();
-            int currentTemp = 0;
-
-            //here is where my dots rise
-            for (int i = 0; i <= setTemp; i++)
-            {
-                //double tempValue = Math.exp(i / 10.0);
-                TempRamp tempRamp = TempRamp.newBuilder().setMessage((int)i).build();
-                responseObserver.onNext(tempRamp);
-
-                try
-                {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            //here is where my graph goes down
-
-
-            //here I need to implement the same number
-
-
-
-            //This is the end.
-           responseObserver.onCompleted();
-        }
-    }
-
-
-
 
 
 
@@ -317,7 +233,7 @@ public class SmartServer
         }
     }
 
-                    /** Here starts the Utilities Domestic Proto  */
+                             /** Here starts the Utilities Domestic Proto  */
 
 
     public static class DomesticUtilitiesServicesImpl extends DomesticUtilitiesServicesGrpc.DomesticUtilitiesServicesImplBase
@@ -373,23 +289,93 @@ public class SmartServer
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     public static void main(String[] args) throws IOException, InterruptedException
     {
         //Call build() and start() on the builder to create and start an RPC server for our service.
         SmartServer myServer = new SmartServer(8081);
         myServer.start();
         myServer.blockUntilShutdown();
+    }
+
+
+
+
+
+    /** I AM NOT USING THIS ANYMORE */
+
+    /*
+        ===========================
+                Simple RPC
+        ===========================
+     */
+
+    //Implementation of the gRPC service "Greater" on the server-side.
+    //The class extends the generated GreeterGrpc.GreeterImplBase abstract class:
+    private static class GreeterImpl extends GreeterGrpc.GreeterImplBase
+    {
+        @Override
+        public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver)
+        {
+            //super.sayHello(request, responseObserver); !IMPORTANT: I DO NOT NEED THIS
+
+            //Generate a greeting message
+            HelloReply reply = HelloReply.newBuilder()
+                    .setMessage("From the Server: Welcome to Smart Oven " + request.getName()).build();
+
+            //Send the reply back to the client.
+            responseObserver.onNext(reply);
+
+            //Indicate that no further messages will be sent to the client.
+            responseObserver.onCompleted();
+        }
+    }
+
+    /*
+        ======================================================
+            Implement Method - Server-side streaming RPC
+
+            A server-side streaming RPC where the client
+            sends a request to the server and
+            gets a stream to read a sequence of messages back.
+
+            The client reads from the returned stream
+            until there are no more messages.
+        ======================================================
+     */
+
+    private static class TemperatureRampImpl extends TemperatureRampGrpc.TemperatureRampImplBase
+    {
+        @Override
+        public void sendTempData(SetPointTemp request, StreamObserver<TempRamp> responseObserver)
+        {
+            int setTemp = request.getSetTemp();
+            int currentTemp = 0;
+
+            //here is where my dots rise
+            for (int i = 0; i <= setTemp; i++)
+            {
+                //double tempValue = Math.exp(i / 10.0);
+                TempRamp tempRamp = TempRamp.newBuilder().setMessage((int)i).build();
+                responseObserver.onNext(tempRamp);
+
+                try
+                {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            //here is where my graph goes down
+
+
+            //here I need to implement the same number
+
+
+
+            //This is the end.
+            responseObserver.onCompleted();
+        }
     }
 
 }
