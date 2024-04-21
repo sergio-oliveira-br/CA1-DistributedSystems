@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmarHomeFX/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmarHomeFX2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmarHomeFX2/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/OvenFX",
     "node.js.detected.package.eslint": "true",
@@ -167,7 +162,7 @@
       <workItem from="1713006498180" duration="17623000" />
       <workItem from="1713045294076" duration="7688000" />
       <workItem from="1713085755941" duration="61723000" />
-      <workItem from="1713377993467" duration="87803000" />
+      <workItem from="1713377993467" duration="88106000" />
     </task>
     <servers />
   </component>

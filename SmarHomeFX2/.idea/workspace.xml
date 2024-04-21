@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73460b69-4e2c-4b3a-9277-388c8775297f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../~$oject CA.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OvenFX/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OvenFX/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Report-DistributedSystem.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Report-DistributedSystem.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/EnvironmentManagement.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/EnvironmentManagement.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CA/SmartServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +61,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/OvenFX",
+    "last_opened_file_path": "/Users/sergiovinicio/Documents/GitHub/CA1-DistributedSystems/SmarHomeFX2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -164,6 +167,7 @@
       <workItem from="1713045294076" duration="7688000" />
       <workItem from="1713085755941" duration="61723000" />
       <workItem from="1713377993467" duration="87286000" />
+      <workItem from="1713654427482" duration="6583000" />
     </task>
     <servers />
   </component>

@@ -38,12 +38,12 @@ public class SmartServer
         this(ServerBuilder.forPort(port), port);
     }
 
-    //Constructor: Create a RouteGuide server using serverBuilder as a base and features as data.
+    //Constructor: Create Server using ServerBuilder 
     public SmartServer(ServerBuilder<?> serverBuilder, int port)
     {
         this.port = port;
 
-        //Create an instance of our service implementation class RouteGuideService and pass it to the builder’s addService() method.
+        //Create an instance of our service implementation class and pass it to the builder’s addService() method.
         server = serverBuilder
                 .addService(new GreeterImpl())
                 .addService(new TemperatureRampImpl())
